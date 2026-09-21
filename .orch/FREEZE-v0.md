@@ -1,9 +1,16 @@
-# W0/W1 接口冻结清单（freeze-v0，v0.8 修订）
+# W0/W1 接口冻结清单（freeze-v0，v0.9 修订）
 
 生成时间：2026-09-19T19:27:29+08:00
 
 ## 修订历史
 
+- **v0.9**（2026-09-21，发布前）：修 `RefStore::resolve` 的 rev 解析缺陷，**冻结清单哈希零改动
+  （drift 0）**，公共签名零改动。旧实现把**任何含 `/` 的名字**都当全名找，于是 `origin/main`
+  （`mg fetch` 自己写出来的引用）、`mg merge origin/main`、嵌套分支名 `feature/x` 全部 `RefNotFound`。
+  改为走本文件里已有的 git `ref_rev_parse_rules` 顺序表（与 `refname_matches` 共用同一个
+  `REV_PARSE_RULES` 常量），并顺带对齐 git 的优先级：同名 head+tag 时取 **tag**（旧实现取 head）。
+  新增差分测试 `resolve_matches_git_rev_parse_across_namespaces`（14 个名字 × `git rev-parse --verify`），
+  负对照实测：旧实现 FAIL、新实现 PASS。证据：dev/release 各 563 passed、clippy 0、drift 0。
 - **v0.8**（2026-09-21，发布前）：三处**非接口**改动，**公共签名零改动**。
   ① `Cargo.toml` 增加 `repository` 元数据（发布用；哈希随之从 `dc9bcad30489f47a` 变为 `0d975c6706f85444`）；
   ② 修掉 `mg cat-file -p <tree>` 的一处**字节级兼容缺陷**：tree 条目的文件名直接落原名，漏了

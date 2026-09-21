@@ -20,7 +20,7 @@ use crate::error::{Error, Result};
 use crate::oid::Oid;
 use crate::repo::Repo;
 
-use super::{Head, RefStore, HEADS_PREFIX, TAGS_PREFIX};
+use super::{Head, RefStore, HEADS_PREFIX};
 
 /// 符号引用链的最大跟随深度（防止 `refs/a -> refs/b -> refs/a` 这类环）。
 const MAX_SYMREF_DEPTH: usize = 8;
@@ -55,7 +55,13 @@ impl<'a> RefStore<'a> {
         })
     }
 
-    /// 解析任意 rev 写法到 oid（v1 支持：`HEAD`、完整 40 位 hex、`refs/...`、短分支名、tag 名）。
+    /// 解析任意 rev 写法到 oid（v1 支持：`HEAD`、完整 40 位 hex、`refs/...` 全名，
+    /// 以及短名 —— 含嵌套分支名 `feature/x` 与远端跟踪名 `origin/main`）。
+    ///
+    /// 名字按 git 的 `ref_rev_parse_rules` 顺序试（见 `REV_PARSE_RULES`）：
+    /// 直接名字 → `refs/<name>` → `refs/tags/<name>` → `refs/heads/<name>` →
+    /// `refs/remotes/<name>` → `refs/remotes/<name>/HEAD`。
+    /// 注意 tags 在 heads **之前**，与 git 一致（同名 head+tag 时 git 取 tag）。
     pub fn resolve(&self, name: &str) -> Result<Oid> {
         let name = name.trim();
         if name.is_empty() {
@@ -73,17 +79,10 @@ impl<'a> RefStore<'a> {
         if let Ok(oid) = Oid::from_hex(name) {
             return Ok(oid);
         }
-        // 含 `/` 的按全名找。
-        if name.contains('/') {
-            return self
-                .lookup(name)?
-                .ok_or_else(|| Error::RefNotFound(name.to_string()));
-        }
-        // 短名：先 refs/heads/<name>，再 refs/tags/<name>。
-        for candidate in [
-            format!("{HEADS_PREFIX}{name}"),
-            format!("{TAGS_PREFIX}{name}"),
-        ] {
+        // 全名与短名都走同一张规则表：含 `/` 的名字（`origin/main`、`feature/x`）
+        // 不是「全名」而是「短名」，必须先补命名空间前缀再找。
+        for (prefix, suffix) in REV_PARSE_RULES {
+            let candidate = format!("{prefix}{name}{suffix}");
             if let Some(oid) = self.lookup(&candidate)? {
                 return Ok(oid);
             }
@@ -485,17 +484,24 @@ fn shorten_candidates(name: &str) -> Vec<String> {
     out
 }
 
+/// git 的 `ref_rev_parse_rules`（`gitrevisions(7)`），顺序即优先级：
+/// 直接名字（= `$GIT_DIR/<refname>`）、`refs/`、`refs/tags/`、`refs/heads/`、
+/// `refs/remotes/`、`refs/remotes/<name>/HEAD`。
+///
+/// `resolve()`（短名 → oid）与 `refname_matches()`（判断短名能否解析到某条 ref）
+/// 共用这一张表 —— 两处必须是同一套规则。
+const REV_PARSE_RULES: [(&str, &str); 6] = [
+    ("", ""),
+    ("refs/", ""),
+    ("refs/tags/", ""),
+    ("refs/heads/", ""),
+    ("refs/remotes/", ""),
+    ("refs/remotes/", "/HEAD"),
+];
+
 /// 候选名能否解析到 `reference`（对应 `ref_rev_parse_rules` 的六条规则）。
 fn refname_matches(reference: &str, candidate: &str) -> bool {
-    const RULES: [(&str, &str); 6] = [
-        ("", ""),
-        ("refs/", ""),
-        ("refs/tags/", ""),
-        ("refs/heads/", ""),
-        ("refs/remotes/", ""),
-        ("refs/remotes/", "/HEAD"),
-    ];
-    RULES
+    REV_PARSE_RULES
         .iter()
         .any(|(prefix, suffix)| rule_matches(prefix, suffix, candidate, reference))
 }
@@ -766,6 +772,62 @@ mod tests {
             Err(Error::RefNotFound(_))
         ));
         assert!(matches!(store.resolve(""), Err(Error::RefNotFound(_))));
+    }
+
+    /// 短名解析的**差分**：`store.resolve()` 必须与 `git rev-parse --verify` 逐名一致 ——
+    /// 嵌套分支名、远端跟踪名、同名 head+tag 的歧义、`refs/remotes/*/HEAD` 都覆盖。
+    ///
+    /// 覆盖的缺陷：旧实现对**任何含 `/` 的名字**都只当全名找，于是 `origin/main`
+    /// （`mg fetch` 自己写出来的引用）与嵌套分支 `feature/x` 全部 `RefNotFound`。
+    #[test]
+    fn resolve_matches_git_rev_parse_across_namespaces() {
+        if !git_available() {
+            return;
+        }
+        let tmp = tempfile::tempdir().unwrap();
+        let dir = tmp.path();
+        init_repo(dir);
+        let (_repo, store) = store_for(dir);
+        let head = git(dir, &["rev-parse", "HEAD"]);
+        for reference in [
+            "refs/heads/feature/x",
+            "refs/heads/origin/main", // 与 refs/remotes/origin/main 争 `origin/main`
+            "refs/tags/main",         // 与 refs/heads/main 争 `main`
+            "refs/tags/v1",
+            "refs/remotes/origin/main",
+            "refs/remotes/origin/HEAD",
+            "refs/remotes/up/feature/x",
+        ] {
+            git(dir, &["update-ref", reference, &head]);
+        }
+
+        for name in [
+            "main",
+            "feature/x",
+            "v1",
+            "origin/main",
+            "up/feature/x",
+            "origin/HEAD",
+            "heads/main",
+            "refs/heads/main",
+            "refs/heads/feature/x",
+            "refs/tags/main",
+            "refs/remotes/origin/main",
+            "refs/remotes/origin/HEAD",
+            "nope",
+            "nope/x",
+        ] {
+            let theirs = git_raw(dir, &["rev-parse", "--verify", name]);
+            let want = theirs
+                .status
+                .success()
+                .then(|| String::from_utf8_lossy(&theirs.stdout).trim().to_string());
+            let ours = store.resolve(name).map(|oid| oid.to_hex()).ok();
+            assert_eq!(
+                ours, want,
+                "resolve({name:?}) 与 `git rev-parse --verify {name}` 不一致"
+            );
+        }
     }
 
     /// 验收 4：CAS 反例必须失败，且失败时磁盘上的 ref 一个字节都不能变。
