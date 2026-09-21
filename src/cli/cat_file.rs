@@ -5,7 +5,8 @@
 //!
 //! tree 的**显示格式跟着真实 git**（`git ls-tree` / `git cat-file -p <tree>` 都用 `%06o`，
 //! 子树显示成 `040000`）。注意别与 tree **载荷**里的 mode 混淆：载荷写的是 5 位 `40000`
-//! （`FileMode::as_str`），显示是 6 位。
+//! （`FileMode::as_str`），显示是 6 位。文件名也按 git 的路径引号规则渲染
+//! （`core.quotePath=true` 的行为，规则只有一份：`cli::diff::quote_path`）。
 
 use std::io::Write;
 
@@ -71,7 +72,10 @@ fn write_tree(out: &mut impl Write, tree: &Tree) -> Result<()> {
         })?;
         write!(out, " {}\t", entry.oid.to_hex())?;
         // 名字可能是非 UTF-8：按字节写，别做 lossy 转换。
-        out.write_all(&entry.name)?;
+        // 但**要复刻 git 的路径引号规则**：含 `"` / `\` / 控制字节 / 非 ASCII 的名字
+        // 必须整体加引号并转义（`git ls-tree` 与 `git cat-file -p <tree>` 都是这么打的），
+        // 否则 tree 含中文名、空格带引号的文件时输出与 git 不一致。规则只有一份，见 `cli::diff`。
+        out.write_all(&super::diff::quote_path(b"", &entry.name))?;
         out.write_all(b"\n")?;
     }
     Ok(())
@@ -328,6 +332,19 @@ mod tests {
         let tmp = tempfile::tempdir().unwrap();
         let dir = tmp.path();
         init_git_repo(dir);
+
+        // 只有**需要路径引号**的名字才能证明这条契约：`"`、`\`、制表符、非 ASCII。
+        // （fixture 里原来的名字全是 ASCII，旧实现在这些名字上会静默输出未转义的名字。）
+        for name in [
+            "quo\"te.txt",
+            "back\\slash.txt",
+            "tab\tname.txt",
+            "中文名.txt",
+        ] {
+            std::fs::write(dir.join(name), "quoted\n").unwrap();
+        }
+        git(dir, &["add", "-A"]);
+        git(dir, &["commit", "-q", "-m", "names that need quoting"]);
 
         let mut checked = 0;
         for rev in ["HEAD^{tree}", "HEAD:foo"] {

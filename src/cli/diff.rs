@@ -308,7 +308,10 @@ fn is_binary(bytes: &[u8]) -> bool {
 /// git 的路径引号规则（`quote_c_style` + `core.quotePath=true`）：
 /// 只有 `"`、`\`、< 0x20、0x7f、≥ 0x80 需要转义；其余原样。
 /// 需要转义时整体加双引号（含 `a/` 前缀，和 git 一样）。
-fn quote_path(prefix: &[u8], path: &[u8]) -> Vec<u8> {
+///
+/// `path` 为空前缀（`b""`）时就是 `git ls-tree` / `git cat-file -p <tree>` 的
+/// 文件名渲染 —— `cli::cat_file::write_tree` 复用它，两处必须是同一套规则。
+pub(crate) fn quote_path(prefix: &[u8], path: &[u8]) -> Vec<u8> {
     let needs_quote = path.iter().any(|byte| {
         *byte < 0x20 || *byte == 0x7f || *byte >= 0x80 || *byte == b'"' || *byte == b'\\'
     });

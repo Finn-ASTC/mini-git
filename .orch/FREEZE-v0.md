@@ -1,9 +1,20 @@
-# W0/W1 接口冻结清单（freeze-v0，v0.7 修订）
+# W0/W1 接口冻结清单（freeze-v0，v0.8 修订）
 
 生成时间：2026-09-19T19:27:29+08:00
 
 ## 修订历史
 
+- **v0.8**（2026-09-21，发布前）：三处**非接口**改动，**公共签名零改动**。
+  ① `Cargo.toml` 增加 `repository` 元数据（发布用；哈希随之从 `dc9bcad30489f47a` 变为 `0d975c6706f85444`）；
+  ② 修掉 `mg cat-file -p <tree>` 的一处**字节级兼容缺陷**：tree 条目的文件名直接落原名，漏了
+  git 的路径引号规则 → 含 `"` / `\` / 制表符 / 非 ASCII 的名字与 `git ls-tree` 不一致
+  （`status` 与 `diff` 早已实现该规则，只有 cat-file 漏了）。改为复用 `cli::diff::quote_path`
+  （该函数提为 `pub(crate)`，规则仍然只有一份），并把「需要引号的名字」加进 `cli::cat_file`
+  的 ls-tree 对拍 fixture —— 负对照实测：旧实现 FAIL（`differs from git ls-tree`），新实现 PASS。
+  ③ `src/transport/local.rs` 的 git 真值 helper 钉上 `LC_ALL=C`：宿主 `LC_MESSAGES=zh_CN.UTF-8`
+  时 git 打印中文，而两个用例逐字节比较 git 的英文 stderr → 假红 2 例（562 → 560 passed）。
+  证据：dev 与 release 各 562 passed / 0 failed / 1 ignored、`clippy` 0 warning、`fmt --check` 干净、
+  200 例随机语料 release == debug == 真实 git；`scripts/check-freeze.sh` → drift 0。
 - **v0.0**（2026-09-19 19:09）：W0 骨架首次冻结。
 - **v0.1**（2026-09-19）：把桩体从 controller 独占的 `mod.rs` 搬进各自模块的实现文件
   （新增 `src/refs/store.rs`、`src/worktree/status.rs`、`src/odb/pack/set.rs`），
@@ -52,7 +63,7 @@
 
 | 文件 | sha256（前 16 位） |
 |---|---|
-| `Cargo.toml` | `dc9bcad30489f47a` |
+| `Cargo.toml` | `0d975c6706f85444` |
 | `Cargo.lock` | `c256d3a1975ff598` |
 | `src/lib.rs` | `69034fc618d4da72` |
 | `src/main.rs` | `4a32188fa25bb7eb` |

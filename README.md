@@ -98,6 +98,7 @@ ref 删除 / `--mirror` / `--tags` / `--all` / push-cert、thin pack 与 `REF_DE
 | `mg pull` 的冲突标记 | theirs 标签用 `refs/remotes/origin/main`，`git pull` 用 oid；与 `git merge <ref>` 完全一致 |
 | `mg merge` 的 commit oid | 用自身身份与当前时间，不可与 git 逐字节相同（对拍用 tree/parents/porcelain）|
 | `receive.denyCurrentBranch=updateInstead` | 仍拒绝（真实 git 会更新远端工作区）|
+| `core.quotePath=false` | 不生效：mg 不读任何 git 配置，路径一律按默认的 `true` 渲染引用（`status` / `diff` / `cat-file -p` 同一套规则，见 `cli::diff::quote_path`）|
 | `mg fetch <url>`（未配置远端） | 会写 `refs/remotes/origin/*`，真实 git 只写 `FETCH_HEAD` |
 | merge 输出 | 比真实 git 简（不打印 `Merge made by the 'ort' strategy.`）|
 | pack 写出 | 只写**无 delta** 的 pack（`mg gc`）；读取侧支持 OFS/REF delta |
@@ -110,5 +111,7 @@ ref 删除 / `--mirror` / `--tags` / `--all` / push-cert、thin pack 与 `REF_DE
 * **MODULE-OWNED**：每个子模块的实现文件属于该模块的负责 agent（见 `ORCHESTRATION.md` §4）。
 * 需要新依赖或改公共签名 → 走一次 controller round（场景 S9）。
 
-> 本工作区的 `.git` 是空且只读的（沙箱限制），因此当前无法 `git commit` / `git tag`；
-> 冻结基线用 `.orch/FREEZE-v0.md` + `scripts/check-freeze.sh` 表达。
+> 本工作区在开发期**没有 git 历史**（沙箱里 `.git` 空且只读），冻结基线用
+> `.orch/FREEZE-v0.md` + `scripts/check-freeze.sh` 表达；发布时才 `git init`
+> （首个提交 4521 files，远端 `Finn-ASTC/mini-git`），冻结基线与 git tag 并存、各管一段：
+> `check-freeze.sh` 管的是「公共接口有没有被越权改动」，比 tag 更细。
