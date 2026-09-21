@@ -11,7 +11,7 @@
 
 > 现状：**v1 完成**。W0（骨架）→ W1（对象/索引/引用/工作区）→ W2（odb/diff/merge-base/pkt-line）
 > → W3（pack/三方合并/物化/plumbing）→ W4（传输层 + `fsck`/`gc` 收口）全部收口，
-> 21 个子命令全部实现；全仓 **562 passed / 0 failed**（dev 与 release 两个 profile 均如此）、
+> 21 个子命令全部实现；全仓 **563 passed / 0 failed**（dev 与 release 两个 profile 均如此）、
 > 仅 1 个 `#[ignore]`（已确认分歧）、`clippy` 0 warning、`fmt` 干净。
 
 ## 文档
@@ -37,8 +37,8 @@
 
 ```bash
 cargo build --offline            # 依赖已在本机 cargo 缓存里，可离线构建
-cargo test  --offline            # dev：562 passed / 0 failed / 1 ignored（唯一的 ignore 是已确认分歧，见下）
-cargo test  --release --offline  # 交付门禁：同样 562 passed / 0 failed / 1 ignored
+cargo test  --offline            # dev：563 passed / 0 failed / 1 ignored（唯一的 ignore 是已确认分歧，见下）
+cargo test  --release --offline  # 交付门禁：同样 563 passed / 0 failed / 1 ignored
 # ↑ 两条都要跑：P23 的教训就是「只在 debug profile 下跑门禁」放过了 P24 这种 release 专属缺陷。
 cargo clippy --offline --all-targets   # 必须 0 warning
 cargo fmt --all --check                # 必须无 diff
@@ -99,6 +99,8 @@ ref 删除 / `--mirror` / `--tags` / `--all` / push-cert、thin pack 与 `REF_DE
 | `mg merge` 的 commit oid | 用自身身份与当前时间，不可与 git 逐字节相同（对拍用 tree/parents/porcelain）|
 | `receive.denyCurrentBranch=updateInstead` | 仍拒绝（真实 git 会更新远端工作区）|
 | `core.quotePath=false` | 不生效：mg 不读任何 git 配置，路径一律按默认的 `true` 渲染引用（`status` / `diff` / `cat-file -p` 同一套规则，见 `cli::diff::quote_path`）|
+| `<rev>` 的语法 | 只支持 `HEAD`、40 位 oid、`refs/...` 全名、短名（含 `feature/x`、`origin/main`）。`gitrevisions(7)` 的 `~n` / `^n` / `@` / `^{}` / `@{u}` 等**不支持**（报 `reference not found`）→ `mg reset --hard HEAD~1` 需要写具体 oid（`$(git rev-parse HEAD~1)`）|
+| `mg switch -c <new>` | 起点必填（`mg switch -c <new> <start>`）：`Command::Switch` 的 positional 在冻结的 `cli/mod.rs` 里是必填参数，T11 无权改成 `Option`；真实 git 允许省略起点（默认 HEAD）|
 | `mg fetch <url>`（未配置远端） | 会写 `refs/remotes/origin/*`，真实 git 只写 `FETCH_HEAD` |
 | merge 输出 | 比真实 git 简（不打印 `Merge made by the 'ort' strategy.`）|
 | pack 写出 | 只写**无 delta** 的 pack（`mg gc`）；读取侧支持 OFS/REF delta |
