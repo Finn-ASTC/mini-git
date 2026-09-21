@@ -1,0 +1,23 @@
+{
+  "active_request": "/home/user/Projects/mini-git/.orch/rounds/W3/agent-orchestrator-wwm3i96y/request.json",
+  "job_id": "b00250d3a8b74ff6b0074f99f6ccef89",
+  "round_id": "767b54f571324b5ab2b477b96c804d66",
+  "transport": "insider (default session)",
+  "session": "default",
+  "agent": "w3-v10-hermes",
+  "pane": "w1A:p1",
+  "workspace": "w1A",
+  "cwd": "/home/user/Projects/mini-git",
+  "kind": "hermes",
+  "task": "V10 独立验证 T10（三方合并）",
+  "submitted_at": "2026-09-19T21:02:40+08:00",
+  "acceptance": "accepted",
+  "submission_evidence": "herdr agent prompt -> agent_prompted",
+  "deadline": null,
+  "monitor_owner": "controller (default session, pane wJ:p1)",
+  "last_checked_at": "2026-09-19T21:02:40+08:00",
+  "next_check_at": null,
+  "pending_question": null,
+  "resources_file": "/home/user/Projects/mini-git/.orch/rounds/W3/agent-orchestrator-wwm3i96y/resources.json",
+  "result_path": "/home/user/Projects/mini-git/.orch/rounds/W3/agent-orchestrator-wwm3i96y/result.json"
+}

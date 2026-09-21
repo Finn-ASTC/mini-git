@@ -1,0 +1,38 @@
+{
+  "version": 1,
+  "targets": [
+    {
+      "request_path": "/tmp/orch-socket-green.9HNPrW/agent-orchestrator-7a5n_v10/request.json",
+      "job_id": "753f9538d4554d0c951f7b652ad8e066",
+      "round_id": "ed355dbf49644444a0ab74e972e8f85f",
+      "resources": {
+        "mode": "tmux",
+        "session": "demo",
+        "agent": "child",
+        "pane": "%7",
+        "workspace": null,
+        "owns_agent": true,
+        "owns_pane": true,
+        "owns_workspace": false,
+        "owns_session": true,
+        "tab": null,
+        "parent_pane": null,
+        "parent_tab": null,
+        "owns_tab": false,
+        "tmux_selector": [
+          "-S",
+          "/tmp/demo.sock"
+        ],
+        "recorded_at": "2026-09-19T09:40:55.510787+00:00",
+        "job_id": "753f9538d4554d0c951f7b652ad8e066"
+      },
+      "tmux_selector": [
+        "-S",
+        "/tmp/demo.sock"
+      ]
+    }
+  ],
+  "deadline": null,
+  "review_interval": 30,
+  "stall_after": 120
+}

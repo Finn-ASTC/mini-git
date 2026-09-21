@@ -1,0 +1,12 @@
+{
+ "kind": "frozen-delivery-snapshot",
+ "source": "/home/user/Projects/mini-git",
+ "captured_by": "controller",
+ "myers_sha256": "aafe8464f526c7c7f05b961b28f58522d04f33ba52ed042e35a138873902dff0",
+ "contains": [
+  "Cargo.toml",
+  "Cargo.lock",
+  "src/**",
+  "tests/**"
+ ]
+}

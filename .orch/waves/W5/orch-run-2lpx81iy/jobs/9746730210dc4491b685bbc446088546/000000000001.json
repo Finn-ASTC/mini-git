@@ -1,0 +1,34 @@
+{
+  "version": 1,
+  "revision": 1,
+  "index_path": "/home/user/Projects/mini-git/.orch/waves/W5/orch-run-2lpx81iy/jobs",
+  "job_id": "9746730210dc4491b685bbc446088546",
+  "round_id": "1f695772a77b44ab8bcfb878a34e5add",
+  "active_request": "/home/user/Projects/mini-git/.orch/waves/W5/orch-run-2lpx81iy/rounds/agent-orchestrator-ggyoe35m/request.json",
+  "rounds": [
+    {
+      "request_path": "/home/user/Projects/mini-git/.orch/waves/W5/orch-run-2lpx81iy/rounds/agent-orchestrator-ggyoe35m/request.json",
+      "round_id": "1f695772a77b44ab8bcfb878a34e5add",
+      "request_sha256": "9fb94d9a15e03e3d778e26551aad5e8aa1b7545b872581861346e1234f2b14b9"
+    }
+  ],
+  "resources": null,
+  "submission": "prepared",
+  "attempts": [],
+  "lease": null,
+  "launch": null,
+  "native": {
+    "session_id": null,
+    "turn_id": null
+  },
+  "monitor": {
+    "owner": null,
+    "watch_path": null,
+    "expires_at": null
+  },
+  "deadline": null,
+  "closed": null,
+  "completion": {},
+  "event": "register",
+  "recorded_at": 1789897282.4768748
+}

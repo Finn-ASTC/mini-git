@@ -1,0 +1,56 @@
+   Compiling mini-git v0.0.0 (/home/user/Projects/mini-git)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.18s
+     Running tests/verify_diff_paths.rs (target/debug/deps/verify_diff_paths-70cafb16d5b3cc0b)
+
+running 6 tests
+[coverage] engine class=no space U0 labels="a/plain_a.txt"/"b/plain_b.txt" OK
+[coverage] engine class=no space U3 labels="a/plain_a.txt"/"b/plain_b.txt" OK
+[coverage] engine class=space U0 labels="a/a b.txt"/"b/c d.txt" OK
+[coverage] engine class=space U3 labels="a/a b.txt"/"b/c d.txt" OK
+[coverage] engine class=dir component with space U0 labels="a/dir x/old.txt"/"b/dir x/new.txt" OK
+test cli_non_utf8_path_is_a_known_v1_limitation ... ok
+[coverage] engine class=dir component with space U3 labels="a/dir x/old.txt"/"b/dir x/new.txt" OK
+[coverage] engine class=trailing space U0 labels="a/trail_a .txt"/"b/trail_b .txt" OK
+[coverage] engine class=trailing space U3 labels="a/trail_a .txt"/"b/trail_b .txt" OK
+[coverage] engine class=double quote U0 labels="\"a/qu\\\"o_a.txt\""/"\"b/qu\\\"o_b.txt\"" OK
+test engine_contentless_side_and_binary_line_follow_git ... ok
+[coverage] engine class=double quote U3 labels="\"a/qu\\\"o_a.txt\""/"\"b/qu\\\"o_b.txt\"" OK
+[coverage] engine class=backslash U0 labels="\"a/ba\\\\ck_a.txt\""/"\"b/ba\\\\ck_b.txt\"" OK
+[coverage] engine class=backslash U3 labels="\"a/ba\\\\ck_a.txt\""/"\"b/ba\\\\ck_b.txt\"" OK
+[coverage] engine class=tab U0 labels="\"a/ta\\tb_a.txt\""/"\"b/ta\\tb_b.txt\"" OK
+test diff_git_header_stays_unpadded_for_quoted_spaced_names ... ok
+[coverage] engine class=tab U3 labels="\"a/ta\\tb_a.txt\""/"\"b/ta\\tb_b.txt\"" OK
+[coverage] engine class=cjk U0 labels="\"a/\\344\\270\\255\\346\\226\\207_a.txt\""/"\"b/\\344\\270\\255\\346\\226\\207_b.txt\"" OK
+[coverage] engine class=cjk U3 labels="\"a/\\344\\270\\255\\346\\226\\207_a.txt\""/"\"b/\\344\\270\\255\\346\\226\\207_b.txt\"" OK
+[coverage] cli class=no space U3+U0+staged+HEAD OK
+[coverage] engine class=non-ascii arrow U0 labels="\"a/\\342\\206\\222a_a.txt\""/"\"b/\\342\\206\\222a_b.txt\"" OK
+[coverage] engine class=non-ascii arrow U3 labels="\"a/\\342\\206\\222a_a.txt\""/"\"b/\\342\\206\\222a_b.txt\"" OK
+[coverage] engine class=space + quote U0 labels="\"a/q\\\"uo te_a.txt\""/"\"b/q\\\"uo te_b.txt\"" OK
+[coverage] engine class=space + quote U3 labels="\"a/q\\\"uo te_a.txt\""/"\"b/q\\\"uo te_b.txt\"" OK
+[coverage] engine class=space + tab U0 labels="\"a/sp ace\\tb_a.txt\""/"\"b/sp ace\\tb_b.txt\"" OK
+[coverage] engine class=space + tab U3 labels="\"a/sp ace\\tb_a.txt\""/"\"b/sp ace\\tb_b.txt\"" OK
+[coverage] engine class=space + cjk U0 labels="\"a/\\347\\251\\272 \\346\\240\\274_a.txt\""/"\"b/\\347\\251\\272 \\346\\240\\274_b.txt\"" OK
+test cli_add_delete_binary_with_spaced_names_match_git ... ok
+[coverage] engine class=space + cjk U3 labels="\"a/\\347\\251\\272 \\346\\240\\274_a.txt\""/"\"b/\\347\\251\\272 \\346\\240\\274_b.txt\"" OK
+[coverage] engine class=non-utf-8 U0 labels="\"a/raw\\377_a.txt\""/"\"b/raw\\377_b.txt\"" OK
+[coverage] engine class=non-utf-8 U3 labels="\"a/raw\\377_a.txt\""/"\"b/raw\\377_b.txt\"" OK
+[coverage] engine class=non-utf-8 + space U0 labels="\"a/raw\\377 a.txt\""/"\"b/raw\\377 b.txt\"" OK
+[coverage] engine class=non-utf-8 + space U3 labels="\"a/raw\\377 a.txt\""/"\"b/raw\\377 b.txt\"" OK
+test engine_filepair_lines_match_real_git_across_name_matrix ... ok
+[coverage] cli class=space U3+U0+staged+HEAD OK
+[coverage] cli class=multi space U3+U0+staged+HEAD OK
+[coverage] cli class=dir component with space U3+U0+staged+HEAD OK
+[coverage] cli class=trailing space U3+U0+staged+HEAD OK
+[coverage] cli class=double quote U3+U0+staged+HEAD OK
+[coverage] cli class=backslash U3+U0+staged+HEAD OK
+[coverage] cli class=tab U3+U0+staged+HEAD OK
+[coverage] cli class=cjk U3+U0+staged+HEAD OK
+[coverage] cli class=non-ascii arrow U3+U0+staged+HEAD OK
+[coverage] cli class=space + quote U3+U0+staged+HEAD OK
+[coverage] cli class=space + tab U3+U0+staged+HEAD OK
+[coverage] cli class=space + backslash U3+U0+staged+HEAD OK
+[coverage] cli class=space + cjk U3+U0+staged+HEAD OK
+test cli_name_matrix_matches_git_for_all_invocation_combos ... ok
+
+test result: ok. 6 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.18s
+

@@ -1,0 +1,82 @@
+{
+  "t13b": {
+    "kept": 207,
+    "skipped_big_or_binary": 851,
+    "skipped_bytes": 379268951
+  },
+  "t13c-codex": {
+    "kept": 25,
+    "skipped_big_or_binary": 54,
+    "skipped_bytes": 81562
+  },
+  "t13d3": {
+    "kept": 4,
+    "skipped_big_or_binary": 30,
+    "skipped_bytes": 28012
+  },
+  "t14b": {
+    "kept": 17,
+    "skipped_big_or_binary": 70,
+    "skipped_bytes": 82929
+  },
+  "w3-t11-omp": {
+    "kept": 592,
+    "skipped_big_or_binary": 28,
+    "skipped_bytes": 455
+  },
+  "t11b": {
+    "kept": 242,
+    "skipped_big_or_binary": 270,
+    "skipped_bytes": 5628
+  },
+  "g6": {
+    "kept": 0,
+    "skipped_big_or_binary": 5,
+    "skipped_bytes": 15
+  },
+  "g7": {
+    "kept": 0,
+    "skipped_big_or_binary": 6,
+    "skipped_bytes": 22
+  },
+  "t16": {
+    "kept": 31,
+    "skipped_big_or_binary": 2,
+    "skipped_bytes": 10
+  },
+  "t15": {
+    "kept": 143,
+    "skipped_big_or_binary": 132,
+    "skipped_bytes": 113598
+  },
+  "t16b-mg": {
+    "kept": 84,
+    "skipped_big_or_binary": 0,
+    "skipped_bytes": 0
+  },
+  "t16b-probe": {
+    "kept": 78,
+    "skipped_big_or_binary": 0,
+    "skipped_bytes": 0
+  },
+  "v16": {
+    "kept": 495,
+    "skipped_big_or_binary": 2756,
+    "skipped_bytes": 1482978266
+  },
+  "t13check": {
+    "kept": 1,
+    "skipped_big_or_binary": 18,
+    "skipped_bytes": 27190
+  },
+  "v16/mutA": {
+    "kept": 90,
+    "skipped_big_or_binary": 0,
+    "skipped_bytes": 0
+  },
+  "v16/mutB": {
+    "kept": 90,
+    "skipped_big_or_binary": 0,
+    "skipped_bytes": 0
+  }
+}

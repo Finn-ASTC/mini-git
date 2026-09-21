@@ -1,0 +1,17 @@
+{
+  "version": 1,
+  "seq": 7,
+  "job_id": "66840d4b642f481a848788974b0665ca",
+  "round_id": "5248318530cb4b26b88628ac6da18637",
+  "event_fingerprint": "bb45dc4c000b72d0dd4bafa07cac0dee563bfbed590af1aafa5186fadcff0a29",
+  "revision": 1,
+  "status": "handled",
+  "note": "state_changed：done。目标已回到空闲状态、本轮无遗留后台任务（作者自报未用 task/team/后台）。\n非「任务成功」的证明，仅表示本轮输入可以接受下一轮。\n",
+  "recorded_at": 1789926585.4525938,
+  "action_evidence": null,
+  "resolution_evidence": {
+    "path": "/home/user/Projects/mini-git/.orch/waves/W7/orch-run-oxrolhzc/watches/orch-watch-7136nm52/evidence/000000000007.json",
+    "sha256": "41a455859fe2bfb9deb0611114a6b49b7af819c3aea88db499cd7aff80296bfa"
+  },
+  "resolved_at": 1789926585.0
+}

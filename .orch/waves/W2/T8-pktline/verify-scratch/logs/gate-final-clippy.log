@@ -1,0 +1,18 @@
+warning: this function has too many arguments (9/7)
+   --> src/diff/myers.rs:347:1
+    |
+347 | / fn split(
+348 | |     diags: &mut Diags,
+349 | |     ha1: &[u32],
+350 | |     ha2: &[u32],
+...   |
+356 | |     env: &Env,
+357 | | ) -> Split {
+    | |__________^
+    |
+    = help: for further information visit https://rust-lang.github.io/rust-clippy/rust-1.97.0/index.html#too_many_arguments
+    = note: `#[warn(clippy::too_many_arguments)]` on by default
+
+warning: `mini-git` (lib) generated 1 warning
+warning: `mini-git` (lib test) generated 1 warning (1 duplicate)
+    Finished `dev` profile [unoptimized + debuginfo] target(s) in 0.04s

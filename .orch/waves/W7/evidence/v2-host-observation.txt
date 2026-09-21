@@ -1,0 +1,56 @@
+host 观察证据 —— V2 验证者（omp，pane w1W:p1，workspace w1W）
+观察者：controller-w7（本机 Codex 会话，pane wJ:p1）
+观察时刻：2026-09-21 02:11 (+08:00) = epoch 1789928060
+
+## 工具链版本（实测）
+- omp 18.2.6（`omp --version` → omp/18.2.6）
+- herdr 0.9.1
+- 原生会话：omp kind=path
+  /home/user/.omp/agent/sessions/-tmp-w7-verify/2026-09-20T17-38-31-135Z_sess_0046-ea5f-7645-8d26-19470fd9732e.jsonl
+  （起始 17:38:31 UTC = 01:38 本地；最后一次写入 02:01:22 本地；806,731 字节）
+
+## 目标状态（herdr 只读查询，命令留痕见下）
+1) `herdr --session default agent list`
+   → orch-w7-verifier | agent: omp | agent_status: **done** | pane w1W:p1 | cwd /tmp/w7-verify
+        terminal_title「π > Verify mg bug fix」（题目已结束态，不再是 ⠹ 工作中）
+2) `herdr --session default pane get w1W:p1`
+   → agent_status done，foreground_cwd /tmp/w7-verify
+3) `herdr --session default pane read w1W:p1 --source visible --format text`
+   → 屏幕为收尾摘要：「Todo list closed: 15/15 done, all seven phases complete. No work remains —
+     the round's single result was published once and left unrevised.」「Next action: none,
+     the round is complete and awaiting the controller…」
+     无对话框、无提问、无原生审批画面、无等待输入的待办块。
+4) `herdr --session default pane process-info --pane w1W:p1`
+   → foreground_processes = 恰好 1 个：argv ["omp"]，pid 2496613，cwd /tmp/w7-verify；
+     无第二个前台进程、无后台作业框（对比轮次中期的屏幕，当时有「waiting on 1 job └─ bg_1 …」）。
+     （注：沙箱内的 `pgrep`/`ps` 看不到宿主进程，本项只能用 herdr 的 pane 视图取证。）
+
+## 原生子会话（native children）
+- find /home/user/.omp/agent/sessions -maxdepth 2 -newermt "2026-09-21 01:49"
+  → 只有 `-tmp-w7-verify/` 与它自己那一个 .jsonl（外加同名的会话目录）。
+  **没有新增任何子会话目录** → 未发现嵌套委派。
+- 会话文件里对 "subagent" 唯一一处出现，是验证者自己写的结论句
+  「no subagents used; only read-only accesses to the repo」。
+- children = []（在「omp 会话存储 + herdr pane 前台进程」这个声明过的范围内未发现）。
+
+## 副作用台账（scope 内逐项对账，含 cwd 之外的路径）
+| 路径 | 观察 | 归属 |
+|---|---|---|
+| /tmp/w7-verify/**（它的 spawn cwd，快照 384 文件 / 127 MB） | 交付后被控制方验收重放又写入：`evidence/scenario-plan.json`、`evidence/plan-prefix/**`(111 文件)、`scenario/plan-*`(18 个用例仓库) | 验证者（原样）+ **控制方重放（后写入，已声明）** |
+| /tmp/w7-accept/** | 控制方自己的两份重建制品与工作目录 | 控制方 |
+| /tmp/w7-deliveries/** | 控制方抓的交付快照 + 验收 attempt + 独立对拍报告 | 控制方 |
+| /home/user/.omp/agent/sessions/-tmp-w7-verify/** | 宿主的原生会话记录，随轮次自动追加，02:01 后不再增长 | omp 宿主 |
+| /home/user/Projects/mini-git/src/diff/myers.rs | sha256 = aafe8464f526c7c7f05b961b28f58522d04f33ba52ed042e35a138873902dff0，等于交付快照声明值 | **只读，未改** |
+| /home/user/Projects/mini-git/{tests,Cargo.toml,Cargo.lock,target} | 与交付快照逐字节相同（验证者自证 + 控制方 §4 交叉核对） | **只读，未改** |
+
+结论：观察到的写入全部落在验证者自己的 spawn cwd（/tmp/w7-verify）与宿主会话存储里，
+都在授权范围内且已逐项对得上；仓库未出现未解释的改动。
+
+## checks
+foreground=clear（唯一前台进程是 idle/done 的 omp，无活动执行）
+background=clear（pane process-info 无第二个前台进程，屏幕无 bg job 框）
+native_children=clear（声明范围内 0 个子会话）
+interaction=clear（无对话框/提问/待输入，agent_status=done 且 result 已发布）
+side_effects=clear（上表逐项对账，无未解释写入）
+
+status=settled，disposition=reusable（pane/workspace 保留到本轮收尾再统一拆除）

@@ -1,0 +1,7 @@
+V1 watch seq 4, kind=review_due, confidence=unknown_ui, occurrences=1.
+Same low-confidence class as seq 3; the pane repainted while V1 was running the
+config matrix. Controller re-read pane w1T:p1: OpenCode 1.18.29 in working state
+("esc interrupt"), no dialog, no pending input. Superseded by seq 5 (result
+published) and seq 6 (state done) minutes later - if a dialog had been blocking,
+no result would have appeared.
+Disposition: handled. No input sent.

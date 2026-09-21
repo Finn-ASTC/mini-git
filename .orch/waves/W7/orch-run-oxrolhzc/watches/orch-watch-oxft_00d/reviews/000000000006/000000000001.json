@@ -1,0 +1,17 @@
+{
+  "version": 1,
+  "seq": 6,
+  "job_id": "66840d4b642f481a848788974b0665ca",
+  "round_id": "ea8be0b903094bd7b0dc00f9de970778",
+  "event_fingerprint": "e1411b174c67a6ce0683ee8f2149463746482b4f57e9cbe966aaa5b70e6bb880",
+  "revision": 1,
+  "status": "handled",
+  "note": "state_changed（done）结清，seq 6，watch orch-watch-oxft_00d。\nT2（opencode）native 状态转为 done，表示该轮修复工作已发布结果并停止输出。\njob 66840d4b 已 completed、已 close（rev 16）。正常终态，无需输入。\n",
+  "recorded_at": 1789929716.8336887,
+  "action_evidence": null,
+  "resolution_evidence": {
+    "path": "/home/user/Projects/mini-git/.orch/waves/W7/orch-run-oxrolhzc/watches/orch-watch-oxft_00d/evidence/000000000006.json",
+    "sha256": "c6a487dc70b0bf23fb9fcbc346231f6629743f69903a3c1f028333e91c6771ce"
+  },
+  "resolved_at": 1789929716.0
+}

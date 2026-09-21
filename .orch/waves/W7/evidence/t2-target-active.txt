@@ -1,0 +1,12 @@
+T2 发送回执证据 —— 输入已明确进入作者 agent
+时间：2026-09-21T02:15:43+08:00
+
+1) 传输：herdr --session default agent prompt orch-w7-author <round prompt.txt 全文>（原样、未 eval、只发一次）
+   返回 agent_prompted，agent=opencode，pane=w1V:p1，session=ses_0002
+
+2) 20 秒后 pane 屏幕（证明本轮任务真的开工，而不是只有 CLI 成功）：
+   - 出现本轮内容：tests/verify_pack.rs 的 before-hash d4642b5f… 、'saved v9 before-hashes'、acceptance-plan.json 片段
+   - Thought: 658ms / 'A repo filename has invalid UTF-8; fixing the manifest writer to use surrogateescape'
+   - '~ Preparing edit…'（正在按 T2 任务包修改唯一允许的文件）
+   - 底部状态行 'esc interrupt' = 正在执行中
+

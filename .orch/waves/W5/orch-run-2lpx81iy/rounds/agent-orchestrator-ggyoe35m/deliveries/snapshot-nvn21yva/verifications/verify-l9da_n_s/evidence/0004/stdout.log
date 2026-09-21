@@ -1,0 +1,21 @@
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+
+running 11 tests
+test version_prints_exactly_one_line_and_reads_no_files ... ok
+test non_utf8_content_is_counted_as_bytes ... ok
+test directory_operand_is_an_error ... ok
+test missing_trailing_newline_adds_one_line ... ok
+test single_file_reports_counts_and_echoes_path_verbatim ... ok
+test multiple_files_report_each_in_argument_order_then_total ... ok
+test non_utf8_path_is_echoed_byte_for_byte ... ok
+test unreadable_file_reports_error_on_stderr_and_continues_with_exit_1 ... ok
+test cr_tab_vt_ff_and_space_separate_words_but_not_lines ... ok
+test empty_file_counts_zero ... ok
+test unknown_option_and_missing_arguments_are_usage_errors ... ok
+
+test result: ok. 11 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+

@@ -1,0 +1,10 @@
+{
+  "seq": 8,
+  "job_id": "9746730210dc4491b685bbc446088546",
+  "round_id": "1f695772a77b44ab8bcfb878a34e5add",
+  "kind": "result_changed",
+  "message": "Published result changed or disappeared; inspect the first publication and current evidence. /home/user/Projects/mini-git/.orch/waves/W5/orch-run-2lpx81iy/rounds/agent-orchestrator-ggyoe35m/publication.json",
+  "evidence_path": "/home/user/Projects/mini-git/.orch/waves/W5/orch-run-2lpx81iy/watches/orch-watch-y0msbg8u/evidence/000000000008.json",
+  "screen_tail": "ort EISDIR/exit\n 1. Uncovered items declared in output: cross-platform builds (Unix-only byte-level path echo), non-regular operands, performance gates, signal\n semantics.\n\n Files: created Cargo.toml, src/main.rs, tests/cli.rs; generated Cargo.lock; SPEC.md untouched (sha256\n 20903f0786a9fc2c756bb773cdc37d9ff74212450900a8cb6bfa20b157e98244, original mtime). No build/test processes left running.\n\n TODO\n  ├─ II. Verify · 5/5\n  │  ├─  Run cargo test --offline (dev)\n  │  ├─  Build release and run cargo test --release --offline\n  │  ├─  Run behavioral matrix against target/release/linestat\n  │  ├─  Run cargo fmt check and clippy\n  │  └─  Hash release artifact and write result.json\n  └─────\n\n╭── ♡⃝ awful_bed~  3 DeepSeek V4.1 Flash   w5-linestat  $0.03 ↓ ───9%────────────────────────󰁨────1M─  69K   97.55%  Build and test dev ──╮\n╰─                                                                                                                                                 ─╯",
+  "observed_at": 1789897526.0289426
+}

@@ -1,0 +1,11 @@
+{
+  "schema_version": 1,
+  "job_id": "753f9538d4554d0c951f7b652ad8e066",
+  "round_id": "ed355dbf49644444a0ab74e972e8f85f",
+  "cwd": "/tmp",
+  "result_path": "/tmp/orch-socket-green.9HNPrW/agent-orchestrator-7a5n_v10/result.json",
+  "depth": 1,
+  "max_depth": 2,
+  "prepared_at": "2026-09-19T09:40:55.461036+00:00",
+  "task": "verify persisted tmux selector\n"
+}

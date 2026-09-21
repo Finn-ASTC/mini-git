@@ -1,0 +1,22 @@
+{
+  "active_request": "/home/user/Projects/mini-git/.orch/rounds/W1/agent-orchestrator-wp9qahj9/request.json",
+  "job_id": "cc9fea58ff9b4d28b9c310548d705e8d",
+  "round_id": "cbf929c053654632908e4cd6f1e0776b",
+  "transport": "insider (default session)",
+  "session": "default",
+  "agent": "orch-codex-v3",
+  "pane": "wS:p1",
+  "workspace": "wS",
+  "cwd": "/home/user/Projects/mini-git",
+  "task": "V3 独立验证 T3（index DIRC）",
+  "submitted_at": "2026-09-19T19:38:10+08:00",
+  "acceptance": "accepted",
+  "submission_evidence": "agent start 超时（fish 未执行）→ process-info 确认前台仍是 shell → pane send-text $'\\r' 恢复 → agent rename 绑定 → agent prompt 返回 agent_prompted",
+  "deadline": "2026-09-19T20:38:00+08:00",
+  "monitor_owner": "controller (default session, pane wJ:p1)",
+  "last_checked_at": "2026-09-19T19:38:10+08:00",
+  "next_check_at": null,
+  "pending_question": null,
+  "resources_file": "/home/user/Projects/mini-git/.orch/rounds/W1/agent-orchestrator-wp9qahj9/resources.json",
+  "result_path": "/home/user/Projects/mini-git/.orch/rounds/W1/agent-orchestrator-wp9qahj9/result.json"
+}

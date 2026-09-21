@@ -1,0 +1,301 @@
+[corrupt] .idx: truncated / magic / version=3 / trailing checksum -> 全部 Corrupt
+[corrupt] .idx fanout 非单调 -> Corrupt
+[corrupt] .pack: truncated / magic / version=9 / trailing checksum -> 全部 Corrupt
+[corrupt] 对象类型 5 -> Corrupt (/tmp/.tmp2sACeI/reserved-type.pack: object at offset 12 has type 5 (reserved))
+[corrupt] 改写真实 delta：copy 超出 base -> Corrupt (pack delta: copy range 2147483647..2147549183 is outside the base (108 bytes))
+[corrupt] 真实 idx + 大 offset 表指向 < 2^31 的值 -> Corrupt (/tmp/.tmp2sACeI/small-big-offset.idx: pack index: 64-bit offset #0 is 307101, but such offsets must be >= 2^31)
+[corrupt] 好 pack 旁边的垃圾 .idx -> PackSet::open Corrupt（未静默跳过）
+[corrupt] .idx: truncated / magic / version=3 / trailing checksum -> 全部 Corrupt
+[corrupt] .idx fanout 非单调 -> Corrupt
+[corrupt] .pack: truncated / magic / version=9 / trailing checksum -> 全部 Corrupt
+[corrupt] 对象类型 5 -> Corrupt (/tmp/.tmpPRNCje/reserved-type.pack: object at offset 12 has type 5 (reserved))
+[corrupt] 改写真实 delta：copy 超出 base -> Corrupt (pack delta: copy range 2147483647..2147549183 is outside the base (108 bytes))
+[corrupt] 真实 idx + 大 offset 表指向 < 2^31 的值 -> Corrupt (/tmp/.tmpPRNCje/small-big-offset.idx: pack index: 64-bit offset #0 is 307101, but such offsets must be >= 2^31)
+[corrupt] 好 pack 旁边的垃圾 .idx -> PackSet::open Corrupt（未静默跳过）
+[corrupt] .idx: truncated / magic / version=3 / trailing checksum -> 全部 Corrupt
+[corrupt] .idx fanout 非单调 -> Corrupt
+[corrupt] .pack: truncated / magic / version=9 / trailing checksum -> 全部 Corrupt
+[corrupt] 对象类型 5 -> Corrupt (/tmp/.tmp6dzJiH/reserved-type.pack: object at offset 12 has type 5 (reserved))
+[corrupt] 改写真实 delta：copy 超出 base -> Corrupt (pack delta: copy range 2147483647..2147549183 is outside the base (108 bytes))
+[corrupt] 真实 idx + 大 offset 表指向 < 2^31 的值 -> Corrupt (/tmp/.tmp6dzJiH/small-big-offset.idx: pack index: 64-bit offset #0 is 307101, but such offsets must be >= 2^31)
+[corrupt] 好 pack 旁边的垃圾 .idx -> PackSet::open Corrupt（未静默跳过）
+[corrupt] .idx: truncated / magic / version=3 / trailing checksum -> 全部 Corrupt
+[corrupt] .idx fanout 非单调 -> Corrupt
+[corrupt] .pack: truncated / magic / version=9 / trailing checksum -> 全部 Corrupt
+[corrupt] 对象类型 5 -> Corrupt (/tmp/.tmpdST1tv/reserved-type.pack: object at offset 12 has type 5 (reserved))
+[corrupt] 改写真实 delta：copy 超出 base -> Corrupt (pack delta: copy range 2147483647..2147549183 is outside the base (108 bytes))
+[corrupt] 真实 idx + 大 offset 表指向 < 2^31 的值 -> Corrupt (/tmp/.tmpdST1tv/small-big-offset.idx: pack index: 64-bit offset #0 is 307101, but such offsets must be >= 2^31)
+[corrupt] 好 pack 旁边的垃圾 .idx -> PackSet::open Corrupt（未静默跳过）
+[corrupt] .idx: truncated / magic / version=3 / trailing checksum -> 全部 Corrupt
+[corrupt] .idx fanout 非单调 -> Corrupt
+[corrupt] .pack: truncated / magic / version=9 / trailing checksum -> 全部 Corrupt
+[corrupt] 对象类型 5 -> Corrupt (/tmp/.tmp48cKjg/reserved-type.pack: object at offset 12 has type 5 (reserved))
+[corrupt] 改写真实 delta：copy 超出 base -> Corrupt (pack delta: copy range 2147483647..2147549183 is outside the base (108 bytes))
+[corrupt] 真实 idx + 大 offset 表指向 < 2^31 的值 -> Corrupt (/tmp/.tmp48cKjg/small-big-offset.idx: pack index: 64-bit offset #0 is 307101, but such offsets must be >= 2^31)
+[corrupt] 好 pack 旁边的垃圾 .idx -> PackSet::open Corrupt（未静默跳过）
+[corrupt] .idx: truncated / magic / version=3 / trailing checksum -> 全部 Corrupt
+[corrupt] .idx fanout 非单调 -> Corrupt
+[corrupt] .pack: truncated / magic / version=9 / trailing checksum -> 全部 Corrupt
+[corrupt] 对象类型 5 -> Corrupt (/tmp/.tmpu9HR2y/reserved-type.pack: object at offset 12 has type 5 (reserved))
+[corrupt] 改写真实 delta：copy 超出 base -> Corrupt (pack delta: copy range 2147483647..2147549183 is outside the base (108 bytes))
+[corrupt] 真实 idx + 大 offset 表指向 < 2^31 的值 -> Corrupt (/tmp/.tmpu9HR2y/small-big-offset.idx: pack index: 64-bit offset #0 is 307101, but such offsets must be >= 2^31)
+[corrupt] 好 pack 旁边的垃圾 .idx -> PackSet::open Corrupt（未静默跳过）
+[corrupt] .idx: truncated / magic / version=3 / trailing checksum -> 全部 Corrupt
+[corrupt] .idx fanout 非单调 -> Corrupt
+[corrupt] .pack: truncated / magic / version=9 / trailing checksum -> 全部 Corrupt
+[corrupt] 对象类型 5 -> Corrupt (/tmp/.tmpagm1LR/reserved-type.pack: object at offset 12 has type 5 (reserved))
+[corrupt] 改写真实 delta：copy 超出 base -> Corrupt (pack delta: copy range 2147483647..2147549183 is outside the base (108 bytes))
+[corrupt] 真实 idx + 大 offset 表指向 < 2^31 的值 -> Corrupt (/tmp/.tmpagm1LR/small-big-offset.idx: pack index: 64-bit offset #0 is 307101, but such offsets must be >= 2^31)
+[corrupt] 好 pack 旁边的垃圾 .idx -> PackSet::open Corrupt（未静默跳过）
+[corrupt] .idx: truncated / magic / version=3 / trailing checksum -> 全部 Corrupt
+[corrupt] .idx fanout 非单调 -> Corrupt
+[corrupt] .pack: truncated / magic / version=9 / trailing checksum -> 全部 Corrupt
+[corrupt] 对象类型 5 -> Corrupt (/tmp/.tmpW6iyHd/reserved-type.pack: object at offset 12 has type 5 (reserved))
+[corrupt] 改写真实 delta：copy 超出 base -> Corrupt (pack delta: copy range 2147483647..2147549183 is outside the base (108 bytes))
+[corrupt] 真实 idx + 大 offset 表指向 < 2^31 的值 -> Corrupt (/tmp/.tmpW6iyHd/small-big-offset.idx: pack index: 64-bit offset #0 is 307101, but such offsets must be >= 2^31)
+[corrupt] 好 pack 旁边的垃圾 .idx -> PackSet::open Corrupt（未静默跳过）
+[corrupt] .idx: truncated / magic / version=3 / trailing checksum -> 全部 Corrupt
+[corrupt] .idx fanout 非单调 -> Corrupt
+[corrupt] .pack: truncated / magic / version=9 / trailing checksum -> 全部 Corrupt
+[corrupt] 对象类型 5 -> Corrupt (/tmp/.tmp3tDML0/reserved-type.pack: object at offset 12 has type 5 (reserved))
+[corrupt] 改写真实 delta：copy 超出 base -> Corrupt (pack delta: copy range 2147483647..2147549183 is outside the base (108 bytes))
+[corrupt] 真实 idx + 大 offset 表指向 < 2^31 的值 -> Corrupt (/tmp/.tmp3tDML0/small-big-offset.idx: pack index: 64-bit offset #0 is 307101, but such offsets must be >= 2^31)
+[corrupt] 好 pack 旁边的垃圾 .idx -> PackSet::open Corrupt（未静默跳过）
+[corrupt] .idx: truncated / magic / version=3 / trailing checksum -> 全部 Corrupt
+[corrupt] .idx fanout 非单调 -> Corrupt
+[corrupt] .pack: truncated / magic / version=9 / trailing checksum -> 全部 Corrupt
+[corrupt] 对象类型 5 -> Corrupt (/tmp/.tmpRsPqt9/reserved-type.pack: object at offset 12 has type 5 (reserved))
+[corrupt] 改写真实 delta：copy 超出 base -> Corrupt (pack delta: copy range 2147483647..2147549183 is outside the base (108 bytes))
+[corrupt] 真实 idx + 大 offset 表指向 < 2^31 的值 -> Corrupt (/tmp/.tmpRsPqt9/small-big-offset.idx: pack index: 64-bit offset #0 is 307101, but such offsets must be >= 2^31)
+[corrupt] 好 pack 旁边的垃圾 .idx -> PackSet::open Corrupt（未静默跳过）
+[corrupt] .idx: truncated / magic / version=3 / trailing checksum -> 全部 Corrupt
+[corrupt] .idx fanout 非单调 -> Corrupt
+[corrupt] .pack: truncated / magic / version=9 / trailing checksum -> 全部 Corrupt
+[corrupt] 对象类型 5 -> Corrupt (/tmp/.tmpblXWG3/reserved-type.pack: object at offset 12 has type 5 (reserved))
+[corrupt] 改写真实 delta：copy 超出 base -> Corrupt (pack delta: copy range 2147483647..2147549183 is outside the base (108 bytes))
+[corrupt] 真实 idx + 大 offset 表指向 < 2^31 的值 -> Corrupt (/tmp/.tmpblXWG3/small-big-offset.idx: pack index: 64-bit offset #0 is 307101, but such offsets must be >= 2^31)
+[corrupt] 好 pack 旁边的垃圾 .idx -> PackSet::open Corrupt（未静默跳过）
+[corrupt] .idx: truncated / magic / version=3 / trailing checksum -> 全部 Corrupt
+[corrupt] .idx fanout 非单调 -> Corrupt
+[corrupt] .pack: truncated / magic / version=9 / trailing checksum -> 全部 Corrupt
+[corrupt] 对象类型 5 -> Corrupt (/tmp/.tmpOFMNVe/reserved-type.pack: object at offset 12 has type 5 (reserved))
+[corrupt] 改写真实 delta：copy 超出 base -> Corrupt (pack delta: copy range 2147483647..2147549183 is outside the base (108 bytes))
+[corrupt] 真实 idx + 大 offset 表指向 < 2^31 的值 -> Corrupt (/tmp/.tmpOFMNVe/small-big-offset.idx: pack index: 64-bit offset #0 is 307101, but such offsets must be >= 2^31)
+[corrupt] 好 pack 旁边的垃圾 .idx -> PackSet::open Corrupt（未静默跳过）
+[corrupt] .idx: truncated / magic / version=3 / trailing checksum -> 全部 Corrupt
+[corrupt] .idx fanout 非单调 -> Corrupt
+[corrupt] .pack: truncated / magic / version=9 / trailing checksum -> 全部 Corrupt
+[corrupt] 对象类型 5 -> Corrupt (/tmp/.tmp7YdRRc/reserved-type.pack: object at offset 12 has type 5 (reserved))
+[corrupt] 改写真实 delta：copy 超出 base -> Corrupt (pack delta: copy range 2147483647..2147549183 is outside the base (108 bytes))
+[corrupt] 真实 idx + 大 offset 表指向 < 2^31 的值 -> Corrupt (/tmp/.tmp7YdRRc/small-big-offset.idx: pack index: 64-bit offset #0 is 307101, but such offsets must be >= 2^31)
+[corrupt] 好 pack 旁边的垃圾 .idx -> PackSet::open Corrupt（未静默跳过）
+[corrupt] .idx: truncated / magic / version=3 / trailing checksum -> 全部 Corrupt
+[corrupt] .idx fanout 非单调 -> Corrupt
+[corrupt] .pack: truncated / magic / version=9 / trailing checksum -> 全部 Corrupt
+[corrupt] 对象类型 5 -> Corrupt (/tmp/.tmpq8OoD4/reserved-type.pack: object at offset 12 has type 5 (reserved))
+[corrupt] 改写真实 delta：copy 超出 base -> Corrupt (pack delta: copy range 2147483647..2147549183 is outside the base (108 bytes))
+[corrupt] 真实 idx + 大 offset 表指向 < 2^31 的值 -> Corrupt (/tmp/.tmpq8OoD4/small-big-offset.idx: pack index: 64-bit offset #0 is 307101, but such offsets must be >= 2^31)
+[corrupt] 好 pack 旁边的垃圾 .idx -> PackSet::open Corrupt（未静默跳过）
+[corrupt] .idx: truncated / magic / version=3 / trailing checksum -> 全部 Corrupt
+[corrupt] .idx fanout 非单调 -> Corrupt
+[corrupt] .pack: truncated / magic / version=9 / trailing checksum -> 全部 Corrupt
+[corrupt] 对象类型 5 -> Corrupt (/tmp/.tmp087IuS/reserved-type.pack: object at offset 12 has type 5 (reserved))
+[corrupt] 改写真实 delta：copy 超出 base -> Corrupt (pack delta: copy range 2147483647..2147549183 is outside the base (108 bytes))
+[corrupt] 真实 idx + 大 offset 表指向 < 2^31 的值 -> Corrupt (/tmp/.tmp087IuS/small-big-offset.idx: pack index: 64-bit offset #0 is 307101, but such offsets must be >= 2^31)
+[corrupt] 好 pack 旁边的垃圾 .idx -> PackSet::open Corrupt（未静默跳过）
+[corrupt] .idx: truncated / magic / version=3 / trailing checksum -> 全部 Corrupt
+[corrupt] .idx fanout 非单调 -> Corrupt
+[corrupt] .pack: truncated / magic / version=9 / trailing checksum -> 全部 Corrupt
+[corrupt] 对象类型 5 -> Corrupt (/tmp/.tmpfBDHBW/reserved-type.pack: object at offset 12 has type 5 (reserved))
+[corrupt] 改写真实 delta：copy 超出 base -> Corrupt (pack delta: copy range 2147483647..2147549183 is outside the base (108 bytes))
+[corrupt] 真实 idx + 大 offset 表指向 < 2^31 的值 -> Corrupt (/tmp/.tmpfBDHBW/small-big-offset.idx: pack index: 64-bit offset #0 is 307101, but such offsets must be >= 2^31)
+[corrupt] 好 pack 旁边的垃圾 .idx -> PackSet::open Corrupt（未静默跳过）
+[corrupt] .idx: truncated / magic / version=3 / trailing checksum -> 全部 Corrupt
+[corrupt] .idx fanout 非单调 -> Corrupt
+[corrupt] .pack: truncated / magic / version=9 / trailing checksum -> 全部 Corrupt
+[corrupt] 对象类型 5 -> Corrupt (/tmp/.tmpIfiDyV/reserved-type.pack: object at offset 12 has type 5 (reserved))
+[corrupt] 改写真实 delta：copy 超出 base -> Corrupt (pack delta: copy range 2147483647..2147549183 is outside the base (108 bytes))
+[corrupt] 真实 idx + 大 offset 表指向 < 2^31 的值 -> Corrupt (/tmp/.tmpIfiDyV/small-big-offset.idx: pack index: 64-bit offset #0 is 307101, but such offsets must be >= 2^31)
+[corrupt] 好 pack 旁边的垃圾 .idx -> PackSet::open Corrupt（未静默跳过）
+[corrupt] .idx: truncated / magic / version=3 / trailing checksum -> 全部 Corrupt
+[corrupt] .idx fanout 非单调 -> Corrupt
+[corrupt] .pack: truncated / magic / version=9 / trailing checksum -> 全部 Corrupt
+[corrupt] 对象类型 5 -> Corrupt (/tmp/.tmpl8rK5V/reserved-type.pack: object at offset 12 has type 5 (reserved))
+[corrupt] 改写真实 delta：copy 超出 base -> Corrupt (pack delta: copy range 2147483647..2147549183 is outside the base (108 bytes))
+[corrupt] 真实 idx + 大 offset 表指向 < 2^31 的值 -> Corrupt (/tmp/.tmpl8rK5V/small-big-offset.idx: pack index: 64-bit offset #0 is 307101, but such offsets must be >= 2^31)
+[corrupt] 好 pack 旁边的垃圾 .idx -> PackSet::open Corrupt（未静默跳过）
+[corrupt] .idx: truncated / magic / version=3 / trailing checksum -> 全部 Corrupt
+[corrupt] .idx fanout 非单调 -> Corrupt
+[corrupt] .pack: truncated / magic / version=9 / trailing checksum -> 全部 Corrupt
+[corrupt] 对象类型 5 -> Corrupt (/tmp/.tmpPYxv5M/reserved-type.pack: object at offset 12 has type 5 (reserved))
+[corrupt] 改写真实 delta：copy 超出 base -> Corrupt (pack delta: copy range 2147483647..2147549183 is outside the base (108 bytes))
+[corrupt] 真实 idx + 大 offset 表指向 < 2^31 的值 -> Corrupt (/tmp/.tmpPYxv5M/small-big-offset.idx: pack index: 64-bit offset #0 is 307101, but such offsets must be >= 2^31)
+[corrupt] 好 pack 旁边的垃圾 .idx -> PackSet::open Corrupt（未静默跳过）
+[corrupt] .idx: truncated / magic / version=3 / trailing checksum -> 全部 Corrupt
+[corrupt] .idx fanout 非单调 -> Corrupt
+[corrupt] .pack: truncated / magic / version=9 / trailing checksum -> 全部 Corrupt
+[corrupt] 对象类型 5 -> Corrupt (/tmp/.tmpsFpL0e/reserved-type.pack: object at offset 12 has type 5 (reserved))
+[corrupt] 改写真实 delta：copy 超出 base -> Corrupt (pack delta: copy range 2147483647..2147549183 is outside the base (108 bytes))
+[corrupt] 真实 idx + 大 offset 表指向 < 2^31 的值 -> Corrupt (/tmp/.tmpsFpL0e/small-big-offset.idx: pack index: 64-bit offset #0 is 307101, but such offsets must be >= 2^31)
+[corrupt] 好 pack 旁边的垃圾 .idx -> PackSet::open Corrupt（未静默跳过）
+[corrupt] .idx: truncated / magic / version=3 / trailing checksum -> 全部 Corrupt
+[corrupt] .idx fanout 非单调 -> Corrupt
+[corrupt] .pack: truncated / magic / version=9 / trailing checksum -> 全部 Corrupt
+[corrupt] 对象类型 5 -> Corrupt (/tmp/.tmplv1YBB/reserved-type.pack: object at offset 12 has type 5 (reserved))
+[corrupt] 改写真实 delta：copy 超出 base -> Corrupt (pack delta: copy range 2147483647..2147549183 is outside the base (108 bytes))
+[corrupt] 真实 idx + 大 offset 表指向 < 2^31 的值 -> Corrupt (/tmp/.tmplv1YBB/small-big-offset.idx: pack index: 64-bit offset #0 is 307101, but such offsets must be >= 2^31)
+[corrupt] 好 pack 旁边的垃圾 .idx -> PackSet::open Corrupt（未静默跳过）
+[corrupt] .idx: truncated / magic / version=3 / trailing checksum -> 全部 Corrupt
+[corrupt] .idx fanout 非单调 -> Corrupt
+[corrupt] .pack: truncated / magic / version=9 / trailing checksum -> 全部 Corrupt
+[corrupt] 对象类型 5 -> Corrupt (/tmp/.tmpytttVJ/reserved-type.pack: object at offset 12 has type 5 (reserved))
+[corrupt] 改写真实 delta：copy 超出 base -> Corrupt (pack delta: copy range 2147483647..2147549183 is outside the base (108 bytes))
+[corrupt] 真实 idx + 大 offset 表指向 < 2^31 的值 -> Corrupt (/tmp/.tmpytttVJ/small-big-offset.idx: pack index: 64-bit offset #0 is 307101, but such offsets must be >= 2^31)
+[corrupt] 好 pack 旁边的垃圾 .idx -> PackSet::open Corrupt（未静默跳过）
+[corrupt] .idx: truncated / magic / version=3 / trailing checksum -> 全部 Corrupt
+[corrupt] .idx fanout 非单调 -> Corrupt
+[corrupt] .pack: truncated / magic / version=9 / trailing checksum -> 全部 Corrupt
+[corrupt] 对象类型 5 -> Corrupt (/tmp/.tmpM3gBcn/reserved-type.pack: object at offset 12 has type 5 (reserved))
+[corrupt] 改写真实 delta：copy 超出 base -> Corrupt (pack delta: copy range 2147483647..2147549183 is outside the base (108 bytes))
+[corrupt] 真实 idx + 大 offset 表指向 < 2^31 的值 -> Corrupt (/tmp/.tmpM3gBcn/small-big-offset.idx: pack index: 64-bit offset #0 is 307101, but such offsets must be >= 2^31)
+[corrupt] 好 pack 旁边的垃圾 .idx -> PackSet::open Corrupt（未静默跳过）
+[corrupt] .idx: truncated / magic / version=3 / trailing checksum -> 全部 Corrupt
+[corrupt] .idx fanout 非单调 -> Corrupt
+[corrupt] .pack: truncated / magic / version=9 / trailing checksum -> 全部 Corrupt
+[corrupt] 对象类型 5 -> Corrupt (/tmp/.tmpxBdyJr/reserved-type.pack: object at offset 12 has type 5 (reserved))
+[corrupt] 改写真实 delta：copy 超出 base -> Corrupt (pack delta: copy range 2147483647..2147549183 is outside the base (108 bytes))
+[corrupt] 真实 idx + 大 offset 表指向 < 2^31 的值 -> Corrupt (/tmp/.tmpxBdyJr/small-big-offset.idx: pack index: 64-bit offset #0 is 307101, but such offsets must be >= 2^31)
+[corrupt] 好 pack 旁边的垃圾 .idx -> PackSet::open Corrupt（未静默跳过）
+[corrupt] .idx: truncated / magic / version=3 / trailing checksum -> 全部 Corrupt
+[corrupt] .idx fanout 非单调 -> Corrupt
+[corrupt] .pack: truncated / magic / version=9 / trailing checksum -> 全部 Corrupt
+[corrupt] 对象类型 5 -> Corrupt (/tmp/.tmpjBCn0l/reserved-type.pack: object at offset 12 has type 5 (reserved))
+[corrupt] 改写真实 delta：copy 超出 base -> Corrupt (pack delta: copy range 2147483647..2147549183 is outside the base (108 bytes))
+[corrupt] 真实 idx + 大 offset 表指向 < 2^31 的值 -> Corrupt (/tmp/.tmpjBCn0l/small-big-offset.idx: pack index: 64-bit offset #0 is 307101, but such offsets must be >= 2^31)
+[corrupt] 好 pack 旁边的垃圾 .idx -> PackSet::open Corrupt（未静默跳过）
+[corrupt] .idx: truncated / magic / version=3 / trailing checksum -> 全部 Corrupt
+[corrupt] .idx fanout 非单调 -> Corrupt
+[corrupt] .pack: truncated / magic / version=9 / trailing checksum -> 全部 Corrupt
+[corrupt] 对象类型 5 -> Corrupt (/tmp/.tmpLgAtMA/reserved-type.pack: object at offset 12 has type 5 (reserved))
+[corrupt] 改写真实 delta：copy 超出 base -> Corrupt (pack delta: copy range 2147483647..2147549183 is outside the base (108 bytes))
+[corrupt] 真实 idx + 大 offset 表指向 < 2^31 的值 -> Corrupt (/tmp/.tmpLgAtMA/small-big-offset.idx: pack index: 64-bit offset #0 is 307101, but such offsets must be >= 2^31)
+[corrupt] 好 pack 旁边的垃圾 .idx -> PackSet::open Corrupt（未静默跳过）
+[corrupt] .idx: truncated / magic / version=3 / trailing checksum -> 全部 Corrupt
+[corrupt] .idx fanout 非单调 -> Corrupt
+[corrupt] .pack: truncated / magic / version=9 / trailing checksum -> 全部 Corrupt
+[corrupt] 对象类型 5 -> Corrupt (/tmp/.tmpJwsEhb/reserved-type.pack: object at offset 12 has type 5 (reserved))
+[corrupt] 改写真实 delta：copy 超出 base -> Corrupt (pack delta: copy range 2147483647..2147549183 is outside the base (108 bytes))
+[corrupt] 真实 idx + 大 offset 表指向 < 2^31 的值 -> Corrupt (/tmp/.tmpJwsEhb/small-big-offset.idx: pack index: 64-bit offset #0 is 307101, but such offsets must be >= 2^31)
+[corrupt] 好 pack 旁边的垃圾 .idx -> PackSet::open Corrupt（未静默跳过）
+[corrupt] .idx: truncated / magic / version=3 / trailing checksum -> 全部 Corrupt
+[corrupt] .idx fanout 非单调 -> Corrupt
+[corrupt] .pack: truncated / magic / version=9 / trailing checksum -> 全部 Corrupt
+[corrupt] 对象类型 5 -> Corrupt (/tmp/.tmpuh1Kcz/reserved-type.pack: object at offset 12 has type 5 (reserved))
+[corrupt] 改写真实 delta：copy 超出 base -> Corrupt (pack delta: copy range 2147483647..2147549183 is outside the base (108 bytes))
+[corrupt] 真实 idx + 大 offset 表指向 < 2^31 的值 -> Corrupt (/tmp/.tmpuh1Kcz/small-big-offset.idx: pack index: 64-bit offset #0 is 307101, but such offsets must be >= 2^31)
+[corrupt] 好 pack 旁边的垃圾 .idx -> PackSet::open Corrupt（未静默跳过）
+[corrupt] .idx: truncated / magic / version=3 / trailing checksum -> 全部 Corrupt
+[corrupt] .idx fanout 非单调 -> Corrupt
+[corrupt] .pack: truncated / magic / version=9 / trailing checksum -> 全部 Corrupt
+[corrupt] 对象类型 5 -> Corrupt (/tmp/.tmpf324F3/reserved-type.pack: object at offset 12 has type 5 (reserved))
+[corrupt] 改写真实 delta：copy 超出 base -> Corrupt (pack delta: copy range 2147483647..2147549183 is outside the base (108 bytes))
+[corrupt] 真实 idx + 大 offset 表指向 < 2^31 的值 -> Corrupt (/tmp/.tmpf324F3/small-big-offset.idx: pack index: 64-bit offset #0 is 307101, but such offsets must be >= 2^31)
+[corrupt] 好 pack 旁边的垃圾 .idx -> PackSet::open Corrupt（未静默跳过）
+[corrupt] .idx: truncated / magic / version=3 / trailing checksum -> 全部 Corrupt
+[corrupt] .idx fanout 非单调 -> Corrupt
+[corrupt] .pack: truncated / magic / version=9 / trailing checksum -> 全部 Corrupt
+[corrupt] 对象类型 5 -> Corrupt (/tmp/.tmpUYwY3B/reserved-type.pack: object at offset 12 has type 5 (reserved))
+[corrupt] 改写真实 delta：copy 超出 base -> Corrupt (pack delta: copy range 2147483647..2147549183 is outside the base (108 bytes))
+[corrupt] 真实 idx + 大 offset 表指向 < 2^31 的值 -> Corrupt (/tmp/.tmpUYwY3B/small-big-offset.idx: pack index: 64-bit offset #0 is 307101, but such offsets must be >= 2^31)
+[corrupt] 好 pack 旁边的垃圾 .idx -> PackSet::open Corrupt（未静默跳过）
+[corrupt] .idx: truncated / magic / version=3 / trailing checksum -> 全部 Corrupt
+[corrupt] .idx fanout 非单调 -> Corrupt
+[corrupt] .pack: truncated / magic / version=9 / trailing checksum -> 全部 Corrupt
+[corrupt] 对象类型 5 -> Corrupt (/tmp/.tmpKHy70u/reserved-type.pack: object at offset 12 has type 5 (reserved))
+[corrupt] 改写真实 delta：copy 超出 base -> Corrupt (pack delta: copy range 2147483647..2147549183 is outside the base (108 bytes))
+[corrupt] 真实 idx + 大 offset 表指向 < 2^31 的值 -> Corrupt (/tmp/.tmpKHy70u/small-big-offset.idx: pack index: 64-bit offset #0 is 307101, but such offsets must be >= 2^31)
+[corrupt] 好 pack 旁边的垃圾 .idx -> PackSet::open Corrupt（未静默跳过）
+[corrupt] .idx: truncated / magic / version=3 / trailing checksum -> 全部 Corrupt
+[corrupt] .idx fanout 非单调 -> Corrupt
+[corrupt] .pack: truncated / magic / version=9 / trailing checksum -> 全部 Corrupt
+[corrupt] 对象类型 5 -> Corrupt (/tmp/.tmpPIFktx/reserved-type.pack: object at offset 12 has type 5 (reserved))
+[corrupt] 改写真实 delta：copy 超出 base -> Corrupt (pack delta: copy range 2147483647..2147549183 is outside the base (108 bytes))
+[corrupt] 真实 idx + 大 offset 表指向 < 2^31 的值 -> Corrupt (/tmp/.tmpPIFktx/small-big-offset.idx: pack index: 64-bit offset #0 is 307101, but such offsets must be >= 2^31)
+[corrupt] 好 pack 旁边的垃圾 .idx -> PackSet::open Corrupt（未静默跳过）
+[corrupt] .idx: truncated / magic / version=3 / trailing checksum -> 全部 Corrupt
+[corrupt] .idx fanout 非单调 -> Corrupt
+[corrupt] .pack: truncated / magic / version=9 / trailing checksum -> 全部 Corrupt
+[corrupt] 对象类型 5 -> Corrupt (/tmp/.tmp83l5Zk/reserved-type.pack: object at offset 12 has type 5 (reserved))
+[corrupt] 改写真实 delta：copy 超出 base -> Corrupt (pack delta: copy range 2147483647..2147549183 is outside the base (108 bytes))
+[corrupt] 真实 idx + 大 offset 表指向 < 2^31 的值 -> Corrupt (/tmp/.tmp83l5Zk/small-big-offset.idx: pack index: 64-bit offset #0 is 307101, but such offsets must be >= 2^31)
+[corrupt] 好 pack 旁边的垃圾 .idx -> PackSet::open Corrupt（未静默跳过）
+[corrupt] .idx: truncated / magic / version=3 / trailing checksum -> 全部 Corrupt
+[corrupt] .idx fanout 非单调 -> Corrupt
+[corrupt] .pack: truncated / magic / version=9 / trailing checksum -> 全部 Corrupt
+[corrupt] 对象类型 5 -> Corrupt (/tmp/.tmpgb2qCw/reserved-type.pack: object at offset 12 has type 5 (reserved))
+[corrupt] 改写真实 delta：copy 超出 base -> Corrupt (pack delta: copy range 2147483647..2147549183 is outside the base (108 bytes))
+[corrupt] 真实 idx + 大 offset 表指向 < 2^31 的值 -> Corrupt (/tmp/.tmpgb2qCw/small-big-offset.idx: pack index: 64-bit offset #0 is 307101, but such offsets must be >= 2^31)
+[corrupt] 好 pack 旁边的垃圾 .idx -> PackSet::open Corrupt（未静默跳过）
+[corrupt] .idx: truncated / magic / version=3 / trailing checksum -> 全部 Corrupt
+[corrupt] .idx fanout 非单调 -> Corrupt
+[corrupt] .pack: truncated / magic / version=9 / trailing checksum -> 全部 Corrupt
+[corrupt] 对象类型 5 -> Corrupt (/tmp/.tmpkz9Kvd/reserved-type.pack: object at offset 12 has type 5 (reserved))
+[corrupt] 改写真实 delta：copy 超出 base -> Corrupt (pack delta: copy range 2147483647..2147549183 is outside the base (108 bytes))
+[corrupt] 真实 idx + 大 offset 表指向 < 2^31 的值 -> Corrupt (/tmp/.tmpkz9Kvd/small-big-offset.idx: pack index: 64-bit offset #0 is 307101, but such offsets must be >= 2^31)
+[corrupt] 好 pack 旁边的垃圾 .idx -> PackSet::open Corrupt（未静默跳过）
+[corrupt] .idx: truncated / magic / version=3 / trailing checksum -> 全部 Corrupt
+[corrupt] .idx fanout 非单调 -> Corrupt
+[corrupt] .pack: truncated / magic / version=9 / trailing checksum -> 全部 Corrupt
+[corrupt] 对象类型 5 -> Corrupt (/tmp/.tmp1KDa8z/reserved-type.pack: object at offset 12 has type 5 (reserved))
+[corrupt] 改写真实 delta：copy 超出 base -> Corrupt (pack delta: copy range 2147483647..2147549183 is outside the base (108 bytes))
+[corrupt] 真实 idx + 大 offset 表指向 < 2^31 的值 -> Corrupt (/tmp/.tmp1KDa8z/small-big-offset.idx: pack index: 64-bit offset #0 is 307101, but such offsets must be >= 2^31)
+[corrupt] 好 pack 旁边的垃圾 .idx -> PackSet::open Corrupt（未静默跳过）
+[corrupt] .idx: truncated / magic / version=3 / trailing checksum -> 全部 Corrupt
+[corrupt] .idx fanout 非单调 -> Corrupt
+[corrupt] .pack: truncated / magic / version=9 / trailing checksum -> 全部 Corrupt
+[corrupt] 对象类型 5 -> Corrupt (/tmp/.tmpsiuelj/reserved-type.pack: object at offset 12 has type 5 (reserved))
+[corrupt] 改写真实 delta：copy 超出 base -> Corrupt (pack delta: copy range 2147483647..2147549183 is outside the base (108 bytes))
+[corrupt] 真实 idx + 大 offset 表指向 < 2^31 的值 -> Corrupt (/tmp/.tmpsiuelj/small-big-offset.idx: pack index: 64-bit offset #0 is 307101, but such offsets must be >= 2^31)
+[corrupt] 好 pack 旁边的垃圾 .idx -> PackSet::open Corrupt（未静默跳过）
+[corrupt] .idx: truncated / magic / version=3 / trailing checksum -> 全部 Corrupt
+[corrupt] .idx fanout 非单调 -> Corrupt
+[corrupt] .pack: truncated / magic / version=9 / trailing checksum -> 全部 Corrupt
+[corrupt] 对象类型 5 -> Corrupt (/tmp/.tmpqS7Wvf/reserved-type.pack: object at offset 12 has type 5 (reserved))
+[corrupt] 改写真实 delta：copy 超出 base -> Corrupt (pack delta: copy range 2147483647..2147549183 is outside the base (108 bytes))
+[corrupt] 真实 idx + 大 offset 表指向 < 2^31 的值 -> Corrupt (/tmp/.tmpqS7Wvf/small-big-offset.idx: pack index: 64-bit offset #0 is 307101, but such offsets must be >= 2^31)
+[corrupt] 好 pack 旁边的垃圾 .idx -> PackSet::open Corrupt（未静默跳过）
+[corrupt] .idx: truncated / magic / version=3 / trailing checksum -> 全部 Corrupt
+[corrupt] .idx fanout 非单调 -> Corrupt
+[corrupt] .pack: truncated / magic / version=9 / trailing checksum -> 全部 Corrupt
+[corrupt] 对象类型 5 -> Corrupt (/tmp/.tmpc3tz9S/reserved-type.pack: object at offset 12 has type 5 (reserved))
+[corrupt] 改写真实 delta：copy 超出 base -> Corrupt (pack delta: copy range 2147483647..2147549183 is outside the base (108 bytes))
+[corrupt] 真实 idx + 大 offset 表指向 < 2^31 的值 -> Corrupt (/tmp/.tmpc3tz9S/small-big-offset.idx: pack index: 64-bit offset #0 is 307101, but such offsets must be >= 2^31)
+[corrupt] 好 pack 旁边的垃圾 .idx -> PackSet::open Corrupt（未静默跳过）
+[corrupt] .idx: truncated / magic / version=3 / trailing checksum -> 全部 Corrupt
+[corrupt] .idx fanout 非单调 -> Corrupt
+[corrupt] .pack: truncated / magic / version=9 / trailing checksum -> 全部 Corrupt
+[corrupt] 对象类型 5 -> Corrupt (/tmp/.tmp7ShEEf/reserved-type.pack: object at offset 12 has type 5 (reserved))
+[corrupt] 改写真实 delta：copy 超出 base -> Corrupt (pack delta: copy range 2147483647..2147549183 is outside the base (108 bytes))
+[corrupt] 真实 idx + 大 offset 表指向 < 2^31 的值 -> Corrupt (/tmp/.tmp7ShEEf/small-big-offset.idx: pack index: 64-bit offset #0 is 307101, but such offsets must be >= 2^31)
+[corrupt] 好 pack 旁边的垃圾 .idx -> PackSet::open Corrupt（未静默跳过）
+[corrupt] .idx: truncated / magic / version=3 / trailing checksum -> 全部 Corrupt
+[corrupt] .idx fanout 非单调 -> Corrupt
+[corrupt] .pack: truncated / magic / version=9 / trailing checksum -> 全部 Corrupt
+[corrupt] 对象类型 5 -> Corrupt (/tmp/.tmpDtrGW5/reserved-type.pack: object at offset 12 has type 5 (reserved))
+[corrupt] 改写真实 delta：copy 超出 base -> Corrupt (pack delta: copy range 2147483647..2147549183 is outside the base (108 bytes))
+[corrupt] 真实 idx + 大 offset 表指向 < 2^31 的值 -> Corrupt (/tmp/.tmpDtrGW5/small-big-offset.idx: pack index: 64-bit offset #0 is 307101, but such offsets must be >= 2^31)
+[corrupt] 好 pack 旁边的垃圾 .idx -> PackSet::open Corrupt（未静默跳过）
+[corrupt] .idx: truncated / magic / version=3 / trailing checksum -> 全部 Corrupt
+[corrupt] .idx fanout 非单调 -> Corrupt
+[corrupt] .pack: truncated / magic / version=9 / trailing checksum -> 全部 Corrupt
+[corrupt] 对象类型 5 -> Corrupt (/tmp/.tmpcjuHde/reserved-type.pack: object at offset 12 has type 5 (reserved))
+[corrupt] 改写真实 delta：copy 超出 base -> Corrupt (pack delta: copy range 2147483647..2147549183 is outside the base (108 bytes))
+[corrupt] 真实 idx + 大 offset 表指向 < 2^31 的值 -> Corrupt (/tmp/.tmpcjuHde/small-big-offset.idx: pack index: 64-bit offset #0 is 307101, but such offsets must be >= 2^31)
+[corrupt] 好 pack 旁边的垃圾 .idx -> PackSet::open Corrupt（未静默跳过）
+[corrupt] .idx: truncated / magic / version=3 / trailing checksum -> 全部 Corrupt
+[corrupt] .idx fanout 非单调 -> Corrupt
+[corrupt] .pack: truncated / magic / version=9 / trailing checksum -> 全部 Corrupt
+[corrupt] 对象类型 5 -> Corrupt (/tmp/.tmp1eLW1L/reserved-type.pack: object at offset 12 has type 5 (reserved))
+[corrupt] 改写真实 delta：copy 超出 base -> Corrupt (pack delta: copy range 2147483647..2147549183 is outside the base (108 bytes))
+[corrupt] 真实 idx + 大 offset 表指向 < 2^31 的值 -> Corrupt (/tmp/.tmp1eLW1L/small-big-offset.idx: pack index: 64-bit offset #0 is 307101, but such offsets must be >= 2^31)
+[corrupt] 好 pack 旁边的垃圾 .idx -> PackSet::open Corrupt（未静默跳过）

@@ -1,0 +1,115 @@
+{
+  "version": 1,
+  "revision": 11,
+  "index_path": "/home/user/Projects/mini-git/.orch/waves/W7/orch-run-oxrolhzc/jobs",
+  "job_id": "66840d4b642f481a848788974b0665ca",
+  "round_id": "ea8be0b903094bd7b0dc00f9de970778",
+  "active_request": "/home/user/Projects/mini-git/.orch/waves/W7/orch-run-oxrolhzc/rounds/agent-orchestrator-2np3fp12/request.json",
+  "rounds": [
+    {
+      "request_path": "/home/user/Projects/mini-git/.orch/waves/W7/orch-run-oxrolhzc/rounds/agent-orchestrator-urm5bgtv/request.json",
+      "round_id": "5248318530cb4b26b88628ac6da18637",
+      "request_sha256": "9d35f80c3298115fccc4141fa342c37a950bc5ffcbe268c3935405688406a409"
+    },
+    {
+      "request_path": "/home/user/Projects/mini-git/.orch/waves/W7/orch-run-oxrolhzc/rounds/agent-orchestrator-2np3fp12/request.json",
+      "round_id": "ea8be0b903094bd7b0dc00f9de970778",
+      "request_sha256": "e917bf27724aec7a1b7207066a0f2325bb7b9c87a74293c9caaf9c7c8937d404"
+    }
+  ],
+  "resources": {
+    "path": "/home/user/Projects/mini-git/.orch/waves/W7/orch-run-oxrolhzc/rounds/agent-orchestrator-2np3fp12/resources.json",
+    "sha256": "0b11f80e84539e41bea7fe5382005addac4ab1ffcd626c6a8e1af96d7faf6fb0",
+    "record": {
+      "mode": "insider",
+      "session": "default",
+      "agent": "orch-w7-author",
+      "pane": "w1V:p1",
+      "workspace": "w1V",
+      "owns_agent": true,
+      "owns_pane": true,
+      "owns_workspace": true,
+      "owns_session": false,
+      "tab": "w1V:t1",
+      "parent_pane": "wJ:p1",
+      "parent_tab": "wJ:t1",
+      "owns_tab": false,
+      "recorded_at": "2026-09-20T17:38:36.488471+00:00",
+      "job_id": "66840d4b642f481a848788974b0665ca"
+    }
+  },
+  "submission": "uncertain",
+  "attempts": [
+    {
+      "attempt_id": "464541c1b05d4dfda5ea3398c9f9e09c",
+      "round_id": "5248318530cb4b26b88628ac6da18637",
+      "owner": "controller-w7",
+      "begun_at": 1789926018.465466,
+      "status": "accepted",
+      "receipts": [
+        {
+          "status": "accepted",
+          "kind": "target_active",
+          "recorded_at": 1789926117.150698,
+          "evidence": {
+            "path": "/home/user/Projects/mini-git/.orch/waves/W7/evidence/t1-accepted.txt",
+            "sha256": "74b4cb860d801da03381f837289431624eed64aae31adb66ca90791ef90e5b3c",
+            "note": "Target shows an active task on the exact pane with the round title; no result file yet."
+          }
+        }
+      ]
+    },
+    {
+      "attempt_id": "a26fba9b048942738403f64408d15b6b",
+      "round_id": "ea8be0b903094bd7b0dc00f9de970778",
+      "owner": "controller-w7",
+      "begun_at": 1789926842.389246,
+      "status": "rejected",
+      "receipts": [
+        {
+          "status": "rejected",
+          "kind": "not_sent",
+          "recorded_at": 1789928104.0647433,
+          "evidence": {
+            "path": "/home/user/Projects/mini-git/.orch/waves/W7/evidence/t2-not-sent.txt",
+            "sha256": "2f5d191b702d3c17a81d84f9af4d7cb80e64fcd95eff391424cbe918ca7af970",
+            "note": "这一轮的 begin 之后控制方故意没有发送任何输入：验证者当时正占用共享仓库跑门禁与负对照，同一时间只允许一个写者。作者 pane 全程 idle 且屏幕停在 T1 收尾表，无该轮任务痕迹，round result 文件不存在。"
+          }
+        }
+      ]
+    },
+    {
+      "attempt_id": "587c13a5c6f648ab80a4ea743eb27fdc",
+      "round_id": "ea8be0b903094bd7b0dc00f9de970778",
+      "owner": "controller-w7",
+      "begun_at": 1789928105.9519727,
+      "status": "uncertain",
+      "receipts": []
+    }
+  ],
+  "lease": {
+    "owner": "controller-w7",
+    "token": "800bc9fc11994e7eab82eef76e763f31",
+    "expires_at": 1789929889.1599967
+  },
+  "launch": {
+    "argv": [
+      "opencode"
+    ],
+    "profile": "omo"
+  },
+  "native": {
+    "session_id": null,
+    "turn_id": null
+  },
+  "monitor": {
+    "owner": "controller-w7",
+    "watch_path": "/home/user/Projects/mini-git/.orch/waves/W7/orch-run-oxrolhzc/watches/orch-watch-oxft_00d/watch.json",
+    "expires_at": 1789929520.8757915
+  },
+  "deadline": 1789930200,
+  "closed": null,
+  "completion": {},
+  "event": "begin",
+  "recorded_at": 1789928105.9519727
+}

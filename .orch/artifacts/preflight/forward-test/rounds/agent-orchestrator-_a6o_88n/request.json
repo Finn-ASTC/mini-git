@@ -1,0 +1,11 @@
+{
+  "schema_version": 1,
+  "job_id": "779a332380d64ec2b75723d406b47101",
+  "round_id": "49834261ee084bfa82fbafa38177823f",
+  "cwd": "/tmp/orch-forward-test-eff/project",
+  "result_path": "/tmp/orch-forward-test-eff/rounds/agent-orchestrator-_a6o_88n/result.json",
+  "depth": 1,
+  "max_depth": 3,
+  "prepared_at": "2026-09-19T09:11:58.007221+00:00",
+  "task": "Objective: Analyze parser failure B\nScope: Read-only analysis of project/b.py\nacceptance:\n- Report cause with evidence\ninputs:\n- project/b.py\nconstraints:\n- No edits\nReport concise conclusions, verification and evidence paths; read referenced inputs only as needed. Preserve the full reporting contract and declared scope."
+}

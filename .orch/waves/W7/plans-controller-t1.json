@@ -1,0 +1,66 @@
+{
+ "commands": [
+  {
+   "argv": [
+    "rustc",
+    "-vV"
+   ],
+   "timeout_seconds": 10
+  },
+  {
+   "argv": [
+    "cargo",
+    "--version"
+   ],
+   "timeout_seconds": 10
+  },
+  {
+   "argv": [
+    "cargo",
+    "test",
+    "--offline"
+   ],
+   "timeout_seconds": 900
+  },
+  {
+   "argv": [
+    "cargo",
+    "test",
+    "--offline",
+    "--release"
+   ],
+   "timeout_seconds": 900
+  },
+  {
+   "argv": [
+    "cargo",
+    "build",
+    "--release",
+    "--offline"
+   ],
+   "timeout_seconds": 900
+  },
+  {
+   "argv": [
+    "python3",
+    "-c",
+    "import subprocess,sys,tempfile\nrel,dbg=sys.argv[1],sys.argv[2]\nd=tempfile.mkdtemp(prefix='w7ctl-')\nold='b\\n\\n\\n\\na\\n  c\\na\\na\\n  c\\n\\nd\\nb\\ne\\nd\\nb\\na\\n'\nnew='  c\\na\\n  c\\n  c\\nd\\na\\n'\nopen(d+'/f.txt','w').write(old)\nsubprocess.run([rel,'init','.'],cwd=d,capture_output=True,check=True)\nsubprocess.run([rel,'add','f.txt'],cwd=d,capture_output=True,check=True)\nsubprocess.run([rel,'commit','-m','s'],cwd=d,capture_output=True)\nopen(d+'/f.txt','w').write(new)\nr=subprocess.run([rel,'diff'],cwd=d,capture_output=True,timeout=30)\ng=subprocess.run(['git','diff'],cwd=d,capture_output=True)\nb=subprocess.run([dbg,'diff'],cwd=d,capture_output=True,timeout=30)\nprint('release exit',r.returncode,'debug exit',b.returncode,'bytes',len(r.stdout),len(b.stdout),len(g.stdout))\nprint('release stderr',r.stderr[:200])\nsys.exit(0 if (r.returncode==0 and r.stdout==g.stdout==b.stdout and r.stderr==b'') else 1)",
+    "{build}/cargo/release/mg",
+    "{build}/cargo/debug/mg"
+   ],
+   "timeout_seconds": 120
+  }
+ ],
+ "artifacts": [
+  "build/cargo/release/mg"
+ ],
+ "dependencies": {
+  "rustc": null,
+  "cargo": null,
+  "python3": null
+ },
+ "environment": {
+  "CARGO_TARGET_DIR": "{build}/cargo",
+  "CARGO_NET_OFFLINE": "true"
+ }
+}

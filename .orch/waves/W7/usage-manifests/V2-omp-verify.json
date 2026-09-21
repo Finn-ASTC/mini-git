@@ -1,0 +1,14 @@
+{
+ "version": 1,
+ "host": "omp",
+ "log_path": "/home/user/.omp/agent/sessions/-tmp-w7-verify/2026-09-20T17-38-31-135Z_sess_0046-ea5f-7645-8d26-19470fd9732e.jsonl",
+ "session_id": "sess_0046-ea5f-7645-8d26-19470fd9732e",
+ "mappings": [
+  {
+   "native_id": "a389fab8",
+   "request_path": "/home/user/Projects/mini-git/.orch/waves/W7/orch-run-oxrolhzc/rounds/agent-orchestrator-a_u_8vn8/request.json",
+   "attempt_id": "initial",
+   "purpose": "task"
+  }
+ ]
+}

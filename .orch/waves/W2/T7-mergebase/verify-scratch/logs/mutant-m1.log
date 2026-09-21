@@ -1,0 +1,115 @@
+warning: unreachable statement
+  --> src/merge/merge_base.rs:49:5
+   |
+47 |     return Ok(first.parents.first().copied());
+   |     ----------------------------------------- any code following this expression is unreachable
+48 |     // 1. 两侧的祖先闭包（含 a、b 自身）。DAG 上重复访问被 `nodes` 去重，故是线性的。
+49 |     let from_a = collect_ancestors(a, &mut load)?;
+   |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ unreachable statement
+   |
+   = note: `#[warn(unreachable_code)]` (part of `#[warn(unused)]`) on by default
+
+warning: unused variable: `b`
+  --> src/merge/merge_base.rs:41:31
+   |
+41 | fn merge_base_with<F>(a: Oid, b: Oid, mut load: F) -> Result<Option<Oid>>
+   |                               ^ help: if this is intentional, prefix it with an underscore: `_b`
+   |
+   = note: `#[warn(unused_variables)]` (part of `#[warn(unused)]`) on by default
+
+warning: `mini-git` (lib) generated 2 warnings (run `cargo fix --lib -p mini-git` to apply 1 suggestion)
+   Compiling mini-git v0.0.0 (/home/user/Projects/mini-git/.orch/waves/W2/T7-mergebase/verify-scratch/m1)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.25s
+     Running tests/verify_mergebase.rs (/home/user/Projects/mini-git/.orch/waves/W2/T7-mergebase/verify-scratch/target-m1/debug/deps/verify_mergebase-4419c18190eed8a2)
+
+running 10 tests
+test objects_are_loose_so_the_odb_read_path_is_covered ... FAILED
+test corrupt_commit_is_corrupt_not_a_panic ... FAILED
+test nonexistent_oid_is_object_not_found ... FAILED
+test ancestor_relation_and_identity ... FAILED
+test linear_history_all_pairs_match_git ... FAILED
+test three_parent_merge_matches_git ... FAILED
+test single_merge_matches_git ... FAILED
+test criss_cross_two_equals_timestamped_bases ... FAILED
+test unrelated_roots_have_no_common_ancestor ... FAILED
+test large_dag_200_commits_is_fast_and_correct ... FAILED
+
+failures:
+
+---- objects_are_loose_so_the_odb_read_path_is_covered stdout ----
+
+thread 'objects_are_loose_so_the_odb_read_path_is_covered' (1193242) panicked at tests/verify_mergebase.rs:674:5:
+assertion `left == right` failed
+  left: None
+ right: Some(Oid(7c9c815417eda85a64a323091efb8f1c6bcabfc2))
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+
+---- corrupt_commit_is_corrupt_not_a_panic stdout ----
+
+thread 'corrupt_commit_is_corrupt_not_a_panic' (1193237) panicked at tests/verify_mergebase.rs:728:26:
+坏对象 #0（05478a89707479c5b98e7fa8109eeaef5009c1aa vs 17fcbff2611f631c66ce5321f16d2f599db0a5d0）应得 Err(Corrupt)，实际 Ok(None)
+
+---- nonexistent_oid_is_object_not_found stdout ----
+
+thread 'nonexistent_oid_is_object_not_found' (1193241) panicked at tests/verify_mergebase.rs:693:22:
+期望 Err(ObjectNotFound(c75b70f71414c62832bfdc400e8a54b0c70aa8ee))，实际 Ok(Some(Oid(7c9c815417eda85a64a323091efb8f1c6bcabfc2)))
+
+---- ancestor_relation_and_identity stdout ----
+
+thread 'ancestor_relation_and_identity' (1193236) panicked at tests/verify_mergebase.rs:411:13:
+assertion `left == right` failed: e2e3b83d82b8f92707fc896b9c5c43d8dced309d vs e2e3b83d82b8f92707fc896b9c5c43d8dced309d
+  left: None
+ right: Some(Oid(e2e3b83d82b8f92707fc896b9c5c43d8dced309d))
+
+---- linear_history_all_pairs_match_git stdout ----
+
+thread 'linear_history_all_pairs_match_git' (1193240) panicked at tests/verify_mergebase.rs:377:5:
+assertion `left == right` failed
+  left: Some(Oid(0ec5f0c578b0fbad2ecd9c3b935dbf0780244c86))
+ right: Some(Oid(a8b63611ec8267663722d2875806d1692a1ac80a))
+
+---- three_parent_merge_matches_git stdout ----
+
+thread 'three_parent_merge_matches_git' (1193244) panicked at tests/verify_mergebase.rs:534:5:
+assertion `left == right` failed
+  left: Some(Oid(fe74789b6d54b57b8e09a46c022403e4e5f9eedb))
+ right: Some(Oid(149835a11397acde21205ece8c7cea6a7e186967))
+
+---- single_merge_matches_git stdout ----
+
+thread 'single_merge_matches_git' (1193243) panicked at tests/verify_mergebase.rs:272:17:
+mg 返回 None，但 git merge-base --all 7c9c815417eda85a64a323091efb8f1c6bcabfc2 7c9c815417eda85a64a323091efb8f1c6bcabfc2 = ["7c9c815417eda85a64a323091efb8f1c6bcabfc2"]
+
+---- criss_cross_two_equals_timestamped_bases stdout ----
+
+thread 'criss_cross_two_equals_timestamped_bases' (1193238) panicked at tests/verify_mergebase.rs:272:17:
+mg 返回 None，但 git merge-base --all 7c9c815417eda85a64a323091efb8f1c6bcabfc2 7c9c815417eda85a64a323091efb8f1c6bcabfc2 = ["7c9c815417eda85a64a323091efb8f1c6bcabfc2"]
+
+---- unrelated_roots_have_no_common_ancestor stdout ----
+
+thread 'unrelated_roots_have_no_common_ancestor' (1193246) panicked at tests/verify_mergebase.rs:574:5:
+assertion `left == right` failed
+  left: None
+ right: Some(Oid(624444339d28133f8fbbe29b3d439ded471ab0ce))
+
+---- large_dag_200_commits_is_fast_and_correct stdout ----
+
+thread 'large_dag_200_commits_is_fast_and_correct' (1193239) panicked at tests/verify_mergebase.rs:288:13:
+正确性: mg 结果 39c3e8622f023c838bbc48b00ff91f4db3b9053f 不是 02fa6363d754d9afaf461c09a31c17470b590dfa 的祖先（36000d17ea9fafbbfdeeb495d84295584ce6990d vs 02fa6363d754d9afaf461c09a31c17470b590dfa，git --all = ["a3b2021e486595ad4d6f68444028d7f3e2438eb7"]）
+
+
+failures:
+    ancestor_relation_and_identity
+    corrupt_commit_is_corrupt_not_a_panic
+    criss_cross_two_equals_timestamped_bases
+    large_dag_200_commits_is_fast_and_correct
+    linear_history_all_pairs_match_git
+    nonexistent_oid_is_object_not_found
+    objects_are_loose_so_the_odb_read_path_is_covered
+    single_merge_matches_git
+    three_parent_merge_matches_git
+    unrelated_roots_have_no_common_ancestor
+
+test result: FAILED. 0 passed; 10 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.18s
+
+error: test failed, to rerun pass `--test verify_mergebase`

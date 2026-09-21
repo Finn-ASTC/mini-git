@@ -1,0 +1,15 @@
+{
+  "sample_id": "omp-turn-e2b0af04",
+  "source": "omp-session-jsonl",
+  "measurement": "delta",
+  "attempt_id": "8c1ad12a",
+  "purpose": "task",
+  "provider": "deepseek",
+  "model": "deepseek-v4.1-flash",
+  "input_tokens": 1487387,
+  "cached_input_tokens": 1451008,
+  "output_tokens": 32135,
+  "schema_version": 1,
+  "job_id": "9746730210dc4491b685bbc446088546",
+  "round_id": "1f695772a77b44ab8bcfb878a34e5add"
+}

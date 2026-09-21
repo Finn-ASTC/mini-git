@@ -1,0 +1,23 @@
+{
+  "active_request": "/home/user/Projects/mini-git/.orch/rounds/W2/agent-orchestrator-ngtbxt6j/request.json",
+  "job_id": "04ebad91e6ac45eab982f093b0cb1f4c",
+  "round_id": "fdf70196182c484c8a00608f7a61325d",
+  "transport": "insider (default session)",
+  "session": "default",
+  "agent": "w2-v6b-codex",
+  "pane": "w14:p1",
+  "workspace": "w14",
+  "cwd": "/home/user/Projects/mini-git",
+  "kind": "codex",
+  "task": "V6b 复验 T6b（diff 空格路径 TAB）",
+  "submitted_at": "2026-09-19T20:44:30+08:00",
+  "acceptance": "accepted",
+  "submission_evidence": "herdr agent prompt -> agent_prompted",
+  "deadline": null,
+  "monitor_owner": "controller (default session, pane wJ:p1)",
+  "last_checked_at": "2026-09-19T20:44:30+08:00",
+  "next_check_at": null,
+  "pending_question": null,
+  "resources_file": "/home/user/Projects/mini-git/.orch/rounds/W2/agent-orchestrator-ngtbxt6j/resources.json",
+  "result_path": "/home/user/Projects/mini-git/.orch/rounds/W2/agent-orchestrator-ngtbxt6j/result.json"
+}

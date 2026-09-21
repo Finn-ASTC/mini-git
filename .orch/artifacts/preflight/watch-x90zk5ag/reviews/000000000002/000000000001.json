@@ -1,0 +1,11 @@
+{
+  "version": 1,
+  "seq": 2,
+  "job_id": "edb0e351b58e42e486a264690ece2dcd",
+  "round_id": "c1008bbd20e34640ab5a409ceed097fb",
+  "event_fingerprint": "c5870944d16fe3b408dee57627a5b251025007d2df5f41eb2221ab9558e8c743",
+  "revision": 1,
+  "status": "handled",
+  "note": "seq=2 review_due 判定为误报：已读 visible 屏幕底部，没有审批/信任/登录/提问弹窗；\nomp 正在正常推进（生成 merge commit 与 tag 的 golden 数据，状态行 spinner + 上下文 5%）。\n无需用户决策，也不需要对终端输入。继续监督。\n",
+  "recorded_at": 1789816481.102406
+}

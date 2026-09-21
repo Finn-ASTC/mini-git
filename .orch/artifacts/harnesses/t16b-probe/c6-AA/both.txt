@@ -1,0 +1,5 @@
+<<<<<<< HEAD
+main\n
+=======
+side\n
+>>>>>>> side

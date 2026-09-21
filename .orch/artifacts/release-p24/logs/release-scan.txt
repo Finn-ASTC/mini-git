@@ -1,0 +1,25 @@
+=== release profile 逐 target 扫描（2026-09-20） ===
+lib                        exit=124  <卡死>
+interop                7 passed; 0 failed; 0 ignored
+verify                 3 passed; 0 failed; 0 ignored
+fsck_gc                25 passed; 0 failed; 0 ignored
+verify_diff            
+verify_diff_paths      6 passed; 0 failed; 0 ignored
+verify_fsck_gc         16 passed; 0 failed; 1 ignored
+verify_http            10 passed; 0 failed; 0 ignored
+verify_http_http       18 passed; 0 failed; 0 ignored
+verify_index           11 passed; 0 failed; 0 ignored
+verify_materialize     22 passed; 0 failed; 0 ignored
+verify_merge_ff        13 passed; 0 failed; 0 ignored
+verify_merge_ff2       12 passed; 0 failed; 0 ignored
+verify_mergebase       10 passed; 0 failed; 0 ignored
+verify_odb             6 passed; 0 failed; 0 ignored
+verify_pack            10 passed; 0 failed; 0 ignored
+verify_pktline         8 passed; 0 failed; 0 ignored
+verify_plumbing        19 passed; 0 failed; 0 ignored
+verify_refs            9 passed; 0 failed; 0 ignored
+verify_threeway        32 passed; 0 failed; 0 ignored
+verify_transport       10 passed; 0 failed; 0 ignored
+verify_worktree        25 passed; 0 failed; 0 ignored
+
+verify_diff: exit=124 <卡死>

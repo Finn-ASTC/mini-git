@@ -1,0 +1,69 @@
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.02s
+     Running tests/verify_threeway.rs (target/debug/deps/verify_threeway-a61023c085f543c6)
+
+running 28 tests
+
+thread 'cli_already_up_to_date_when_target_is_ancestor' (1558988) panicked at tests/verify_threeway.rs:1325:5:
+already-up-to-date: 真值 git 也包含该字样（来源自证）
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+test cli_already_up_to_date_when_target_is_ancestor ... FAILED
+test cli_clean_merge_ours_delete_theirs_untouched ... ok
+test cli_clean_merge_disjoint_files_and_tree_matches_git ... ok
+test cli_clean_merge_nested_dirs_and_new_files ... ok
+test cli_clean_merge_same_file_different_regions ... ok
+test cli_conflict_add_add_same_path ... ok
+
+thread 'cli_conflict_binary_keeps_ours_like_git' (1559171) panicked at tests/verify_threeway.rs:1181:5:
+assertion `left == right` failed: 二进制冲突必须原样保留 ours（真值来自同一场景下真实 git merge 的产物）
+  left: [82, 69, 83, 79, 76, 86, 69, 68, 10, 82, 69, 83, 79, 76, 86, 69, 68, 10]
+ right: [79, 85, 82, 83, 0, 98, 105, 110, 97, 114, 121, 10, 112, 97, 121, 108, 111, 97, 100, 10]
+test cli_conflict_binary_keeps_ours_like_git ... FAILED
+test cli_conflict_cjk_bytes_match_git ... ok
+test cli_conflict_crlf_bytes_match_git ... ok
+
+thread 'cli_conflict_delete_modify_both_directions' (1559379) panicked at tests/verify_threeway.rs:349:9:
+conflict-delete-modify: conflicting merge must exit non-zero, got 0
+test cli_conflict_delete_modify_both_directions ... FAILED
+test cli_conflict_modified_then_deleted_by_theirs ... ok
+test cli_conflict_mixed_clean_and_conflicting_paths ... ok
+test cli_dirty_worktree_is_refused_with_zero_changes ... ok
+test cli_conflict_no_trailing_newline_bytes_match_git ... ok
+test cli_conflict_same_line ... ok
+test cli_fast_forward_matches_git ... ok
+test engine_binary_is_conflict_with_ours ... ok
+test cli_unknown_rev_and_unknown_oid_fail_without_panic ... ok
+test cli_unrelated_histories_are_refused_loudly ... ok
+test engine_identity_shortcuts_match_git ... ok
+test cli_no_ff_creates_two_parent_merge_commit_like_git ... ok
+test engine_none_base_two_added_files ... ok
+test truth_source_selfcheck_diff3_label_really_appears ... ok
+
+thread 'truth_source_selfcheck_merge_file_exit_code_is_conflict_count' (1559810) panicked at tests/verify_threeway.rs:1459:5:
+assertion `left == right` failed: 两个冲突时退出码应为 2，实际 1
+  left: 1
+ right: 2
+test truth_source_selfcheck_merge_file_exit_code_is_conflict_count ... FAILED
+
+thread 'truth_source_selfcheck_porcelain_is_not_globally_sorted' (1559818) panicked at tests/verify_threeway.rs:1484:5:
+assertion `left != right` failed: 自证失败：本机 git status --porcelain 恰好是全局有序的
+  left: [" M a_changed.txt", " M b_changed.txt", "?? a_untracked.txt", "?? z_untracked.txt"]
+ right: [" M a_changed.txt", " M b_changed.txt", "?? a_untracked.txt", "?? z_untracked.txt"]
+test truth_source_selfcheck_porcelain_is_not_globally_sorted ... FAILED
+test engine_case_table_matches_git_merge_file ... ok
+indented characterization: 0/240 differ from git merge-file
+test engine_indented_corpus_characterization ... ok
+random corpus: clean=110 conflicts=290
+test engine_random_corpus_matches_git ... ok
+
+failures:
+
+failures:
+    cli_already_up_to_date_when_target_is_ancestor
+    cli_conflict_binary_keeps_ours_like_git
+    cli_conflict_delete_modify_both_directions
+    truth_source_selfcheck_merge_file_exit_code_is_conflict_count
+    truth_source_selfcheck_porcelain_is_not_globally_sorted
+
+test result: FAILED. 23 passed; 5 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.53s
+
+error: test failed, to rerun pass `--test verify_threeway`

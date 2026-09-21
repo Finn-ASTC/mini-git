@@ -1,0 +1,11 @@
+{
+  "schema_version": 1,
+  "job_id": "bb5c9ab180884698965c0c0f4cbcc0e8",
+  "round_id": "8e8c8281dfd04754a28d24f48197e217",
+  "cwd": "/tmp/pk-smoke",
+  "result_path": "/tmp/agent-orchestrator-42od_s_y/result.json",
+  "depth": 1,
+  "max_depth": 3,
+  "prepared_at": "2026-09-19T09:18:24.779225+00:00",
+  "task": "Objective: 统计 src 下的 TODO 数量\nScope: 只读，不改文件\nacceptance:\n- 给出计数\n- 列出文件路径\nknown_facts:\n- 仓库已 checkout\nconstraints:\n- 不要启动构建\nReport concise conclusions, verification and evidence paths; read referenced inputs only as needed. Preserve the full reporting contract and declared scope."
+}

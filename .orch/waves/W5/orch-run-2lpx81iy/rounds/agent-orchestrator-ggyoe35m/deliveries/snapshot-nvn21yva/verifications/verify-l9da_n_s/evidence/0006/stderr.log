@@ -1,0 +1,4 @@
+   Compiling linestat v1.0.0 (/home/user/Projects/mini-git/.orch/waves/W5/orch-run-2lpx81iy/rounds/agent-orchestrator-ggyoe35m/deliveries/snapshot-nvn21yva/verifications/verify-l9da_n_s/source)
+    Finished `release` profile [optimized] target(s) in 0.29s
+     Running unittests src/main.rs (/home/user/Projects/mini-git/.orch/waves/W5/orch-run-2lpx81iy/rounds/agent-orchestrator-ggyoe35m/deliveries/snapshot-nvn21yva/verifications/verify-l9da_n_s/build/cargo/release/deps/linestat-0b5498bdf974feb2)
+     Running tests/cli.rs (/home/user/Projects/mini-git/.orch/waves/W5/orch-run-2lpx81iy/rounds/agent-orchestrator-ggyoe35m/deliveries/snapshot-nvn21yva/verifications/verify-l9da_n_s/build/cargo/release/deps/cli-5f76167736e9ba0e)

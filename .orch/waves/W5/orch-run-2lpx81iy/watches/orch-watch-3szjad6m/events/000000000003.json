@@ -1,0 +1,13 @@
+{
+  "seq": 3,
+  "job_id": "46fa28f38e444892b81e513677ac2dbf",
+  "round_id": "4be87971a9bd4f8e95658665063352ed",
+  "kind": "review_due",
+  "message": "Changed UI needs review; hook/keyword detection may miss a dialog.",
+  "evidence_path": "/home/user/Projects/mini-git/.orch/waves/W5/orch-run-2lpx81iy/watches/orch-watch-3szjad6m/evidence/000000000003.json",
+  "screen_tail": "ary vs oracle -\n                                                                                                                 expect per-case PASS/FAIL\n     ▣  Sisyphus - Ultraworker · DeepSeek V4.1 Flash\n                                                                                                             [ ] work/linestat: cargo build --\n  ┃                                                                                                              offline (dev) + cargo test --\n  ┃                                                                                                              offline - capture exit codes to\n  ┃\n  ┃  Sisyphus - Ultraworker · DeepSeek V4.1 Flash DeepSeek                                                   /tmp/w5-verify\n  ╹▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀\n   ⬝⬝⬝⬝⬝⬝⬝⬝  esc interrupt                                            45.9K (5%) · $0.01  ctrl+p commands    • OpenCode 1.18.29",
+  "observed_at": 1789897687.7762418,
+  "issue_id": "7fc1076359b24268b7d231d83ae25ac2",
+  "correlation_key": "888617bf5b77e35e338595c8b0d7f409b7554ba93d634c89e5c0ef2715ed9d74",
+  "confidence": "unknown_ui"
+}

@@ -1,0 +1,17 @@
+{
+  "version": 1,
+  "seq": 4,
+  "job_id": "66840d4b642f481a848788974b0665ca",
+  "round_id": "ea8be0b903094bd7b0dc00f9de970778",
+  "event_fingerprint": "3dffe040ff3f2fa08b01c061ab7298d0dc6835c9dc0e7cff7f12c9162307d982",
+  "revision": 1,
+  "status": "handled",
+  "note": "review_due（changed UI）复核，seq 4（T2 轮）。读证据 evidence/000000000004.json 的 screen：\n作者在做「E1 干净检出」这一格 —— 用\n`tar --exclude=./target --exclude=./.git -cf - . | tar -C /tmp/w7-author/hermetic -xf -`\n把整仓拷到 /tmp 下，再对它跑自己的 manifest.py 生成\n/tmp/w7-author/manifest-E1-hermetic-before.txt（4720 个条目）。\ntar 报了两条 `权限不够` 的警告，路径是\n.orch/waves/W5/orch-run-2lpx81iy/deliveries-v1/verify-lj7adr2s/evidence/xcheck-fixtures/permission_denied*/noperm.txt\n—— 那是 W5 故意留下的「不可读夹具」，属预期现象，不是本轮的写入副作用。\n\n没有对话框、提问或原生审批画面；UI 变化来自长命令输出。判定：正常工作中，无需控制方输入。\n",
+  "recorded_at": 1789928273.7846344,
+  "action_evidence": null,
+  "resolution_evidence": {
+    "path": "/home/user/Projects/mini-git/.orch/waves/W7/orch-run-oxrolhzc/watches/orch-watch-oxft_00d/evidence/000000000004.json",
+    "sha256": "c9fbd39a7dc5644e35ea5b43e43b9239812e4b36553667527343a5e9403b9522"
+  },
+  "resolved_at": 1789928273.0
+}

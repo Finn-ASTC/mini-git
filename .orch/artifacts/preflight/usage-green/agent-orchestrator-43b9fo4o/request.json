@@ -1,0 +1,11 @@
+{
+  "schema_version": 1,
+  "job_id": "8bd3ec7b2784402886e70beaf5ed2a1b",
+  "round_id": "4cfc621f96a14f9ab0aa954908cda380",
+  "cwd": "/tmp",
+  "result_path": "/tmp/orch-usage-green.QOUGeb/agent-orchestrator-43b9fo4o/result.json",
+  "depth": 1,
+  "max_depth": 3,
+  "prepared_at": "2026-09-19T09:52:53.038321+00:00",
+  "task": "中文 task\nsecond lineNEL LS PS\n"
+}

@@ -1,0 +1,35 @@
+Scoped host observation: T1 author agent (omp). Observer: controller-codex.
+
+Observed at 2026-09-20T09:52:01Z (unix 1789897921).
+
+Transport resources (from resources.json): mode=insider, session=default,
+agent=orch-linestat-t1-omp, workspace=w1S, tab=w1S:t1, pane=w1S:p1, cwd=/tmp/w5-linestat.
+Native host: omp/18.2.6, session_id sess_0038-64d2-7748-a3a8-d0d122725142
+(/home/user/.omp/agent/sessions/-tmp-w5-linestat/...jsonl).
+
+foreground: clear. herdr pane read w1S:p1 shows the task finished - the agent's
+  recap line ("Built linestat 1.0.0 ... artifact SHA-256 75953480...44f5e, and
+  result.json is published") and an idle input prompt. No spinner, no running tool.
+background: clear. Real process table (outside the sandbox namespace) shows the omp
+  process 1034551 alive but idle; no cargo/rustc/test process anywhere. The author
+  itself reported "No build/test processes left running".
+  (A second, unrelated omp pid 3497482 running for ~14h predates this run and is
+  outside this observation scope.)
+native_children: clear. The session jsonl contains no subagent/task dispatch; only
+  one session directory exists under -tmp-w5-linestat. children=[].
+interaction: clear. No permission dialog, no product question, no queued work; the
+  target is input-ready. Watch orch-watch-y0msbg8u is at cursor 10 with 0 open
+  events.
+side_effects: clear (accounted). Observed writes within authorization:
+  - /tmp/w5-linestat (Cargo.toml, Cargo.lock, src/main.rs, tests/cli.rs, build logs)
+  - /home/user/.omp/agent/sessions/-tmp-w5-linestat (native session log), /home/user/.omp/logs
+  - the protocol result at .../rounds/agent-orchestrator-ggyoe35m/result.json
+  The author also noted it wrote transient gate logs into /tmp/w5-linestat/ and was
+  told to clean them up; the delivery snapshot scope was "." minus "target", so what
+  remained was captured. SPEC.md (caller-owned) sha256 20903f0786...98244 is unchanged
+  from the W5 baseline: the one path we explicitly forbade it to touch is intact.
+  Nothing unexplained found within the observed scope.
+
+Scope limit: process/session/file observations above are limited to this job's
+resources and its cwd plus the named omp storage paths. Filesystem areas not listed
+were not inspected; this is not an OS write audit.

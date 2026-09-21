@@ -1,0 +1,17 @@
+{
+  "version": 1,
+  "seq": 6,
+  "job_id": "66840d4b642f481a848788974b0665ca",
+  "round_id": "5248318530cb4b26b88628ac6da18637",
+  "event_fingerprint": "da2930f92a0170355c6233cfa29d9f97e1c64c3a3b64748b4dc0ba725b8697b1",
+  "revision": 1,
+  "status": "handled",
+  "note": "result 事件（status=success）复核。控制方已独立验收：\nvalidate --check-files exit 0；写作用域漂移仅 src/diff/myers.rs；release 制品哈希与声明一致；\nP24 最小复现 release 由 6s 超时变为 0.001s 且与 debug/git 逐字节一致；\n控制方自写 200 例语料 debug==release 200/200、release==git 200/200。\n证据见 .orch/waves/W7/evidence/t1-acceptance.txt。发布本身不证明后台写者停止，\n另按 host 收尾检查（agent get -> done）确认，故本条标记 handled。\n",
+  "recorded_at": 1789926585.3972595,
+  "action_evidence": null,
+  "resolution_evidence": {
+    "path": "/home/user/Projects/mini-git/.orch/waves/W7/evidence/t1-acceptance.txt",
+    "sha256": "2f1f2dfcd3f40a477b592fca75804e94e0a61642516d44dbfb55d425f84055d6"
+  },
+  "resolved_at": 1789926585.0
+}

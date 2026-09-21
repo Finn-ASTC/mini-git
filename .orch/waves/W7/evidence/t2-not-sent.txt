@@ -1,0 +1,21 @@
+T2 修订轮（round ea8be0b9 / job 66840d4b）第一次 begin 的输入从未送达 —— 证据
+时间：2026-09-21 02:14 (+08:00)
+
+事实：
+- 2026-09-21 01:54 控制方为 T2 建了 attempt a26fba9b048942738403f64408d15b6b（jobs.py begin 成功，
+  submission=uncertain），随后**故意没有调用任何传输**，因为当时验证者（omp, pane w1W:p1）
+  正在共享仓库上跑 G1/G2 门禁与负对照，本轮纪律要求同一时间只有一个写者动仓库。
+- 因此该 attempt 的 receipts 为空数组（未记录 target_active），result 文件从未出现
+  （rounds/agent-orchestrator-2np3fp12/result.json 不存在，见下）。
+- 作者 agent（opencode/OMO, pane w1V:p1, name orch-w7-author）在这段时间里一直是 idle：
+  它的屏幕停在 T1 轮的收尾表（12 asserts / side-effecting 8→0、dev 562 passed、
+  release 562 passed 14.5s、200 例语料三路逐字节一致），没有任何 T2 任务痕迹，
+  也没有出现对话框或提问。控制方自己的会话记录里也没有该轮的 agent prompt 调用。
+
+核对命令（控制方本机）：
+- ls .orch/waves/W7/orch-run-oxrolhzc/rounds/agent-orchestrator-2np3fp12/  → 无 result.json
+- herdr --session default agent list                                        → orch-w7-author: idle
+- watch evidence: watches/orch-watch-7136nm52/evidence/000000000008.json    → 屏幕为 T1 收尾表 + idle
+
+判定：这是「input 从未离开控制方」的明确证据，按协议登记为 rejected / not_sent（不是 uncertain）。
+随后由控制方重新 begin 一次新 attempt 并发送一次；本轮的 prompt 与 result 路径不变。

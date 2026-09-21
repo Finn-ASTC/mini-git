@@ -1,0 +1,55 @@
+   Compiling mini-git v0.0.0 (/tmp/v6b-mut/repo)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.33s
+     Running tests/verify_diff_paths.rs (/tmp/v6b-mut/target/debug/deps/verify_diff_paths-70cafb16d5b3cc0b)
+
+running 6 tests
+test engine_contentless_side_and_binary_line_follow_git ... FAILED
+test engine_filepair_lines_match_real_git_across_name_matrix ... FAILED
+test cli_non_utf8_path_is_a_known_v1_limitation ... ok
+test cli_name_matrix_matches_git_for_all_invocation_combos ... FAILED
+test cli_add_delete_binary_with_spaced_names_match_git ... FAILED
+test diff_git_header_stays_unpadded_for_quoted_spaced_names ... ok
+
+failures:
+
+---- engine_contentless_side_and_binary_line_follow_git stdout ----
+
+thread 'engine_contentless_side_and_binary_line_follow_git' (409) panicked at tests/verify_diff_paths.rs:176:5:
+engine empty vs spaced name: byte mismatch (git 69 bytes, mg 70 bytes)
+  first differing line #0:
+    git: --- a/empty\n
+    mg : --- a/empty\t\n
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+
+---- engine_filepair_lines_match_real_git_across_name_matrix stdout ----
+
+thread 'engine_filepair_lines_match_real_git_across_name_matrix' (410) panicked at tests/verify_diff_paths.rs:176:5:
+no space -U0: byte mismatch (git 70 bytes, mg 72 bytes)
+  first differing line #0:
+    git: --- a/plain_a.txt\n
+    mg : --- a/plain_a.txt\t\n
+
+---- cli_name_matrix_matches_git_for_all_invocation_combos stdout ----
+
+thread 'cli_name_matrix_matches_git_for_all_invocation_combos' (406) panicked at tests/verify_diff_paths.rs:243:9:
+assertion `left == right` failed: no space: worktree vs index -U3/mg: name "a/plain_a.txt" padded=true
+  left: true
+ right: false
+
+---- cli_add_delete_binary_with_spaced_names_match_git stdout ----
+
+thread 'cli_add_delete_binary_with_spaced_names_match_git' (405) panicked at tests/verify_diff_paths.rs:243:9:
+assertion `left == right` failed: staged new spaced file/mg: name "/dev/null" padded=true
+  left: true
+ right: false
+
+
+failures:
+    cli_add_delete_binary_with_spaced_names_match_git
+    cli_name_matrix_matches_git_for_all_invocation_combos
+    engine_contentless_side_and_binary_line_follow_git
+    engine_filepair_lines_match_real_git_across_name_matrix
+
+test result: FAILED. 2 passed; 4 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.01s
+
+error: test failed, to rerun pass `--test verify_diff_paths`

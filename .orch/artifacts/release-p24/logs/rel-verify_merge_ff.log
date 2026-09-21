@@ -1,0 +1,102 @@
+
+running 13 tests
+test fast_forward_adds_multilevel_nested_path_matches_git ... FAILED
+test fast_forward_with_subdirectory_matches_git ... FAILED
+test fast_forward_preserves_symlink_and_executable_bit ... FAILED
+test fast_forward_deletes_file_in_subdirectory_matches_git ... FAILED
+test fast_forward_preserves_unrelated_local_change_matches_git ... FAILED
+test fast_forward_preserves_unrelated_staged_change_matches_git ... FAILED
+test fast_forward_refuses_local_change_on_updated_path_matches_git ... FAILED
+test untracked_file_blocking_incoming_path_is_refused_matches_git ... FAILED
+test conflict_in_subdirectory_still_matches_git ... FAILED
+test conflicts_with_unrelated_local_change_match_git ... FAILED
+test non_fast_forward_preserves_unrelated_local_change_matches_git ... FAILED
+test non_fast_forward_refuses_local_change_on_updated_path_matches_git ... FAILED
+test non_fast_forward_refuses_staged_change_like_git ... FAILED
+
+failures:
+
+---- fast_forward_adds_multilevel_nested_path_matches_git stdout ----
+
+thread 'fast_forward_adds_multilevel_nested_path_matches_git' (3119130) panicked at tests/verify_merge_ff.rs:60:5:
+mg binary not built; run `cargo test` so the bin target is available
+
+---- fast_forward_with_subdirectory_matches_git stdout ----
+
+thread 'fast_forward_with_subdirectory_matches_git' (3119138) panicked at tests/verify_merge_ff.rs:60:5:
+mg binary not built; run `cargo test` so the bin target is available
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+
+---- fast_forward_preserves_symlink_and_executable_bit stdout ----
+
+thread 'fast_forward_preserves_symlink_and_executable_bit' (3119132) panicked at tests/verify_merge_ff.rs:60:5:
+mg binary not built; run `cargo test` so the bin target is available
+
+---- fast_forward_deletes_file_in_subdirectory_matches_git stdout ----
+
+thread 'fast_forward_deletes_file_in_subdirectory_matches_git' (3119131) panicked at tests/verify_merge_ff.rs:60:5:
+mg binary not built; run `cargo test` so the bin target is available
+
+---- fast_forward_preserves_unrelated_local_change_matches_git stdout ----
+
+thread 'fast_forward_preserves_unrelated_local_change_matches_git' (3119133) panicked at tests/verify_merge_ff.rs:60:5:
+mg binary not built; run `cargo test` so the bin target is available
+
+---- fast_forward_preserves_unrelated_staged_change_matches_git stdout ----
+
+thread 'fast_forward_preserves_unrelated_staged_change_matches_git' (3119134) panicked at tests/verify_merge_ff.rs:60:5:
+mg binary not built; run `cargo test` so the bin target is available
+
+---- fast_forward_refuses_local_change_on_updated_path_matches_git stdout ----
+
+thread 'fast_forward_refuses_local_change_on_updated_path_matches_git' (3119135) panicked at tests/verify_merge_ff.rs:60:5:
+mg binary not built; run `cargo test` so the bin target is available
+
+---- untracked_file_blocking_incoming_path_is_refused_matches_git stdout ----
+
+thread 'untracked_file_blocking_incoming_path_is_refused_matches_git' (3119147) panicked at tests/verify_merge_ff.rs:60:5:
+mg binary not built; run `cargo test` so the bin target is available
+
+---- conflict_in_subdirectory_still_matches_git stdout ----
+
+thread 'conflict_in_subdirectory_still_matches_git' (3119128) panicked at tests/verify_merge_ff.rs:60:5:
+mg binary not built; run `cargo test` so the bin target is available
+
+---- conflicts_with_unrelated_local_change_match_git stdout ----
+
+thread 'conflicts_with_unrelated_local_change_match_git' (3119129) panicked at tests/verify_merge_ff.rs:60:5:
+mg binary not built; run `cargo test` so the bin target is available
+
+---- non_fast_forward_preserves_unrelated_local_change_matches_git stdout ----
+
+thread 'non_fast_forward_preserves_unrelated_local_change_matches_git' (3119141) panicked at tests/verify_merge_ff.rs:60:5:
+mg binary not built; run `cargo test` so the bin target is available
+
+---- non_fast_forward_refuses_local_change_on_updated_path_matches_git stdout ----
+
+thread 'non_fast_forward_refuses_local_change_on_updated_path_matches_git' (3119142) panicked at tests/verify_merge_ff.rs:60:5:
+mg binary not built; run `cargo test` so the bin target is available
+
+---- non_fast_forward_refuses_staged_change_like_git stdout ----
+
+thread 'non_fast_forward_refuses_staged_change_like_git' (3119144) panicked at tests/verify_merge_ff.rs:60:5:
+mg binary not built; run `cargo test` so the bin target is available
+
+
+failures:
+    conflict_in_subdirectory_still_matches_git
+    conflicts_with_unrelated_local_change_match_git
+    fast_forward_adds_multilevel_nested_path_matches_git
+    fast_forward_deletes_file_in_subdirectory_matches_git
+    fast_forward_preserves_symlink_and_executable_bit
+    fast_forward_preserves_unrelated_local_change_matches_git
+    fast_forward_preserves_unrelated_staged_change_matches_git
+    fast_forward_refuses_local_change_on_updated_path_matches_git
+    fast_forward_with_subdirectory_matches_git
+    non_fast_forward_preserves_unrelated_local_change_matches_git
+    non_fast_forward_refuses_local_change_on_updated_path_matches_git
+    non_fast_forward_refuses_staged_change_like_git
+    untracked_file_blocking_incoming_path_is_refused_matches_git
+
+test result: FAILED. 0 passed; 13 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.04s
+

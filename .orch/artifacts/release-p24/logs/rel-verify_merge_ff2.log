@@ -1,0 +1,95 @@
+
+running 12 tests
+test mg_native_d1_repro_is_clean_under_real_git ... FAILED
+test selfcheck_harness_runs_the_real_mg_binary_and_real_git ... FAILED
+test fast_forward_adding_multilevel_dirs_and_modes_matches_git ... FAILED
+test fast_forward_refuses_local_changes_it_would_overwrite ... FAILED
+test fast_forward_deleting_last_file_prunes_empty_dir_matches_git ... FAILED
+test fast_forward_with_subdirectory_matches_git ... FAILED
+test non_fast_forward_conflict_in_subdir_matches_git ... FAILED
+test non_fast_forward_clean_merge_with_subdirs_matches_git ... FAILED
+test pull_when_local_is_ahead_changes_nothing_like_git ... FAILED
+test pull_fast_forward_with_subdir_matches_git ... FAILED
+test pull_divergent_conflict_matches_git ... FAILED
+test pull_divergent_branches_merges_like_git ... FAILED
+
+failures:
+
+---- mg_native_d1_repro_is_clean_under_real_git stdout ----
+
+thread 'mg_native_d1_repro_is_clean_under_real_git' (3119373) panicked at tests/verify_merge_ff2.rs:66:14:
+CARGO_BIN_EXE_mg is not set/is not a file; `cargo test` must build the bin target
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+
+---- selfcheck_harness_runs_the_real_mg_binary_and_real_git stdout ----
+
+thread 'selfcheck_harness_runs_the_real_mg_binary_and_real_git' (3119383) panicked at tests/verify_merge_ff2.rs:66:14:
+CARGO_BIN_EXE_mg is not set/is not a file; `cargo test` must build the bin target
+
+---- fast_forward_adding_multilevel_dirs_and_modes_matches_git stdout ----
+
+thread 'fast_forward_adding_multilevel_dirs_and_modes_matches_git' (3119369) panicked at tests/verify_merge_ff2.rs:66:14:
+CARGO_BIN_EXE_mg is not set/is not a file; `cargo test` must build the bin target
+
+---- fast_forward_refuses_local_changes_it_would_overwrite stdout ----
+
+thread 'fast_forward_refuses_local_changes_it_would_overwrite' (3119371) panicked at tests/verify_merge_ff2.rs:66:14:
+CARGO_BIN_EXE_mg is not set/is not a file; `cargo test` must build the bin target
+
+---- fast_forward_deleting_last_file_prunes_empty_dir_matches_git stdout ----
+
+thread 'fast_forward_deleting_last_file_prunes_empty_dir_matches_git' (3119370) panicked at tests/verify_merge_ff2.rs:66:14:
+CARGO_BIN_EXE_mg is not set/is not a file; `cargo test` must build the bin target
+
+---- fast_forward_with_subdirectory_matches_git stdout ----
+
+thread 'fast_forward_with_subdirectory_matches_git' (3119372) panicked at tests/verify_merge_ff2.rs:66:14:
+CARGO_BIN_EXE_mg is not set/is not a file; `cargo test` must build the bin target
+
+---- non_fast_forward_conflict_in_subdir_matches_git stdout ----
+
+thread 'non_fast_forward_conflict_in_subdir_matches_git' (3119375) panicked at tests/verify_merge_ff2.rs:66:14:
+CARGO_BIN_EXE_mg is not set/is not a file; `cargo test` must build the bin target
+
+---- non_fast_forward_clean_merge_with_subdirs_matches_git stdout ----
+
+thread 'non_fast_forward_clean_merge_with_subdirs_matches_git' (3119374) panicked at tests/verify_merge_ff2.rs:66:14:
+CARGO_BIN_EXE_mg is not set/is not a file; `cargo test` must build the bin target
+
+---- pull_when_local_is_ahead_changes_nothing_like_git stdout ----
+
+thread 'pull_when_local_is_ahead_changes_nothing_like_git' (3119380) panicked at tests/verify_merge_ff2.rs:66:14:
+CARGO_BIN_EXE_mg is not set/is not a file; `cargo test` must build the bin target
+
+---- pull_fast_forward_with_subdir_matches_git stdout ----
+
+thread 'pull_fast_forward_with_subdir_matches_git' (3119379) panicked at tests/verify_merge_ff2.rs:66:14:
+CARGO_BIN_EXE_mg is not set/is not a file; `cargo test` must build the bin target
+
+---- pull_divergent_conflict_matches_git stdout ----
+
+thread 'pull_divergent_conflict_matches_git' (3119378) panicked at tests/verify_merge_ff2.rs:66:14:
+CARGO_BIN_EXE_mg is not set/is not a file; `cargo test` must build the bin target
+
+---- pull_divergent_branches_merges_like_git stdout ----
+
+thread 'pull_divergent_branches_merges_like_git' (3119377) panicked at tests/verify_merge_ff2.rs:66:14:
+CARGO_BIN_EXE_mg is not set/is not a file; `cargo test` must build the bin target
+
+
+failures:
+    fast_forward_adding_multilevel_dirs_and_modes_matches_git
+    fast_forward_deleting_last_file_prunes_empty_dir_matches_git
+    fast_forward_refuses_local_changes_it_would_overwrite
+    fast_forward_with_subdirectory_matches_git
+    mg_native_d1_repro_is_clean_under_real_git
+    non_fast_forward_clean_merge_with_subdirs_matches_git
+    non_fast_forward_conflict_in_subdir_matches_git
+    pull_divergent_branches_merges_like_git
+    pull_divergent_conflict_matches_git
+    pull_fast_forward_with_subdir_matches_git
+    pull_when_local_is_ahead_changes_nothing_like_git
+    selfcheck_harness_runs_the_real_mg_binary_and_real_git
+
+test result: FAILED. 0 passed; 12 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.07s
+

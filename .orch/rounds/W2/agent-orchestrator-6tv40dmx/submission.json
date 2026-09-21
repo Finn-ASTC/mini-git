@@ -1,0 +1,23 @@
+{
+  "active_request": "/home/user/Projects/mini-git/.orch/rounds/W2/agent-orchestrator-6tv40dmx/request.json",
+  "job_id": "89656b669410483f883db41ecfd5de06",
+  "round_id": "edbb05d45b92401cb63f07b3a3230b02",
+  "transport": "insider (default session)",
+  "session": "default",
+  "agent": "w2-v6-codex",
+  "pane": "w11:p1",
+  "workspace": "w11",
+  "cwd": "/home/user/Projects/mini-git",
+  "kind": "codex",
+  "task": "V6 独立验证 T6（diff 引擎 + mg diff）",
+  "submitted_at": "2026-09-19T20:30:05+08:00",
+  "acceptance": "accepted",
+  "submission_evidence": "herdr agent prompt -> agent_prompted",
+  "deadline": null,
+  "monitor_owner": "controller (default session, pane wJ:p1)",
+  "last_checked_at": "2026-09-19T20:30:05+08:00",
+  "next_check_at": null,
+  "pending_question": null,
+  "resources_file": "/home/user/Projects/mini-git/.orch/rounds/W2/agent-orchestrator-6tv40dmx/resources.json",
+  "result_path": "/home/user/Projects/mini-git/.orch/rounds/W2/agent-orchestrator-6tv40dmx/result.json"
+}

@@ -1,0 +1,14 @@
+# T1（作者 opencode）提交已被接受的证据
+
+2026-09-21T01:41Z 前后，controller 对 pane w1V:p1 执行：
+  herdr --session default agent prompt orch-w7-author "<prompt.txt 全文，作为一个参数>"
+CLI 返回 {"type":"agent_prompted", ...}（CLI 成功本身不是接受证据）。
+
+随后 12 秒时的目标状态（herdr agent get orch-w7-author 原文摘要）：
+  "agent_status": "working",
+  "agent_session": {"agent":"opencode","source":"herdr:opencode","value":"ses_0002"},
+  "terminal_title": "OC | 修复 P24：myers.rs debug_assert 副作用",
+  "revision": 4
+
+判定：目标确实接下了这一轮并开始工作 → receipt status=accepted / kind=target_active。
+此时该轮 result.json 尚不存在（已核对轮次目录）。

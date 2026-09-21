@@ -1,0 +1,34 @@
+Independent acceptance of V1 (opencode verifier). Reviewer: controller-codex.
+
+Assignment kind: delivery (V1 produced verification artifacts, not just an answer).
+
+1. Protocol result: result.json sha256 3b35b7fd...50e935, status=success,
+   error/blocked_reason null; protocol.py validate --check-files passed; every
+   declared file_created/file_generated path exists on disk.
+
+2. Chain of custody for the verification artifacts:
+   delivery.py capture --request <V1 request> --include REPORT.md --include oracle
+     --include harness --include evidence --exclude work --exclude .omo
+   -> sealed snapshot .../deliveries-v1/snapshot-e2_cmplo/snapshot.json,
+      result_sha256 3b35b7fd...50e935 (binds this exact published result),
+      request_sha256 1dcabdbc...2fea18d, 20+ captured entries with per-file hashes.
+
+3. Controller gate on that snapshot (plans/v1-artifact-plan.json), passed: true:
+   - pinned oracle/linestat_oracle.py sha256 90d2a744...9389ae9
+   - pinned harness/differential.py  sha256 cae5eada...86381d8d
+   - asserted the release artifact under test is sha256 75953480...8a4f5e
+   - re-ran V1's harness against that artifact -> 36/36 cases, 0 failed
+   The gate therefore does not merely re-read V1's report; it re-executes V1's own
+   oracle against a binary built by the controller.
+
+4. Substance review: V1 kept PRODUCT VERDICT (PASS) separate from PROTOCOL STATUS
+   (success); recorded 4 SPEC-underdetermined behaviours as unscored instead of
+   silently passing or failing them; listed 7 not-covered areas with reasons; and
+   independently identified that the controller's own delivery.py verify run created
+   a verifications/ directory inside the sealed snapshot after the seal, correctly
+   bounding it as an external actor that did not alter the verified bytes.
+
+5. No native children: opencode session ses_0004 has no rows
+   with parent_id set to it.
+
+Verdict: accepted.

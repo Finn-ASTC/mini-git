@@ -1,0 +1,38 @@
+{
+  "objective": "独立验证 P24（release profile 下 mg diff / mg merge 挂起或结果错误）的修复是否真的成立：release 行为等于 debug 行为、等于真实 git，且 release 门禁确实跑过。你的结论只采信你自己构建的制品与你自己的 oracle。",
+  "scope": "你**只读**仓库 /home/user/Projects/mini-git，不要修改里面的任何文件（包括不要让 cargo 写到仓库自带的 target/）。你拥有 /tmp/w7-verify/** 作为自己的源码副本、独立构建目录（CARGO_TARGET_DIR）与证据目录；所有构建/测试/夹具都放这里。",
+  "acceptance": [
+    "1) 独立重建：把封存快照 /home/user/Projects/mini-git/.orch/waves/W7/snapshots/author-delivery/ 复制到 /tmp/w7-verify/，用独立的 CARGO_TARGET_DIR 重新 cargo build --release --offline，报告制品绝对路径与 SHA-256，并与作者在 result 里声明的 SHA-256 比对（一致或不一致都要报告）。封存快照本身有 manifest.json 可核对未被改动。",
+    "2) 自写 oracle：写你自己的 200 例语料生成器与对拍脚手架（可以读 .orch/artifacts/release-p24/scripts/ 作参考，但要在报告里说明与它的差别，例如 PRNG、语料字母表、超时策略）。在你自己构建的 release 制品上跑，报告三个数字：release 挂起数、release 与 debug 输出不同数、release 与真实 git 不同数。目标都是 0。",
+    "3) 负对照（**必做，缺此项本次验证无效**）：把修复前的 myers.rs（/home/user/Projects/mini-git/.orch/waves/W7/evidence/pre-fix-src/diff/myers.rs，sha256 记在同目录上级的 pre-fix-myers.sha256）放进你复制出来的源码里，构建一份「未修复版」release 制品，用同一套脚手架跑，必须复现出「有挂起、有与 git 不同的用例」。把复现到的具体 case 号写进报告。如果你的脚手架在修复前后给出相同结论，说明它没有分辨力，必须显式声明并说明你如何修正了它。",
+    "4) 复跑门禁：cargo test --offline（dev）与 cargo test --offline --release，各自的实际命令、退出码、总计（passed/failed/ignored）与 elapsed。release 那条必须带超时保护（例如 timeout -k），并说明你是否观察到挂起。注意仓库自带的 verify_http 相关测试需要绑定 127.0.0.1:0；若当前环境禁止本地绑定，明确报成环境受限，不要当成产品缺陷。",
+    "5) 最小复现：在你自己构建的 release 制品上跑 P24 记录的那条 CLI 复现步骤（init / add / commit / 改写 f.txt / diff），报告 stdout、退出码与耗时，并与真实 git diff 做逐字节比较。",
+    "6) merge 路径：mg merge 的三方路径（merge/three_way.rs 调用 myers）也走同一处修复 —— 用你自己的用例覆盖，报告 release 下不挂且结果与真实 git 一致；发现仍坏就按 error 或 blocked 回传。",
+    "7) 边界补测：至少覆盖 (a) 能触发原挂死的具体用例，(b) 空文件 / 单行 / 全空行 / 无结尾换行 / 内容无变更，(c) 大文件（几千行）下 release 的行为与耗时。",
+    "8) 逐条结论：对每个门禁给「通过 / 失败 / 未覆盖」三态之一；失败必须给最小复现与原始输出。不允许只复述作者的结论或作者的测试。"
+  ],
+  "inputs": [
+    "/home/user/Projects/mini-git/.orch/waves/W7/snapshots/author-delivery/（封存源码快照 + manifest.json，只读）",
+    "/home/user/Projects/mini-git/.orch/waves/W7/evidence/pre-fix-src/（修复前 src/ 快照，负对照用；只读）",
+    "/home/user/Projects/mini-git/.orch/waves/W7/evidence/pre-fix-myers.sha256",
+    "/home/user/Projects/mini-git/.orch/waves/W7/acceptance-plan.json（本轮交付配置与门禁清单）",
+    "/home/user/Projects/mini-git/.orch/artifacts/release-p24/（P24 现场：失败日志、最小复现输入输出、语料生成器与对拍脚本）",
+    "/home/user/Projects/mini-git/.orch/SKILL-FINDINGS.md 的 P24 段"
+  ],
+  "known_facts": [
+    "本仓没有可用的 git：.git 是空的只读目录，别指望用 git 记录基线。",
+    "缺陷本质：debug_assert! 在 release 下整条被编译掉，于是 group_slide_up / group_previous / group_next 这些带 &mut 的调用在 release 里从未执行；其中两处会退化成空循环。",
+    "修复只允许改 src/diff/myers.rs；快照里 Cargo.toml / tests/** 不应有改动，manifest.json 可以核对。",
+    "环境：cargo/rustc 1.97.1，依赖已在本地，全程 --offline，不允许联网。",
+    "你不是唯一读者：仓库里另有一个作者 agent 刚改过 src/diff/myers.rs。你只读它；要复现历史状态用 evidence/pre-fix-src/ 的快照，不要改仓库。",
+    "herdr default 会话里还有 controller 的 pane（wJ:p1），不要操作它，也不要启动子 agent。"
+  ],
+  "constraints": [
+    "不要委派子 agent：本轮由你自己完成。",
+    "不要修改仓库内任何文件（包括 tests/、Cargo.toml、target/）；所有产物放在 /tmp/w7-verify/ 下。",
+    "不允许把作者的 result.json 当成证据；只把它当作待核对的主张（claim）。",
+    "不要把「我自己搭的脚手架通过了」当成结论；必须给出负对照证明它有分辨力。",
+    "发现修复不成立时回传 error 或 blocked，不要自行改源码修复。",
+    "只提交一次最终 result。"
+  ]
+}

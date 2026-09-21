@@ -1,0 +1,37 @@
+
+running 32 tests
+test engine_binary_is_conflict_with_ours ... ok
+test cli_unrelated_histories_are_refused_loudly ... ok
+test engine_identity_shortcuts_match_git ... ok
+test cli_conflictstyle_zdiff3_characterization ... ok
+test cli_unknown_rev_and_unknown_oid_fail_without_panic ... ok
+test cli_conflict_modified_then_deleted_by_theirs ... ok
+test engine_none_base_two_added_files ... ok
+test cli_already_up_to_date_when_target_is_ancestor ... ok
+test truth_source_selfcheck_diff3_label_really_appears ... ok
+test truth_source_selfcheck_merge_file_exit_code_is_conflict_count ... ok
+test cli_dirty_worktree_is_refused_with_zero_changes ... ok
+test cli_fast_forward_matches_git ... ok
+test cli_clean_merge_same_file_different_regions ... ok
+test engine_case_table_matches_git_merge_file ... ok
+test truth_source_selfcheck_porcelain_is_not_globally_sorted ... ok
+test cli_untracked_file_that_theirs_adds_is_refused ... ok
+test cli_clean_merge_nested_dirs_and_new_files ... ok
+test cli_no_ff_creates_two_parent_merge_commit_like_git ... ok
+test cli_clean_merge_ours_delete_theirs_untouched ... ok
+test cli_clean_merge_disjoint_files_and_tree_matches_git ... ok
+test cli_clean_both_sides_delete_same_file ... ok
+test cli_conflict_cjk_bytes_match_git ... ok
+test cli_conflict_add_add_same_path ... ok
+test cli_conflict_no_trailing_newline_bytes_match_git ... ok
+test cli_conflict_delete_modify_both_directions ... ok
+test cli_conflict_diff3_style_matches_git ... ok
+test cli_conflict_mixed_clean_and_conflicting_paths ... ok
+test cli_conflict_crlf_bytes_match_git ... ok
+test cli_conflict_same_line ... ok
+test cli_conflict_binary_keeps_ours_like_git ... ok
+test engine_indented_corpus_characterization ... ok
+test engine_random_corpus_matches_git ... ok
+
+test result: ok. 32 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.40s
+

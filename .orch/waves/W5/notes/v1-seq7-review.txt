@@ -1,0 +1,12 @@
+V1 watch seq 7, kind=state_changed, message "idle". Informational: V1's pane stopped
+changing, which matches the published success result and the "done" transition
+already recorded as seq 6.
+
+Reviewed during W5 close-out after the job was accepted and closed as completed:
+V1's output had already been sealed (snapshot-e2_cmplo, result_sha256 3b35b7fd...50e935)
+and its own oracle re-executed by the controller against an independently built
+release artifact (36/36). This event carries no dialog, no error and no pending
+question, and it requires no action from the target - the round was already over.
+The subsequent and final interaction was the planned /exit during cleanup.
+
+Disposition: handled, informational only. No input was sent for this event.

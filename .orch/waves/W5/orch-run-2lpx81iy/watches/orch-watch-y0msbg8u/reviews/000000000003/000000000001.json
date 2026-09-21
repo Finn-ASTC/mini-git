@@ -1,0 +1,14 @@
+{
+  "version": 1,
+  "seq": 3,
+  "job_id": "9746730210dc4491b685bbc446088546",
+  "round_id": "1f695772a77b44ab8bcfb878a34e5add",
+  "event_fingerprint": "1c9394eb3461f57ef2c2a880b343e577ea40b420db3018d88f5f440dfdbad0f8",
+  "revision": 1,
+  "status": "handled",
+  "note": "seq 3 state_changed(idle)：这是**提交前**的预期状态 —— 本轮 prompt 尚未发送，\nomp 已 interactive_ready 且屏幕是空白输入行。\n活体核对：pane read 显示的是 omp 的就绪欢迎界面，没有对话框、没有待批权限。\n这个「刚复核过的、非空的、无 hook 的输入提示」只授权**这一条**待发送的输入，\n不代表可以对目标开始一段长时间独立工作。\n",
+  "recorded_at": 1789897357.2086186,
+  "action_evidence": null,
+  "resolution_evidence": null,
+  "resolved_at": null
+}

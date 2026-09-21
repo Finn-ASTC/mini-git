@@ -1,0 +1,23 @@
+{
+  "active_request": "/home/user/Projects/mini-git/.orch/rounds/W3/agent-orchestrator-5o3ibye5/request.json",
+  "job_id": "8e1daf6e3951421da7ba8c6f40676278",
+  "round_id": "a686fce2644246b5ae046a1f10920df7",
+  "transport": "insider (default session)",
+  "session": "default",
+  "agent": "w3-t9-codex",
+  "pane": "w15:p1",
+  "workspace": "w15",
+  "cwd": "/home/user/Projects/mini-git",
+  "kind": "codex",
+  "task": "T9 pack 读取（idx v2 + delta）",
+  "submitted_at": "2026-09-19T20:47:30+08:00",
+  "acceptance": "accepted",
+  "submission_evidence": "herdr agent prompt -> agent_prompted",
+  "deadline": null,
+  "monitor_owner": "controller (default session, pane wJ:p1)",
+  "last_checked_at": "2026-09-19T20:47:30+08:00",
+  "next_check_at": null,
+  "pending_question": null,
+  "resources_file": "/home/user/Projects/mini-git/.orch/rounds/W3/agent-orchestrator-5o3ibye5/resources.json",
+  "result_path": "/home/user/Projects/mini-git/.orch/rounds/W3/agent-orchestrator-5o3ibye5/result.json"
+}

@@ -1,0 +1,15 @@
+{
+  "sample_id": "native-a-1",
+  "source": "host-native-events",
+  "measurement": "delta",
+  "attempt_id": "initial-1",
+  "purpose": "task",
+  "provider": "provider-a",
+  "model": "model-a",
+  "input_tokens": 1000,
+  "cached_input_tokens": 600,
+  "output_tokens": 120,
+  "schema_version": 1,
+  "job_id": "8e3b0ff303db4e0da64d3650fe4fe238",
+  "round_id": "0a1e789f67474373ac96af3a03af159b"
+}

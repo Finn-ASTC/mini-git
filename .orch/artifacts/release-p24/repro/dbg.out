@@ -1,0 +1,22 @@
+diff --git a/f.txt b/f.txt
+index 3afb6c1..d68e513 100644
+--- a/f.txt
++++ b/f.txt
+@@ -1,16 +1,6 @@
+-b
+-
+-
+-
+-a
+   c
+-a
+ a
+   c
+-
+-d
+-b
+-e
++  c
+ d
+-b
+ a

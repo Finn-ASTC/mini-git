@@ -1,0 +1,10 @@
+{
+  "seq": 2,
+  "job_id": "66840d4b642f481a848788974b0665ca",
+  "round_id": "5248318530cb4b26b88628ac6da18637",
+  "kind": "state_changed",
+  "message": "working",
+  "evidence_path": "/home/user/Projects/mini-git/.orch/waves/W7/orch-run-oxrolhzc/watches/orch-watch-7136nm52/evidence/000000000002.json",
+  "screen_tail": "        │ oracle deepseek-flash             │\n     + Thought: 225ms                                                                               │ prometheus deepseek-flash         │\n                                                                                                    │ quick deepseek-flash              │\n     Now let me read the acceptance plan, the P24 findings, and the artifact scripts/repro in       │                                   │\n     parallel.                                                                                      └───────────────────────────────────┘\n\n     ▣  Sisyphus - Ultraworker · DeepSeek V4.1 Flash\n\n  ┃\n  ┃\n  ┃\n  ┃  Sisyphus - Ultraworker · DeepSeek V4.1 Flash DeepSeek                                          ~/Projects/mini-git\n  ╹▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀\n   ⬝⬝⬝⬝⬝⬝⬝⬝  esc interrupt                                   30.8K (3%) · $0.00  ctrl+p commands    • OpenCode 1.18.29",
+  "observed_at": 1789926101.0646348
+}

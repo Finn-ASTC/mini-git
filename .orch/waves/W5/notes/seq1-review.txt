@@ -1,0 +1,6 @@
+seq 1 observation_error：这是 controller 自己在沙箱内跑 `watch.py poll` 造成的伪影 ——
+沙箱不允许访问 herdr socket（Operation not permitted），不是目标或会话的故障。
+活体核对：改用托管后台句柄启动观察器后，seq 2 已是 observation_recovered，
+observer.json 显示实例在运行（pid 1036135，expires_at 1789899131），
+supervision checkpoint 的 last_success_age ≈ 14 秒。
+结论：handled，不需要对目标做任何操作。

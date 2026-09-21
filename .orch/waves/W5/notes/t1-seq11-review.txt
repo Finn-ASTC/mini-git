@@ -1,0 +1,14 @@
+T1 watch seq 11, kind=review_due, confidence=unknown_ui (low-confidence class).
+Observed 17:49:26, i.e. while the omp author was already finished and sitting at its
+idle prompt after publishing success. The retained screen tail shows the idle omp
+footer ("w5-linestat $0.03 ... Build and test dev"), not a dialog: no permission
+prompt, no product question, no queued work.
+
+Reviewed retrospectively during W5 close-out: between this observation and the end
+of the wave the author received no input from me at all - the only later interaction
+was the planned /exit after both jobs were accepted and closed as completed. Had a
+dialog been pending, the author could not have produced the clean snapshot handoff,
+V1 could not have verified it, and accept/close would not have reached
+ready_to_complete=true.
+
+Disposition: handled, informational only. No input was sent for this event.

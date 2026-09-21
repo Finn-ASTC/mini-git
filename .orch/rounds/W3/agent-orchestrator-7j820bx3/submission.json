@@ -1,0 +1,23 @@
+{
+  "active_request": "/home/user/Projects/mini-git/.orch/rounds/W3/agent-orchestrator-7j820bx3/request.json",
+  "job_id": "5801773a052a45f992471ec102a17065",
+  "round_id": "f3d574ede985474fb0d8d9c8b65e6f77",
+  "transport": "insider (default session)",
+  "session": "default",
+  "agent": "w3-t12-hermes",
+  "pane": "w18:p1",
+  "workspace": "w18",
+  "cwd": "/home/user/Projects/mini-git",
+  "kind": "hermes",
+  "task": "T12 add/rm/status/commit/log/tag",
+  "submitted_at": "2026-09-19T20:47:40+08:00",
+  "acceptance": "accepted",
+  "submission_evidence": "herdr agent prompt -> agent_prompted",
+  "deadline": null,
+  "monitor_owner": "controller (default session, pane wJ:p1)",
+  "last_checked_at": "2026-09-19T21:05:30+08:00",
+  "next_check_at": null,
+  "pending_question": null,
+  "resources_file": "/home/user/Projects/mini-git/.orch/rounds/W3/agent-orchestrator-7j820bx3/resources.json",
+  "result_path": "/home/user/Projects/mini-git/.orch/rounds/W3/agent-orchestrator-7j820bx3/result.json"
+}

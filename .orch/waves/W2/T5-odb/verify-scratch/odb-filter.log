@@ -1,0 +1,61 @@
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.02s
+     Running unittests src/lib.rs (target/debug/deps/minigit-c104696a743ccc50)
+
+running 6 tests
+test odb::loose::tests::odb_read_reports_corruption_not_not_found ... ok
+test odb::loose::tests::corrupt_objects_are_rejected_and_missing_ones_are_none ... ok
+test odb::loose::tests::iter_loose_matches_git_batch_all_objects ... ok
+test odb::loose::tests::reads_every_object_kind_real_git_wrote ... ok
+test odb::loose::tests::writing_the_same_object_twice_changes_nothing ... ok
+test odb::loose::tests::objects_mg_wrote_are_readable_by_real_git ... ok
+
+test result: ok. 6 passed; 0 failed; 0 ignored; 0 measured; 138 filtered out; finished in 0.02s
+
+     Running unittests src/main.rs (target/debug/deps/mg-d18f0e67fce7ef67)
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+     Running tests/interop/main.rs (target/debug/deps/interop-c5b13a0bb0e7ca9c)
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 7 filtered out; finished in 0.00s
+
+     Running tests/verify/main.rs (target/debug/deps/verify-2fe6099ca561aa6c)
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 3 filtered out; finished in 0.00s
+
+     Running tests/verify_index.rs (target/debug/deps/verify_index-7dd5920b43e5be81)
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 11 filtered out; finished in 0.00s
+
+     Running tests/verify_odb.rs (target/debug/deps/verify_odb-d46636cd29f27db3)
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 6 filtered out; finished in 0.00s
+
+     Running tests/verify_pktline.rs (target/debug/deps/verify_pktline-10124e1f25c2efd3)
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 8 filtered out; finished in 0.00s
+
+     Running tests/verify_refs.rs (target/debug/deps/verify_refs-1cd69fe5f28083ab)
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 9 filtered out; finished in 0.00s
+
+     Running tests/verify_worktree.rs (target/debug/deps/verify_worktree-5f29378ceb796820)
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 25 filtered out; finished in 0.00s
+

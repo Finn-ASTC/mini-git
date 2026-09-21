@@ -1,0 +1,13 @@
+{
+  "seq": 6,
+  "job_id": "9746730210dc4491b685bbc446088546",
+  "round_id": "1f695772a77b44ab8bcfb878a34e5add",
+  "kind": "review_due",
+  "message": "Changed UI needs review; hook/keyword detection may miss a dialog.",
+  "evidence_path": "/home/user/Projects/mini-git/.orch/waves/W5/orch-run-2lpx81iy/watches/orch-watch-y0msbg8u/evidence/000000000006.json",
+  "screen_tail": "                                             │\n│ 11. 无参数（`{BIN}`）  exit 2，out 空，err 同上                                                                                                   │\n│                                                                                                                                                   │\n╰───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯\n\n TODO\n  ├─ I. Implement · 0/3\n  │  ├─  Write Cargo.toml crate manifest\n  │  ├─  Implement src/main.rs per SPEC\n  │  └─  Write integration tests in tests/\n  ├─ II. Verify · 0/5\n  └─────\n\n  󱊷 running javascript\n\n╭── ⠏ 1m  3 DeepSeek V4.1 Flash   w5-linestat  $0.02 ↓ ───8%───────────────────────────────󰁨─────1M─  58K   96.60%  Build and test dev ──╮\n╰─                                                                                                                                                 ─╯",
+  "observed_at": 1789897496.0279286,
+  "issue_id": "5fb8022bd6d14c2998fd6a079226075d",
+  "correlation_key": "cbefd7e267e4fc7f52cf8cacb701ab2276cd204411a7355553b40267c0b7e3fe",
+  "confidence": "unknown_ui"
+}

@@ -1,0 +1,17 @@
+{
+  "version": 1,
+  "seq": 6,
+  "job_id": "9317e01768834379b288ea08ed9fe156",
+  "round_id": "3ccd1e4633ae4de7a5ce2b4817f3f2c5",
+  "event_fingerprint": "326addb8aa5b14410ef477328f8e863b2aab0dbb499515f8fcc0d4645685a4ee",
+  "revision": 1,
+  "status": "handled",
+  "note": "review_due（changed UI）复核，seq 6，watch orch-watch-_8f_qjxn（V2/omp 验证者）。\n读 evidence/000000000006.json 的 screen：omp 在自建脚手架 /tmp/w7-verify 下做收尾自检\n（grep debug_assert 计数、确认无 \"#[cfg(debug_assertions)]\"、无 \"let _ =\"、列出 myers.rs 8 个修复点），\n接着准备发布 result.json。屏幕上只有 Bash 输出框，没有任何对话框、确认提示、提问或原生审批画面。\n判定：正常工作中，无需控制方输入。该轮次其后已结束（job 9317e017 已 completed / close，rev 9）。\n本轮只结清观察账目，不改动目标终端。\n",
+  "recorded_at": 1789929714.967045,
+  "action_evidence": null,
+  "resolution_evidence": {
+    "path": "/home/user/Projects/mini-git/.orch/waves/W7/orch-run-oxrolhzc/watches/orch-watch-_8f_qjxn/evidence/000000000006.json",
+    "sha256": "9c4853d1c3dff09cc805355c6c9b9acd6f2dc230f5aec04b97cfd21bc432f828"
+  },
+  "resolved_at": 1789929714.0
+}

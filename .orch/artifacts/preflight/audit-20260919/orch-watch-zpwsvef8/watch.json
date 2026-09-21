@@ -1,0 +1,31 @@
+{
+  "version": 1,
+  "targets": [
+    {
+      "request_path": "/tmp/orch-audit-20260919-e8x_l_s7/agent-orchestrator-ulyi_06m/request.json",
+      "job_id": "aa1b50f8e84341e88f8f39d496bc6949",
+      "round_id": "e9640cbb207f4c55967e8fad78e0bc75",
+      "resources": {
+        "mode": "insider",
+        "session": "audit-synthetic",
+        "agent": "child",
+        "pane": "w1:p2",
+        "workspace": null,
+        "owns_agent": true,
+        "owns_pane": true,
+        "owns_workspace": false,
+        "owns_session": false,
+        "tab": null,
+        "parent_pane": null,
+        "parent_tab": null,
+        "owns_tab": false,
+        "recorded_at": "2026-09-19T09:25:14.592031+00:00",
+        "job_id": "aa1b50f8e84341e88f8f39d496bc6949"
+      },
+      "tmux_selector": null
+    }
+  ],
+  "deadline": null,
+  "review_interval": 30,
+  "stall_after": 120
+}

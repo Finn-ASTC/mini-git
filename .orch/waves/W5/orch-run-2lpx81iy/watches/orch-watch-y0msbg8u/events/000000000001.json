@@ -1,0 +1,10 @@
+{
+  "seq": 1,
+  "job_id": "9746730210dc4491b685bbc446088546",
+  "round_id": "1f695772a77b44ab8bcfb878a34e5add",
+  "kind": "observation_error",
+  "message": "herdr read failed: Error: Os { code: 1, kind: PermissionDenied, message: \"Operation not permitted\" }",
+  "evidence_path": "/home/user/Projects/mini-git/.orch/waves/W5/orch-run-2lpx81iy/watches/orch-watch-y0msbg8u/evidence/000000000001.json",
+  "screen_tail": "",
+  "observed_at": 1789897324.438749
+}

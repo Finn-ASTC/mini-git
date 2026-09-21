@@ -1,0 +1,16 @@
+### underdetermined / interaction probes (recorded, NOT scored vs SPEC)
+--version -x                               exit=2 stdout='' stderr=linestat:\ usage:\ linestat\ \[--version\]\ \[FILE...\]
+-x --version                               exit=2 stdout='' stderr=linestat:\ usage:\ linestat\ \[--version\]\ \[FILE...\]
+--version ok.txt                           exit=0 stdout=linestat\ 1.0.0 stderr=''
+empty-string arg                           exit=1 stdout='' stderr=linestat:\ :\ No\ such\ file\ or\ directory\ \(os\ error\ 2\)
+single dash -                              exit=2 stdout='' stderr=linestat:\ usage:\ linestat\ \[--version\]\ \[FILE...\]
+file named -x via ./                       exit=1 stdout='' stderr=linestat:\ ./x_not_exist_placeholder:\ No\ such\ file\ or\ directory\ \(os\ error\ 2\)
+
+### error wording sample (missing file)
+missing file                               exit=1 stdout='' stderr=linestat:\ /tmp/w5-verify/evidence/probes/does-not-exist:\ No\ such\ file\ or\ directory\ \(os\ error\ 2\)
+
+### SPEC-vs-wc divergence demonstration
+file 'abc' (no trailing newline):
+linestat: 1 1 3 /tmp/w5-verify/evidence/probes/nonl
+wc -l    : 0
+wc -c    : 3

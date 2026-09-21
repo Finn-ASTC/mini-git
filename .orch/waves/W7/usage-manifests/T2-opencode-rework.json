@@ -1,0 +1,14 @@
+{
+ "version": 1,
+ "host": "opencode",
+ "log_path": "/home/user/.local/share/opencode/opencode.db",
+ "session_id": "ses_0002",
+ "mappings": [
+  {
+   "native_id": "msg_0082",
+   "request_path": "/home/user/Projects/mini-git/.orch/waves/W7/orch-run-oxrolhzc/rounds/agent-orchestrator-2np3fp12/request.json",
+   "attempt_id": "9c2f9f0e",
+   "purpose": "retry"
+  }
+ ]
+}

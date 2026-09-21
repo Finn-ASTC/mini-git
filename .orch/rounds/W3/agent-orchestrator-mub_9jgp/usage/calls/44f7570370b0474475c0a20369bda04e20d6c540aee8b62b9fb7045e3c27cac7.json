@@ -1,0 +1,15 @@
+{
+  "sample_id": "426b4f2c456753d9b6d33698ff08e8cb8bd0a40846a512dec5075ec4c5e0951d",
+  "source": "codex:sess_0019-bb41-7953-a443-31b9227e1853",
+  "measurement": "delta",
+  "provider": "deepseek",
+  "model": "deepseek-flash",
+  "input_tokens": 95400,
+  "cached_input_tokens": 94592,
+  "output_tokens": 6146,
+  "attempt_id": "initial",
+  "purpose": "task",
+  "schema_version": 1,
+  "job_id": "2bc31bf91b9a441d91b4849561d33fac",
+  "round_id": "22e79535a9a94bcf904f7ba25f91faa4"
+}

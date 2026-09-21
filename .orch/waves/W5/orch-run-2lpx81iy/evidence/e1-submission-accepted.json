@@ -1,0 +1,17 @@
+{
+  "kind": "target_active",
+  "at": 1789897387.147203,
+  "transport": "herdr --session default agent prompt orch-linestat-t1-omp <prompt>",
+  "transport_reply": {
+    "id": "cli:agent:prompt",
+    "agent_status": "idle"
+  },
+  "live_target": {
+    "agent": "omp",
+    "agent_status": "working",
+    "interactive_ready": true,
+    "pane_id": "w1S:p1",
+    "native_session": "/home/user/.omp/agent/sessions/-tmp-w5-linestat/2026-09-20T09-41-43-250Z_sess_0038-64d2-7748-a3a8-d0d122725142.jsonl"
+  },
+  "result_file_present": false
+}

@@ -1,0 +1,10 @@
+{
+  "seq": 6,
+  "job_id": "46fa28f38e444892b81e513677ac2dbf",
+  "round_id": "4be87971a9bd4f8e95658665063352ed",
+  "kind": "state_changed",
+  "message": "done",
+  "evidence_path": "/home/user/Projects/mini-git/.orch/waves/W5/orch-run-2lpx81iy/watches/orch-watch-3szjad6m/evidence/000000000006.json",
+  "screen_tail": "                                         │ prometheus deepseek-flash         │\n                                                                                                             │ quick deepseek-flash              │\n     Result written atomically (temp + os.replace) to the literal result_path; schema_version/job_id/        │                                   │\n     round_id copied exactly, status=success, error/blocked_reason=null. Evidence: REPORT.md, oracle/,       └───────────────────────────────────┘\n     harness/, evidence/ under /tmp/w5-verify.\n\n     ▣  Sisyphus - Ultraworker · DeepSeek V4.1 Flash · 2m 31s\n\n  ┃\n  ┃\n  ┃\n  ┃  Sisyphus - Ultraworker · DeepSeek V4.1 Flash DeepSeek                                                   /tmp/w5-verify\n  ╹▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀\n   /tmp/w5-verify                                                   102.4K (10%) · $0.04  ctrl+p commands    • OpenCode 1.18.29",
+  "observed_at": 1789897792.7859213
+}

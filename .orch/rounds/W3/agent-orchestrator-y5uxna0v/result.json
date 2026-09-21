@@ -1,0 +1,17 @@
+{
+  "schema_version": 1,
+  "job_id": "512f5f2669e64589ba36153dae0865d7",
+  "round_id": "810ab3483e5a443281075ce3cb22552e",
+  "status": "success",
+  "output": "T10 完成：文件级三方合并 + `mg merge`。\n\n实现位置（仅白名单两文件，未改任何其它文件）：\n- src/merge/three_way.rs: `merge_blobs`（xmege/xdiff 的 xdl_merge / xdl_do_merge / xdl_fill_merge_buffer / xdl_refine_conflicts / xdl_simplify_non_conflicts 逐函数移植）。行级对齐调用 T6 的 crate::diff::myers（未重写 Myers）；二进制、CRLF(`needs_cr`)、无末尾换行、marker 7 字符、diff3 段全部复刻。\n- src/cli/merge.rs: `run`（resolve → status 干净检查 → merge_base → Already up to date / fast-forward(CAS+materialize+index) / 真正合并；每个路径三方合并，clean 写 blob+工作区+stage0，冲突写 marker+stage1/2/3 并删 stage0；冲突写 .git/MERGE_HEAD(hex+换行)/ORIG_HEAD/MERGE_MSG 并以非零码退出；clean 递归建 tree→写 commit(parent=HEAD,target)→CAS 更新分支→清理 MERGE_*+更新 index；支持 merge.conflictstyle=diff3/zdiff3）。\n\n跑了哪些命令 + 真实结论：\n1) `cargo test --offline merge::` → test result: ok. 26 passed; 0 failed。\n2) `cargo test --offline --lib -- merge::three_way cli::merge` → 17 passed; 0 failed（引擎 8 + CLI 9）。\n3) 引擎真值对拍：测试运行时调 `git merge-file -p -L ours -L base -L theirs [--diff3]`，输出与 merge_blobs **逐字节相等**，冲突与否（exit code>0）也一致。覆盖：两侧不同位置改动(干净)、同行冲突、一侧删一侧改、base=None 双侧新增(相同/不同)、空文件、单/双侧无末尾换行、CRLF、CJK、二进制、一侧为空、三态相同；另有 220 例确定性随机三元组(含空行/缩进行/CJK)全部逐字节相等。二进制单列：任一侧二进制→Conflict(ours 原样)。\n4) CLI 端到端（mg 二进制 vs 平行真实 git 仓库，均用运行时 git 真值）：干净合并 `HEAD^{tree}` 相同、`git fsck --no-progress` 无 error、双 parent；fast-forward 后 rev-parse HEAD 与 git 完全相同且 porcelain 为空；`--no-ff` tree 相同且双 parent；`mg merge main` 输出 `Already up to date` 且 HEAD 不变；内容冲突：冲突文件与 git **逐字节相同**、`git status --porcelain` 相同(UU/DU/UD/AA)、`git ls-files -s` stage 组合相同，随后真实 `git add`+`git commit` 成功完成合并、`git log --format=%P -1` 两个 parent、MERGE_HEAD 被清除；diff3 冲突文件逐字节相同；add/add、ours-delete/theirs-modify、ours-modify/theirs-delete 三例状态与内容均一致。\n5) 反例：工作区脏 → `WouldLoseChanges` 且不破坏文件；不存在 rev → `RefNotFound`；不存在 oid → `ObjectNotFound`；均不 panic。\n6) `scripts/check-freeze.sh` → checked 21 file(s), drift 0，freeze-v0 intact。\n7) `cargo test --offline`（全量）→ 231 passed; 2 failed，失败均**不在白名单**：`cli::log::tests::oneline_order_matches_git_for_a_fork_and_merge`（其自身用真实 git `merge --no-ff`，但 main/side 都改写同一文件 f，git 必然冲突，断言 \"merge failed\"）；`cli::branch::tests::glob_matches_real_git_branch_list`（单跑已通过，疑似并发编辑抖动）。二者都不调用 T10 代码。\n8) `cargo clippy --offline --all-targets` → 仅剩 1 warning，在 `src/worktree/materialize.rs:493`（T4 的文件，非本白名单）；本白名单两文件 0 warning。\n\n已知限制/未覆盖项：\n- 非目标照旧：无 rename 检测、无 -X ours/theirs、无 octopus、无 `merge --abort`。\n- D/F 冲突（同名既是文件又是目录）→ `Error::Unsupported`，不写损坏 tree。\n- fast-forward 时若已有**已跟踪**本地改动一律拒绝（比真实 git 严格；git 可携带不相干改动）。\n- `merge_blobs` 用 ZEALOUS_ALNUM（对齐 `git merge-file`），CLI 用 ZEALOUS（对齐 `git merge`/merge-ll.c）；仅当两个冲突相隔 >3 行且间隔行不含字母数字时才可能分叉，验收场景未覆盖。\n- T6 的 myers 固定启用缩进启发式，而 `git merge-file` 传 xpp.flags=0；220 例随机对拍未发现分叉，但理论上是潜在差异点。\n- 深/并行验证：白名单外两处失败与 1 条 clippy warning 属于 W3 其它 agent，未修（遵守写作用域）。",
+  "files_created": [],
+  "files_modified": [
+    "src/merge/three_way.rs",
+    "src/cli/merge.rs"
+  ],
+  "files_generated": [],
+  "files_deleted": [],
+  "error": null,
+  "blocked_reason": null,
+  "completed_at": "2026-09-19T20:58:41+08:00"
+}

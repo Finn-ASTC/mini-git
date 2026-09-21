@@ -1,0 +1,88 @@
+=== sha256 (verified artifacts) ===
+417e7a36a7d436a22e101cfe8d20336d48255e914cc7d84dbb5d724ef5126c45  src/cli/merge.rs
+aaa68a956c5e92926974a2617ca892bac9afa10e5ef77610ec5a388d8b66b146  tests/verify_merge_ff.rs
+043d4debd9ac6a1b0d7c4dda5f54f735bd87e53140c769f69b2040beccf46639  tests/verify_merge_ff2.rs
+
+=== V16 tests (nocapture) ===
+warning: function `todo` is never used
+  --> src/error.rs:62:15
+   |
+62 | pub(crate) fn todo<T>(what: &'static str) -> Result<T> {
+   |               ^^^^
+   |
+   = note: `#[warn(dead_code)]` (part of `#[warn(unused)]`) on by default
+
+warning: `mini-git` (lib) generated 1 warning
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.02s
+     Running tests/verify_merge_ff2.rs (target/debug/deps/verify_merge_ff2-46e4574d381d9e94)
+
+running 12 tests
+test selfcheck_harness_runs_the_real_mg_binary_and_real_git ... ok
+test mg_native_d1_repro_is_clean_under_real_git ... ok
+test fast_forward_refuses_local_changes_it_would_overwrite ... ok
+test fast_forward_deleting_last_file_prunes_empty_dir_matches_git ... ok
+test fast_forward_adding_multilevel_dirs_and_modes_matches_git ... ok
+test fast_forward_with_subdirectory_matches_git ... ok
+test non_fast_forward_clean_merge_with_subdirs_matches_git ... ok
+test non_fast_forward_conflict_in_subdir_matches_git ... ok
+V16 OBSERVATION: `mg pull` conflict label differs from `git pull`: mg=Some("refs/remotes/origin/main") git=Some("cb60b9527ec65b974e49cbb43cff346884823058") (matches `git merge <ref>` instead)
+test pull_when_local_is_ahead_changes_nothing_like_git ... ok
+test pull_fast_forward_with_subdir_matches_git ... ok
+test pull_divergent_conflict_matches_git ... ok
+test pull_divergent_branches_merges_like_git ... ok
+
+test result: ok. 12 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.10s
+
+exit=0
+
+=== author T16 test ===
+test fast_forward_with_subdirectory_matches_git ... ok
+test fast_forward_deletes_file_in_subdirectory_matches_git ... ok
+test conflict_in_subdirectory_still_matches_git ... ok
+
+test result: ok. 5 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.03s
+
+
+=== T15 #[ignore] regression ===
+
+running 1 test
+test e2e_fast_forward_merge_in_a_repository_with_subdirectories ... ok
+
+test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 24 filtered out; finished in 0.02s
+
+
+=== full suite ===
+test result: ok. 271 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 1.77s
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+test result: ok. 22 passed; 0 failed; 3 ignored; 0 measured; 0 filtered out; finished in 0.13s
+test result: ok. 7 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.01s
+test result: ok. 3 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.02s
+test result: ok. 16 passed; 0 failed; 1 ignored; 0 measured; 0 filtered out; finished in 0.37s
+test result: ok. 6 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.19s
+test result: ok. 16 passed; 0 failed; 1 ignored; 0 measured; 0 filtered out; finished in 0.10s
+test result: ok. 9 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.03s
+test result: ok. 11 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.02s
+test result: ok. 22 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.21s
+test result: ok. 5 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.03s
+test result: ok. 12 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.10s
+test result: ok. 10 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.50s
+test result: ok. 6 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.06s
+test result: ok. 10 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.92s
+test result: ok. 8 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.01s
+test result: ok. 19 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.22s
+test result: ok. 9 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.02s
+test result: ok. 32 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.37s
+test result: ok. 25 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.06s
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+full_exit=0
+
+=== clippy ===
+      1 warning: `mini-git` (lib test) generated 1 warning (1 duplicate)
+      1 warning: `mini-git` (lib) generated 1 warning
+      1 warning: function `todo` is never used
+
+=== freeze ===
+---
+checked 21 file(s), drift 0
+freeze-v0 intact
+freeze_exit=0

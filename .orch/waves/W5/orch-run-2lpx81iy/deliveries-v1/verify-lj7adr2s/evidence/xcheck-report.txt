@@ -1,0 +1,184 @@
+binary: /home/user/Projects/mini-git/.orch/waves/W5/orch-run-2lpx81iy/rounds/agent-orchestrator-ggyoe35m/deliveries/snapshot-nvn21yva/verifications/verify-l9da_n_s/build/cargo/release/linestat
+sha256: 759534809958403271ec37bba8962439ab51938999bdd214214b6bff3ea44f5e
+cases: 36/36 passed
+
+PASS version_alone
+  argv: ['--version']
+  exit: expected 0 actual 0
+  stdout expected: 'linestat 1.0.0\n'
+
+PASS version_with_missing_file
+  argv: ['--version', '/home/user/Projects/mini-git/.orch/waves/W5/orch-run-2lpx81iy/deliveries-v1/verify-lj7adr2s/evidence/xcheck-fixtures/version_with_missing_file/missing.txt']
+  exit: expected 0 actual 0
+  stdout expected: 'linestat 1.0.0\n'
+
+PASS single_file
+  argv: ['/home/user/Projects/mini-git/.orch/waves/W5/orch-run-2lpx81iy/deliveries-v1/verify-lj7adr2s/evidence/xcheck-fixtures/single_file/one.txt']
+  exit: expected 0 actual 0
+  stdout expected: '1 2 12 /home/user/Projects/mini-git/.orch/waves/W5/orch-run-2lpx81iy/deliveries-v1/verify-lj7adr2s/evidence/xcheck-fixtures/single_file/one.txt\n'
+
+PASS single_no_trailing_newline
+  argv: ['/home/user/Projects/mini-git/.orch/waves/W5/orch-run-2lpx81iy/deliveries-v1/verify-lj7adr2s/evidence/xcheck-fixtures/single_no_trailing_newline/nonl.txt']
+  exit: expected 0 actual 0
+  stdout expected: '3 3 5 /home/user/Projects/mini-git/.orch/waves/W5/orch-run-2lpx81iy/deliveries-v1/verify-lj7adr2s/evidence/xcheck-fixtures/single_no_trailing_newline/nonl.txt\n'
+
+PASS empty_file
+  argv: ['/home/user/Projects/mini-git/.orch/waves/W5/orch-run-2lpx81iy/deliveries-v1/verify-lj7adr2s/evidence/xcheck-fixtures/empty_file/empty.txt']
+  exit: expected 0 actual 0
+  stdout expected: '0 0 0 /home/user/Projects/mini-git/.orch/waves/W5/orch-run-2lpx81iy/deliveries-v1/verify-lj7adr2s/evidence/xcheck-fixtures/empty_file/empty.txt\n'
+
+PASS multi_files_total
+  argv: ['/home/user/Projects/mini-git/.orch/waves/W5/orch-run-2lpx81iy/deliveries-v1/verify-lj7adr2s/evidence/xcheck-fixtures/multi_files_total/b.txt', '/home/user/Projects/mini-git/.orch/waves/W5/orch-run-2lpx81iy/deliveries-v1/verify-lj7adr2s/evidence/xcheck-fixtures/multi_files_total/a.txt']
+  exit: expected 0 actual 0
+  stdout expected: '1 1 6 /home/user/Projects/mini-git/.orch/waves/W5/orch-run-2lpx81iy/deliveries-v1/verify-lj7adr2s/evidence/xcheck-fixtures/multi_files_total/b.txt\n1 2 8 /home/user/Projects/mini-git/.orch/waves/W5/orch-run-2lpx81iy/deliveries-v1/verify-lj7adr2s/evidence/xcheck-fixtures/multi_files_total/a.txt\n2 3 14 total\n'
+
+PASS multi_files_total_reverse
+  argv: ['/home/user/Projects/mini-git/.orch/waves/W5/orch-run-2lpx81iy/deliveries-v1/verify-lj7adr2s/evidence/xcheck-fixtures/multi_files_total_reverse/a.txt', '/home/user/Projects/mini-git/.orch/waves/W5/orch-run-2lpx81iy/deliveries-v1/verify-lj7adr2s/evidence/xcheck-fixtures/multi_files_total_reverse/b.txt']
+  exit: expected 0 actual 0
+  stdout expected: '1 2 8 /home/user/Projects/mini-git/.orch/waves/W5/orch-run-2lpx81iy/deliveries-v1/verify-lj7adr2s/evidence/xcheck-fixtures/multi_files_total_reverse/a.txt\n1 1 6 /home/user/Projects/mini-git/.orch/waves/W5/orch-run-2lpx81iy/deliveries-v1/verify-lj7adr2s/evidence/xcheck-fixtures/multi_files_total_reverse/b.txt\n2 3 14 total\n'
+
+PASS cr_tab_vt_ff
+  argv: ['/home/user/Projects/mini-git/.orch/waves/W5/orch-run-2lpx81iy/deliveries-v1/verify-lj7adr2s/evidence/xcheck-fixtures/cr_tab_vt_ff/ws.txt']
+  exit: expected 0 actual 0
+  stdout expected: '1 4 9 /home/user/Projects/mini-git/.orch/waves/W5/orch-run-2lpx81iy/deliveries-v1/verify-lj7adr2s/evidence/xcheck-fixtures/cr_tab_vt_ff/ws.txt\n'
+
+PASS non_utf8_content
+  argv: ['/home/user/Projects/mini-git/.orch/waves/W5/orch-run-2lpx81iy/deliveries-v1/verify-lj7adr2s/evidence/xcheck-fixtures/non_utf8_content/binary.bin']
+  exit: expected 0 actual 0
+  stdout expected: '1 2 4 /home/user/Projects/mini-git/.orch/waves/W5/orch-run-2lpx81iy/deliveries-v1/verify-lj7adr2s/evidence/xcheck-fixtures/non_utf8_content/binary.bin\n'
+
+PASS missing_file
+  argv: ['/home/user/Projects/mini-git/.orch/waves/W5/orch-run-2lpx81iy/deliveries-v1/verify-lj7adr2s/evidence/xcheck-fixtures/missing_file/missing.txt']
+  exit: expected 1 actual 1
+  stdout expected: ''
+
+PASS missing_then_good
+  argv: ['/home/user/Projects/mini-git/.orch/waves/W5/orch-run-2lpx81iy/deliveries-v1/verify-lj7adr2s/evidence/xcheck-fixtures/missing_then_good/missing.txt', '/home/user/Projects/mini-git/.orch/waves/W5/orch-run-2lpx81iy/deliveries-v1/verify-lj7adr2s/evidence/xcheck-fixtures/missing_then_good/ok.txt']
+  exit: expected 1 actual 1
+  stdout expected: '1 1 4 /home/user/Projects/mini-git/.orch/waves/W5/orch-run-2lpx81iy/deliveries-v1/verify-lj7adr2s/evidence/xcheck-fixtures/missing_then_good/ok.txt\n1 1 4 total\n'
+
+PASS good_then_missing
+  argv: ['/home/user/Projects/mini-git/.orch/waves/W5/orch-run-2lpx81iy/deliveries-v1/verify-lj7adr2s/evidence/xcheck-fixtures/good_then_missing/ok.txt', '/home/user/Projects/mini-git/.orch/waves/W5/orch-run-2lpx81iy/deliveries-v1/verify-lj7adr2s/evidence/xcheck-fixtures/good_then_missing/missing.txt']
+  exit: expected 1 actual 1
+  stdout expected: '1 1 4 /home/user/Projects/mini-git/.orch/waves/W5/orch-run-2lpx81iy/deliveries-v1/verify-lj7adr2s/evidence/xcheck-fixtures/good_then_missing/ok.txt\n1 1 4 total\n'
+
+PASS unknown_long_option
+  argv: ['--help']
+  exit: expected 2 actual 2
+  stdout expected: ''
+
+PASS unknown_short_option
+  argv: ['-x']
+  exit: expected 2 actual 2
+  stdout expected: ''
+
+PASS unknown_option_with_file
+  argv: ['--help', '/home/user/Projects/mini-git/.orch/waves/W5/orch-run-2lpx81iy/deliveries-v1/verify-lj7adr2s/evidence/xcheck-fixtures/unknown_option_with_file/one.txt']
+  exit: expected 2 actual 2
+  stdout expected: ''
+
+PASS no_args
+  argv: []
+  exit: expected 2 actual 2
+  stdout expected: ''
+
+PASS directory_operand
+  argv: ['/home/user/Projects/mini-git/.orch/waves/W5/orch-run-2lpx81iy/deliveries-v1/verify-lj7adr2s/evidence/xcheck-fixtures/directory_operand/thedir']
+  exit: expected 1 actual 1
+  stdout expected: ''
+
+PASS non_utf8_path
+  argv: ['/home/user/Projects/mini-git/.orch/waves/W5/orch-run-2lpx81iy/deliveries-v1/verify-lj7adr2s/evidence/xcheck-fixtures/non_utf8_path/weird-\\xff-name.txt']
+  exit: expected 0 actual 0
+  stdout expected: '1 1 3 /home/user/Projects/mini-git/.orch/waves/W5/orch-run-2lpx81iy/deliveries-v1/verify-lj7adr2s/evidence/xcheck-fixtures/non_utf8_path/weird-\\xff-name.txt\n'
+
+PASS only_newlines
+  argv: ['/home/user/Projects/mini-git/.orch/waves/W5/orch-run-2lpx81iy/deliveries-v1/verify-lj7adr2s/evidence/xcheck-fixtures/only_newlines/nl.txt']
+  exit: expected 0 actual 0
+  stdout expected: '3 0 3 /home/user/Projects/mini-git/.orch/waves/W5/orch-run-2lpx81iy/deliveries-v1/verify-lj7adr2s/evidence/xcheck-fixtures/only_newlines/nl.txt\n'
+
+PASS only_cr_no_newline
+  argv: ['/home/user/Projects/mini-git/.orch/waves/W5/orch-run-2lpx81iy/deliveries-v1/verify-lj7adr2s/evidence/xcheck-fixtures/only_cr_no_newline/cr.txt']
+  exit: expected 0 actual 0
+  stdout expected: '1 0 1 /home/user/Projects/mini-git/.orch/waves/W5/orch-run-2lpx81iy/deliveries-v1/verify-lj7adr2s/evidence/xcheck-fixtures/only_cr_no_newline/cr.txt\n'
+
+PASS whitespace_only
+  argv: ['/home/user/Projects/mini-git/.orch/waves/W5/orch-run-2lpx81iy/deliveries-v1/verify-lj7adr2s/evidence/xcheck-fixtures/whitespace_only/w.txt']
+  exit: expected 0 actual 0
+  stdout expected: '2 0 6 /home/user/Projects/mini-git/.orch/waves/W5/orch-run-2lpx81iy/deliveries-v1/verify-lj7adr2s/evidence/xcheck-fixtures/whitespace_only/w.txt\n'
+
+PASS nul_bytes
+  argv: ['/home/user/Projects/mini-git/.orch/waves/W5/orch-run-2lpx81iy/deliveries-v1/verify-lj7adr2s/evidence/xcheck-fixtures/nul_bytes/nul.bin']
+  exit: expected 0 actual 0
+  stdout expected: '1 1 4 /home/user/Projects/mini-git/.orch/waves/W5/orch-run-2lpx81iy/deliveries-v1/verify-lj7adr2s/evidence/xcheck-fixtures/nul_bytes/nul.bin\n'
+
+PASS permission_denied
+  argv: ['/home/user/Projects/mini-git/.orch/waves/W5/orch-run-2lpx81iy/deliveries-v1/verify-lj7adr2s/evidence/xcheck-fixtures/permission_denied/noperm.txt']
+  exit: expected 1 actual 1
+  stdout expected: ''
+
+PASS permission_denied_then_good
+  argv: ['/home/user/Projects/mini-git/.orch/waves/W5/orch-run-2lpx81iy/deliveries-v1/verify-lj7adr2s/evidence/xcheck-fixtures/permission_denied_then_good/noperm.txt', '/home/user/Projects/mini-git/.orch/waves/W5/orch-run-2lpx81iy/deliveries-v1/verify-lj7adr2s/evidence/xcheck-fixtures/permission_denied_then_good/ok.txt']
+  exit: expected 1 actual 1
+  stdout expected: '1 1 4 /home/user/Projects/mini-git/.orch/waves/W5/orch-run-2lpx81iy/deliveries-v1/verify-lj7adr2s/evidence/xcheck-fixtures/permission_denied_then_good/ok.txt\n1 1 4 total\n'
+
+PASS unicode_ideographic_space
+  argv: ['/home/user/Projects/mini-git/.orch/waves/W5/orch-run-2lpx81iy/deliveries-v1/verify-lj7adr2s/evidence/xcheck-fixtures/unicode_ideographic_space/u3000.txt']
+  exit: expected 0 actual 0
+  stdout expected: '1 1 3 /home/user/Projects/mini-git/.orch/waves/W5/orch-run-2lpx81iy/deliveries-v1/verify-lj7adr2s/evidence/xcheck-fixtures/unicode_ideographic_space/u3000.txt\n'
+
+PASS unicode_nbsp
+  argv: ['/home/user/Projects/mini-git/.orch/waves/W5/orch-run-2lpx81iy/deliveries-v1/verify-lj7adr2s/evidence/xcheck-fixtures/unicode_nbsp/nbsp.txt']
+  exit: expected 0 actual 0
+  stdout expected: '1 1 2 /home/user/Projects/mini-git/.orch/waves/W5/orch-run-2lpx81iy/deliveries-v1/verify-lj7adr2s/evidence/xcheck-fixtures/unicode_nbsp/nbsp.txt\n'
+
+PASS mixed_unicode_and_ascii_ws
+  argv: ['/home/user/Projects/mini-git/.orch/waves/W5/orch-run-2lpx81iy/deliveries-v1/verify-lj7adr2s/evidence/xcheck-fixtures/mixed_unicode_and_ascii_ws/mix.txt']
+  exit: expected 0 actual 0
+  stdout expected: '1 2 8 /home/user/Projects/mini-git/.orch/waves/W5/orch-run-2lpx81iy/deliveries-v1/verify-lj7adr2s/evidence/xcheck-fixtures/mixed_unicode_and_ascii_ws/mix.txt\n'
+
+PASS multi_non_utf8_total
+  argv: ['/home/user/Projects/mini-git/.orch/waves/W5/orch-run-2lpx81iy/deliveries-v1/verify-lj7adr2s/evidence/xcheck-fixtures/multi_non_utf8_total/b1.bin', '/home/user/Projects/mini-git/.orch/waves/W5/orch-run-2lpx81iy/deliveries-v1/verify-lj7adr2s/evidence/xcheck-fixtures/multi_non_utf8_total/b2.bin']
+  exit: expected 0 actual 0
+  stdout expected: '1 1 2 /home/user/Projects/mini-git/.orch/waves/W5/orch-run-2lpx81iy/deliveries-v1/verify-lj7adr2s/evidence/xcheck-fixtures/multi_non_utf8_total/b1.bin\n1 1 3 /home/user/Projects/mini-git/.orch/waves/W5/orch-run-2lpx81iy/deliveries-v1/verify-lj7adr2s/evidence/xcheck-fixtures/multi_non_utf8_total/b2.bin\n2 2 5 total\n'
+
+PASS path_echo_no_normalisation
+  argv: ['/home/user/Projects/mini-git/.orch/waves/W5/orch-run-2lpx81iy/deliveries-v1/verify-lj7adr2s/evidence/xcheck-fixtures/path_echo_no_normalisation/./one.txt']
+  exit: expected 0 actual 0
+  stdout expected: '1 1 3 /home/user/Projects/mini-git/.orch/waves/W5/orch-run-2lpx81iy/deliveries-v1/verify-lj7adr2s/evidence/xcheck-fixtures/path_echo_no_normalisation/./one.txt\n'
+
+PASS many_bytes_lines
+  argv: ['/home/user/Projects/mini-git/.orch/waves/W5/orch-run-2lpx81iy/deliveries-v1/verify-lj7adr2s/evidence/xcheck-fixtures/many_bytes_lines/big.txt']
+  exit: expected 0 actual 0
+  stdout expected: '100000 200000 400000 /home/user/Projects/mini-git/.orch/waves/W5/orch-run-2lpx81iy/deliveries-v1/verify-lj7adr2s/evidence/xcheck-fixtures/many_bytes_lines/big.txt\n'
+
+PASS boundary_word_split
+  argv: ['/home/user/Projects/mini-git/.orch/waves/W5/orch-run-2lpx81iy/deliveries-v1/verify-lj7adr2s/evidence/xcheck-fixtures/boundary_word_split/boundary_word_split.bin']
+  exit: expected 0 actual 0
+  stdout expected: '1 1 65537 /home/user/Projects/mini-git/.orch/waves/W5/orch-run-2lpx81iy/deliveries-v1/verify-lj7adr2s/evidence/xcheck-fixtures/boundary_word_split/boundary_word_split.bin\n'
+
+PASS boundary_sep_then_word
+  argv: ['/home/user/Projects/mini-git/.orch/waves/W5/orch-run-2lpx81iy/deliveries-v1/verify-lj7adr2s/evidence/xcheck-fixtures/boundary_sep_then_word/boundary_sep_then_word.bin']
+  exit: expected 0 actual 0
+  stdout expected: '1 2 65541 /home/user/Projects/mini-git/.orch/waves/W5/orch-run-2lpx81iy/deliveries-v1/verify-lj7adr2s/evidence/xcheck-fixtures/boundary_sep_then_word/boundary_sep_then_word.bin\n'
+
+PASS boundary_newline_then_word
+  argv: ['/home/user/Projects/mini-git/.orch/waves/W5/orch-run-2lpx81iy/deliveries-v1/verify-lj7adr2s/evidence/xcheck-fixtures/boundary_newline_then_word/boundary_newline_then_word.bin']
+  exit: expected 0 actual 0
+  stdout expected: '2 2 65546 /home/user/Projects/mini-git/.orch/waves/W5/orch-run-2lpx81iy/deliveries-v1/verify-lj7adr2s/evidence/xcheck-fixtures/boundary_newline_then_word/boundary_newline_then_word.bin\n'
+
+PASS boundary_word_then_sep
+  argv: ['/home/user/Projects/mini-git/.orch/waves/W5/orch-run-2lpx81iy/deliveries-v1/verify-lj7adr2s/evidence/xcheck-fixtures/boundary_word_then_sep/boundary_word_then_sep.bin']
+  exit: expected 0 actual 0
+  stdout expected: '1 2 65538 /home/user/Projects/mini-git/.orch/waves/W5/orch-run-2lpx81iy/deliveries-v1/verify-lj7adr2s/evidence/xcheck-fixtures/boundary_word_then_sep/boundary_word_then_sep.bin\n'
+
+PASS boundary_two_chunks
+  argv: ['/home/user/Projects/mini-git/.orch/waves/W5/orch-run-2lpx81iy/deliveries-v1/verify-lj7adr2s/evidence/xcheck-fixtures/boundary_two_chunks/boundary_two_chunks.bin']
+  exit: expected 0 actual 0
+  stdout expected: '1 2 131074 /home/user/Projects/mini-git/.orch/waves/W5/orch-run-2lpx81iy/deliveries-v1/verify-lj7adr2s/evidence/xcheck-fixtures/boundary_two_chunks/boundary_two_chunks.bin\n'
+
+PASS boundary_all_ws_then_word
+  argv: ['/home/user/Projects/mini-git/.orch/waves/W5/orch-run-2lpx81iy/deliveries-v1/verify-lj7adr2s/evidence/xcheck-fixtures/boundary_all_ws_then_word/boundary_all_ws_then_word.bin']
+  exit: expected 0 actual 0
+  stdout expected: '1 1 65540 /home/user/Projects/mini-git/.orch/waves/W5/orch-run-2lpx81iy/deliveries-v1/verify-lj7adr2s/evidence/xcheck-fixtures/boundary_all_ws_then_word/boundary_all_ws_then_word.bin\n'
+

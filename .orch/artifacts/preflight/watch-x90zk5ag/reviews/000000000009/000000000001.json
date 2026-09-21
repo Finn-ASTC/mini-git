@@ -1,0 +1,11 @@
+{
+  "version": 1,
+  "seq": 9,
+  "job_id": "edb0e351b58e42e486a264690ece2dcd",
+  "round_id": "c1008bbd20e34640ab5a409ceed097fb",
+  "event_fingerprint": "61c2eb6cbac66c644f75254548d39c3b40b74e758e10a90c860b1037b63cbe28",
+  "revision": 1,
+  "status": "handled",
+  "note": "result 事件已消费：protocol.py validate --check-files 退出码 0，status=success，\nfiles_modified 恰为白名单三文件。controller 独立复跑：cargo test 29+7 全绿、clippy 0 warning、\ncheck-freeze drift 0；并用 controller 自建的真实 git 真值核对 tree oid\n4aad58e0401292349b1a142aa10cbcc061c2eda2（与 agent 报告一致）。\n",
+  "recorded_at": 1789816747.7028573
+}

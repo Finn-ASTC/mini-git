@@ -1,0 +1,188 @@
+############ fixture: bare   url=file:///tmp/t13c-codex/evidence/remote-bare
+--- remote: git show-ref
+exit=1
+--- remote: git symbolic-ref HEAD
+refs/heads/main
+--- mg clone:
+mg clone exit=0
+--- git clone:
+git clone exit=0
+--- mg stdout:
+--- mg stderr:
+Cloning into 'clone'...
+warning: You appear to have cloned an empty repository.
+--- git stdout:
+--- git stderr:
+Cloning into 'clone'...
+warning: You appear to have cloned an empty repository.
+--- stderr: IDENTICAL (byte-for-byte)
+--- stdout: IDENTICAL (byte-for-byte)
+--- mg target `ls -A`:
+.git
+--- git target `ls -A`:
+.git
+--- mg: git show-ref
+exit=1
+--- git: git show-ref
+exit=1
+--- mg: git symbolic-ref HEAD
+refs/heads/main
+--- git: git symbolic-ref HEAD
+refs/heads/main
+--- mg: git status --porcelain
+exit=0
+--- git: git status --porcelain
+exit=0
+--- mg: .git/HEAD
+ref: refs/heads/main
+--- git: .git/HEAD
+ref: refs/heads/main
+--- mg: git config --list --local:
+core.repositoryformatversion=0
+core.filemode=true
+core.bare=false
+core.logallrefupdates=true
+remote.origin.url=file:///tmp/t13c-codex/evidence/remote-bare
+remote.origin.fetch=+refs/heads/*:refs/remotes/origin/*
+branch.main.remote=origin
+branch.main.merge=refs/heads/main
+--- git: git config --list --local:
+core.repositoryformatversion=0
+core.filemode=true
+core.bare=false
+core.logallrefupdates=true
+remote.origin.url=file:///tmp/t13c-codex/evidence/remote-bare
+remote.origin.fetch=+refs/heads/*:refs/remotes/origin/*
+branch.main.remote=origin
+branch.main.merge=refs/heads/main
+--- mg: git rev-parse --verify HEAD
+fatal: Needed a single revision
+exit=128
+--- git: git rev-parse --verify HEAD
+fatal: Needed a single revision
+exit=128
+--- mg: git fsck --strict --no-progress
+notice: No default references
+exit=0
+--- mg: FETCH_HEAD / refs/remotes/origin/HEAD
+ls: cannot access '/tmp/t13c-codex/evidence/mine-bare/clone/.git/FETCH_HEAD': No such file or directory
+ls: cannot access '/tmp/t13c-codex/evidence/mine-bare/clone/.git/refs/remotes/origin/HEAD': No such file or directory
+--- git: FETCH_HEAD / refs/remotes/origin/HEAD
+ls: cannot access '/tmp/t13c-codex/evidence/real-bare/clone/.git/FETCH_HEAD': No such file or directory
+ls: cannot access '/tmp/t13c-codex/evidence/real-bare/clone/.git/refs/remotes/origin/HEAD': No such file or directory
+--- mg: worktree files (non-.git)
+--- fetch on the empty remote ---
+mg fetch origin exit=0
+git fetch origin exit=0
+--- mg fetch stdout:
+From file:///tmp/t13c-codex/evidence/remote-bare
+--- mg fetch stderr:
+--- git fetch stdout:
+--- git fetch stderr:
+--- mg after fetch: show-ref
+exit=1
+--- git after fetch: show-ref
+exit=1
+--- mg after fetch: FETCH_HEAD
+-rw-r--r-- 1 user user 0 Sep 19 22:43 /tmp/t13c-codex/evidence/mine-bare/clone/.git/FETCH_HEAD
+--- git after fetch: FETCH_HEAD
+-rw-r--r-- 1 user user 0 Sep 19 22:43 /tmp/t13c-codex/evidence/real-bare/clone/.git/FETCH_HEAD
+--- mg fetch stderr vs git fetch stderr:
+(fetch stderr identical)
+--- mg fetch stdout vs git fetch stdout:
+1d0
+< From file:///tmp/t13c-codex/evidence/remote-bare
+############ fixture: plain   url=file:///tmp/t13c-codex/evidence/remote-plain
+--- remote: git show-ref
+exit=1
+--- remote: git symbolic-ref HEAD
+refs/heads/main
+--- mg clone:
+mg clone exit=0
+--- git clone:
+git clone exit=0
+--- mg stdout:
+--- mg stderr:
+Cloning into 'clone'...
+warning: You appear to have cloned an empty repository.
+--- git stdout:
+--- git stderr:
+Cloning into 'clone'...
+warning: You appear to have cloned an empty repository.
+--- stderr: IDENTICAL (byte-for-byte)
+--- stdout: IDENTICAL (byte-for-byte)
+--- mg target `ls -A`:
+.git
+--- git target `ls -A`:
+.git
+--- mg: git show-ref
+exit=1
+--- git: git show-ref
+exit=1
+--- mg: git symbolic-ref HEAD
+refs/heads/main
+--- git: git symbolic-ref HEAD
+refs/heads/main
+--- mg: git status --porcelain
+exit=0
+--- git: git status --porcelain
+exit=0
+--- mg: .git/HEAD
+ref: refs/heads/main
+--- git: .git/HEAD
+ref: refs/heads/main
+--- mg: git config --list --local:
+core.repositoryformatversion=0
+core.filemode=true
+core.bare=false
+core.logallrefupdates=true
+remote.origin.url=file:///tmp/t13c-codex/evidence/remote-plain
+remote.origin.fetch=+refs/heads/*:refs/remotes/origin/*
+branch.main.remote=origin
+branch.main.merge=refs/heads/main
+--- git: git config --list --local:
+core.repositoryformatversion=0
+core.filemode=true
+core.bare=false
+core.logallrefupdates=true
+remote.origin.url=file:///tmp/t13c-codex/evidence/remote-plain
+remote.origin.fetch=+refs/heads/*:refs/remotes/origin/*
+branch.main.remote=origin
+branch.main.merge=refs/heads/main
+--- mg: git rev-parse --verify HEAD
+fatal: Needed a single revision
+exit=128
+--- git: git rev-parse --verify HEAD
+fatal: Needed a single revision
+exit=128
+--- mg: git fsck --strict --no-progress
+notice: No default references
+exit=0
+--- mg: FETCH_HEAD / refs/remotes/origin/HEAD
+ls: cannot access '/tmp/t13c-codex/evidence/mine-plain/clone/.git/FETCH_HEAD': No such file or directory
+ls: cannot access '/tmp/t13c-codex/evidence/mine-plain/clone/.git/refs/remotes/origin/HEAD': No such file or directory
+--- git: FETCH_HEAD / refs/remotes/origin/HEAD
+ls: cannot access '/tmp/t13c-codex/evidence/real-plain/clone/.git/FETCH_HEAD': No such file or directory
+ls: cannot access '/tmp/t13c-codex/evidence/real-plain/clone/.git/refs/remotes/origin/HEAD': No such file or directory
+--- mg: worktree files (non-.git)
+--- fetch on the empty remote ---
+mg fetch origin exit=0
+git fetch origin exit=0
+--- mg fetch stdout:
+From file:///tmp/t13c-codex/evidence/remote-plain
+--- mg fetch stderr:
+--- git fetch stdout:
+--- git fetch stderr:
+--- mg after fetch: show-ref
+exit=1
+--- git after fetch: show-ref
+exit=1
+--- mg after fetch: FETCH_HEAD
+-rw-r--r-- 1 user user 0 Sep 19 22:43 /tmp/t13c-codex/evidence/mine-plain/clone/.git/FETCH_HEAD
+--- git after fetch: FETCH_HEAD
+-rw-r--r-- 1 user user 0 Sep 19 22:43 /tmp/t13c-codex/evidence/real-plain/clone/.git/FETCH_HEAD
+--- mg fetch stderr vs git fetch stderr:
+(fetch stderr identical)
+--- mg fetch stdout vs git fetch stdout:
+1d0
+< From file:///tmp/t13c-codex/evidence/remote-plain

@@ -1,0 +1,10 @@
+{
+  "seq": 5,
+  "job_id": "66840d4b642f481a848788974b0665ca",
+  "round_id": "ea8be0b903094bd7b0dc00f9de970778",
+  "kind": "result",
+  "message": "success: W7-D1 FIXED — the integration test's evidence sink no longer writes into the repo; the suite is hermetic.\n\nCHANGED FILE (net this round)\n- modified: tests/verify_pack.rs (the ONLY file I changed; sha256 d4642b5f49ffbc9acd35c6f1d492422a963054ade391b85f8bd988fc44574476 -> 133bd049d457bd4a3c1ba52cc93acc70b21c40e7c2c4318971982e35266ea061)\n- created / generated / deleted: none (evidence now lands in $TMPDIR; target/ excluded as a build dir)\n- I did NOT touch src/**, Cargo.toml, other tests/**, or .orch/**.\n- no sub-agents; no writer processes left running.\n- NOTE: ORCHESTRATION.md (02:18:01) and .o",
+  "evidence_path": "/home/user/Projects/mini-git/.orch/waves/W7/orch-run-oxrolhzc/watches/orch-watch-oxft_00d/evidence/000000000005.json",
+  "screen_tail": " oracle deepseek-flash             │\n     round (controller mtimes 02:18/02:17; my file 02:15) — not my edits. LC_ALL=C is required      │ prometheus deepseek-flash         │\n     because ambient LC_MESSAGES=zh_CN.UTF-8 makes 2 lib tests compare git's localized stderr;      │ quick deepseek-flash              │\n     verify_http ran and passed (local bind permitted). Evidence under /tmp/w7-author/ (            │                                   │\n     manifests A–G, compare_manifest.py, test/clippy logs, v9 hashes).                              └───────────────────────────────────┘\n\n     ▣  Sisyphus - Ultraworker · DeepSeek V4.1 Flash · 3m 19s\n\n  ┃\n  ┃\n  ┃\n  ┃  Sisyphus - Ultraworker · DeepSeek V4.1 Flash DeepSeek                                          ~/Projects/mini-git\n  ╹▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀\n   /home/user/Projects/mini-git                            208.5K (21%) · $0.09  ctrl+p commands    • OpenCode 1.18.29",
+  "observed_at": 1789928320.9174476
+}

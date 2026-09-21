@@ -1,0 +1,23 @@
+{
+  "active_request": "/home/user/Projects/mini-git/.orch/rounds/W2/agent-orchestrator-ce6l9t1x/request.json",
+  "job_id": "6f74e4a00f4b4a6a9fa64edb20f94bc8",
+  "round_id": "674bf2e8e9b248ca98af7e33bb78452b",
+  "transport": "insider (default session)",
+  "session": "default",
+  "agent": "w2-t7-codex",
+  "pane": "wX:p1",
+  "workspace": "wX",
+  "cwd": "/home/user/Projects/mini-git",
+  "kind": "codex",
+  "task": "T7 merge-base",
+  "submitted_at": "2026-09-19T20:13:41+08:00",
+  "acceptance": "accepted",
+  "submission_evidence": "herdr agent prompt -> agent_prompted",
+  "deadline": "2026-09-19T21:13:00+08:00",
+  "monitor_owner": "controller (default session, pane wJ:p1)",
+  "last_checked_at": "2026-09-19T20:13:41+08:00",
+  "next_check_at": null,
+  "pending_question": null,
+  "resources_file": "/home/user/Projects/mini-git/.orch/rounds/W2/agent-orchestrator-ce6l9t1x/resources.json",
+  "result_path": "/home/user/Projects/mini-git/.orch/rounds/W2/agent-orchestrator-ce6l9t1x/result.json"
+}

@@ -1,0 +1,12 @@
+CHANGED  .orch/SKILL-FINDINGS.md
+CHANGED  .orch/waves/W2/T5-odb/verify-task.md
+CHANGED  .orch/waves/W2/T6-diff/verify-task.md
+CHANGED  .orch/waves/W2/T7-mergebase/verify-task.md
+CHANGED  .orch/waves/W2/T8-pktline/verify-task.md
+CHANGED  src/cli/cat_file.rs
+CHANGED  src/cli/diff.rs
+CHANGED  src/diff/myers.rs
+CHANGED  src/diff/unified.rs
+CHANGED  src/merge/merge_base.rs
+CHANGED  src/odb/loose.rs
+CHANGED  src/transport/pktline.rs

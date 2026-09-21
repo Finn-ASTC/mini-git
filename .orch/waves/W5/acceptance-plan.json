@@ -1,0 +1,37 @@
+{
+  "delivery": {
+    "target": "一个无第三方依赖的 Rust 二进制 crate，产物是 target/release/linestat",
+    "contract": "SPEC.md 的 CLI 契约（--version / 单文件 / 多文件 total / 三类错误退出码）",
+    "source_scope": "/tmp/w5-linestat 下的 Cargo.toml、Cargo.lock、src/**、tests/**；SPEC.md 属调用方，只读",
+    "intended_use": "本地命令行工具"
+  },
+  "configurations": {
+    "applicable": ["dev", "release", "release-artifact"],
+    "delivered": "release（target/release/linestat）",
+    "not_applicable": [
+      {"slot": "platform", "reason": "本任务只声明本机 Linux；不做跨平台声明", "owner": "controller"},
+      {"slot": "feature-flags", "reason": "该 crate 未声明任何 feature", "owner": "controller"},
+      {"slot": "msrv", "reason": "SPEC 未声明 MSRV；不据此声称支持旧工具链", "owner": "controller"}
+    ]
+  },
+  "gates": [
+    {"id": "G1-dev-tests", "configuration": "dev", "owner": "author+verifier",
+     "plan": ".orch/waves/W5/plans/controller-plan.json", "command_positions": [4],
+     "oracle": "crate 自带测试", "timeout_seconds": 300},
+    {"id": "G2-release-tests", "configuration": "release", "owner": "author+verifier",
+     "plan": ".orch/waves/W5/plans/controller-plan.json", "command_positions": [6],
+     "oracle": "crate 自带测试（release 断言设置）", "timeout_seconds": 300},
+    {"id": "G3-release-artifact", "configuration": "release-artifact", "owner": "controller+verifier",
+     "plan": ".orch/waves/W5/plans/controller-plan.json", "command_positions": [7],
+     "oracle": "独立 oracle 由验证者自写；本条是 controller 的最小冒烟，不替代验证者",
+     "timeout_seconds": 30},
+    {"id": "G4-fmt", "configuration": "dev", "owner": "author",
+     "plan": null, "command_positions": null,
+     "oracle": "cargo fmt --all -- --check", "timeout_seconds": 60},
+    {"id": "G5-clippy", "configuration": "dev", "owner": "author",
+     "plan": null, "command_positions": null,
+     "oracle": "cargo clippy --offline --all-targets -- -D warnings", "timeout_seconds": 300}
+  ],
+  "artifacts": {"intended": ["build/cargo/release/linestat"], "bound_at_capture": true},
+  "coverage_note": "未执行 / 超时 / 不适用 必须分开报告；构建成功不等于 G3。测试总数不能替代逐配置结论。"
+}

@@ -1,0 +1,10 @@
+{
+  "seq": 4,
+  "job_id": "9746730210dc4491b685bbc446088546",
+  "round_id": "1f695772a77b44ab8bcfb878a34e5add",
+  "kind": "state_changed",
+  "message": "working",
+  "evidence_path": "/home/user/Projects/mini-git/.orch/waves/W5/orch-run-2lpx81iy/watches/orch-watch-y0msbg8u/evidence/000000000004.json",
+  "screen_tail": "output & exit 0\n - single file: exact stdout line, exit 0\n - multi file: order + total\n - empty file: 0 0 0\n - no trailing newline: lines+1\n - \\r and tabs word separation\n - missing file: stderr line + exit 1, continue with later file\n - unknown option: usage + exit 2\n - no args: usage + exit 2\n - bytes includes non-UTF8 (invalid UTF-8 byte sequence participates) — good edge case.\n - multi file with error: total sums successful only (pins my documented interpretation).\n\n I\n\n TODO\n  ├─ I. Implement · 0/3\n  │  ├─  Write Cargo.toml crate manifest\n  │  ├─  Implement src/main.rs per SPEC\n  │  └─  Write integration tests in tests/\n  ├─ II. Verify · 0/5\n  └─────\n\n  󱊷 Planning the implementation\n\n╭── ⠧ 12s  3 DeepSeek V4.1 Flash   w5-linestat  $0.00 ↓ ─3%──────────────────────────󰁨────1M─  2.7K   96.22%  Build Rust CLI from SPEC ──╮\n╰─                                                                                                                                                 ─╯",
+  "observed_at": 1789897391.0273004
+}

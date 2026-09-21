@@ -1,0 +1,10 @@
+{
+  "seq": 2,
+  "job_id": "66840d4b642f481a848788974b0665ca",
+  "round_id": "ea8be0b903094bd7b0dc00f9de970778",
+  "kind": "state_changed",
+  "message": "working",
+  "evidence_path": "/home/user/Projects/mini-git/.orch/waves/W7/orch-run-oxrolhzc/watches/orch-watch-oxft_00d/evidence/000000000002.json",
+  "screen_tail": "        │ oracle deepseek-flash             │\n  ┃  Click to expand                                                                                │ prometheus deepseek-flash         │\n  ┃                                                                                                 │ quick deepseek-flash              │\n                                                                                                    │                                   │\n     ⠦ Thinking                                                                                     └───────────────────────────────────┘\n\n     ▣  Sisyphus - Ultraworker · DeepSeek V4.1 Flash\n\n  ┃\n  ┃\n  ┃\n  ┃  Sisyphus - Ultraworker · DeepSeek V4.1 Flash DeepSeek                                          ~/Projects/mini-git\n  ╹▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀\n   ⬝⬝⬝⬝⬝⬝⬝⬝  esc interrupt                                 163.2K (16%) · $0.06  ctrl+p commands    • OpenCode 1.18.29",
+  "observed_at": 1789928125.905315
+}

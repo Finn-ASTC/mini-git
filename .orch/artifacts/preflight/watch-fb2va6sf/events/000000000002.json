@@ -1,0 +1,10 @@
+{
+  "seq": 2,
+  "job_id": "816ca880b03a437c8aa3da7cec8b3cf9",
+  "round_id": "c1431df7a41e4b2fa6e43dd022e2acb5",
+  "kind": "attention",
+  "message": "Suspected native dialog; inspect evidence before responding.",
+  "evidence_path": "/tmp/orch-watch-fb2va6sf/evidence/000000000002.json",
+  "screen_tail": "it add -A && echo \"write-tree: $(git write-tree)\" && git cat-file tree \"$(git\n  write-tree)\" | xxd -p | tr -d '\\n'; echo; echo \"foo-subtree: $(git cat-file tree \"$(git write-tree):foo\" | xxd -p |\n  tr -d '\\n')\"\n\n› 1. Yes, proceed (y)\n  2. Yes, and don't ask again for commands that start with `git --version; SCRATCH=/home/user/Projects/mini-git/.orch/\n     waves/W1/T1-object/verify-scratch; mkdir -p \"$SCRATCH\"; cd \"$SCRATCH\" && rm -rf tree-case && mkdir tree-case &&\n     cd tree-case && git init -q . && printf 'a\\n' > a.txt && mkdir foo && printf 'b\\n' > foo/b.txt && printf 'c\\n' >\n     foo.txt && printf '#!/bin/sh\\n' > run.sh && chmod +x run.sh && ln -s a.txt link.txt && git add -A && echo \"write-\n     tree: $(git write-tree)\" && git cat-file tree \"$(git write-tree)\" | xxd -p | tr -d '\\n'; echo; echo \"foo-subtree:\n     $(git cat-file tree \"$(git write-tree):foo\" | xxd -p | tr -d '\\n')\"` (p)\n  3. No, and tell Codex what to do differently (esc)\n\n  Press enter to confirm or esc to cancel\n",
+  "observed_at": 1789816768.161165
+}

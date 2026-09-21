@@ -1,0 +1,17 @@
+{
+  "version": 1,
+  "seq": 10,
+  "job_id": "9317e01768834379b288ea08ed9fe156",
+  "round_id": "3ccd1e4633ae4de7a5ce2b4817f3f2c5",
+  "event_fingerprint": "b74005a33fa29ceb0966e99d8919363f64a06f4ca7eea2985541e722afe9fb5d",
+  "revision": 1,
+  "status": "handled",
+  "note": "review_due（changed UI）复核，seq 10，watch orch-watch-_8f_qjxn（V2/omp 验证者）。\n读 evidence/000000000010.json 的 screen：omp 正在批量关闭 15 项 TODO（Setup/Build/Oracle/Negative control/\nGates/Scenario/Report 全部完成）、准备发布 result.json 并收尾。无对话框、无提问、无原生审批画面。\n判定：收尾阶段，无需控制方输入。该 job（9317e017）随后已 completed 并 close（rev 9），\n轮次已结束，本事件仅作账目结清。\n",
+  "recorded_at": 1789929715.1390831,
+  "action_evidence": null,
+  "resolution_evidence": {
+    "path": "/home/user/Projects/mini-git/.orch/waves/W7/orch-run-oxrolhzc/watches/orch-watch-_8f_qjxn/evidence/000000000010.json",
+    "sha256": "ce136b2c5c3cb59f67472796602b66389869cdbd88b579e8ad3cedbc76d61b1b"
+  },
+  "resolved_at": 1789929715.0
+}

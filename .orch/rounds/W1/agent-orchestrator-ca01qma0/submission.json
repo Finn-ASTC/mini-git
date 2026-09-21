@@ -1,0 +1,22 @@
+{
+  "active_request": "/home/user/Projects/mini-git/.orch/rounds/W1/agent-orchestrator-ca01qma0/request.json",
+  "job_id": "ef6191c8c4774b7ab230b97d56abb27d",
+  "round_id": "35eb97606e2547e0ab9a40fd94b0f77d",
+  "transport": "insider (default session)",
+  "session": "default",
+  "agent": "omp-v2 / orch-omp-v2",
+  "pane": "wR:p1",
+  "workspace": "wR",
+  "cwd": "/home/user/Projects/mini-git",
+  "task": "V2 独立验证 T2（refs）",
+  "submitted_at": "2026-09-19T19:36:28+08:00",
+  "acceptance": "accepted",
+  "submission_evidence": "herdr agent prompt -> {\"type\":\"agent_prompted\"}",
+  "deadline": "2026-09-19T20:36:00+08:00",
+  "monitor_owner": "controller (default session, pane wJ:p1)",
+  "last_checked_at": "2026-09-19T19:36:28+08:00",
+  "next_check_at": null,
+  "pending_question": null,
+  "resources_file": "/home/user/Projects/mini-git/.orch/rounds/W1/agent-orchestrator-ca01qma0/resources.json",
+  "result_path": "/home/user/Projects/mini-git/.orch/rounds/W1/agent-orchestrator-ca01qma0/result.json"
+}

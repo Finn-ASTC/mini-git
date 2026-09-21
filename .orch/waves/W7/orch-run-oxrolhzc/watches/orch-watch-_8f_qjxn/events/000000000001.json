@@ -1,0 +1,10 @@
+{
+  "seq": 1,
+  "job_id": "9317e01768834379b288ea08ed9fe156",
+  "round_id": "3ccd1e4633ae4de7a5ce2b4817f3f2c5",
+  "kind": "state_changed",
+  "message": "idle",
+  "evidence_path": "/home/user/Projects/mini-git/.orch/waves/W7/orch-run-oxrolhzc/watches/orch-watch-_8f_qjxn/evidence/000000000001.json",
+  "screen_tail": "                                                                     │\n│                          │                                                                       │\n│                          │                                                                       │\n│                          │                                                                       │\n╰──────────────────────────┴───────────────────────────────────────────────────────────────────────╯\n Tip: `/shake` rips heavy tool results out of context to reclaim tokens without a full /compact —\n      `/shake images` drops just images\n\n Connected to MCP servers: arch-linux, cratesio-mcp, hackage-docs, debvulns, ssh-server, blender, godot.\n\n╭── ♡⃝ awful_bed~  3 DeepSeek V4.1 Flash   w7-verify  $0.00 ↓ ──2%────────────────────────────────────────────────────󰁨─────────1M───╮\n╰─                                                                                                                                       ─╯",
+  "observed_at": 1789926552.4702613
+}

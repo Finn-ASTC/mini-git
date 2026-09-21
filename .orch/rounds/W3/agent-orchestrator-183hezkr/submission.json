@@ -1,0 +1,23 @@
+{
+  "active_request": "/home/user/Projects/mini-git/.orch/rounds/W3/agent-orchestrator-183hezkr/request.json",
+  "job_id": "1673c6ef0ff24fde8d62340caab7210e",
+  "round_id": "382a4281187d43a98f2848de835ac1b5",
+  "transport": "insider (default session)",
+  "session": "default",
+  "agent": "w3-t11-omp",
+  "pane": "w17:p1",
+  "workspace": "w17",
+  "cwd": "/home/user/Projects/mini-git",
+  "kind": "omp",
+  "task": "T11 物化 + 分支/切换/重置命令",
+  "submitted_at": "2026-09-19T20:47:40+08:00",
+  "acceptance": "accepted",
+  "submission_evidence": "herdr agent prompt -> agent_prompted",
+  "deadline": null,
+  "monitor_owner": "controller (default session, pane wJ:p1)",
+  "last_checked_at": "2026-09-19T21:04:58+08:00",
+  "next_check_at": null,
+  "pending_question": null,
+  "resources_file": "/home/user/Projects/mini-git/.orch/rounds/W3/agent-orchestrator-183hezkr/resources.json",
+  "result_path": "/home/user/Projects/mini-git/.orch/rounds/W3/agent-orchestrator-183hezkr/result.json"
+}

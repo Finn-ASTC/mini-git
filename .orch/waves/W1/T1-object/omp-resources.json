@@ -1,0 +1,17 @@
+{
+  "mode": "isolated",
+  "session": "orch-w1-t1",
+  "agent": "orch-omp-t1",
+  "pane": "w1:p1",
+  "workspace": "w1",
+  "owns_agent": true,
+  "owns_pane": true,
+  "owns_workspace": true,
+  "owns_session": true,
+  "tab": null,
+  "parent_pane": null,
+  "parent_tab": null,
+  "owns_tab": false,
+  "recorded_at": "2026-09-19T11:13:40.605075+00:00",
+  "job_id": "edb0e351b58e42e486a264690ece2dcd"
+}

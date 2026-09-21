@@ -1,0 +1,11 @@
+W7 最终门禁（真实仓库，修复后）
+时间：2026-09-21T02:38:13+08:00
+
+命令：LC_ALL=C cargo test --offline --locked --no-fail-fast            → exit 0, dev 7.4s, 562 passed / 0 failed / 1 ignored
+命令：LC_ALL=C cargo test --offline --locked --release --no-fail-fast → exit 0, release 5.4s, 562 passed / 0 failed / 1 ignored
+      （release 日志里 'Running tests/verify_http' 出现 2 次 → http 两条 target 真的跑了）
+命令：bash scripts/check-freeze.sh → checked 21 file(s), drift 0 / freeze-v0 intact
+
+副作用核查：跑完两条门禁后，.orch/waves/W3/T9-pack/verify-scratch/ 下 11 个 v9-*.txt
+的 sha256 与本轮开始前的清单逐行相同（证据见 t2-w3-v9-hashes-{before,after-final-gates}.txt）；
+测试证据落在仓库之外：/tmp/mini-git-v9-evidence-<pid>/（默认走 std::env::temp_dir）。

@@ -1,0 +1,17 @@
+{
+  "version": 1,
+  "seq": 7,
+  "job_id": "9317e01768834379b288ea08ed9fe156",
+  "round_id": "3ccd1e4633ae4de7a5ce2b4817f3f2c5",
+  "event_fingerprint": "d7fc0d6ed708fcd4009435d48d5441b511d3ed7095f8d9c789d2894cbc3f6904",
+  "revision": 1,
+  "status": "handled",
+  "note": "result（success）结清，seq 7，watch orch-watch-_8f_qjxn（V2/omp 验证者）。\nresult.validation.valid=true，status=success：V2 给出 PASS —— 在自建 release 制品上\nrelease == debug == 真实 git（git 2.55.0），零挂起零差异；pre-fix 制品负对照稳定复现挂起与错误结果。\n该结论已由控制方独立复核并收口（验收 attempt verify-ac2pq4b9，close outcome=completed rev 9）。\n无需控制方进一步动作，仅结清账目。\n",
+  "recorded_at": 1789929715.0273101,
+  "action_evidence": null,
+  "resolution_evidence": {
+    "path": "/home/user/Projects/mini-git/.orch/waves/W7/orch-run-oxrolhzc/watches/orch-watch-_8f_qjxn/evidence/000000000007.json",
+    "sha256": "2502dd1dad10ed05c73099287fe4eebbe3c8ed541eec33f9fb100d9604460bf3"
+  },
+  "resolved_at": 1789929714.0
+}

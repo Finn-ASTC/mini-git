@@ -1,0 +1,23 @@
+{
+  "active_request": ".orch/rounds/W4/agent-orchestrator-s4w2zqcy/request.json",
+  "job_id": "b29af945498a4247ae0dfd3c0e6fa1be",
+  "round_id": "42a29af1cb3f4cf2a171690c35be2443",
+  "transport": "insider (default session)",
+  "session": "default",
+  "agent": "w4-t15-omp",
+  "pane": "w1G:p1",
+  "workspace": "w1G",
+  "cwd": "/home/user/Projects/mini-git",
+  "kind": "omp",
+  "task": "T15 fsck/gc + e2e 收口",
+  "submitted_at": "2026-09-19T21:43:28+08:00",
+  "acceptance": "accepted",
+  "submission_evidence": "herdr agent prompt -> agent_prompted",
+  "deadline": null,
+  "monitor_owner": "controller (default session, pane wJ:p1)",
+  "last_checked_at": "2026-09-19T21:43:28+08:00",
+  "next_check_at": null,
+  "pending_question": null,
+  "resources_file": ".orch/rounds/W4/agent-orchestrator-s4w2zqcy/resources.json",
+  "result_path": "/home/user/Projects/mini-git/.orch/rounds/W4/agent-orchestrator-s4w2zqcy/result.json"
+}

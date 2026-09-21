@@ -1,0 +1,23 @@
+V1 watch seq 5 (result) + seq 6 (state done), reviewed together.
+
+1. protocol.py validate --request <V1 request> --check-files -> IDs exact,
+   status=success, error/blocked_reason null, declared files exist.
+   result.json sha256 3b35b7fd...50e935.
+2. Independence check: V1 wrote its own oracle from SPEC.md alone
+   (oracle/linestat_oracle.py, 90d2a744...) and its own 36-case byte-level
+   differential harness (harness/differential.py, cae5eada...). It proved
+   SPEC != wc on purpose (file "abc" no trailing newline: linestat "1 1 3"
+   vs wc -l "0"). It independently spotted that MY delivery.py verify run
+   created snapshot-nvn21yva/verifications/ after the seal, and bounded it
+   as an external actor that did not alter verified bytes.
+   -> independent work, not transcription.
+3. Controller cross-check, run by me (not read from the report): V1's own
+   harness against MY independently rebuilt release artifact
+   (build/cargo/release/linestat, fresh build from the sealed snapshot):
+   sha256 75953480...8a4f5e = author's = V1's; 36/36 PASS 0 FAIL
+   (/tmp/w5-ctrl-xcheck/report.json).
+4. V1 separated PRODUCT VERDICT (PASS) from PROTOCOL STATUS (success),
+   recorded 4 SPEC-underdetermined items as unscored and 7 not-covered
+   areas with reasons - satisfies per-configuration reporting.
+
+Disposition: handled. No rework round. No input sent to the target.

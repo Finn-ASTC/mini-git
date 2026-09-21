@@ -1,0 +1,21 @@
+{
+ "commands": [
+  {
+   "argv": [
+    "python3",
+    "-c",
+    "import hashlib, json, os, pathlib, subprocess, sys\nsrc, ev, build = map(pathlib.Path, sys.argv[1:4])\ndef sha(p):\n    return hashlib.sha256(pathlib.Path(p).read_bytes()).hexdigest()\noracle = src / 'oracle' / 'linestat_oracle.py'\nharness = src / 'harness' / 'differential.py'\nassert sha(oracle) == '90d2a7449c4011e5421c8cbf2e8ca530d60e76c56107073d9f4aaec129389ae9', sha(oracle)\nassert sha(harness) == 'cae5eada126891cf5514a0fb98a394f50e63bb17cd5f28b58c017c0d86381d8d', sha(harness)\nBIN = sys.argv[4]\nassert sha(BIN) == '759534809958403271ec37bba8962439ab51938999bdd214214b6bff3ea44f5e', sha(BIN)\n\n# 负对照：一个故意永远答错的替身，harness 必须拒收它。\nstub = build / 'wrong_linestat.py'\nstub.write_text('#!/usr/bin/env python3\\nimport sys\\nsys.stdout.write(\"0 0 0 total\\\\n\")\\n')\nstub.chmod(0o755)\n\ndef run(binary, tag):\n    rc = subprocess.run([sys.executable, str(harness), str(binary),\n                         str(ev / ('fx-' + tag)), str(ev / ('rep-' + tag))],\n                        capture_output=True, text=True, timeout=900)\n    rep = json.loads((ev / ('rep-' + tag + '.json')).read_text())\n    return rc, rep\n\nrc_bad, rep_bad = run(stub, 'negative')\nassert rep_bad['cases_failed'] > 0, ('negative control was NOT rejected', rep_bad)\nassert rc_bad.returncode != 0, ('negative control exit code should be nonzero', rc_bad.returncode)\n\nrc_ok, rep_ok = run(BIN, 'positive')\nassert (rep_ok['cases_total'], rep_ok['cases_passed'], rep_ok['cases_failed']) == (36, 36, 0), rep_ok\nassert rc_ok.returncode == 0, (rc_ok.returncode, rc_ok.stdout[-800:])\nprint('negative control rejected:', rep_bad['cases_failed'], '/', rep_bad['cases_total'], 'cases failed as required')\nprint('pinned oracle/harness/binary hashes match; positive matrix', rep_ok['cases_passed'], '/', rep_ok['cases_total'])",
+    "{source}",
+    "{evidence}",
+    "{build}",
+    "/home/user/Projects/mini-git/.orch/waves/W5/orch-run-2lpx81iy/rounds/agent-orchestrator-ggyoe35m/deliveries/snapshot-nvn21yva/verifications/verify-l9da_n_s/build/cargo/release/linestat"
+   ],
+   "timeout_seconds": 900
+  }
+ ],
+ "artifacts": [],
+ "dependencies": {
+  "python3": null
+ },
+ "environment": {}
+}

@@ -1,0 +1,17 @@
+{
+  "version": 1,
+  "seq": 8,
+  "job_id": "9317e01768834379b288ea08ed9fe156",
+  "round_id": "3ccd1e4633ae4de7a5ce2b4817f3f2c5",
+  "event_fingerprint": "788cb13bcae630b551ac6f182db27cab785d0d256166b6a250222a38db531bb0",
+  "revision": 1,
+  "status": "handled",
+  "note": "state_changed（done）结清，seq 8，watch orch-watch-_8f_qjxn。\nV2（omp）native 状态转为 done，表示该轮验证工作已发布结果并停止输出。\n本 job 9317e017 已 completed、已 close（rev 9）。正常终态，无需输入。\n",
+  "recorded_at": 1789929715.085022,
+  "action_evidence": null,
+  "resolution_evidence": {
+    "path": "/home/user/Projects/mini-git/.orch/waves/W7/orch-run-oxrolhzc/watches/orch-watch-_8f_qjxn/evidence/000000000008.json",
+    "sha256": "6880baee533448346f82242e348b87168aeeba4cdaa8d879e8970443d5433125"
+  },
+  "resolved_at": 1789929715.0
+}

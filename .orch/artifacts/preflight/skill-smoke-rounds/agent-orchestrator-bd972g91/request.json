@@ -1,0 +1,11 @@
+{
+  "schema_version": 1,
+  "job_id": "a45682256bd145c39b4b1e584f107fc1",
+  "round_id": "022d7c7f32ae489c9493e2ad960ef2d5",
+  "cwd": "/tmp/hd2",
+  "result_path": "/tmp/agent-orchestrator-bd972g91/result.json",
+  "depth": 1,
+  "max_depth": 3,
+  "prepared_at": "2026-09-19T10:41:25.044729+00:00",
+  "task": "t"
+}

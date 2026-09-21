@@ -1,0 +1,17 @@
+{
+  "mode": "isolated",
+  "session": "test-session",
+  "agent": "codex",
+  "pane": "w4:p1",
+  "workspace": "w4",
+  "owns_agent": true,
+  "owns_pane": true,
+  "owns_workspace": true,
+  "owns_session": false,
+  "tab": null,
+  "parent_pane": null,
+  "parent_tab": null,
+  "owns_tab": false,
+  "recorded_at": "2026-09-19T09:12:16.262027+00:00",
+  "job_id": "b86a8e98e58f413b82c3ee0d9bafeb11"
+}

@@ -1,0 +1,17 @@
+{
+  "version": 1,
+  "seq": 3,
+  "job_id": "66840d4b642f481a848788974b0665ca",
+  "round_id": "ea8be0b903094bd7b0dc00f9de970778",
+  "event_fingerprint": "ed81c7d3f932f2c2d6d554738cddbbb8defa37a0ffcba4c2dafcda029acd61d6",
+  "revision": 1,
+  "status": "handled",
+  "note": "review_due（changed UI）复核，seq 3（T2 轮）。读证据 evidence/000000000003.json 的 screen：\nopencode/OMO 作者正在按 T2 任务包做「hermeticity 前后括号」——\n它自己写了 /tmp/w7-author/manifest.py 生成整仓 sha256 清单，\n正在跑 C1-before-devtest → `timeout 600 cargo test --offline` → C2-after-devtest 这条链，\n并解析 test result 行统计 passed/failed/ignored。右侧面板显示 Style gates clean、\nContext 176,613 tokens / 18% used / $0.07。\n\n没有任何对话框、确认提示、提问或原生审批画面；UI 变化来自长命令输出滚动与它自己的脚手架运行。\n判定：正常工作中，无需控制方输入。\n",
+  "recorded_at": 1789928179.214739,
+  "action_evidence": null,
+  "resolution_evidence": {
+    "path": "/home/user/Projects/mini-git/.orch/waves/W7/orch-run-oxrolhzc/watches/orch-watch-oxft_00d/evidence/000000000003.json",
+    "sha256": "6cfb2a0d07526f182b86f03b890abc8260825f9dd3a78c44ac6065a191aa5993"
+  },
+  "resolved_at": 1789928179.0
+}

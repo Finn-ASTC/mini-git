@@ -1,0 +1,83 @@
+{
+  "version": 1,
+  "revision": 6,
+  "index_path": "/home/user/Projects/mini-git/.orch/waves/W7/orch-run-oxrolhzc/jobs",
+  "job_id": "9317e01768834379b288ea08ed9fe156",
+  "round_id": "3ccd1e4633ae4de7a5ce2b4817f3f2c5",
+  "active_request": "/home/user/Projects/mini-git/.orch/waves/W7/orch-run-oxrolhzc/rounds/agent-orchestrator-a_u_8vn8/request.json",
+  "rounds": [
+    {
+      "request_path": "/home/user/Projects/mini-git/.orch/waves/W7/orch-run-oxrolhzc/rounds/agent-orchestrator-a_u_8vn8/request.json",
+      "round_id": "3ccd1e4633ae4de7a5ce2b4817f3f2c5",
+      "request_sha256": "df353e6463827a36ca648d579cc9931b6da66582085cacdd83493401b99d8171"
+    }
+  ],
+  "resources": {
+    "path": "/home/user/Projects/mini-git/.orch/waves/W7/orch-run-oxrolhzc/rounds/agent-orchestrator-a_u_8vn8/resources.json",
+    "sha256": "c706f31e7aed89a939a6cc1325a664ca806b74a763487a4e4da771a663bac768",
+    "record": {
+      "mode": "insider",
+      "session": "default",
+      "agent": "orch-w7-verifier",
+      "pane": "w1W:p1",
+      "workspace": "w1W",
+      "owns_agent": true,
+      "owns_pane": true,
+      "owns_workspace": true,
+      "owns_session": false,
+      "tab": "w1W:t1",
+      "parent_pane": "wJ:p1",
+      "parent_tab": "wJ:t1",
+      "owns_tab": false,
+      "recorded_at": "2026-09-20T17:49:09.019337+00:00",
+      "job_id": "9317e01768834379b288ea08ed9fe156"
+    }
+  },
+  "submission": "accepted",
+  "attempts": [
+    {
+      "attempt_id": "6c8c2d85beb94269bf56a98eb6f9417f",
+      "round_id": "3ccd1e4633ae4de7a5ce2b4817f3f2c5",
+      "owner": "controller-w7",
+      "begun_at": 1789926573.086333,
+      "status": "accepted",
+      "receipts": [
+        {
+          "status": "accepted",
+          "kind": "target_active",
+          "recorded_at": 1789926611.4444544,
+          "evidence": {
+            "path": "/home/user/Projects/mini-git/.orch/waves/W7/evidence/v2-accepted.txt",
+            "sha256": "faf6314104cd073aad74bdf0d04364c6d24f6f71aa07c4d833086112f5858723",
+            "note": "Target is working on the exact pane under the V2 round title; no result file yet."
+          }
+        }
+      ]
+    }
+  ],
+  "lease": {
+    "owner": "controller-w7",
+    "token": "42d8601a1c1d472c97354604be5b9aaf",
+    "expires_at": 1789928968.6212757
+  },
+  "launch": {
+    "argv": [
+      "omp"
+    ],
+    "profile": "existing-config"
+  },
+  "native": {
+    "session_id": "/home/user/.omp/agent/sessions/-tmp-w7-verify/2026-09-20T17-38-31-135Z_sess_0046-ea5f-7645-8d26-19470fd9732e.jsonl",
+    "turn_id": null
+  },
+  "monitor": {
+    "owner": "controller-w7",
+    "watch_path": "/home/user/Projects/mini-git/.orch/waves/W7/orch-run-oxrolhzc/watches/orch-watch-_8f_qjxn/watch.json",
+    "expires_at": 1789929252.4618971
+  },
+  "deadline": 1789932000,
+  "closed": null,
+  "completion": {},
+  "event": "update",
+  "recorded_at": 1789927841.0684063
+}

@@ -1,0 +1,17 @@
+{
+  "version": 1,
+  "seq": 1,
+  "job_id": "9317e01768834379b288ea08ed9fe156",
+  "round_id": "3ccd1e4633ae4de7a5ce2b4817f3f2c5",
+  "event_fingerprint": "9a432fe95946b59c686ca18ee0cf5612bebf3c2ea70fedbbecf65fa746703e6b",
+  "revision": 1,
+  "status": "handled",
+  "note": "V2 验证轮观察建立时的初始状态事件（state_changed，目标为空闲输入态）。\n读了证据里的 screen：omp 停在输入框，无对话框、无提问、无原生审批画面。\n按「无待处理动作」标记 handled。\n",
+  "recorded_at": 1789926568.5045388,
+  "action_evidence": null,
+  "resolution_evidence": {
+    "path": "/home/user/Projects/mini-git/.orch/waves/W7/orch-run-oxrolhzc/watches/orch-watch-_8f_qjxn/evidence/000000000001.json",
+    "sha256": "1d3659ff1016d87bbf5552307bd7a759f2a7b71d0ea5e9f77098564fa44088cb"
+  },
+  "resolved_at": 1789926568.0
+}

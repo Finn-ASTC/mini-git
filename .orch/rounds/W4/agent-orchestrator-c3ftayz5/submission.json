@@ -1,0 +1,23 @@
+{
+  "active_request": ".orch/rounds/W4/agent-orchestrator-c3ftayz5/request.json",
+  "job_id": "3127313ffbfa41c3ab52f8be26512236",
+  "round_id": "1abc4b9012fd46a8bcf0573532bd5814",
+  "transport": "insider (default session)",
+  "session": "default",
+  "agent": "w4-t16b-opencode",
+  "pane": "w1P:p1",
+  "workspace": "w1P",
+  "cwd": "/home/user/Projects/mini-git",
+  "kind": "opencode",
+  "task": "T16b 返工：merge 本地改动守卫按路径对齐 git（F1）",
+  "submitted_at": "2026-09-19T22:24:27+08:00",
+  "acceptance": "accepted",
+  "submission_evidence": "herdr agent prompt（新 space）",
+  "deadline": null,
+  "monitor_owner": "controller (default session, pane wJ:p1)",
+  "last_checked_at": "2026-09-19T22:24:27+08:00",
+  "next_check_at": null,
+  "pending_question": null,
+  "resources_file": ".orch/rounds/W4/agent-orchestrator-c3ftayz5/resources.json",
+  "result_path": "/home/user/Projects/mini-git/.orch/rounds/W4/agent-orchestrator-c3ftayz5/result.json"
+}

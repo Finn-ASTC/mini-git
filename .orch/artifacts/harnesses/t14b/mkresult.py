@@ -1,0 +1,162 @@
+#!/usr/bin/env python3
+import json
+import os
+from datetime import datetime, timedelta, timezone
+
+result_path = "/home/user/Projects/mini-git/.orch/rounds/W4/agent-orchestrator-gvvgao3_/result.json"
+
+real_get = """GET /srv.git/info/refs?service=git-upload-pack HTTP/1.1
+Host: 127.0.0.1:37095
+User-Agent: git/2.55.0
+Accept: */*
+Accept-Encoding: deflate, gzip, br, zstd
+Accept-Language: zh-CN, *;q=0.9
+Pragma: no-cache"""
+
+our_get = """GET /srv.git/info/refs?service=git-upload-pack HTTP/1.1
+Host: 127.0.0.1:33249
+User-Agent: git/2.55.0
+Connection: close
+Accept: */*"""
+
+real_post = """POST /srv.git/git-upload-pack HTTP/1.1
+Host: 127.0.0.1:37095
+User-Agent: git/2.55.0
+Accept-Encoding: deflate, gzip, br, zstd
+Content-Type: application/x-git-upload-pack-request
+Accept: application/x-git-upload-pack-result
+Accept-Language: zh-CN, *;q=0.9
+Content-Length: 183"""
+
+our_post = """POST /srv.git/git-upload-pack HTTP/1.1
+Host: 127.0.0.1:37957
+User-Agent: git/2.55.0
+Connection: close
+Accept: application/x-git-upload-pack-result
+Content-Type: application/x-git-upload-pack-request
+Content-Length: 89"""
+
+real_receive_get = """GET /srv.git/info/refs?service=git-receive-pack HTTP/1.1
+Host: 127.0.0.1:41109
+User-Agent: git/2.55.0
+Accept: */*
+Accept-Encoding: deflate, gzip, br, zstd
+Accept-Language: zh-CN, *;q=0.9
+Pragma: no-cache"""
+
+output = f"""# T14b 返工轮：修 GET `info/refs` 的 `Accept` 头
+
+## 0. 判定摘要
+- 缺陷**已修复并已用真实 git 逐字节自证**：`HttpRemote::info_refs` 的 GET `Accept` 由 `application/x-git-git-<service>-advertisement`（多一层 `git-`）改为 `*/*`，与真实 git 2.55.0 完全一致；POST 侧 `application/x-git-<service>-result` **未动**（实测本就与真实 git 相同）。
+- 我的 target `cargo test --offline --test verify_http` → **10 passed / 0 failed**（新增 1 项真实 git 对拍用例）。
+- **本轮 status=blocked**：验收要求 `tests/verify_http_http.rs`（V14 的文件，写作用域**明令禁止我修改**）继续全绿，但该文件里两处断言正是**把旧缺陷钉住**的 characterization 断言，修复后必然变红。按纪律我没有越界改它，见 §5 Q1。该 target 另有 1 项**与 T14b 无关**的既有 locale 失败，见 §5 Q2。
+- 未选择「规范化 mime」`application/x-{{service}}-advertisement`：因为任务书 §1 的目标是「与真实 git 逐字节一致（`*/*`）」，规范化 mime 虽合法但与真实 git 不同，需要额外解释，故按真实 git 取值。
+
+## 1. 动手前的独立复测（不采信任务书）
+用 `/tmp/t14b/capture.py`（原始 TCP 抓包 + 把请求转发真实 `git http-backend`，响应按 CGI 的 Content-Type/Content-Length 回帧）实测本机 git 2.55.0：
+- `git -c protocol.version=0 ls-remote http://127.0.0.1:<port>/srv.git` → GET 发 `Accept: */*`；
+- `git -c protocol.version=0 fetch ... HEAD` → GET 仍 `*/*`，POST 发 `Content-Type: application/x-git-upload-pack-request` + `Accept: application/x-git-upload-pack-result`；
+- `git -c protocol.version=0 push ... main` → GET info/refs?service=git-receive-pack 也发 `Accept: */*`，POST 发 `...-receive-pack-request` + `...-receive-pack-result`。
+结论：任务书 §0/§1 的前提**成立**，无冲突；据此实现。
+
+## 2. 实现（严格白名单 2 文件，无语义重构）
+- `src/transport/http.rs`：`info_refs` 内 `let accept = "*/*";`（附一行注释说明实测依据与历史误拼值）。协商/传输逻辑、POST 路径、其它函数一律未动。
+- `tests/verify_http.rs`（我自己的文件）：脚手架新增 `RecordedRequest`（记录客户端真实发出的 request line + headers，轮询取回）；并把 `git http-backend` 的 `Content-Type` 原样转发（原实现硬编码 `application/octet-stream`，真实 git 客户端会因此拒绝响应；`HttpRemote` 不校验该头，故既有 9 项不受影响）。新增用例 `info_refs_accept_header_matches_real_git_byte_for_byte`：真实 `git ls-remote` 打同一脚手架 + 我们的 GET(upload-pack)/GET(receive-pack)/POST，断言 method/target/Host/User-Agent/Accept 与真实 git 一致、POST Accept 未变。
+
+## 3. 与真实 git 客户端的原始请求行并排（method/target/Host/User-Agent/Accept/Content-Type）
+
+### GET `/srv.git/info/refs?service=git-upload-pack`
+真实 git（抓包，/tmp/t14b/drive_git.sh）：
+```
+{real_get}
+```
+我方 `HttpRemote`（脚手架记录，`cargo test --test verify_http ... -- --nocapture`）：
+```
+{our_get}
+```
+
+### GET `/srv.git/info/refs?service=git-receive-pack`
+真实 git（push 抓包，/tmp/t14b/drive_push.sh）：
+```
+{real_receive_get}
+```
+我方：target 与真实 git 相同，`Accept: */*`（测试断言通过）。
+
+### POST `/srv.git/git-upload-pack`（非目标，保持不动）
+真实 git：
+```
+{real_post}
+```
+我方（端到端 `mg clone` 抓包）：
+```
+{our_post}
+```
+
+判定（只比任务书列出的 6 个字段）：GET 的 method/target/Host/User-Agent/Accept 与 POST 的 method/target/Host/User-Agent/Accept/Content-Type **全部与真实 git 逐字节相同**。差异仅在我方不发 `Accept-Encoding`/`Accept-Language`/`Pragma`、且头顺序不同（均为非目标，任务书未要求）。
+
+## 4. 验收命令与实测结果
+- `cargo test --offline --test verify_http` → **10 passed / 0 failed**（含新对拍用例）。
+- `cargo test --offline --test verify_http_http` → **15 passed / 3 failed**：
+  - `known_defect_info_refs_accept_header_is_not_the_git_mime` → FAILED（修复引起，见 Q1）；
+  - `request_shape_matches_smart_http_contract` → FAILED（修复引起，见 Q1）；
+  - `premise_http_backend_requires_dechunked_request_body` → FAILED（locale，与 T14b 无关，见 Q2）。
+- `cargo test --offline --no-fail-fast` → 除 `verify_http_http` 外**全部 target 绿**：lib 271、fsck_gc 25、interop 7、verify 3、verify_diff 17、verify_diff_paths 6、verify_fsck_gc 16(+1 ignored)、verify_http 10、verify_index 11、verify_materialize 22、verify_merge_ff 13、verify_merge_ff2 12、verify_mergebase 10、verify_odb 6、verify_pack 10、verify_pktline 8、verify_plumbing 19、verify_refs 9、verify_threeway 32、verify_transport 10、verify_worktree 25。
+- `cargo clippy --offline --all-targets` → **0 warning**（exit 0）。
+- `scripts/check-freeze.sh` → `checked 21 file(s), drift 0 / freeze-v0 intact`（exit 0）。
+- 端到端（额外）：`mg clone http://127.0.0.1:<port>/srv.git /tmp/t14b/mgclone` → exit 0；真实 `git fsck` 干净、`git log/status` 正常、文件内容正确；抓包确认 mg 的 GET 发 `*/*`、POST 发 `...-result`。
+
+## 5. blocked —— 需要 controller 裁决的确切问题
+**Q1（本任务验收自相矛盾）**：把 GET `info/refs` 的 Accept 修成与真实 git 一致后，白名单外、且任务书 §2 明令禁止我修改的 `tests/verify_http_http.rs`（V14 的文件）必然有 2 项 characterization 断言变红：
+1. `known_defect_info_refs_accept_header_is_not_the_git_mime`（约第 858-890 行）——该用例的**设计目的就是「把旧缺陷钉住」，修好后失败**；实测 panic：`assertion left != right failed: left: "*/*", right: "*/*"`（"the known Accept defect appears fixed; update the V14 report"）。
+2. `request_shape_matches_smart_http_contract`（第 600 行）——断言 `accept.starts_with("application/x-git-")`，其自身注释也写明「这里的 Accept 值本身是错的」；实测 `Accept must be a smart-HTTP mime, got "*/*"`。
+因此**无法同时满足**「修复缺陷」与「`verify_http_http` 继续全绿且不改该文件」。请裁决：
+   - **(a)（推荐）** 由 controller / V14 在下一轮更新这两处断言：第 1 处改为断言 `ours == real == "*/*"`（或直接删除该用例）；第 2 处把 `starts_with("application/x-git-")` 改为 `== "*/*"`（并删掉那条「Accept 已知有误」的注释）。
+   - **(b)** 授权我在**新 round**（新 round_id/result_path）修改 `tests/verify_http_http.rs` 的这两行最小断言。
+在获得裁决前，我不越界改 V14 的文件，也不把共享 checkout 的 `cargo test` 伪装成全绿。
+
+**Q2（与 T14b 无关的既有失败，一并报备）**：`premise_http_backend_requires_dechunked_request_body`（第 1457 行）断言 git stderr 含英文 `"protocol error"`；在本机 `LC_MESSAGES=zh_CN.UTF-8` 下 git 输出 `致命错误：协议错误：错误的行长度字符：10?`，故失败。用 `LC_ALL=C cargo test --offline --test verify_http_http premise_http_backend_requires_dechunked_request_body` 实测 **1 passed**，证明是 locale 而非代码问题。该用例直接 spawn `git http-backend`，**不调用 HttpRemote**，与 T14b 无因果关系。最小修法：给该用例 spawn 的 Command 加 `.env("LC_ALL","C")`（或改成 locale 无关的断言）。
+
+## 6. 作用域 / 纪律披露
+- 本 round 只改白名单内 2 文件：`src/transport/http.rs`、`tests/verify_http.rs`。未动 `src/transport/{{mod,negotiate,local,pktline}}.rs`、`src/cli/**`、`tests/verify_http_http.rs`、其它 `tests/**`、`Cargo.toml`、`Cargo.lock`、`.orch/**`。
+- 所有临时仓库、抓包脚本、日志均在 `/tmp/t14b/`（未在仓内新建文件）；未 export 任何 `GIT_*`；夹具均用 `tempfile::tempdir()` 或 `/tmp/t14b/`，监听端口 `127.0.0.1:0` 系统分配。
+- 无「skip 即通过」：新用例在 `git` 缺失时会因 `Command::new("git")` panic 而非静默返回；未新增 `#[ignore]`。
+- 期间有其它 agent 在同一 checkout 并行（T13c/V14 等），我未改任何他方文件；`cargo test --offline` 中唯一红 target 即 V14 的 `verify_http_http`。
+"""
+
+data = {
+    "schema_version": 1,
+    "job_id": "a2a5ac2cf58c48e6be53451e148e8deb",
+    "round_id": "503f5632d865491482c9a87c0be49dc0",
+    "status": "blocked",
+    "output": output,
+    "files_created": [],
+    "files_modified": ["src/transport/http.rs", "tests/verify_http.rs"],
+    "files_generated": [],
+    "files_deleted": [],
+    "error": None,
+    "blocked_reason": (
+        "需要 controller 裁决（本任务验收自相矛盾）：把 GET info/refs 的 Accept 修成与真实 git 一致的 `*/*` 后，"
+        "白名单外、且任务书 §2 明令禁止我修改的 `tests/verify_http_http.rs`（V14 的文件）必然有 2 项 characterization 断言变红："
+        "(1) `known_defect_info_refs_accept_header_is_not_the_git_mime`（该用例的设计目的就是「钉住旧缺陷，修好后失败」）"
+        "实测 panic `assertion left != right failed: left=\"*/*\", right=\"*/*\"`；"
+        "(2) `request_shape_matches_smart_http_contract:600` 断言 Accept 必须以 `application/x-git-` 开头"
+        "（其注释也写明旧值本身是错的），实测 `Accept must be a smart-HTTP mime, got \"*/*\"`。"
+        "因此无法同时满足「修复缺陷」与「verify_http_http 继续全绿且不改该文件」。请裁决："
+        "(a)（推荐）由 controller/V14 在下一轮更新这两处断言——第 1 处改为断言 ours==real==\"*/*\" 或删除该用例，"
+        "第 2 处把 starts_with(\"application/x-git-\") 改为 == \"*/*\"；"
+        "或 (b) 授权我在新 round（新 round_id/result_path）修改 tests/verify_http_http.rs 的这两行最小断言。"
+        "附：该 target 另有 1 项与 T14b 无关的既有 locale 失败 `premise_http_backend_requires_dechunked_request_body`"
+        "（LC_MESSAGES=zh_CN 时 git stderr 为「协议错误」而非英文 \"protocol error\"；LC_ALL=C 下通过；该用例不调用 HttpRemote），"
+        "最小修法是给它 spawn 的 git http-backend 加 .env(\"LC_ALL\",\"C\")。"
+        "在获得裁决前我不越界改 V14 的文件，也不把共享 checkout 的 cargo test 伪装成全绿。"
+    ),
+    "completed_at": datetime.now(timezone(timedelta(hours=8))).isoformat(timespec="seconds"),
+}
+
+tmp = result_path + ".tmp.t14b"
+with open(tmp, "w", encoding="utf-8") as f:
+    json.dump(data, f, ensure_ascii=False, indent=2)
+    f.write("\n")
+os.replace(tmp, result_path)
+print("written", result_path)
+print("status", data["status"], "completed_at", data["completed_at"])

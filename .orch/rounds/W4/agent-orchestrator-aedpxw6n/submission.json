@@ -1,0 +1,23 @@
+{
+  "active_request": ".orch/rounds/W4/agent-orchestrator-aedpxw6n/request.json",
+  "job_id": "000e4f37d1d5438781d542e6593908fc",
+  "round_id": "29ba4673dca3481380057a1991eff9bb",
+  "transport": "insider (default session)",
+  "session": "default",
+  "agent": "w4-v16-omp",
+  "pane": "w1K:p1",
+  "workspace": "w1K",
+  "cwd": "/home/user/Projects/mini-git",
+  "kind": "omp",
+  "task": "V16 独立验证 T16（merge 快进修复）",
+  "submitted_at": "2026-09-19T22:15:48+08:00",
+  "acceptance": "accepted",
+  "submission_evidence": "herdr agent start 命中 P4 超时 -> send-keys enter + rename 恢复 -> agent prompt",
+  "deadline": null,
+  "monitor_owner": "controller (default session, pane wJ:p1)",
+  "last_checked_at": "2026-09-19T22:15:48+08:00",
+  "next_check_at": null,
+  "pending_question": null,
+  "resources_file": ".orch/rounds/W4/agent-orchestrator-aedpxw6n/resources.json",
+  "result_path": "/home/user/Projects/mini-git/.orch/rounds/W4/agent-orchestrator-aedpxw6n/result.json"
+}

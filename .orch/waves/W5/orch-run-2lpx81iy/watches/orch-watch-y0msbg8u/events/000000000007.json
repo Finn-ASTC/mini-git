@@ -1,0 +1,10 @@
+{
+  "seq": 7,
+  "job_id": "9746730210dc4491b685bbc446088546",
+  "round_id": "1f695772a77b44ab8bcfb878a34e5add",
+  "kind": "result",
+  "message": "success: # linestat 1.0.0 — 交付报告（按 SPEC.md）\ncwd=/tmp/w5-linestat；SPEC.md 只读、未修改（sha256 20903f0786a9fc2c756bb773cdc37d7dff74212450900a8cb6bfa20b157e98244，mtime 保持在 2026-09-20 17:41:10 +0800）。\n工具链：cargo 1.97.1 / rustc 1.97.1 / clippy 0.1.97 / rustfmt 1.9.0。crate 无第三方依赖（Cargo.toml 的 [dependencies] 为空），\n所有命令均带 --offline，未执行 cargo add / cargo update / 任何下载或联网操作。\n所有门禁都在 `cargo clean`（Removed 226 files, 35.9MiB，exit 0）之后的同一批新鲜产物上运行，未复用陈旧产物。\n\n## release 交付物\n- 绝对路径: /tmp/w5-linestat/target/release/linestat\n- SHA-256 : 759534809958403271ec37bba8962439ab51938999bdd214214b6bff3ea44f5e\n- 大小: 462328 bytes；构建时间 2026-",
+  "evidence_path": "/home/user/Projects/mini-git/.orch/waves/W5/orch-run-2lpx81iy/watches/orch-watch-y0msbg8u/evidence/000000000007.json",
+  "screen_tail": "                                   │\n│ # re-validate every factual claim in the published file                                                                                           │\n│ d2 = json                                                                                                                                         │\n╰───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯\n\n TODO\n  ├─ I. Implement · 0/3\n  │  ├─  Write Cargo.toml crate manifest\n  │  ├─  Implement src/main.rs per SPEC\n  │  └─  Write integration tests in tests/\n  ├─ II. Verify · 0/5\n  └─────\n\n  󱊷 running javascript\n\n╭── ⠧ 2m  3 DeepSeek V4.1 Flash   w5-linestat  $0.03 ↓ ────9%──────────────────────────────󰁨─────1M─  65K   97.17%  Build and test dev ──╮\n╰─                                                                                                                                                 ─╯",
+  "observed_at": 1789897511.0382345
+}

@@ -1,0 +1,16 @@
+{
+  "schema_version": 1,
+  "job_id": "222f3e5e6f934b758ee34e29a9c174d7",
+  "round_id": "673105fc657c4deebfe589c57cdf6fb2",
+  "status": "success",
+  "output": "T3 index DIRC v2 lossless read/write implemented in src/index/dirc.rs.\n\nCommands run and real results:\n- `cargo test --offline index::` -> 12 passed, 0 failed (all in src/index/dirc.rs tests).\n- `cargo test --offline --no-fail-fast` -> lib 50 passed; interop 7 passed; tests/verify(T1) 3 passed; 0 failed.\n- `cargo clippy --offline --all-targets` -> 0 warnings.\n- `scripts/check-freeze.sh` -> checked 21 file(s), drift 0.\n- `rustfmt --edition 2021 --check src/index/dirc.rs` -> clean.\n\nByte-exact roundtrip (truth = real git 2.55): reading a git-written .git/index and writing it back reproduces the exact original bytes (assert_eq! over fs::read) for each of:\n- diverse worktree: nested dir, chmod +x file, symlink, UTF-8 name (中文文件.txt), and a 4095-byte deep path;\n- committed index carrying git's full cache-tree TREE extension;\n- conflicted index from `git merge` (stage 1/2/3 entries, plus REUC);\n- assume-valid entry (`git update-index --assume-unchanged`);\n- injected unknown extension (signature ZZzz);\n- TREE + REUC ordering.\n`git ls-files --stage` is unchanged before/after the rewrite, `git status --porcelain` stays empty, and `git update-index --refresh` / `git add` / `git fsck --no-progress` all succeed on the rewritten index. Parsed tree_oid equals `git rev-parse HEAD^{tree}`.\n\nNegative cases: flipped trailer byte -> Error::Corrupt; version field set to 3 -> Error::Unsupported; truncated to 0/4/12/31 bytes -> Err(Corrupt) with no panic; missing .git/index -> empty Index (version 0); empty-index write (32 bytes) is readable by real git with empty `git ls-files --stage`. Name-length boundaries 4094/4095/4096 roundtrip.\n\nFormat facts that drove the implementation: long names (>=0xFFF) store flags low12 = 0xFFF and do NOT write an extra NUL (the mandatory 1..8 padding NULs terminate it; read finds the first NUL). Real git's TREE extension is a cache-tree of shape `name\\0` + \"<entry_count> <subtree_nr>\\n\" + oid(20), recursive, commonly far larger than 20 bytes, so its raw bytes are preserved verbatim in Index::extensions to guarantee byte equality while the root oid is parsed into Index::tree_oid. When tree_oid is set but no raw TREE data exists (programmatically built index), a 20-byte TREE extension is generated; git 2.55 reads that safely. Writes are atomic: .git/index.lock + rename.\n\nScope: only src/index/dirc.rs was modified (sha256 1e4fac59703bb96b87d4df6362b8483f7c02b218ef5474769cde67697f9c8c9e). A baseline audit against .orch/waves/W1/T3-index/baseline.txt confirms dirc.rs is the only file I changed; the other differing entries (src/refs/store.rs, verify-task.md files) belong to other agents/the controller.\n",
+  "files_created": [],
+  "files_modified": [
+    "src/index/dirc.rs"
+  ],
+  "files_generated": [],
+  "files_deleted": [],
+  "error": null,
+  "blocked_reason": null,
+  "completed_at": "2026-09-19T19:36:39+08:00"
+}

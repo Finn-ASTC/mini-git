@@ -1,0 +1,48 @@
+############ (10) 远端被 git gc 打包（无 loose 对象 + packed-refs）后 clone
+loose objects left: 2
+packed-refs exists? yes
+mg clone exit=0 out=Cloning into '/tmp/v13extra3/10/mg-copy'...
+show-ref IDENTICAL
+log IDENTICAL
+mg status=[]  sub/b.txt=[beta]
+fsck exit=0
+
+############ (11) 真实 git 克隆 mg 写的仓库，并从那个克隆 push 回裸仓库
+To file:///tmp/v13extra3/10/bare.git
+   [new branch]..5b688a6  main -> main
+mg push exit=0
+bare main: 5b688a6fb2ba1acf1743625996badfb726c37a8c vs mg-copy HEAD 5b688a6fb2ba1acf1743625996badfb726c37a8c
+Cloning into '/tmp/v13extra3/11/git-clone-of-mg'...
+git clone(from mg) exit=0
+fsck exit=0
+To file:///tmp/v13extra3/10/bare.git
+   5b688a6..a5621ad  main -> main
+git push (into the bare mg pushed to) exit=0
+bare main now: a5621ad629a74429518b05f315af5003e89f623a
+From file:///tmp/v13extra3/10/bare.git
+ * [updated] refs/remotes/origin/main -> a5621ad
+mg fetch after git push exit=0
+mg fetch 后 remote ref: 5b688a6fb2ba1acf1743625996badfb726c37a8c refs/heads/main|5b688a6fb2ba1acf1743625996badfb726c37a8c refs/remotes/origin/feature|5b688a6fb2ba1acf1743625996badfb726c37a8c refs/tags/light|a5621ad629a74429518b05f315af5003e89f623a refs/remotes/origin/HEAD|a5621ad629a74429518b05f315af5003e89f623a refs/remotes/origin/main|
+mg: fatal: failed to push some refs: refs/heads/main is not a fast-forward (the remote ref moved; fetch and merge, or use --force)
+mg push to packed-refs remote exit=1
+bare main after: a5621ad629a74429518b05f315af5003e89f623a == mg-copy HEAD e06ec703734e46fc86b4c45374a482e6992d94f8
+bare fsck exit=0
+
+############ (12) 本地 gc 打包后 mg fetch（PackSet 路径）
+loose objects left in work: 2
+From file:///tmp/v13extra3/12/origin
+Fast-forward
+mg pull exit=0
+work HEAD=bef5960012f4921739d105233c3160bdb5cf29c0 origin main=bef5960012f4921739d105233c3160bdb5cf29c0
+status=[]
+fsck exit=0
+
+############ (13) pull 遇到会被覆盖的本地改动（作者声称拒绝）
+From file:///tmp/v13extra3/13/origin
+mg: fatal: refusing to overwrite local changes: a.txt
+mg pull exit=1
+work a.txt=[local-dirty]  origin a.txt=[remote-change]
+--- 对照真实 git：
+ * branch            main       -> FETCH_HEAD
+Already up to date.
+git pull exit=0

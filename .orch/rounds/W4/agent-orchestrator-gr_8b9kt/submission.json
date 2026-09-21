@@ -1,0 +1,23 @@
+{
+  "active_request": ".orch/rounds/W4/agent-orchestrator-gr_8b9kt/request.json",
+  "job_id": "28cb6ffbbac642f0aa2a0af6619c5964",
+  "round_id": "895330ac921c4fc7b2b09905bf609f1c",
+  "transport": "insider (default session)",
+  "session": "default",
+  "agent": "w4-t13-codex",
+  "pane": "w1E:p1",
+  "workspace": "w1E",
+  "cwd": "/home/user/Projects/mini-git",
+  "kind": "codex",
+  "task": "T13b 返工：远端无 tag 时 clone 失败（D2）",
+  "submitted_at": "2026-09-19T22:14:36+08:00",
+  "acceptance": "accepted",
+  "submission_evidence": "herdr agent prompt -> 续轮（复用 T13 的同一 native 会话 w1E）",
+  "deadline": null,
+  "monitor_owner": "controller (default session, pane wJ:p1)",
+  "last_checked_at": "2026-09-19T22:14:36+08:00",
+  "next_check_at": null,
+  "pending_question": null,
+  "resources_file": ".orch/rounds/W4/agent-orchestrator-gr_8b9kt/resources.json",
+  "result_path": "/home/user/Projects/mini-git/.orch/rounds/W4/agent-orchestrator-gr_8b9kt/result.json"
+}

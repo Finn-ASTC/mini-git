@@ -1,0 +1,49 @@
+original sha256: 132e96bed1acd50739d59d69ee6d20ecace7dc076936101772633045ee26ead9
+=========== baseline (未变异，必须全绿) ===========
+--- baseline: exit=0
+    failing tests: 0
+    test result: ok. 29 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.35s
+
+=========== 变异体 M1：去掉二进制检测里的 theirs 检查 ===========
+M1 applied
+--- mutant1_binary_check_removed: exit=101
+    failing tests: 1
+    test engine_binary_is_conflict_with_ours ... FAILED
+    test result: FAILED. 28 passed; 1 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.42s
+    test result: FAILED. 28 passed; 1 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.42s
+
+=========== 变异体 M2：让实现恒返回平凡值 Clean(ours) ===========
+Traceback (most recent call last):
+  File "<stdin>", line 9, in <module>
+AssertionError: M2 anchor not found exactly once
+--- mutant2_always_clean_ours: exit=101
+    failing tests: 1
+    test engine_binary_is_conflict_with_ours ... FAILED
+    test result: FAILED. 28 passed; 1 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.41s
+    test result: FAILED. 28 passed; 1 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.41s
+
+=========== 变异体 M3：冲突 marker 宽度 7 → 6 ===========
+M3 applied
+--- mutant3_marker_size_6: exit=101
+    failing tests: 10
+    test engine_case_table_matches_git_merge_file ... FAILED
+    test engine_none_base_two_added_files ... FAILED
+    test engine_binary_is_conflict_with_ours ... FAILED
+    test engine_random_corpus_matches_git ... FAILED
+    test cli_conflict_same_line ... FAILED
+    test cli_conflict_mixed_clean_and_conflicting_paths ... FAILED
+    test cli_conflict_crlf_bytes_match_git ... FAILED
+    test cli_conflict_no_trailing_newline_bytes_match_git ... FAILED
+    test cli_conflict_add_add_same_path ... FAILED
+    test cli_conflict_cjk_bytes_match_git ... FAILED
+    test result: FAILED. 19 passed; 10 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.24s
+    test result: FAILED. 19 passed; 10 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.24s
+
+restored sha256: 132e96bed1acd50739d59d69ee6d20ecace7dc076936101772633045ee26ead9
+RESTORE_OK
+
+=========== 摘要（logs in /tmp/v10-mutant-logs） ===========
+baseline                             test result: ok. 29 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.35s
+mutant1_binary_check_removed         test result: FAILED. 28 passed; 1 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.42s
+mutant2_always_clean_ours            test result: FAILED. 28 passed; 1 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.41s
+mutant3_marker_size_6                test result: FAILED. 19 passed; 10 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.24s

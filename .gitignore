@@ -1,0 +1,18 @@
+/target
+/.worktrees
+/.mg-scratch
+*.tmp
+
+# ---- 发布用：编排证据 `.orch/` 的归档口径 ----
+# `.orch/` 里的文本证据（summary / defects / task.md / result.json / verify-scratch 的输出）
+# 全部入库；只有下面的**运行现场**不入库。
+#
+# 嵌套 cargo 构建目录（W5 的验证者在自己的快照里重建目标项目，留下整套 target/）
+.orch/**/build/
+.orch/**/prefix-target/
+# 验证者的夹具是**真实 git 仓库**，若不排除，git 会把它们记成 gitlink（GitHub 上是坏的子模块）
+.orch/waves/W1/T1-object/verify-scratch/tree-case/
+.orch/waves/W1/T1-object/verify-scratch/commit-case/
+.orch/waves/W1/T1-object/verify-scratch/merge-case/
+# omp/harness 的本地会话续跑状态，不是项目证据
+/.omo/

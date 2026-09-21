@@ -1,0 +1,184 @@
+binary: /tmp/w5-verify/work/linestat/target/release/linestat
+sha256: 759534809958403271ec37bba8962439ab51938999bdd214214b6bff3ea44f5e
+cases: 36/36 passed
+
+PASS version_alone
+  argv: ['--version']
+  exit: expected 0 actual 0
+  stdout expected: 'linestat 1.0.0\n'
+
+PASS version_with_missing_file
+  argv: ['--version', '/tmp/w5-verify/evidence/fixtures-release/version_with_missing_file/missing.txt']
+  exit: expected 0 actual 0
+  stdout expected: 'linestat 1.0.0\n'
+
+PASS single_file
+  argv: ['/tmp/w5-verify/evidence/fixtures-release/single_file/one.txt']
+  exit: expected 0 actual 0
+  stdout expected: '1 2 12 /tmp/w5-verify/evidence/fixtures-release/single_file/one.txt\n'
+
+PASS single_no_trailing_newline
+  argv: ['/tmp/w5-verify/evidence/fixtures-release/single_no_trailing_newline/nonl.txt']
+  exit: expected 0 actual 0
+  stdout expected: '3 3 5 /tmp/w5-verify/evidence/fixtures-release/single_no_trailing_newline/nonl.txt\n'
+
+PASS empty_file
+  argv: ['/tmp/w5-verify/evidence/fixtures-release/empty_file/empty.txt']
+  exit: expected 0 actual 0
+  stdout expected: '0 0 0 /tmp/w5-verify/evidence/fixtures-release/empty_file/empty.txt\n'
+
+PASS multi_files_total
+  argv: ['/tmp/w5-verify/evidence/fixtures-release/multi_files_total/b.txt', '/tmp/w5-verify/evidence/fixtures-release/multi_files_total/a.txt']
+  exit: expected 0 actual 0
+  stdout expected: '1 1 6 /tmp/w5-verify/evidence/fixtures-release/multi_files_total/b.txt\n1 2 8 /tmp/w5-verify/evidence/fixtures-release/multi_files_total/a.txt\n2 3 14 total\n'
+
+PASS multi_files_total_reverse
+  argv: ['/tmp/w5-verify/evidence/fixtures-release/multi_files_total_reverse/a.txt', '/tmp/w5-verify/evidence/fixtures-release/multi_files_total_reverse/b.txt']
+  exit: expected 0 actual 0
+  stdout expected: '1 2 8 /tmp/w5-verify/evidence/fixtures-release/multi_files_total_reverse/a.txt\n1 1 6 /tmp/w5-verify/evidence/fixtures-release/multi_files_total_reverse/b.txt\n2 3 14 total\n'
+
+PASS cr_tab_vt_ff
+  argv: ['/tmp/w5-verify/evidence/fixtures-release/cr_tab_vt_ff/ws.txt']
+  exit: expected 0 actual 0
+  stdout expected: '1 4 9 /tmp/w5-verify/evidence/fixtures-release/cr_tab_vt_ff/ws.txt\n'
+
+PASS non_utf8_content
+  argv: ['/tmp/w5-verify/evidence/fixtures-release/non_utf8_content/binary.bin']
+  exit: expected 0 actual 0
+  stdout expected: '1 2 4 /tmp/w5-verify/evidence/fixtures-release/non_utf8_content/binary.bin\n'
+
+PASS missing_file
+  argv: ['/tmp/w5-verify/evidence/fixtures-release/missing_file/missing.txt']
+  exit: expected 1 actual 1
+  stdout expected: ''
+
+PASS missing_then_good
+  argv: ['/tmp/w5-verify/evidence/fixtures-release/missing_then_good/missing.txt', '/tmp/w5-verify/evidence/fixtures-release/missing_then_good/ok.txt']
+  exit: expected 1 actual 1
+  stdout expected: '1 1 4 /tmp/w5-verify/evidence/fixtures-release/missing_then_good/ok.txt\n1 1 4 total\n'
+
+PASS good_then_missing
+  argv: ['/tmp/w5-verify/evidence/fixtures-release/good_then_missing/ok.txt', '/tmp/w5-verify/evidence/fixtures-release/good_then_missing/missing.txt']
+  exit: expected 1 actual 1
+  stdout expected: '1 1 4 /tmp/w5-verify/evidence/fixtures-release/good_then_missing/ok.txt\n1 1 4 total\n'
+
+PASS unknown_long_option
+  argv: ['--help']
+  exit: expected 2 actual 2
+  stdout expected: ''
+
+PASS unknown_short_option
+  argv: ['-x']
+  exit: expected 2 actual 2
+  stdout expected: ''
+
+PASS unknown_option_with_file
+  argv: ['--help', '/tmp/w5-verify/evidence/fixtures-release/unknown_option_with_file/one.txt']
+  exit: expected 2 actual 2
+  stdout expected: ''
+
+PASS no_args
+  argv: []
+  exit: expected 2 actual 2
+  stdout expected: ''
+
+PASS directory_operand
+  argv: ['/tmp/w5-verify/evidence/fixtures-release/directory_operand/thedir']
+  exit: expected 1 actual 1
+  stdout expected: ''
+
+PASS non_utf8_path
+  argv: ['/tmp/w5-verify/evidence/fixtures-release/non_utf8_path/weird-\\xff-name.txt']
+  exit: expected 0 actual 0
+  stdout expected: '1 1 3 /tmp/w5-verify/evidence/fixtures-release/non_utf8_path/weird-\\xff-name.txt\n'
+
+PASS only_newlines
+  argv: ['/tmp/w5-verify/evidence/fixtures-release/only_newlines/nl.txt']
+  exit: expected 0 actual 0
+  stdout expected: '3 0 3 /tmp/w5-verify/evidence/fixtures-release/only_newlines/nl.txt\n'
+
+PASS only_cr_no_newline
+  argv: ['/tmp/w5-verify/evidence/fixtures-release/only_cr_no_newline/cr.txt']
+  exit: expected 0 actual 0
+  stdout expected: '1 0 1 /tmp/w5-verify/evidence/fixtures-release/only_cr_no_newline/cr.txt\n'
+
+PASS whitespace_only
+  argv: ['/tmp/w5-verify/evidence/fixtures-release/whitespace_only/w.txt']
+  exit: expected 0 actual 0
+  stdout expected: '2 0 6 /tmp/w5-verify/evidence/fixtures-release/whitespace_only/w.txt\n'
+
+PASS nul_bytes
+  argv: ['/tmp/w5-verify/evidence/fixtures-release/nul_bytes/nul.bin']
+  exit: expected 0 actual 0
+  stdout expected: '1 1 4 /tmp/w5-verify/evidence/fixtures-release/nul_bytes/nul.bin\n'
+
+PASS permission_denied
+  argv: ['/tmp/w5-verify/evidence/fixtures-release/permission_denied/noperm.txt']
+  exit: expected 1 actual 1
+  stdout expected: ''
+
+PASS permission_denied_then_good
+  argv: ['/tmp/w5-verify/evidence/fixtures-release/permission_denied_then_good/noperm.txt', '/tmp/w5-verify/evidence/fixtures-release/permission_denied_then_good/ok.txt']
+  exit: expected 1 actual 1
+  stdout expected: '1 1 4 /tmp/w5-verify/evidence/fixtures-release/permission_denied_then_good/ok.txt\n1 1 4 total\n'
+
+PASS unicode_ideographic_space
+  argv: ['/tmp/w5-verify/evidence/fixtures-release/unicode_ideographic_space/u3000.txt']
+  exit: expected 0 actual 0
+  stdout expected: '1 1 3 /tmp/w5-verify/evidence/fixtures-release/unicode_ideographic_space/u3000.txt\n'
+
+PASS unicode_nbsp
+  argv: ['/tmp/w5-verify/evidence/fixtures-release/unicode_nbsp/nbsp.txt']
+  exit: expected 0 actual 0
+  stdout expected: '1 1 2 /tmp/w5-verify/evidence/fixtures-release/unicode_nbsp/nbsp.txt\n'
+
+PASS mixed_unicode_and_ascii_ws
+  argv: ['/tmp/w5-verify/evidence/fixtures-release/mixed_unicode_and_ascii_ws/mix.txt']
+  exit: expected 0 actual 0
+  stdout expected: '1 2 8 /tmp/w5-verify/evidence/fixtures-release/mixed_unicode_and_ascii_ws/mix.txt\n'
+
+PASS multi_non_utf8_total
+  argv: ['/tmp/w5-verify/evidence/fixtures-release/multi_non_utf8_total/b1.bin', '/tmp/w5-verify/evidence/fixtures-release/multi_non_utf8_total/b2.bin']
+  exit: expected 0 actual 0
+  stdout expected: '1 1 2 /tmp/w5-verify/evidence/fixtures-release/multi_non_utf8_total/b1.bin\n1 1 3 /tmp/w5-verify/evidence/fixtures-release/multi_non_utf8_total/b2.bin\n2 2 5 total\n'
+
+PASS path_echo_no_normalisation
+  argv: ['/tmp/w5-verify/evidence/fixtures-release/path_echo_no_normalisation/./one.txt']
+  exit: expected 0 actual 0
+  stdout expected: '1 1 3 /tmp/w5-verify/evidence/fixtures-release/path_echo_no_normalisation/./one.txt\n'
+
+PASS many_bytes_lines
+  argv: ['/tmp/w5-verify/evidence/fixtures-release/many_bytes_lines/big.txt']
+  exit: expected 0 actual 0
+  stdout expected: '100000 200000 400000 /tmp/w5-verify/evidence/fixtures-release/many_bytes_lines/big.txt\n'
+
+PASS boundary_word_split
+  argv: ['/tmp/w5-verify/evidence/fixtures-release/boundary_word_split/boundary_word_split.bin']
+  exit: expected 0 actual 0
+  stdout expected: '1 1 65537 /tmp/w5-verify/evidence/fixtures-release/boundary_word_split/boundary_word_split.bin\n'
+
+PASS boundary_sep_then_word
+  argv: ['/tmp/w5-verify/evidence/fixtures-release/boundary_sep_then_word/boundary_sep_then_word.bin']
+  exit: expected 0 actual 0
+  stdout expected: '1 2 65541 /tmp/w5-verify/evidence/fixtures-release/boundary_sep_then_word/boundary_sep_then_word.bin\n'
+
+PASS boundary_newline_then_word
+  argv: ['/tmp/w5-verify/evidence/fixtures-release/boundary_newline_then_word/boundary_newline_then_word.bin']
+  exit: expected 0 actual 0
+  stdout expected: '2 2 65546 /tmp/w5-verify/evidence/fixtures-release/boundary_newline_then_word/boundary_newline_then_word.bin\n'
+
+PASS boundary_word_then_sep
+  argv: ['/tmp/w5-verify/evidence/fixtures-release/boundary_word_then_sep/boundary_word_then_sep.bin']
+  exit: expected 0 actual 0
+  stdout expected: '1 2 65538 /tmp/w5-verify/evidence/fixtures-release/boundary_word_then_sep/boundary_word_then_sep.bin\n'
+
+PASS boundary_two_chunks
+  argv: ['/tmp/w5-verify/evidence/fixtures-release/boundary_two_chunks/boundary_two_chunks.bin']
+  exit: expected 0 actual 0
+  stdout expected: '1 2 131074 /tmp/w5-verify/evidence/fixtures-release/boundary_two_chunks/boundary_two_chunks.bin\n'
+
+PASS boundary_all_ws_then_word
+  argv: ['/tmp/w5-verify/evidence/fixtures-release/boundary_all_ws_then_word/boundary_all_ws_then_word.bin']
+  exit: expected 0 actual 0
+  stdout expected: '1 1 65540 /tmp/w5-verify/evidence/fixtures-release/boundary_all_ws_then_word/boundary_all_ws_then_word.bin\n'
+

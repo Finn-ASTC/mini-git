@@ -1,0 +1,16 @@
+   Compiling mini-git v0.0.0 (/home/user/Projects/mini-git)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.62s
+     Running tests/verify_pktline.rs (target/debug/deps/verify_pktline-10124e1f25c2efd3)
+
+running 8 tests
+test side_band_channel_bytes_survive_verbatim ... ok
+test illegal_frames_are_protocol_errors_never_panics_or_partial_data ... ok
+test write_direction_matches_spec_roundtrips_and_flushes ... ok
+test accepts_spec_boundary_frames_and_consumes_exactly_one_frame ... ok
+test oracle_and_spec_builder_are_consistent_with_real_git ... ok
+test real_git_v0_advertisement_roundtrips_byte_for_byte ... ok
+test real_git_v2_capability_advertisement_parses ... ok
+test written_request_is_accepted_by_real_git_and_rebuilt_pack_is_valid ... ok
+
+test result: ok. 8 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.01s
+

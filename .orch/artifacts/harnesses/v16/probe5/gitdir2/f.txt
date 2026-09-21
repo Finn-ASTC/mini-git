@@ -1,0 +1,9 @@
+a
+<<<<<<< HEAD
+LOCAL
+=======
+REMOTE
+>>>>>>> 79196a24c8bade6d031237d8fe343d1f6052c8e0
+c
+d
+e

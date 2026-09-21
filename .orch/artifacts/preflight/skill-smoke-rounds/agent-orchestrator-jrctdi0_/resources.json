@@ -1,0 +1,18 @@
+{
+  "mode": "tmux",
+  "session": "s",
+  "agent": "a",
+  "pane": "%7",
+  "workspace": null,
+  "owns_agent": true,
+  "owns_pane": true,
+  "owns_workspace": false,
+  "owns_session": true,
+  "tab": null,
+  "parent_pane": null,
+  "parent_tab": null,
+  "owns_tab": false,
+  "tmux_selector": [],
+  "recorded_at": "2026-09-19T10:41:24.433179+00:00",
+  "job_id": "a7e74c9f4ac44a35be8179c1a43d0028"
+}

@@ -1,0 +1,1176 @@
+===== A tool=git kind=del anc=link_outside_empty force=no  [git -c user.name=t -c user.email=t@e switch other]
+before-status:  D a/b/c|?? a|
+exit=0
+stderr: 切换到分支 'other'|
+outside: . 
+outside-b-c: MISSING
+a-type: symlink
+a-target: /tmp/t11b/mx/A-git-outside
+a-b-c: MISSING
+newfile: -
+worktree: . a keep.txt 
+status: ?? a|
+lsfiles: keep.txt 
+head: other
+===== A tool=git kind=del anc=link_outside_empty force=yes  [git -c user.name=t -c user.email=t@e switch -f other]
+before-status:  D a/b/c|?? a|
+exit=0
+stderr: 切换到分支 'other'|
+outside: . 
+outside-b-c: MISSING
+a-type: symlink
+a-target: /tmp/t11b/mx/A-git-outside
+a-b-c: MISSING
+newfile: -
+worktree: . a keep.txt 
+status: ?? a|
+lsfiles: keep.txt 
+head: other
+===== A tool=git kind=mod anc=link_outside_empty force=no  [git -c user.name=t -c user.email=t@e switch other]
+before-status:  D a/b/c|?? a|
+exit=0
+stderr: 切换到分支 'other'|
+outside: . 
+outside-b-c: MISSING
+a-type: dir
+a-target: -
+a-b-c: v2
+newfile: -
+worktree: . a a/b a/b/c keep.txt 
+status: 
+lsfiles: a/b/c keep.txt 
+head: other
+===== A tool=git kind=mod anc=link_outside_empty force=yes  [git -c user.name=t -c user.email=t@e switch -f other]
+before-status:  D a/b/c|?? a|
+exit=0
+stderr: 切换到分支 'other'|
+outside: . 
+outside-b-c: MISSING
+a-type: dir
+a-target: -
+a-b-c: v2
+newfile: -
+worktree: . a a/b a/b/c keep.txt 
+status: 
+lsfiles: a/b/c keep.txt 
+head: other
+===== A tool=git kind=add anc=link_outside_empty force=no  [git -c user.name=t -c user.email=t@e checkout other]
+before-status:  D a/b/c|?? a|
+exit=1
+stderr: 错误：工作区中下列未跟踪的文件将会因为检出操作而被覆盖：|	a|请在切换分支前移动或删除。|正在中止|
+outside: . 
+outside-b-c: MISSING
+a-type: symlink
+a-target: /tmp/t11b/mx/A-git-outside
+a-b-c: MISSING
+newfile: -
+worktree: . a keep.txt 
+status:  D a/b/c|?? a|
+lsfiles: a/b/c keep.txt 
+head: main
+===== A tool=git kind=add anc=link_outside_empty force=yes  [git -c user.name=t -c user.email=t@e checkout -f other]
+before-status:  D a/b/c|?? a|
+exit=0
+stderr: 切换到分支 'other'|
+outside: . 
+outside-b-c: MISSING
+a-type: dir
+a-target: -
+a-b-c: v1
+newfile: new
+worktree: . a a/b a/b/c a/new.txt keep.txt 
+status: 
+lsfiles: a/b/c a/new.txt keep.txt 
+head: other
+===== A tool=git kind=del anc=link_outside_same force=no  [git -c user.name=t -c user.email=t@e switch other]
+before-status:  D a/b/c|?? a|
+exit=1
+stderr: 错误：您对下列文件的本地修改将被检出操作覆盖：|	a/b/c|请在切换分支前提交或储藏您的修改。|正在中止|
+outside: . ./b ./b/c 
+outside-b-c: v1
+a-type: symlink
+a-target: /tmp/t11b/mx/A-git-outside
+a-b-c: v1
+newfile: -
+worktree: . a keep.txt 
+status:  D a/b/c|?? a|
+lsfiles: a/b/c keep.txt 
+head: main
+===== A tool=git kind=del anc=link_outside_same force=yes  [git -c user.name=t -c user.email=t@e switch -f other]
+before-status:  D a/b/c|?? a|
+exit=0
+stderr: 切换到分支 'other'|
+outside: . ./b ./b/c 
+outside-b-c: v1
+a-type: symlink
+a-target: /tmp/t11b/mx/A-git-outside
+a-b-c: v1
+newfile: -
+worktree: . a keep.txt 
+status: ?? a|
+lsfiles: keep.txt 
+head: other
+===== A tool=git kind=mod anc=link_outside_same force=no  [git -c user.name=t -c user.email=t@e switch other]
+before-status:  D a/b/c|?? a|
+exit=1
+stderr: 错误：您对下列文件的本地修改将被检出操作覆盖：|	a/b/c|请在切换分支前提交或储藏您的修改。|正在中止|
+outside: . ./b ./b/c 
+outside-b-c: v1
+a-type: symlink
+a-target: /tmp/t11b/mx/A-git-outside
+a-b-c: v1
+newfile: -
+worktree: . a keep.txt 
+status:  D a/b/c|?? a|
+lsfiles: a/b/c keep.txt 
+head: main
+===== A tool=git kind=mod anc=link_outside_same force=yes  [git -c user.name=t -c user.email=t@e switch -f other]
+before-status:  D a/b/c|?? a|
+exit=0
+stderr: 切换到分支 'other'|
+outside: . ./b ./b/c 
+outside-b-c: v1
+a-type: dir
+a-target: -
+a-b-c: v2
+newfile: -
+worktree: . a a/b a/b/c keep.txt 
+status: 
+lsfiles: a/b/c keep.txt 
+head: other
+===== A tool=git kind=add anc=link_outside_same force=no  [git -c user.name=t -c user.email=t@e checkout other]
+before-status:  D a/b/c|?? a|
+exit=1
+stderr: 错误：工作区中下列未跟踪的文件将会因为检出操作而被覆盖：|	a|请在切换分支前移动或删除。|正在中止|
+outside: . ./b ./b/c 
+outside-b-c: v1
+a-type: symlink
+a-target: /tmp/t11b/mx/A-git-outside
+a-b-c: v1
+newfile: -
+worktree: . a keep.txt 
+status:  D a/b/c|?? a|
+lsfiles: a/b/c keep.txt 
+head: main
+===== A tool=git kind=add anc=link_outside_same force=yes  [git -c user.name=t -c user.email=t@e checkout -f other]
+before-status:  D a/b/c|?? a|
+exit=0
+stderr: 切换到分支 'other'|
+outside: . ./b ./b/c 
+outside-b-c: v1
+a-type: dir
+a-target: -
+a-b-c: v1
+newfile: new
+worktree: . a a/b a/b/c a/new.txt keep.txt 
+status: 
+lsfiles: a/b/c a/new.txt keep.txt 
+head: other
+===== A tool=git kind=del anc=link_outside_target force=no  [git -c user.name=t -c user.email=t@e switch other]
+before-status:  D a/b/c|?? a|
+exit=1
+stderr: 错误：您对下列文件的本地修改将被检出操作覆盖：|	a/b/c|请在切换分支前提交或储藏您的修改。|正在中止|
+outside: . ./b ./b/c 
+outside-b-c: v2
+a-type: symlink
+a-target: /tmp/t11b/mx/A-git-outside
+a-b-c: v2
+newfile: -
+worktree: . a keep.txt 
+status:  D a/b/c|?? a|
+lsfiles: a/b/c keep.txt 
+head: main
+===== A tool=git kind=del anc=link_outside_target force=yes  [git -c user.name=t -c user.email=t@e switch -f other]
+before-status:  D a/b/c|?? a|
+exit=0
+stderr: 切换到分支 'other'|
+outside: . ./b ./b/c 
+outside-b-c: v2
+a-type: symlink
+a-target: /tmp/t11b/mx/A-git-outside
+a-b-c: v2
+newfile: -
+worktree: . a keep.txt 
+status: ?? a|
+lsfiles: keep.txt 
+head: other
+===== A tool=git kind=mod anc=link_outside_target force=no  [git -c user.name=t -c user.email=t@e switch other]
+before-status:  D a/b/c|?? a|
+exit=1
+stderr: 错误：您对下列文件的本地修改将被检出操作覆盖：|	a/b/c|请在切换分支前提交或储藏您的修改。|正在中止|
+outside: . ./b ./b/c 
+outside-b-c: v2
+a-type: symlink
+a-target: /tmp/t11b/mx/A-git-outside
+a-b-c: v2
+newfile: -
+worktree: . a keep.txt 
+status:  D a/b/c|?? a|
+lsfiles: a/b/c keep.txt 
+head: main
+===== A tool=git kind=mod anc=link_outside_target force=yes  [git -c user.name=t -c user.email=t@e switch -f other]
+before-status:  D a/b/c|?? a|
+exit=0
+stderr: 切换到分支 'other'|
+outside: . ./b ./b/c 
+outside-b-c: v2
+a-type: dir
+a-target: -
+a-b-c: v2
+newfile: -
+worktree: . a a/b a/b/c keep.txt 
+status: 
+lsfiles: a/b/c keep.txt 
+head: other
+===== A tool=git kind=add anc=link_outside_target force=no  [git -c user.name=t -c user.email=t@e checkout other]
+before-status:  D a/b/c|?? a|
+exit=1
+stderr: 错误：工作区中下列未跟踪的文件将会因为检出操作而被覆盖：|	a|请在切换分支前移动或删除。|正在中止|
+outside: . ./b ./b/c 
+outside-b-c: v2
+a-type: symlink
+a-target: /tmp/t11b/mx/A-git-outside
+a-b-c: v2
+newfile: -
+worktree: . a keep.txt 
+status:  D a/b/c|?? a|
+lsfiles: a/b/c keep.txt 
+head: main
+===== A tool=git kind=add anc=link_outside_target force=yes  [git -c user.name=t -c user.email=t@e checkout -f other]
+before-status:  D a/b/c|?? a|
+exit=0
+stderr: 切换到分支 'other'|
+outside: . ./b ./b/c 
+outside-b-c: v2
+a-type: dir
+a-target: -
+a-b-c: v1
+newfile: new
+worktree: . a a/b a/b/c a/new.txt keep.txt 
+status: 
+lsfiles: a/b/c a/new.txt keep.txt 
+head: other
+===== A tool=git kind=del anc=link_inside_empty force=no  [git -c user.name=t -c user.email=t@e switch other]
+before-status:  D a/b/c|?? a|
+exit=0
+stderr: 切换到分支 'other'|
+outside: . ./b ./b/c 
+outside-b-c: v2
+a-type: symlink
+a-target: real
+a-b-c: MISSING
+newfile: -
+worktree: . a keep.txt real 
+status: ?? a|
+lsfiles: keep.txt 
+head: other
+===== A tool=git kind=del anc=link_inside_empty force=yes  [git -c user.name=t -c user.email=t@e switch -f other]
+before-status:  D a/b/c|?? a|
+exit=0
+stderr: 切换到分支 'other'|
+outside: . ./b ./b/c 
+outside-b-c: v2
+a-type: symlink
+a-target: real
+a-b-c: MISSING
+newfile: -
+worktree: . a keep.txt real 
+status: ?? a|
+lsfiles: keep.txt 
+head: other
+===== A tool=git kind=mod anc=link_inside_empty force=no  [git -c user.name=t -c user.email=t@e switch other]
+before-status:  D a/b/c|?? a|
+exit=0
+stderr: 切换到分支 'other'|
+outside: . ./b ./b/c 
+outside-b-c: v2
+a-type: dir
+a-target: -
+a-b-c: v2
+newfile: -
+worktree: . a a/b a/b/c keep.txt real 
+status: 
+lsfiles: a/b/c keep.txt 
+head: other
+===== A tool=git kind=mod anc=link_inside_empty force=yes  [git -c user.name=t -c user.email=t@e switch -f other]
+before-status:  D a/b/c|?? a|
+exit=0
+stderr: 切换到分支 'other'|
+outside: . ./b ./b/c 
+outside-b-c: v2
+a-type: dir
+a-target: -
+a-b-c: v2
+newfile: -
+worktree: . a a/b a/b/c keep.txt real 
+status: 
+lsfiles: a/b/c keep.txt 
+head: other
+===== A tool=git kind=add anc=link_inside_empty force=no  [git -c user.name=t -c user.email=t@e checkout other]
+before-status:  D a/b/c|?? a|
+exit=1
+stderr: 错误：工作区中下列未跟踪的文件将会因为检出操作而被覆盖：|	a|请在切换分支前移动或删除。|正在中止|
+outside: . ./b ./b/c 
+outside-b-c: v2
+a-type: symlink
+a-target: real
+a-b-c: MISSING
+newfile: -
+worktree: . a keep.txt real 
+status:  D a/b/c|?? a|
+lsfiles: a/b/c keep.txt 
+head: main
+===== A tool=git kind=add anc=link_inside_empty force=yes  [git -c user.name=t -c user.email=t@e checkout -f other]
+before-status:  D a/b/c|?? a|
+exit=0
+stderr: 切换到分支 'other'|
+outside: . ./b ./b/c 
+outside-b-c: v2
+a-type: dir
+a-target: -
+a-b-c: v1
+newfile: new
+worktree: . a a/b a/b/c a/new.txt keep.txt real 
+status: 
+lsfiles: a/b/c a/new.txt keep.txt 
+head: other
+===== A tool=git kind=del anc=link_inside_same force=no  [git -c user.name=t -c user.email=t@e switch other]
+before-status:  D a/b/c|?? a|?? real/|
+exit=1
+stderr: 错误：您对下列文件的本地修改将被检出操作覆盖：|	a/b/c|请在切换分支前提交或储藏您的修改。|正在中止|
+outside: . ./b ./b/c 
+outside-b-c: v2
+a-type: symlink
+a-target: real
+a-b-c: v1
+newfile: -
+worktree: . a keep.txt real real/b real/b/c 
+status:  D a/b/c|?? a|?? real/|
+lsfiles: a/b/c keep.txt 
+head: main
+===== A tool=git kind=del anc=link_inside_same force=yes  [git -c user.name=t -c user.email=t@e switch -f other]
+before-status:  D a/b/c|?? a|?? real/|
+exit=0
+stderr: 切换到分支 'other'|
+outside: . ./b ./b/c 
+outside-b-c: v2
+a-type: symlink
+a-target: real
+a-b-c: v1
+newfile: -
+worktree: . a keep.txt real real/b real/b/c 
+status: ?? a|?? real/|
+lsfiles: keep.txt 
+head: other
+===== A tool=git kind=mod anc=link_inside_same force=no  [git -c user.name=t -c user.email=t@e switch other]
+before-status:  D a/b/c|?? a|?? real/|
+exit=1
+stderr: 错误：您对下列文件的本地修改将被检出操作覆盖：|	a/b/c|请在切换分支前提交或储藏您的修改。|正在中止|
+outside: . ./b ./b/c 
+outside-b-c: v2
+a-type: symlink
+a-target: real
+a-b-c: v1
+newfile: -
+worktree: . a keep.txt real real/b real/b/c 
+status:  D a/b/c|?? a|?? real/|
+lsfiles: a/b/c keep.txt 
+head: main
+===== A tool=git kind=mod anc=link_inside_same force=yes  [git -c user.name=t -c user.email=t@e switch -f other]
+before-status:  D a/b/c|?? a|?? real/|
+exit=0
+stderr: 切换到分支 'other'|
+outside: . ./b ./b/c 
+outside-b-c: v2
+a-type: dir
+a-target: -
+a-b-c: v2
+newfile: -
+worktree: . a a/b a/b/c keep.txt real real/b real/b/c 
+status: ?? real/|
+lsfiles: a/b/c keep.txt 
+head: other
+===== A tool=git kind=add anc=link_inside_same force=no  [git -c user.name=t -c user.email=t@e checkout other]
+before-status:  D a/b/c|?? a|?? real/|
+exit=1
+stderr: 错误：工作区中下列未跟踪的文件将会因为检出操作而被覆盖：|	a|请在切换分支前移动或删除。|正在中止|
+outside: . ./b ./b/c 
+outside-b-c: v2
+a-type: symlink
+a-target: real
+a-b-c: v1
+newfile: -
+worktree: . a keep.txt real real/b real/b/c 
+status:  D a/b/c|?? a|?? real/|
+lsfiles: a/b/c keep.txt 
+head: main
+===== A tool=git kind=add anc=link_inside_same force=yes  [git -c user.name=t -c user.email=t@e checkout -f other]
+before-status:  D a/b/c|?? a|?? real/|
+exit=0
+stderr: 切换到分支 'other'|
+outside: . ./b ./b/c 
+outside-b-c: v2
+a-type: dir
+a-target: -
+a-b-c: v1
+newfile: new
+worktree: . a a/b a/b/c a/new.txt keep.txt real real/b real/b/c 
+status: ?? real/|
+lsfiles: a/b/c a/new.txt keep.txt 
+head: other
+===== A tool=git kind=del anc=file force=no  [git -c user.name=t -c user.email=t@e switch other]
+before-status:  D a/b/c|?? a|
+exit=1
+stderr: 错误：您对下列文件的本地修改将被检出操作覆盖：|	a/b/c|请在切换分支前提交或储藏您的修改。|正在中止|
+outside: . ./b ./b/c 
+outside-b-c: v2
+a-type: file
+a-target: -
+a-b-c: MISSING
+newfile: -
+worktree: . a keep.txt 
+status:  D a/b/c|?? a|
+lsfiles: a/b/c keep.txt 
+head: main
+===== A tool=git kind=del anc=file force=yes  [git -c user.name=t -c user.email=t@e switch -f other]
+before-status:  D a/b/c|?? a|
+exit=0
+stderr: 切换到分支 'other'|
+outside: . ./b ./b/c 
+outside-b-c: v2
+a-type: file
+a-target: -
+a-b-c: MISSING
+newfile: -
+worktree: . a keep.txt 
+status: ?? a|
+lsfiles: keep.txt 
+head: other
+===== A tool=git kind=mod anc=file force=no  [git -c user.name=t -c user.email=t@e switch other]
+before-status:  D a/b/c|?? a|
+exit=1
+stderr: 错误：您对下列文件的本地修改将被检出操作覆盖：|	a/b/c|请在切换分支前提交或储藏您的修改。|正在中止|
+outside: . ./b ./b/c 
+outside-b-c: v2
+a-type: file
+a-target: -
+a-b-c: MISSING
+newfile: -
+worktree: . a keep.txt 
+status:  D a/b/c|?? a|
+lsfiles: a/b/c keep.txt 
+head: main
+===== A tool=git kind=mod anc=file force=yes  [git -c user.name=t -c user.email=t@e switch -f other]
+before-status:  D a/b/c|?? a|
+exit=0
+stderr: 切换到分支 'other'|
+outside: . ./b ./b/c 
+outside-b-c: v2
+a-type: dir
+a-target: -
+a-b-c: v2
+newfile: -
+worktree: . a a/b a/b/c keep.txt 
+status: 
+lsfiles: a/b/c keep.txt 
+head: other
+===== A tool=git kind=add anc=file force=no  [git -c user.name=t -c user.email=t@e checkout other]
+before-status:  D a/b/c|?? a|
+exit=1
+stderr: 错误：工作区中下列未跟踪的文件将会因为检出操作而被覆盖：|	a|请在切换分支前移动或删除。|正在中止|
+outside: . ./b ./b/c 
+outside-b-c: v2
+a-type: file
+a-target: -
+a-b-c: MISSING
+newfile: -
+worktree: . a keep.txt 
+status:  D a/b/c|?? a|
+lsfiles: a/b/c keep.txt 
+head: main
+===== A tool=git kind=add anc=file force=yes  [git -c user.name=t -c user.email=t@e checkout -f other]
+before-status:  D a/b/c|?? a|
+exit=0
+stderr: 切换到分支 'other'|
+outside: . ./b ./b/c 
+outside-b-c: v2
+a-type: dir
+a-target: -
+a-b-c: v1
+newfile: new
+worktree: . a a/b a/b/c a/new.txt keep.txt 
+status: 
+lsfiles: a/b/c a/new.txt keep.txt 
+head: other
+===== A tool=git kind=del anc=missing force=no  [git -c user.name=t -c user.email=t@e switch other]
+before-status:  D a/b/c|
+exit=0
+stderr: 切换到分支 'other'|
+outside: . ./b ./b/c 
+outside-b-c: v2
+a-type: missing
+a-target: -
+a-b-c: MISSING
+newfile: -
+worktree: . keep.txt 
+status: 
+lsfiles: keep.txt 
+head: other
+===== A tool=git kind=del anc=missing force=yes  [git -c user.name=t -c user.email=t@e switch -f other]
+before-status:  D a/b/c|
+exit=0
+stderr: 切换到分支 'other'|
+outside: . ./b ./b/c 
+outside-b-c: v2
+a-type: missing
+a-target: -
+a-b-c: MISSING
+newfile: -
+worktree: . keep.txt 
+status: 
+lsfiles: keep.txt 
+head: other
+===== A tool=git kind=mod anc=missing force=no  [git -c user.name=t -c user.email=t@e switch other]
+before-status:  D a/b/c|
+exit=0
+stderr: 切换到分支 'other'|
+outside: . ./b ./b/c 
+outside-b-c: v2
+a-type: dir
+a-target: -
+a-b-c: v2
+newfile: -
+worktree: . a a/b a/b/c keep.txt 
+status: 
+lsfiles: a/b/c keep.txt 
+head: other
+===== A tool=git kind=mod anc=missing force=yes  [git -c user.name=t -c user.email=t@e switch -f other]
+before-status:  D a/b/c|
+exit=0
+stderr: 切换到分支 'other'|
+outside: . ./b ./b/c 
+outside-b-c: v2
+a-type: dir
+a-target: -
+a-b-c: v2
+newfile: -
+worktree: . a a/b a/b/c keep.txt 
+status: 
+lsfiles: a/b/c keep.txt 
+head: other
+===== A tool=git kind=add anc=missing force=no  [git -c user.name=t -c user.email=t@e checkout other]
+before-status:  D a/b/c|
+exit=0
+stderr: 切换到分支 'other'|
+outside: . ./b ./b/c 
+outside-b-c: v2
+a-type: dir
+a-target: -
+a-b-c: MISSING
+newfile: new
+worktree: . a a/new.txt keep.txt 
+status:  D a/b/c|
+lsfiles: a/b/c a/new.txt keep.txt 
+head: other
+===== A tool=git kind=add anc=missing force=yes  [git -c user.name=t -c user.email=t@e checkout -f other]
+before-status:  D a/b/c|
+exit=0
+stderr: 切换到分支 'other'|
+outside: . ./b ./b/c 
+outside-b-c: v2
+a-type: dir
+a-target: -
+a-b-c: v1
+newfile: new
+worktree: . a a/b a/b/c a/new.txt keep.txt 
+status: 
+lsfiles: a/b/c a/new.txt keep.txt 
+head: other
+===== A tool=mg kind=del anc=link_outside_empty force=no  [/home/user/Projects/mini-git/target/debug/mg switch other]
+before-status:  D a/b/c|?? a|
+exit=0
+stderr: 
+outside: . 
+outside-b-c: MISSING
+a-type: symlink
+a-target: /tmp/t11b/mx/A-mg-outside
+a-b-c: MISSING
+newfile: -
+worktree: . a keep.txt 
+status: ?? a|
+lsfiles: keep.txt 
+head: other
+===== A tool=mg kind=del anc=link_outside_empty force=yes  [/home/user/Projects/mini-git/target/debug/mg switch -f other]
+before-status:  D a/b/c|?? a|
+exit=0
+stderr: 
+outside: . 
+outside-b-c: MISSING
+a-type: symlink
+a-target: /tmp/t11b/mx/A-mg-outside
+a-b-c: MISSING
+newfile: -
+worktree: . a keep.txt 
+status: ?? a|
+lsfiles: keep.txt 
+head: other
+===== A tool=mg kind=mod anc=link_outside_empty force=no  [/home/user/Projects/mini-git/target/debug/mg switch other]
+before-status:  D a/b/c|?? a|
+exit=1
+stderr: mg: fatal: refusing to overwrite local changes: a|
+outside: . 
+outside-b-c: MISSING
+a-type: symlink
+a-target: /tmp/t11b/mx/A-mg-outside
+a-b-c: MISSING
+newfile: -
+worktree: . a keep.txt 
+status:  D a/b/c|?? a|
+lsfiles: a/b/c keep.txt 
+head: main
+===== A tool=mg kind=mod anc=link_outside_empty force=yes  [/home/user/Projects/mini-git/target/debug/mg switch -f other]
+before-status:  D a/b/c|?? a|
+exit=0
+stderr: 
+outside: . 
+outside-b-c: MISSING
+a-type: dir
+a-target: -
+a-b-c: v2
+newfile: -
+worktree: . a a/b a/b/c keep.txt 
+status: 
+lsfiles: a/b/c keep.txt 
+head: other
+===== A tool=mg kind=add anc=link_outside_empty force=no  [/home/user/Projects/mini-git/target/debug/mg checkout other]
+before-status:  D a/b/c|?? a|
+exit=1
+stderr: mg: fatal: refusing to overwrite local changes: a|
+outside: . 
+outside-b-c: MISSING
+a-type: symlink
+a-target: /tmp/t11b/mx/A-mg-outside
+a-b-c: MISSING
+newfile: -
+worktree: . a keep.txt 
+status:  D a/b/c|?? a|
+lsfiles: a/b/c keep.txt 
+head: main
+===== A tool=mg kind=add anc=link_outside_empty force=yes  [/home/user/Projects/mini-git/target/debug/mg checkout -f other]
+before-status:  D a/b/c|?? a|
+exit=0
+stderr: 
+outside: . 
+outside-b-c: MISSING
+a-type: dir
+a-target: -
+a-b-c: v1
+newfile: new
+worktree: . a a/b a/b/c a/new.txt keep.txt 
+status: 
+lsfiles: a/b/c a/new.txt keep.txt 
+head: other
+===== A tool=mg kind=del anc=link_outside_same force=no  [/home/user/Projects/mini-git/target/debug/mg switch other]
+before-status:  D a/b/c|?? a|
+exit=0
+stderr: 
+outside: . 
+outside-b-c: MISSING
+a-type: symlink
+a-target: /tmp/t11b/mx/A-mg-outside
+a-b-c: MISSING
+newfile: -
+worktree: . a keep.txt 
+status: ?? a|
+lsfiles: keep.txt 
+head: other
+===== A tool=mg kind=del anc=link_outside_same force=yes  [/home/user/Projects/mini-git/target/debug/mg switch -f other]
+before-status:  D a/b/c|?? a|
+exit=0
+stderr: 
+outside: . 
+outside-b-c: MISSING
+a-type: symlink
+a-target: /tmp/t11b/mx/A-mg-outside
+a-b-c: MISSING
+newfile: -
+worktree: . a keep.txt 
+status: ?? a|
+lsfiles: keep.txt 
+head: other
+===== A tool=mg kind=mod anc=link_outside_same force=no  [/home/user/Projects/mini-git/target/debug/mg switch other]
+before-status:  D a/b/c|?? a|
+exit=1
+stderr: mg: fatal: refusing to overwrite local changes: a|
+outside: . ./b ./b/c 
+outside-b-c: v1
+a-type: symlink
+a-target: /tmp/t11b/mx/A-mg-outside
+a-b-c: v1
+newfile: -
+worktree: . a keep.txt 
+status:  D a/b/c|?? a|
+lsfiles: a/b/c keep.txt 
+head: main
+===== A tool=mg kind=mod anc=link_outside_same force=yes  [/home/user/Projects/mini-git/target/debug/mg switch -f other]
+before-status:  D a/b/c|?? a|
+exit=0
+stderr: 
+outside: . ./b ./b/c 
+outside-b-c: v1
+a-type: dir
+a-target: -
+a-b-c: v2
+newfile: -
+worktree: . a a/b a/b/c keep.txt 
+status: 
+lsfiles: a/b/c keep.txt 
+head: other
+===== A tool=mg kind=add anc=link_outside_same force=no  [/home/user/Projects/mini-git/target/debug/mg checkout other]
+before-status:  D a/b/c|?? a|
+exit=1
+stderr: mg: fatal: refusing to overwrite local changes: a|
+outside: . ./b ./b/c 
+outside-b-c: v1
+a-type: symlink
+a-target: /tmp/t11b/mx/A-mg-outside
+a-b-c: v1
+newfile: -
+worktree: . a keep.txt 
+status:  D a/b/c|?? a|
+lsfiles: a/b/c keep.txt 
+head: main
+===== A tool=mg kind=add anc=link_outside_same force=yes  [/home/user/Projects/mini-git/target/debug/mg checkout -f other]
+before-status:  D a/b/c|?? a|
+exit=0
+stderr: 
+outside: . ./b ./b/c 
+outside-b-c: v1
+a-type: dir
+a-target: -
+a-b-c: v1
+newfile: new
+worktree: . a a/b a/b/c a/new.txt keep.txt 
+status: 
+lsfiles: a/b/c a/new.txt keep.txt 
+head: other
+===== A tool=mg kind=del anc=link_outside_target force=no  [/home/user/Projects/mini-git/target/debug/mg switch other]
+before-status:  D a/b/c|?? a|
+exit=1
+stderr: mg: fatal: refusing to overwrite local changes: a/b/c|
+outside: . ./b ./b/c 
+outside-b-c: v2
+a-type: symlink
+a-target: /tmp/t11b/mx/A-mg-outside
+a-b-c: v2
+newfile: -
+worktree: . a keep.txt 
+status:  D a/b/c|?? a|
+lsfiles: a/b/c keep.txt 
+head: main
+===== A tool=mg kind=del anc=link_outside_target force=yes  [/home/user/Projects/mini-git/target/debug/mg switch -f other]
+before-status:  D a/b/c|?? a|
+exit=0
+stderr: 
+outside: . 
+outside-b-c: MISSING
+a-type: symlink
+a-target: /tmp/t11b/mx/A-mg-outside
+a-b-c: MISSING
+newfile: -
+worktree: . a keep.txt 
+status: ?? a|
+lsfiles: keep.txt 
+head: other
+===== A tool=mg kind=mod anc=link_outside_target force=no  [/home/user/Projects/mini-git/target/debug/mg switch other]
+before-status:  D a/b/c|?? a|
+exit=1
+stderr: mg: fatal: refusing to overwrite local changes: a/b/c|
+outside: . ./b ./b/c 
+outside-b-c: v2
+a-type: symlink
+a-target: /tmp/t11b/mx/A-mg-outside
+a-b-c: v2
+newfile: -
+worktree: . a keep.txt 
+status:  D a/b/c|?? a|
+lsfiles: a/b/c keep.txt 
+head: main
+===== A tool=mg kind=mod anc=link_outside_target force=yes  [/home/user/Projects/mini-git/target/debug/mg switch -f other]
+before-status:  D a/b/c|?? a|
+exit=0
+stderr: 
+outside: . ./b ./b/c 
+outside-b-c: v2
+a-type: dir
+a-target: -
+a-b-c: v2
+newfile: -
+worktree: . a a/b a/b/c keep.txt 
+status: 
+lsfiles: a/b/c keep.txt 
+head: other
+===== A tool=mg kind=add anc=link_outside_target force=no  [/home/user/Projects/mini-git/target/debug/mg checkout other]
+before-status:  D a/b/c|?? a|
+exit=1
+stderr: mg: fatal: refusing to overwrite local changes: a|
+outside: . ./b ./b/c 
+outside-b-c: v2
+a-type: symlink
+a-target: /tmp/t11b/mx/A-mg-outside
+a-b-c: v2
+newfile: -
+worktree: . a keep.txt 
+status:  D a/b/c|?? a|
+lsfiles: a/b/c keep.txt 
+head: main
+===== A tool=mg kind=add anc=link_outside_target force=yes  [/home/user/Projects/mini-git/target/debug/mg checkout -f other]
+before-status:  D a/b/c|?? a|
+exit=0
+stderr: 
+outside: . ./b ./b/c 
+outside-b-c: v2
+a-type: dir
+a-target: -
+a-b-c: v1
+newfile: new
+worktree: . a a/b a/b/c a/new.txt keep.txt 
+status: 
+lsfiles: a/b/c a/new.txt keep.txt 
+head: other
+===== A tool=mg kind=del anc=link_inside_empty force=no  [/home/user/Projects/mini-git/target/debug/mg switch other]
+before-status:  D a/b/c|?? a|
+exit=0
+stderr: 
+outside: . ./b ./b/c 
+outside-b-c: v2
+a-type: symlink
+a-target: real
+a-b-c: MISSING
+newfile: -
+worktree: . a keep.txt real 
+status: ?? a|
+lsfiles: keep.txt 
+head: other
+===== A tool=mg kind=del anc=link_inside_empty force=yes  [/home/user/Projects/mini-git/target/debug/mg switch -f other]
+before-status:  D a/b/c|?? a|
+exit=0
+stderr: 
+outside: . ./b ./b/c 
+outside-b-c: v2
+a-type: symlink
+a-target: real
+a-b-c: MISSING
+newfile: -
+worktree: . a keep.txt real 
+status: ?? a|
+lsfiles: keep.txt 
+head: other
+===== A tool=mg kind=mod anc=link_inside_empty force=no  [/home/user/Projects/mini-git/target/debug/mg switch other]
+before-status:  D a/b/c|?? a|
+exit=1
+stderr: mg: fatal: refusing to overwrite local changes: a|
+outside: . ./b ./b/c 
+outside-b-c: v2
+a-type: symlink
+a-target: real
+a-b-c: MISSING
+newfile: -
+worktree: . a keep.txt real 
+status:  D a/b/c|?? a|
+lsfiles: a/b/c keep.txt 
+head: main
+===== A tool=mg kind=mod anc=link_inside_empty force=yes  [/home/user/Projects/mini-git/target/debug/mg switch -f other]
+before-status:  D a/b/c|?? a|
+exit=0
+stderr: 
+outside: . ./b ./b/c 
+outside-b-c: v2
+a-type: dir
+a-target: -
+a-b-c: v2
+newfile: -
+worktree: . a a/b a/b/c keep.txt real 
+status: 
+lsfiles: a/b/c keep.txt 
+head: other
+===== A tool=mg kind=add anc=link_inside_empty force=no  [/home/user/Projects/mini-git/target/debug/mg checkout other]
+before-status:  D a/b/c|?? a|
+exit=1
+stderr: mg: fatal: refusing to overwrite local changes: a|
+outside: . ./b ./b/c 
+outside-b-c: v2
+a-type: symlink
+a-target: real
+a-b-c: MISSING
+newfile: -
+worktree: . a keep.txt real 
+status:  D a/b/c|?? a|
+lsfiles: a/b/c keep.txt 
+head: main
+===== A tool=mg kind=add anc=link_inside_empty force=yes  [/home/user/Projects/mini-git/target/debug/mg checkout -f other]
+before-status:  D a/b/c|?? a|
+exit=0
+stderr: 
+outside: . ./b ./b/c 
+outside-b-c: v2
+a-type: dir
+a-target: -
+a-b-c: v1
+newfile: new
+worktree: . a a/b a/b/c a/new.txt keep.txt real 
+status: 
+lsfiles: a/b/c a/new.txt keep.txt 
+head: other
+===== A tool=mg kind=del anc=link_inside_same force=no  [/home/user/Projects/mini-git/target/debug/mg switch other]
+before-status:  D a/b/c|?? a|?? real/|
+exit=0
+stderr: 
+outside: . ./b ./b/c 
+outside-b-c: v2
+a-type: symlink
+a-target: real
+a-b-c: MISSING
+newfile: -
+worktree: . a keep.txt real 
+status: ?? a|
+lsfiles: keep.txt 
+head: other
+===== A tool=mg kind=del anc=link_inside_same force=yes  [/home/user/Projects/mini-git/target/debug/mg switch -f other]
+before-status:  D a/b/c|?? a|?? real/|
+exit=0
+stderr: 
+outside: . ./b ./b/c 
+outside-b-c: v2
+a-type: symlink
+a-target: real
+a-b-c: MISSING
+newfile: -
+worktree: . a keep.txt real 
+status: ?? a|
+lsfiles: keep.txt 
+head: other
+===== A tool=mg kind=mod anc=link_inside_same force=no  [/home/user/Projects/mini-git/target/debug/mg switch other]
+before-status:  D a/b/c|?? a|?? real/|
+exit=1
+stderr: mg: fatal: refusing to overwrite local changes: a|
+outside: . ./b ./b/c 
+outside-b-c: v2
+a-type: symlink
+a-target: real
+a-b-c: v1
+newfile: -
+worktree: . a keep.txt real real/b real/b/c 
+status:  D a/b/c|?? a|?? real/|
+lsfiles: a/b/c keep.txt 
+head: main
+===== A tool=mg kind=mod anc=link_inside_same force=yes  [/home/user/Projects/mini-git/target/debug/mg switch -f other]
+before-status:  D a/b/c|?? a|?? real/|
+exit=0
+stderr: 
+outside: . ./b ./b/c 
+outside-b-c: v2
+a-type: dir
+a-target: -
+a-b-c: v2
+newfile: -
+worktree: . a a/b a/b/c keep.txt real real/b real/b/c 
+status: ?? real/|
+lsfiles: a/b/c keep.txt 
+head: other
+===== A tool=mg kind=add anc=link_inside_same force=no  [/home/user/Projects/mini-git/target/debug/mg checkout other]
+before-status:  D a/b/c|?? a|?? real/|
+exit=1
+stderr: mg: fatal: refusing to overwrite local changes: a|
+outside: . ./b ./b/c 
+outside-b-c: v2
+a-type: symlink
+a-target: real
+a-b-c: v1
+newfile: -
+worktree: . a keep.txt real real/b real/b/c 
+status:  D a/b/c|?? a|?? real/|
+lsfiles: a/b/c keep.txt 
+head: main
+===== A tool=mg kind=add anc=link_inside_same force=yes  [/home/user/Projects/mini-git/target/debug/mg checkout -f other]
+before-status:  D a/b/c|?? a|?? real/|
+exit=0
+stderr: 
+outside: . ./b ./b/c 
+outside-b-c: v2
+a-type: dir
+a-target: -
+a-b-c: v1
+newfile: new
+worktree: . a a/b a/b/c a/new.txt keep.txt real real/b real/b/c 
+status: ?? real/|
+lsfiles: a/b/c a/new.txt keep.txt 
+head: other
+===== A tool=mg kind=del anc=file force=no  [/home/user/Projects/mini-git/target/debug/mg switch other]
+before-status:  D a/b/c|?? a|
+exit=1
+stderr: mg: fatal: io error: Not a directory (os error 20)|
+outside: . ./b ./b/c 
+outside-b-c: v2
+a-type: file
+a-target: -
+a-b-c: MISSING
+newfile: -
+worktree: . a keep.txt 
+status:  D a/b/c|?? a|
+lsfiles: a/b/c keep.txt 
+head: main
+===== A tool=mg kind=del anc=file force=yes  [/home/user/Projects/mini-git/target/debug/mg switch -f other]
+before-status:  D a/b/c|?? a|
+exit=1
+stderr: mg: fatal: io error: Not a directory (os error 20)|
+outside: . ./b ./b/c 
+outside-b-c: v2
+a-type: file
+a-target: -
+a-b-c: MISSING
+newfile: -
+worktree: . a keep.txt 
+status:  D a/b/c|?? a|
+lsfiles: a/b/c keep.txt 
+head: main
+===== A tool=mg kind=mod anc=file force=no  [/home/user/Projects/mini-git/target/debug/mg switch other]
+before-status:  D a/b/c|?? a|
+exit=1
+stderr: mg: fatal: io error: Not a directory (os error 20)|
+outside: . ./b ./b/c 
+outside-b-c: v2
+a-type: file
+a-target: -
+a-b-c: MISSING
+newfile: -
+worktree: . a keep.txt 
+status:  D a/b/c|?? a|
+lsfiles: a/b/c keep.txt 
+head: main
+===== A tool=mg kind=mod anc=file force=yes  [/home/user/Projects/mini-git/target/debug/mg switch -f other]
+before-status:  D a/b/c|?? a|
+exit=0
+stderr: 
+outside: . ./b ./b/c 
+outside-b-c: v2
+a-type: dir
+a-target: -
+a-b-c: v2
+newfile: -
+worktree: . a a/b a/b/c keep.txt 
+status: 
+lsfiles: a/b/c keep.txt 
+head: other
+===== A tool=mg kind=add anc=file force=no  [/home/user/Projects/mini-git/target/debug/mg checkout other]
+before-status:  D a/b/c|?? a|
+exit=1
+stderr: mg: fatal: io error: Not a directory (os error 20)|
+outside: . ./b ./b/c 
+outside-b-c: v2
+a-type: file
+a-target: -
+a-b-c: MISSING
+newfile: -
+worktree: . a keep.txt 
+status:  D a/b/c|?? a|
+lsfiles: a/b/c keep.txt 
+head: main
+===== A tool=mg kind=add anc=file force=yes  [/home/user/Projects/mini-git/target/debug/mg checkout -f other]
+before-status:  D a/b/c|?? a|
+exit=0
+stderr: 
+outside: . ./b ./b/c 
+outside-b-c: v2
+a-type: dir
+a-target: -
+a-b-c: v1
+newfile: new
+worktree: . a a/b a/b/c a/new.txt keep.txt 
+status: 
+lsfiles: a/b/c a/new.txt keep.txt 
+head: other
+===== A tool=mg kind=del anc=missing force=no  [/home/user/Projects/mini-git/target/debug/mg switch other]
+before-status:  D a/b/c|
+exit=0
+stderr: 
+outside: . ./b ./b/c 
+outside-b-c: v2
+a-type: missing
+a-target: -
+a-b-c: MISSING
+newfile: -
+worktree: . keep.txt 
+status: 
+lsfiles: keep.txt 
+head: other
+===== A tool=mg kind=del anc=missing force=yes  [/home/user/Projects/mini-git/target/debug/mg switch -f other]
+before-status:  D a/b/c|
+exit=0
+stderr: 
+outside: . ./b ./b/c 
+outside-b-c: v2
+a-type: missing
+a-target: -
+a-b-c: MISSING
+newfile: -
+worktree: . keep.txt 
+status: 
+lsfiles: keep.txt 
+head: other
+===== A tool=mg kind=mod anc=missing force=no  [/home/user/Projects/mini-git/target/debug/mg switch other]
+before-status:  D a/b/c|
+exit=0
+stderr: 
+outside: . ./b ./b/c 
+outside-b-c: v2
+a-type: dir
+a-target: -
+a-b-c: v2
+newfile: -
+worktree: . a a/b a/b/c keep.txt 
+status: 
+lsfiles: a/b/c keep.txt 
+head: other
+===== A tool=mg kind=mod anc=missing force=yes  [/home/user/Projects/mini-git/target/debug/mg switch -f other]
+before-status:  D a/b/c|
+exit=0
+stderr: 
+outside: . ./b ./b/c 
+outside-b-c: v2
+a-type: dir
+a-target: -
+a-b-c: v2
+newfile: -
+worktree: . a a/b a/b/c keep.txt 
+status: 
+lsfiles: a/b/c keep.txt 
+head: other
+===== A tool=mg kind=add anc=missing force=no  [/home/user/Projects/mini-git/target/debug/mg checkout other]
+before-status:  D a/b/c|
+exit=0
+stderr: 
+outside: . ./b ./b/c 
+outside-b-c: v2
+a-type: dir
+a-target: -
+a-b-c: MISSING
+newfile: new
+worktree: . a a/new.txt keep.txt 
+status:  D a/b/c|
+lsfiles: a/b/c a/new.txt keep.txt 
+head: other
+===== A tool=mg kind=add anc=missing force=yes  [/home/user/Projects/mini-git/target/debug/mg checkout -f other]
+before-status:  D a/b/c|
+exit=0
+stderr: 
+outside: . ./b ./b/c 
+outside-b-c: v2
+a-type: dir
+a-target: -
+a-b-c: v1
+newfile: new
+worktree: . a a/b a/b/c a/new.txt keep.txt 
+status: 
+lsfiles: a/b/c a/new.txt keep.txt 
+head: other

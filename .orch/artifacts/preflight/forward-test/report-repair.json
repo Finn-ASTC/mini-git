@@ -1,0 +1,1 @@
+{"objective":"Repair only the prior round's malformed final report","scope":"Reporting only; do not repeat analysis or change project files","acceptance":["Publish one protocol-valid response reflecting the completed work"],"known_facts":["The underlying task already completed"],"constraints":["No task retry"]}

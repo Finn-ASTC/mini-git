@@ -1,0 +1,17 @@
+{
+  "mode": "insider",
+  "session": "default",
+  "agent": "orch-w7-author",
+  "pane": "w1V:p1",
+  "workspace": "w1V",
+  "owns_agent": true,
+  "owns_pane": true,
+  "owns_workspace": true,
+  "owns_session": false,
+  "tab": "w1V:t1",
+  "parent_pane": "wJ:p1",
+  "parent_tab": "wJ:t1",
+  "owns_tab": false,
+  "recorded_at": "2026-09-20T17:38:36.488471+00:00",
+  "job_id": "66840d4b642f481a848788974b0665ca"
+}

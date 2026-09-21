@@ -1,0 +1,25 @@
+   Compiling mini-git v0.0.0 (/tmp/v6b-mut/repo)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.48s
+     Running tests/verify_diff.rs (/tmp/v6b-mut/target/debug/deps/verify_diff-f430f95397664e53)
+
+running 1 test
+test cli_space_in_path_tab_padding ... FAILED
+
+failures:
+
+---- cli_space_in_path_tab_padding stdout ----
+
+thread 'cli_space_in_path_tab_padding' (421) panicked at tests/verify_diff.rs:90:5:
+space in path (known FAIL): byte mismatch (git 130 bytes, mg 128 bytes)
+  first differing line #2:
+    git: --- a/a b.txt\t\n
+    mg : --- a/a b.txt\n
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+
+
+failures:
+    cli_space_in_path_tab_padding
+
+test result: FAILED. 0 passed; 1 failed; 0 ignored; 0 measured; 16 filtered out; finished in 0.01s
+
+error: test failed, to rerun pass `--test verify_diff`

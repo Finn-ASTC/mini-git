@@ -1,0 +1,2 @@
+seq 1 state_changed(idle)：验证者提交前的预期状态。opencode 已 interactive_ready，
+屏幕是空白输入行，没有对话框。该复核只授权接下来这一条 prompt 输入。

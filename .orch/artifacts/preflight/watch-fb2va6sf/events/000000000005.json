@@ -1,0 +1,10 @@
+{
+  "seq": 5,
+  "job_id": "816ca880b03a437c8aa3da7cec8b3cf9",
+  "round_id": "c1431df7a41e4b2fa6e43dd022e2acb5",
+  "kind": "review_due",
+  "message": "Changed UI needs review; hook/keyword detection may miss a dialog.",
+  "evidence_path": "/tmp/orch-watch-fb2va6sf/evidence/000000000005.json",
+  "screen_tail": "7fb0d3\n    7472656520303437393030333434356634653561356666323533363063363037636137396666653465346561310a617574686f72204120552054\n    … +5 lines (ctrl + t to view transcript)\n    740a7461672076310a746167676572204120552054686f72203c61406578616d706c652e636f6d3e2031373030303030303030202b303830300a\n    0a746167206d6573736167650a\n\n• Goldens match so far. Let me machine-check every hardcoded constant in the source against real git, including hash\n  self-consistency.\n\n• Ran cat > /tmp/check_consts.py <<'PY'\n  │ import re, hashlib, sys, pathlib\n  │\n  │ … +55 lines\n  └ ### src/object/tree.rs\n      TREE_PAYLOAD: len=168 sha1(tree)=4aad58e0401292349b1a142aa10cbcc061c2eda2  | const\n    … +16 lines (ctrl + t to view transcript)\n    TAG_OID=18391d2eb484632c5316f0e943df3a0942498f12 MATCH\n      other hex consts: {'TAG_OID': '18391d2eb484632c5316f0e943df3a0942498f12'}\n\n◦ Working (44s • esc to interrupt)\n\n\n› Ask Codex to do anything\n\n  deepseek-flash high · ~/Projects/mini-git · Execute JSON task request\n",
+  "observed_at": 1789816828.16171
+}

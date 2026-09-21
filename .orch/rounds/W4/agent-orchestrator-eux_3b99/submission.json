@@ -1,0 +1,23 @@
+{
+  "active_request": ".orch/rounds/W4/agent-orchestrator-eux_3b99/request.json",
+  "job_id": "e1dc5d9a29784744afe0adb17835dab9",
+  "round_id": "620c935610a943fb80418cd1e0074157",
+  "transport": "insider (default session)",
+  "session": "default",
+  "agent": "w4-t13-codex",
+  "pane": "w1E:p1",
+  "workspace": "w1E",
+  "cwd": "/home/user/Projects/mini-git",
+  "kind": "codex",
+  "task": "T13 file:// 传输 + clone/fetch/push/pull",
+  "submitted_at": "2026-09-19T21:43:28+08:00",
+  "acceptance": "accepted",
+  "submission_evidence": "herdr agent prompt -> agent_prompted",
+  "deadline": null,
+  "monitor_owner": "controller (default session, pane wJ:p1)",
+  "last_checked_at": "2026-09-19T21:43:28+08:00",
+  "next_check_at": null,
+  "pending_question": null,
+  "resources_file": ".orch/rounds/W4/agent-orchestrator-eux_3b99/resources.json",
+  "result_path": "/home/user/Projects/mini-git/.orch/rounds/W4/agent-orchestrator-eux_3b99/result.json"
+}

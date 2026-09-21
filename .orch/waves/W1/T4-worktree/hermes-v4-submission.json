@@ -1,0 +1,22 @@
+{
+  "active_request": "/home/user/Projects/mini-git/.orch/rounds/W1/agent-orchestrator-r_tell2f/request.json",
+  "job_id": "3ada77b33c5540df8aab787823fd0bca",
+  "round_id": "5af9c4ba4b7a43a28e98a12a9c82e868",
+  "transport": "insider (default session)",
+  "session": "default",
+  "agent": "orch-hermes-v4",
+  "pane": "wT:p1",
+  "workspace": "wT",
+  "cwd": "/home/user/Projects/mini-git",
+  "task": "V4 独立验证 T4（worktree scan/ignore/status）",
+  "submitted_at": "2026-09-19T19:45:39+08:00",
+  "acceptance": "accepted",
+  "submission_evidence": "herdr agent prompt -> {\"type\":\"agent_prompted\"}",
+  "deadline": "2026-09-19T20:45:00+08:00",
+  "monitor_owner": "controller (default session, pane wJ:p1)",
+  "last_checked_at": "2026-09-19T19:45:39+08:00",
+  "next_check_at": null,
+  "pending_question": null,
+  "resources_file": "/home/user/Projects/mini-git/.orch/rounds/W1/agent-orchestrator-r_tell2f/resources.json",
+  "result_path": "/home/user/Projects/mini-git/.orch/rounds/W1/agent-orchestrator-r_tell2f/result.json"
+}

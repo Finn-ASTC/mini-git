@@ -1,0 +1,8 @@
+V1 watch seq 3, kind=review_due, confidence=unknown_ui.
+Controller re-read pane w1T:p1 directly (herdr --session default pane read) at
+2026-09-20T09:49Z. Screen shows OpenCode 1.18.29 working state: "esc interrupt"
+footer, no permission dialog, no prompt awaiting input, no modal. V1 is mid-run:
+oracle + differential harness already built, 36/36 debug cases passed, currently
+re-hashing the sealed snapshot.
+Disposition: handled - no dialog to answer, no input sent. Low-confidence UI
+heuristic fired because the pane repainted; treated as informational only.

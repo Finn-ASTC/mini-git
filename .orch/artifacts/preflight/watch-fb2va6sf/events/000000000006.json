@@ -1,0 +1,10 @@
+{
+  "seq": 6,
+  "job_id": "816ca880b03a437c8aa3da7cec8b3cf9",
+  "round_id": "c1431df7a41e4b2fa6e43dd022e2acb5",
+  "kind": "review_due",
+  "message": "Changed UI needs review; hook/keyword detection may miss a dialog.",
+  "evidence_path": "/tmp/orch-watch-fb2va6sf/evidence/000000000006.json",
+  "screen_tail": "s (ctrl + t to view transcript)\n    31373030303030303030202b303830300a636f6d6d6974746572204120552054686f72203c61406578616d706c652e636f6d3e20313730303030\n    30303030202b303830300a0a6d6572676520736964650a\n\n• Ran cat > /tmp/brute_tree.py <<'PY'\n  │ import hashlib, itertools\n  │\n  │ … +37 lines\n  └ hits: [(b'y.txt', b'y\\n', b'z.txt', b'z\\n'), (b'z.txt', b'z\\n', b'y.txt', b'y\\n')]\n    done\n\n• Ran cat > /tmp/brute_merge.py <<'PY'\n  │ import hashlib, itertools\n  │\n  │ … +34 lines\n  └ 26 trees: {'4b825dc642cb6eb9a060e54bf8d69288fbee4904': (), '0479003445f4e5a5ff25360c607ca79ffe4e4ea1': (b'x.txt',),\n    '52bc1b13d4515801db158fa41cc8d01fa25323b5': (b'y.txt',), '9c663eadbf0bc56a7da8835aa2cf1ce7103941ad': (b'z.txt',),\n    … +16 lines (ctrl + t to view transcript)\n    '83f6c38e1cf4767bb41e82f4513858c56e254c25': (b'z.txt', b'a.txt', b'm.txt')}\n    found set()\n\n◦ Working (1m 01s • esc to interrupt)\n\n\n› Ask Codex to do anything\n\n  deepseek-flash high · ~/Projects/mini-git · Execute JSON task request\n",
+  "observed_at": 1789816858.161932
+}

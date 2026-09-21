@@ -1,0 +1,11 @@
+{
+  "version": 1,
+  "seq": 7,
+  "job_id": "edb0e351b58e42e486a264690ece2dcd",
+  "round_id": "c1008bbd20e34640ab5a409ceed097fb",
+  "event_fingerprint": "95ace60e36ce627171ec3c3aa5b783be47ad1b94f1983c0531b64534c964b6fd",
+  "revision": 1,
+  "status": "handled",
+  "note": "review_due 误报（批量）：omp TUI 持续重绘（spinner/进度行），changed-screen 启发式反复触发。\n逐次读 visible 屏幕确认：无审批/信任/登录/提问弹窗，om p 正常推进直到发布 result。\n效率观察：对持续重绘的 TUI，review_due 噪声高（本轮共 8 次 review_due，其中 7 次为纯噪声）。\n",
+  "recorded_at": 1789816747.5555286
+}

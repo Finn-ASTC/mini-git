@@ -1,0 +1,23 @@
+{
+  "active_request": ".orch/rounds/W4/agent-orchestrator-gvvgao3_/request.json",
+  "job_id": "a2a5ac2cf58c48e6be53451e148e8deb",
+  "round_id": "503f5632d865491482c9a87c0be49dc0",
+  "transport": "insider (default session)",
+  "session": "default",
+  "agent": "w4-t14b-opencode",
+  "pane": "w1Q:p1",
+  "workspace": "w1Q",
+  "cwd": "/home/user/Projects/mini-git",
+  "kind": "opencode",
+  "task": "T14b 返工：修 Accept 头",
+  "submitted_at": "2026-09-19T22:37:51+08:00",
+  "acceptance": "accepted",
+  "submission_evidence": "新建 space + agent start（P4 未命中）",
+  "deadline": null,
+  "monitor_owner": "controller (default session, pane wJ:p1)",
+  "last_checked_at": "2026-09-19T22:37:51+08:00",
+  "next_check_at": null,
+  "pending_question": null,
+  "resources_file": ".orch/rounds/W4/agent-orchestrator-gvvgao3_/resources.json",
+  "result_path": "/home/user/Projects/mini-git/.orch/rounds/W4/agent-orchestrator-gvvgao3_/result.json"
+}

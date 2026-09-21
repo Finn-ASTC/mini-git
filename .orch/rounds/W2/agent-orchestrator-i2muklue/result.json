@@ -1,0 +1,23 @@
+{
+  "schema_version": 1,
+  "job_id": "50df6dab0aec41bda16d83755cc131cf",
+  "round_id": "a292d0614d2041e9b1fac8a52423d275",
+  "status": "success",
+  "output": "# V5 独立验证 T5（odb loose + `mg cat-file`）→ 判定：PASS\n\n- 验证者：opencode（本轮 verifier，非实现者）。\n- 真值：运行时真实 git 2.55.0 + 文件系统；`tests/verify_odb.rs` 零硬编码 oid/期望字节。\n- 被测：`src/odb/loose.rs`、`src/cli/cat_file.rs`（作者 hermes；未采信其自述）。\n\n## 0 写作用域 / 归因\n- 用 `.orch/waves/W2/T5-odb/baseline.txt`（20:12 快照）逐文件 sha256 对比当前工作树：12 项 CHANGED、0 MISSING。\n- T5 白名单内仅 `src/odb/loose.rs`、`src/cli/cat_file.rs` → 符合。\n- 其余变化均在 T5 作用域外：`src/cli/diff.rs`、`src/diff/myers.rs`、`src/diff/unified.rs`、`src/merge/merge_base.rs`、`src/transport/pktline.rs`（T6/T7/T8），以及 `verify-task.md`×4 与 `.orch/SKILL-FINDINGS.md`（controller）。→ 未发现作者越界改动。\n- 我只新建 `tests/verify_odb.rs` 与 `verify-scratch/**` 证据日志，未改任何 `src/**` / `Cargo.toml` / 他人测试。\n\n## 1 门禁复跑（A）\n- `cargo test --offline odb::` → lib `test result: ok. 6 passed; 0 failed`（作者 6 个 loose 单测），exit 0。\n- `cargo test --offline`（全量）→ lib 144、interop 7、verify 3、verify_index 11、verify_odb 6（本验证）、verify_pktline 8、verify_refs 9、verify_worktree 25，合计 0 failed，exit 0。\n- `cargo clippy --offline --all-targets` → warning/error 行数 0，exit 0。\n- `scripts/check-freeze.sh` → `checked 21 file(s), drift 0` + `freeze-v0 intact`，exit 0。\n- 验证期间未出现来自 T6/T7（`src/diff/**`、`src/merge/**`）的编译错误，故无「不可归因」项。\n\n## 2 独立真值测试（B）—— `tests/verify_odb.rs`：6/6 pass\n逐条「语义 → 命令/断言 → 关键输出 → 是否成立」：\n1. mg 写→git 读：`Odb::write` 落 2 blob + 2 tree + 1 commit + 1 tag 后，`git cat-file -t/-s/<type>` 全部一致；`git fsck --no-progress` exit 0 且无 error/missing/corrupt；mg 写 tree 的 pretty 输出 == `git ls-tree`。→ 成立。\n2. git 写→mg 读：`git hash-object -w` / `git commit` / annotated tag 造对象，`Odb::read` 的 `(Kind,payload)` 与 `git cat-file <type>` 逐字节一致；`read_loose_raw` == `<type> <size>\\0`+payload；缺对象 → `ObjectNotFound`。→ 成立。\n3. CLI 端到端：经 `CARGO_BIN_EXE_mg` 的 `-t/-s/-p` 对 blob（文本+二进制）/tree/子树/commit/tag 与 `git cat-file` **逐字节相等**；tree 的 `-p` == `git ls-tree`；`-e` 存在 exit 0 且零输出、缺失非零且 stderr 有信息；缺失 `-p` 非零 + stderr + 不 panic。→ 成立。\n4. 幂等/原子：同对象写两次 → 同 oid、inode 与 mtime_nsec 均不变、字节不变；`objects/tmp*` 零残留；文件权限 0444、分片目录 0755；0444 不阻塞后续写入。→ 成立。\n5. `iter_loose`：与 `find .git/objects -type f` 的合法 loose 集合完全一致、严格排序去重；`zz/`、`ab/nothex`、`tmp_obj_leftover` 干扰项被跳过。→ 成立。\n6. 反例：截断 zlib → `Err(Corrupt)`（read_loose 与 read_loose_raw）；改 1 字节保留文件名 → `Err(Corrupt)`；非 zlib → `Err(Corrupt)`；缺 oid → `Ok(None)`；CLI `-p` 缺失 → 非零退出 + stderr，无 panic。→ 成立。\n\n**无 FAIL 项。**\n\n## 3 防假绿（C）\n- `tests/verify_odb.rs` 直接调用 `minigit::odb::{Odb, loose}` 与真实 git；无 `#[ignore]`、未复制作者实现，期望值全部运行时生成。\n- 抽取作者用例 `odb::loose::tests::reads_every_object_kind_real_git_wrote`：其真值来自运行时 `git hash-object -w` / `git rev-parse HEAD` / `git rev-parse HEAD^{tree}` / `git cat-file -t|-s|<type>`，无手写期望字节。两个作者文件中 `#[ignore]` 计数为 0。\n\n## 4 判定与已知边界\n- **PASS**：T5 的 loose 对象读写与 `mg cat-file` 在真实 git 互操作、幂等/原子、损坏分类三方面均满足 `task.md` 验收。\n- 未覆盖（说明原因）：pack 回退路径（T9；被测仓库无 pack 文件，未独立验证）；`mg hash-object -w` → `mg cat-file` 的 CLI 自环（写读已在库层 B1/B4 覆盖，CLI 层以与 git 互操作为准）。\n- 已确认的已知限制（非缺陷）：tree 显示 mode 位数冲突按 controller 备注以真实 git 为准（`040000`）；实测 mg 与 `git ls-tree` 逐字节一致，未据此判 FAIL。\n",
+  "files_created": [
+    "tests/verify_odb.rs"
+  ],
+  "files_modified": [],
+  "files_generated": [
+    ".orch/waves/W2/T5-odb/verify-scratch/baseline-diff.txt",
+    ".orch/waves/W2/T5-odb/verify-scratch/clippy.log",
+    ".orch/waves/W2/T5-odb/verify-scratch/freeze.log",
+    ".orch/waves/W2/T5-odb/verify-scratch/fulltest.log",
+    ".orch/waves/W2/T5-odb/verify-scratch/gates.log",
+    ".orch/waves/W2/T5-odb/verify-scratch/odb-filter.log"
+  ],
+  "files_deleted": [],
+  "error": null,
+  "blocked_reason": null,
+  "completed_at": "2026-09-19T20:33:19+08:00"
+}

@@ -1,0 +1,10 @@
+{
+  "seq": 3,
+  "job_id": "816ca880b03a437c8aa3da7cec8b3cf9",
+  "round_id": "c1431df7a41e4b2fa6e43dd022e2acb5",
+  "kind": "attention",
+  "message": "Suspected native dialog; inspect evidence before responding.",
+  "evidence_path": "/tmp/orch-watch-fb2va6sf/evidence/000000000003.json",
+  "screen_tail": "g v1 | xxd -p | tr -d '\\n'; echo\n\n› 1. Yes, proceed (y)\n  2. Yes, and don't ask again for commands that start with `SCRATCH=/home/user/Projects/mini-git/.orch/waves/W1/T1-\n     object/verify-scratch; cd \"$SCRATCH\" && rm -rf commit-case && mkdir commit-case && cd commit-case && git init\n     -q . && printf 'x\\n' > x.txt && git add -A && GIT_AUTHOR_DATE='1700000000 +0800' GIT_COMMITTER_DATE='1700000000\n     +0800' git -c user.name='A U Thor' -c user.email='a@example.com' commit -q -m $'subject\\n\\nbody line\\n' && echo\n     \"commit-oid: $(git rev-parse HEAD)\" && git cat-file commit HEAD | xxd -p | tr -d '\\n'; echo; echo \"tree-hex:\n     $(git rev-parse HEAD^{tree})\"; GIT_COMMITTER_DATE='1700000000 +0800' git -c user.name='A U Thor' -c\n     user.email='a@example.com' tag -a v1 -m 'tag message' HEAD && echo \"tag-oid: $(git rev-parse v1)\" && git cat-file\n     tag v1 | xxd -p | tr -d '\\n'; echo` (p)\n  3. No, and tell Codex what to do differently (esc)\n\n  Press enter to confirm or esc to cancel\n",
+  "observed_at": 1789816798.1614423
+}

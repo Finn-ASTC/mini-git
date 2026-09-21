@@ -1,0 +1,67 @@
+V6 finding: FAIL -- `--- `/`+++ ` header lines lose git's trailing TAB for paths containing a space
+=============================================================================================
+
+Scenario (plain, no special flags; `mg diff` = worktree vs index):
+
+  d=$(mktemp -d); cd "$d"; export LC_ALL=C
+  git init -q -b main
+  printf 'line1\nline2\n' > 'a b.txt'
+  git add -A; git -c user.name=V -c user.email=v@e commit -q -m base
+  printf 'line1\nCHANGED\n' > 'a b.txt'
+  git diff --no-renames > git.out
+  /home/user/Projects/mini-git/target/debug/mg diff > mg.out
+  cmp git.out mg.out
+
+Result: cmp: differ: char 75, line 3
+
+  git.out (cat -A)              mg.out (cat -A)
+  diff --git a/a b.txt b/a b.txt$         diff --git a/a b.txt b/a b.txt$
+  index c0d0fb4..0104ff3 100644$          index c0d0fb4..0104ff3 100644$
+  --- a/a b.txt^I$                          --- a/a b.txt$
+  +++ b/a b.txt^I$                          +++ b/a b.txt$
+  ... (rest identical)
+
+So the ONLY byte difference is the TAB that real git appends after the file name on
+the `--- `/`+++ ` lines.
+
+Exact rule (verified by probing real git 2.55.0):
+  * path contains a space (0x20)                     -> TAB appended
+      `--- a/a b.txt` + TAB, `--- a/dir x/f.txt` + TAB, `--- a/trail .txt` + TAB
+  * path contains a space AND is C-quoted            -> TAB appended after the closing quote
+      `--- "a/a \"b c.txt"` + TAB
+  * path is C-quoted without a space (`a/back\\slash.txt`, `"a/tab\tname.txt"`) -> NO TAB
+  * path without a space (`a(a).txt`, `a,b.txt`, `a-b.txt`, `a_b.txt`, `a/plain.txt`,
+    CJK `a/\344...`)                                                     -> NO TAB
+  * the `diff --git` line is never padded (mg already matches there)
+The same padding shows up with `git diff --no-index -- x\ y x\ z` (`--- a/x y` + TAB),
+so it is not specific to the worktree/staged code paths.
+
+Impact / scope:
+  * `mg diff` and `git diff` differ byte-for-byte exactly when a changed path
+    contains a space (common: "my file.txt"). Everything else in the same output
+    is identical.
+  * It affects only the `--- `/`+++ ` lines (not `diff --git`, not `index`, not the
+    hunk body, not `Binary files ...`).
+  * It is NOT covered by the author's declared limitations (their list mentions only
+    rename detection, rev expressions, conflict stages, pathspec magic, core.quotePath
+    and the String-vs-bytes entry point - not this padding).
+  * Attribution: inside T6's whitelist - `src/diff/unified.rs` writes `--- `/`+++ `
+    (push_prefixed_line) and `src/cli/diff.rs` builds the labels; no other task can
+    fix it.
+  * Not functionally fatal (git's `--- a/name<TAB>date` parser also accepts the
+    un-padded form), but the round's stated acceptance is "与 `git diff` 逐字节一致",
+    and the controller note says any non-rename byte difference is a real FAIL.
+
+Regression test (kept out of the default suite on purpose, so the shared checkout's
+`cargo test --offline` stays green for the other W2 agents):
+  tests/verify_diff.rs::cli_space_in_path_tab_padding   #[ignore = "V6 FAIL: ..."]
+
+  cmd: cargo test --offline --test verify_diff cli_space_in_path_tab_padding -- --exact --ignored
+  out: space in path (known FAIL): byte mismatch (git 130 bytes, mg 128 bytes)
+         first differing line #2:
+           git: --- a/a b.txt\t
+           mg : --- a/a b.txt
+
+Suggested fix shape (for the controller's repair round): when emitting the `--- `/`+++ `
+labels, append a TAB if the un-prefixed path contains a space byte, matching git
+(quoted names included), while leaving `diff --git` untouched.

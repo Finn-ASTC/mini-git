@@ -1,0 +1,17 @@
+{
+  "version": 1,
+  "seq": 1,
+  "job_id": "66840d4b642f481a848788974b0665ca",
+  "round_id": "ea8be0b903094bd7b0dc00f9de970778",
+  "event_fingerprint": "8ea0a4fb395d46b7a9dee17c38816726f8c3a278de6481b30e3195865e3d7b99",
+  "revision": 1,
+  "status": "handled",
+  "note": "T2 轮观察建立时的初始状态事件（目标空闲输入态），无对话框/提问/审批。标记 handled。\n",
+  "recorded_at": 1789926841.8789384,
+  "action_evidence": null,
+  "resolution_evidence": {
+    "path": "/home/user/Projects/mini-git/.orch/waves/W7/orch-run-oxrolhzc/watches/orch-watch-oxft_00d/evidence/000000000001.json",
+    "sha256": "cf0b522c683f94f1d62823cb4700438c89e4fc872bd94ce6bec6ab8836e89ae9"
+  },
+  "resolved_at": 1789926841.0
+}

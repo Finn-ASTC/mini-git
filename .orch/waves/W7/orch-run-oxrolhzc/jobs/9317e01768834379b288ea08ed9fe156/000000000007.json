@@ -1,0 +1,103 @@
+{
+  "version": 1,
+  "revision": 7,
+  "index_path": "/home/user/Projects/mini-git/.orch/waves/W7/orch-run-oxrolhzc/jobs",
+  "job_id": "9317e01768834379b288ea08ed9fe156",
+  "round_id": "3ccd1e4633ae4de7a5ce2b4817f3f2c5",
+  "active_request": "/home/user/Projects/mini-git/.orch/waves/W7/orch-run-oxrolhzc/rounds/agent-orchestrator-a_u_8vn8/request.json",
+  "rounds": [
+    {
+      "request_path": "/home/user/Projects/mini-git/.orch/waves/W7/orch-run-oxrolhzc/rounds/agent-orchestrator-a_u_8vn8/request.json",
+      "round_id": "3ccd1e4633ae4de7a5ce2b4817f3f2c5",
+      "request_sha256": "df353e6463827a36ca648d579cc9931b6da66582085cacdd83493401b99d8171"
+    }
+  ],
+  "resources": {
+    "path": "/home/user/Projects/mini-git/.orch/waves/W7/orch-run-oxrolhzc/rounds/agent-orchestrator-a_u_8vn8/resources.json",
+    "sha256": "c706f31e7aed89a939a6cc1325a664ca806b74a763487a4e4da771a663bac768",
+    "record": {
+      "mode": "insider",
+      "session": "default",
+      "agent": "orch-w7-verifier",
+      "pane": "w1W:p1",
+      "workspace": "w1W",
+      "owns_agent": true,
+      "owns_pane": true,
+      "owns_workspace": true,
+      "owns_session": false,
+      "tab": "w1W:t1",
+      "parent_pane": "wJ:p1",
+      "parent_tab": "wJ:t1",
+      "owns_tab": false,
+      "recorded_at": "2026-09-20T17:49:09.019337+00:00",
+      "job_id": "9317e01768834379b288ea08ed9fe156"
+    }
+  },
+  "submission": "accepted",
+  "attempts": [
+    {
+      "attempt_id": "6c8c2d85beb94269bf56a98eb6f9417f",
+      "round_id": "3ccd1e4633ae4de7a5ce2b4817f3f2c5",
+      "owner": "controller-w7",
+      "begun_at": 1789926573.086333,
+      "status": "accepted",
+      "receipts": [
+        {
+          "status": "accepted",
+          "kind": "target_active",
+          "recorded_at": 1789926611.4444544,
+          "evidence": {
+            "path": "/home/user/Projects/mini-git/.orch/waves/W7/evidence/v2-accepted.txt",
+            "sha256": "faf6314104cd073aad74bdf0d04364c6d24f6f71aa07c4d833086112f5858723",
+            "note": "Target is working on the exact pane under the V2 round title; no result file yet."
+          }
+        }
+      ]
+    }
+  ],
+  "lease": {
+    "owner": "controller-w7",
+    "token": "42d8601a1c1d472c97354604be5b9aaf",
+    "expires_at": 1789928968.6212757
+  },
+  "launch": {
+    "argv": [
+      "omp"
+    ],
+    "profile": "existing-config"
+  },
+  "native": {
+    "session_id": "/home/user/.omp/agent/sessions/-tmp-w7-verify/2026-09-20T17-38-31-135Z_sess_0046-ea5f-7645-8d26-19470fd9732e.jsonl",
+    "turn_id": null
+  },
+  "monitor": {
+    "owner": "controller-w7",
+    "watch_path": "/home/user/Projects/mini-git/.orch/waves/W7/orch-run-oxrolhzc/watches/orch-watch-_8f_qjxn/watch.json",
+    "expires_at": 1789929252.4618971
+  },
+  "deadline": 1789932000,
+  "closed": null,
+  "completion": {
+    "acceptance": {
+      "version": 1,
+      "job_id": "9317e01768834379b288ea08ed9fe156",
+      "round_id": "3ccd1e4633ae4de7a5ce2b4817f3f2c5",
+      "request_sha256": "df353e6463827a36ca648d579cc9931b6da66582085cacdd83493401b99d8171",
+      "result_sha256": "536ddf3d81488502d6f3a9597fcc9b006e0af274fb46f594700cddfe39459cce",
+      "kind": "delivery",
+      "verdict": "accepted",
+      "recorded_at": 1789927844.482842,
+      "evidence": {
+        "path": "/home/user/Projects/mini-git/.orch/waves/W7/evidence/v2-controller-review.txt",
+        "sha256": "13dd202ec5190bb6c0567c3e8cfdfbe90b41a9de9670d47da70b50d9e7b8ef0f",
+        "note": "控制方独立复核：用交付快照 pin 住的 oracle/语料/制品重跑了 4 条显式命令——(1) 已知正确用例（验证者自建 release 制品）200/200/200 零挂起；(2) 故意错误用例（修复前制品）必须复现出具体挂起集合 [4,28,54,80,91,98,128,154,166]，实测逐元素相同；(3) 场景脚手架 13 例边界 + 5 例 merge 全绿、failures=[]；(4) 制品可复现性：author-release-mg sha256=21b5679f…（等于作者声明），author 与 verifier 两份制品 .text 段 sha256 相同（13aee23e…）而全文件差 40 字节。另用控制方自己重建的两份制品（修复版 / 由封存 pre-fix-src 重建的修复前版）复跑同一脚手架，得到与验证者完全相同的三组数字，证明脚手架有分辨力。缺口已保留：/tmp/w7-verify 是本轮新建目录，无开工前基线（no_baseline 警告不修），仓库侧由 myers.rs sha256 未变与后续 check-freeze 交叉核对。"
+      },
+      "attempt": {
+        "path": "/tmp/w7-deliveries/snapshot-9r2kefmw/verifications/verify-ac2pq4b9/attempt.json",
+        "sha256": "5d084c64458d31b3b60626191136b77e698092a8065d1ba340b94e2ee698154b"
+      }
+    }
+  },
+  "event": "accept",
+  "recorded_at": 1789927844.482842
+}

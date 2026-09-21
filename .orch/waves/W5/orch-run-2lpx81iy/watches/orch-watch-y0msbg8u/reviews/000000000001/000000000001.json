@@ -1,0 +1,17 @@
+{
+  "version": 1,
+  "seq": 1,
+  "job_id": "9746730210dc4491b685bbc446088546",
+  "round_id": "1f695772a77b44ab8bcfb878a34e5add",
+  "event_fingerprint": "ff5aec0fbaa8035379ca768fff6eff7aa5f8ae23aeda9a326aad5818ba37ab15",
+  "revision": 1,
+  "status": "handled",
+  "note": "seq 1 observation_error：这是 controller 自己在沙箱内跑 `watch.py poll` 造成的伪影 ——\n沙箱不允许访问 herdr socket（Operation not permitted），不是目标或会话的故障。\n活体核对：改用托管后台句柄启动观察器后，seq 2 已是 observation_recovered，\nobserver.json 显示实例在运行（pid 1036135，expires_at 1789899131），\nsupervision checkpoint 的 last_success_age ≈ 14 秒。\n结论：handled，不需要对目标做任何操作。\n",
+  "recorded_at": 1789897359.519778,
+  "action_evidence": null,
+  "resolution_evidence": {
+    "path": "/home/user/Projects/mini-git/.orch/waves/W5/orch-run-2lpx81iy/watches/orch-watch-y0msbg8u/observer.json",
+    "sha256": "ebcbeefd2e5aa5d6a9f3373a7abafc0abb13390ed9504e461c6f604995c760f8"
+  },
+  "resolved_at": 1789897331.0
+}

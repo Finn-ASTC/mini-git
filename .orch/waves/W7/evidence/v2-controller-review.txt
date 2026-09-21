@@ -1,0 +1,85 @@
+控制方对 V2（验证者轮 3ccd1e46 / job 9317e017）的独立验收复核
+时间：2026-09-21 02:05–02:10 (+08:00)
+角色：controller-w7（不是 agent，不走协议；这是控制方自己的读写与判定）
+
+## 1. 我做了什么（都是控制方自己重跑，不采信报告结论）
+
+1) 协议校验：protocol.py validate --request rounds/agent-orchestrator-a_u_8vn8/request.json
+   --check-files → exit 0（status=success，result.json 与 round 身份一致）。
+
+2) 交付快照捕获（delivery.py capture，scope=整个 cwd，root 在 cwd 之外）：
+   snapshot = /tmp/w7-deliveries/snapshot-9r2kefmw/snapshot.json
+   - 绑定 job/round/result sha256 = 536ddf3d81488502d6f3a9597fcc9b006e0af274fb46f594700cddfe39459cce
+     （与 rounds/.../result.json 实测一致）
+   - 384 个文件、127 MB；warning = no_baseline（见 §3 的缺口声明）
+
+3) 控制方自己重建制品（不碰仓库 target/，全部 --offline --locked）：
+   - 修复版：仓库当前 src（myers.rs sha256 aafe8464f526c7c7f05b961b28f58522d04f33ba52ed042e35a138873902dff0）
+     → /tmp/w7-accept/fixed/target/{release,debug}/mg
+   - 修复前版：.orch/waves/W7/evidence/pre-fix-src/（myers.rs sha256 47c0f679…，与封存值一致）
+     → /tmp/w7-accept/pre/target/{release,debug}/mg
+
+4) 控制方拿验证者的脚手架自己跑对拍（oracle/run.py，200 例 pin 住的语料 cases200.json）：
+   - 我的修复版：release 挂起 0 / release≠debug 0 / release≠git 0（200/200/200）
+   - 我的修复前版：挂起 = [4,28,54,80,91,98,128,154,166]（9 例）、release≠debug 22 例、
+     release≠git 13 例、debug==git 200/200
+   → 与验证者报告的数字**逐条相同**（不是采信，是我自己跑出来的同一组数字）。
+   → 结论：脚手架有分辨力，且分辨力来自制品差异而非环境差异。
+
+5) 控制方对验证者交付快照执行显式验收计划（delivery.py verify，argv 计划，无 shell）：
+   plan = .orch/waves/W7/plans-controller-v2.json（4 条命令）
+   attempt = /tmp/w7-deliveries/snapshot-9r2kefmw/verifications/verify-ac2pq4b9/attempt.json
+   passed = true、source_unchanged = true、snapshot_valid = true、artifact_errors = []
+   逐条：
+   - cmd1 已知正确用例（快照里验证者自建的 release 制品）：期望 200/200/200 且零挂起 → VERDICT PASS
+   - cmd2 故意错误用例（快照里验证者自建的修复前制品，要求**具体**失败集合）：
+     期望 release_hangs == [4,28,54,80,91,98,128,154,166]、debug==git 200/200、release≠git 非空
+     → VERDICT PASS（实测挂起集合与期望逐元素相同）—— 这不是「非零退出即算拒绝」，
+     而是「必须复现出这一组具体用例」。
+   - cmd3 验证者的场景脚手架（scenario/run_scenarios.py：最小复现 + 13 例边界 + 5 例 merge）：
+     failures=[]、diff_hangs=[]、merge_hangs=[]、merge_rc_match_all=true、
+     merge_content_match_all=true、diff_rel_eq_git_all=true → VERDICT PASS
+   - cmd4 制品可复现性：快照里 author-release-mg 的 sha256 = 21b5679f…（与作者声明值逐字节相同）；
+     author-release-mg 与 verifier-release-mg 的全文件 sha256 不同（17988664 vs 17988624，差 40 字节），
+     但两者的 .text 段（objcopy -O binary --only-section=.text）sha256 同为 13aee23e…
+     → 验证者关于「差异来自内嵌构建路径、代码本身可复现」的论断成立。
+
+## 2. 判定
+
+- V2 的验证结论成立且可独立重建：**P24 的修复在 release profile 下成立**
+  （release == debug == 真实 git；修复前制品用同一脚手架会被判失败）。
+- 验证者做的不是「复述作者结论」：它自建 oracle/语料/超时策略，并做了必做的负对照；
+  控制方用同一个脚手架 + 自己的两份制品复现了同样的三组数字。
+- 交付的 oracle/harness/语料/原始日志都在快照里被冻结（sha256 绑定），可供后续复用。
+- 验收结论：accepted（kind=delivery；attempt 与当前 result 绑定）。
+
+## 3. 必须保留的缺口与限制（不作为拒绝理由，但不得抹掉）
+
+1) **没有开工前基线**：/tmp/w7-verify 是本轮为该验证者新建的工作目录，轮次开始前不存在，
+   因此不存在「开工前快照」。capture 返回的 no_baseline 警告**保留不修**；
+   actual_diff / declaration_comparison 为 null，不能当成「没有改动」。可信的替代证据是：
+   (a) 验证者对仓库只读（其自报 + 仓库侧未变，见 §4）；(b) 交付快照本身 sha256 冻结；
+   (c) 验证者声明的 files_created 三项（oracle/gen.py、oracle/run.py、scenario/run_scenarios.py）
+   在快照里都存在且是它自己的脚手架。
+2) 验证者脚手架会写它自己的 cwd 之外的固定绝对路径：
+   - oracle/run.py 的失败样例证据固定写 /tmp/w7-verify/evidence/<tag>/；
+   - scenario/run_scenarios.py 固定把 ROOT 设为 /tmp/w7-verify/scenario、结果写
+     /tmp/w7-verify/evidence/scenario-<tag>.json。
+   这是脚本里的硬编码，不是本轮验收计划能改的（计划必须跑 pin 住的原文）。
+   因此本轮验收的写入都落在**验证者自己的 cwd**（交付后），验收副本 {source} 全程未变
+   （source_unchanged=true）。
+3) scenario/run_scenarios.py 即使判定失败也 **exit 0**（失败只写进 stdout/json 的 failures）。
+   如果控制方只看退出码，会把红判成绿。本轮计划因此解析 json 的 failures 与逐例字段，
+   不依赖退出码。这是验证者脚手架的可用性缺陷，已记入 SKILL-FINDINGS。
+
+## 4. 交叉核对（不是本 job 的证据，但影响我的判定）
+
+- 仓库侧：src/diff/myers.rs 的 sha256 仍等于交付快照声明值（V2 只读仓库成立）。
+- 我自己的修复版二进制（/tmp/w7-accept/fixed/target/release/mg，路径长度与作者不同）
+  在对拍里同样 200/200/200 → 结果不依赖构建路径。
+
+## 5. 签名
+
+controller-w7（本机 Codex 会话 wJ:p1）。以上命令与输出留在：
+/tmp/w7-deliveries/snapshot-9r2kefmw/verifications/verify-ac2pq4b9/evidence/000{1..4}/
+/tmp/w7-deliveries/controller-v2/{fixed-200.json,prefix-200.json,text/}

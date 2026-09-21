@@ -1,0 +1,3 @@
+seq 10 review_due：changed-screen 低置信提醒。复核现场为作者的收尾汇报（TODO 全部 5/5 完成、
+正在打印交付摘要），没有对话框、没有待批权限。本轮的 result 已经发布并复核。
+结论：handled。

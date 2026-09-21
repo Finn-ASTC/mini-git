@@ -1,0 +1,11 @@
+{
+  "version": 1,
+  "seq": 10,
+  "job_id": "816ca880b03a437c8aa3da7cec8b3cf9",
+  "round_id": "c1431df7a41e4b2fa6e43dd022e2acb5",
+  "event_fingerprint": "50d3eeb294b4628c5eedc64c9ad34acc802bc688acbfdaa4a4995fa9b8c6b177",
+  "revision": 1,
+  "status": "handled",
+  "note": "state=done（post-result）：codex 已回到输入提示符，轮次 settle，无迟到写入。\n",
+  "recorded_at": 1789817019.175222
+}

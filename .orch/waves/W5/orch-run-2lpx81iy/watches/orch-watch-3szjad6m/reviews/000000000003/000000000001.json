@@ -1,0 +1,14 @@
+{
+  "version": 1,
+  "seq": 3,
+  "job_id": "46fa28f38e444892b81e513677ac2dbf",
+  "round_id": "4be87971a9bd4f8e95658665063352ed",
+  "event_fingerprint": "57c5159d1e7bf13dcb02d057c140688d680bcd01698b7fa877e87a1c237b8354",
+  "revision": 1,
+  "status": "handled",
+  "note": "V1 watch seq 3, kind=review_due, confidence=unknown_ui.\nController re-read pane w1T:p1 directly (herdr --session default pane read) at\n2026-09-20T09:49Z. Screen shows OpenCode 1.18.29 working state: \"esc interrupt\"\nfooter, no permission dialog, no prompt awaiting input, no modal. V1 is mid-run:\noracle + differential harness already built, 36/36 debug cases passed, currently\nre-hashing the sealed snapshot.\nDisposition: handled - no dialog to answer, no input sent. Low-confidence UI\nheuristic fired because the pane repainted; treated as informational only.\n",
+  "recorded_at": 1789897751.2455444,
+  "action_evidence": null,
+  "resolution_evidence": null,
+  "resolved_at": null
+}

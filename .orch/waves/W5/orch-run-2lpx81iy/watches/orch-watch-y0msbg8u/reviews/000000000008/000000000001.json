@@ -1,0 +1,14 @@
+{
+  "version": 1,
+  "seq": 8,
+  "job_id": "9746730210dc4491b685bbc446088546",
+  "round_id": "1f695772a77b44ab8bcfb878a34e5add",
+  "event_fingerprint": "6c92514e4f693996b8794db0abb9643114f563253fbd34076dbe8a92e5b5882b",
+  "revision": 1,
+  "status": "handled",
+  "note": "seq 8 result_changed（真事件，非误报）。根因已从作者会话日志（omp jsonl）定位：\n\n1. 09:45:00.997Z（17:45:00.997）作者用 `os.replace` **原子地**发布了第一版 result.json（8025 字节）。\n   该版报告正文里手打的 SPEC.md sha256 有一个字符错误：`…cdc37d7dff7421…`，\n   而真实值是 `…cdc37d9ff7421…`。\n2. 作者随后**回读自己刚发布的结果**做自检，输出 “SPEC hash claim matches: False”，\n   定位到是手打错误，于是 17:45:11.733 **重发**了改正后的 result.json（8024 字节）。\n3. 观察器在 17:45:11.02 首次 pin 到第一版；17:45:11.73 之后读到第二版 → 发出本事件。\n\n活体核对与影响判定：\n- 交付**制品**未变（target/release/linestat 仍是 75953480…，构建于 17:44），\n  产品结论未变（都是 success），变的只是报告正文里的一个字符串；\n- 当前内容（643efc20…）正是我 validate 通过、并已被交付快照固化的那一版；\n- 所以本轮验收不受影响。\n\n分类：**真事件、无害、但是流程违规** —— 「已发布的结果应保持不变」。\n记为 W5-S1（见 .orch/waves/W5/defects.md）。这不是编排工具的缺陷，而是协议缺一条\n「作者发现自己刚发布的结果里有事实错误时该怎么办」的正式路径：现在只有三条路\n（留错 / 静默重发 / 新起一轮），方案没有指定哪条。\n结论：handled，不需要对目标发送任何输入。\n",
+  "recorded_at": 1789897658.85516,
+  "action_evidence": null,
+  "resolution_evidence": null,
+  "resolved_at": null
+}

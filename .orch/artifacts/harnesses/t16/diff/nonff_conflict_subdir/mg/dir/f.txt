@@ -1,0 +1,9 @@
+a
+<<<<<<< HEAD
+OURS
+=======
+THEIRS
+>>>>>>> side
+c
+d
+e

@@ -1,0 +1,19 @@
+{
+  "schema_version": 1,
+  "job_id": "6f366623fc3547d79b76b56e787e2040",
+  "round_id": "0630432c631840b89a9eca18078bc58d",
+  "status": "success",
+  "output": "## 判定：PASS —— merge_base 与真实 git 逐对比对一致（真值全部运行时产出，无硬编码）\n被测符号：`minigit::merge::merge_base`（公开 API，Repo → Odb::read_object → loose；本套件只调公开 API，不用作者的私有 helper）。\n\n### (A) 门禁复跑（本仓库实时输出）\n1. `cargo test --offline merge::` → 9 passed / 0 failed。另 `--nocapture` 单跑作者用例 `end_to_end_via_odb`，未见其「SKIP … odb 仍是 stub」分支 → 该用例真的经 Odb 跑通（T5 已完成）。\n2. `cargo test --offline` → 236 passed / 0 failed（lib 144 + interop 7 + verify 3 + verify_diff 13 + verify_index 11 + verify_mergebase 10[本轮新增] + verify_odb 6 + verify_pktline 8 + verify_refs 9 + verify_worktree 25 + doc 0）。\n3. `cargo clippy --offline --all-targets` → 0 warning / 0 error（含本轮新增的 test target）。\n4. `scripts/check-freeze.sh` → `checked 21 file(s), drift 0` / `freeze-v0 intact`，exit 0。\n\n### (B) 独立真值测试 `tests/verify_mergebase.rs`（新建，10 用例，全绿，0.5~0.9s）\n真值来源：`git commit-tree` 在 temp repo 里造 DAG；`git merge-base --all` / `git merge-base --is-ancestor` 判定。另用「造图时写下的父表」独立算极大共同祖先作 oracle 交叉验证。所有 DAG 时间戳与拓扑**相反**，criss-cross 两个 base **同戳**（否则断言可能恒真）。编号＝拓扑 → 命令 → 关键输出 → 结论：\n1. 线性 6 提交 / 36 对全对拍 → 结果 = git --all 唯一元素，且 ≠ 时间戳最大的 root → 成立（got==order[2]、got!=order[0]）。\n2. `a == b` + 祖先关系双向 / 5×5 对 → 期望先由 git --all 确认为 [较浅者]，mg 逐对一致 → 成立。\n3. 单次合并 root/left/right/merge/after（25 对）→ mg(left,right)=root、mg(merge,left)=left、mg(after,merge)=merge → 成立。\n4. criss-cross：git --all 运行时给出 2 个 base 且 `%ct` 相同 → mg 结果 ∈ 两个 base 且 ≠ 被支配的 root → 成立。\n5. 三方合并（3 parent octopus，25 对）→ git --all 与 mg 逐对一致 → 成立。\n6. 无共同祖先：真 `git checkout --orphan` 造的第二条历史 + commit-tree 独立 root → git --all 为空、mg 双向 Ok(None) → 成立。\n7. 200 提交多分支 DAG：抽样 40 对与 git 全对拍；200 次调用计时 `200 calls in 141.8ms（worst single 1.36ms）` → 断言 <1s/次、<5s/200 次 → 成立。\n8. 反例-不存在 oid（先 `git cat-file -e` 确认真不存在）→ (tip,missing)/(missing,tip)/(missing,missing) 全为 Err(ObjectNotFound(同一 oid)) → 成立。\n9. 反例-4 个真·损坏 commit（`git hash-object --literally -t commit -w` 写入：缺 email / 缺 tree / 非法 oid / 缺空行）→ 每个的 (bad,bad)/(good,bad)/(bad,good) 全部 Err(Corrupt)，无 panic → 成立。\n10. 端到端路径确认：对象确为 loose（`objects/xx/yyy` 存在）且 objects/pack 无 packfile → 上述用例只能经 Odb→loose 读取 → 成立。\n\n### (C) 依赖降级\n不适用（T5 已完成）。**端到端（经 Odb）已覆盖**：第 10 条确认读到的是真实 loose 对象，未走 §4.2 私有 helper 降级路径。\n\n### (D) 防假绿：变异测试（独立仓库副本 + 独立 CARGO_TARGET_DIR；未改本仓库 src/**，未污染共享 target/）\nM1「恒返回 a 的第一个 parent」：在 merge_base_with 顶部插入 `let first = load(a)?; return Ok(first.parents.first().copied());` → exit 101，10/10 FAILED。\nM2「丢掉支配标记 = 按时间戳取最新共同祖先」：`if from_b.contains_key(&oid) && !dominated.contains(&oid)` → `if from_b.contains_key(&oid)` → exit 101，6/10 FAILED；criss-cross 报「mg 结果 7c9c8154… 必须 ∈ git 的两个 base [171bfd5f…, 74b93d99…]」，线性用例报 left/right 不一致 —— 正是 controller 提示的时序启发式变异体会被检出。\n证据留存：.orch/waves/W2/T7-mergebase/verify-scratch/logs/mutant-m1.log、mutant-m2.log（副本与独立 target 已删除）。\n\n### 未覆盖 / 已知限制（非 FAIL）\n- 未覆盖 `--octopus` / `--independent` / `--fork-point`（任务包 §5 明确的非目标）。\n- 多个最佳共同祖先时仅断言「∈ git merge-base --all」，不要求等于不带 --all 的 git 选择（按 controller 备注，不据此判 FAIL）。\n- 「结果与 (a,b) 顺序无关、可复现」是我额外断言的作者文档性质（10 个用例均成立），非任务包硬要求。\n- 与 git 对拍只证明「mg 结果 ∈ git 极大集合」，未单独穷举 git 与数学极大集合可能存在的差异。\n\n结论：(A) 4/4 通过，(B) 10/10 通过，(D) 变异体 2/2 被检出 → **T7 PASS**。",
+  "files_created": [
+    "tests/verify_mergebase.rs"
+  ],
+  "files_modified": [],
+  "files_generated": [
+    ".orch/waves/W2/T7-mergebase/verify-scratch/logs/mutant-m1.log",
+    ".orch/waves/W2/T7-mergebase/verify-scratch/logs/mutant-m2.log"
+  ],
+  "files_deleted": [],
+  "error": null,
+  "blocked_reason": null,
+  "completed_at": "2026-09-19T20:35:30+08:00"
+}

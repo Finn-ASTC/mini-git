@@ -1,0 +1,27 @@
+
+running 22 tests
+test truth_sources_are_plain_text_not_pktline ... ok
+test write_blob_to_lib_api_writes_single_path ... ok
+test negative_cases_are_typed_and_leave_no_half_state ... ok
+test materialize_tree_lib_api_returns_removed_paths_sorted ... ok
+test reset_hard_matches_git_with_local_changes ... ok
+test library_write_guard_still_refuses_symlink_ancestor ... ok
+test dirty_local_change_is_refused_and_worktree_untouched ... ok
+test reset_hard_on_clean_worktree_leaves_clean_status ... ok
+test deletion_semantics_keeps_untracked_and_ignored ... ok
+test reset_soft_matches_git_with_local_changes ... ok
+test reset_mixed_matches_git_with_local_changes ... ok
+test checkout_paths_matches_git ... ok
+test checkout_detached_matches_git ... ok
+test symlink_write_outside_empty_replaces_link_matches_git ... ok
+test switch_create_roundtrip_matches_git ... ok
+test symlink_write_untracked_new_path_refuses_like_git ... ok
+test symlink_write_outside_present_refuses_without_touching_anything ... ok
+test switch_branch_matches_git_on_rich_worktree ... ok
+test branch_commands_match_git ... ok
+test symlink_ancestor_checkout_path_form_matches_git ... ok
+test symlink_ancestor_inside_worktree_matches_git ... ok
+test symlink_ancestor_removal_never_touches_outside ... ok
+
+test result: ok. 22 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.24s
+

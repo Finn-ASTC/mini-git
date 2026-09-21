@@ -1,0 +1,11 @@
+{
+  "schema_version": 1,
+  "job_id": "46fa28f38e444892b81e513677ac2dbf",
+  "round_id": "4be87971a9bd4f8e95658665063352ed",
+  "cwd": "/tmp/w5-verify",
+  "result_path": "/home/user/Projects/mini-git/.orch/waves/W5/orch-run-2lpx81iy/rounds/agent-orchestrator-hgvhj030/result.json",
+  "depth": 1,
+  "max_depth": 3,
+  "prepared_at": "2026-09-20T09:45:51.950847+00:00",
+  "task": "Objective: 独立验证 linestat 1.0.0 的交付是否满足 SPEC.md 的契约。真值来源必须是你自己从 SPEC.md 写出的独立 oracle，不得把作者的实现或作者自带的测试当作真值来源。\nScope: 只读快照目录（下称 SNAPSHOT）：/home/user/Projects/mini-git/.orch/waves/W5/orch-run-2lpx81iy/rounds/agent-orchestrator-ggyoe35m/deliveries/snapshot-nvn21yva —— 其中 source/ 是作者的源码，只读（普通文件已被置为只读）。你拥有 /tmp/w5-verify 下的一切（工作副本、夹具、证据）。不得修改 SNAPSHOT 里的任何文件。\nacceptance:\n- 把 SNAPSHOT/source 复制成一份**自己的可写副本**后在副本里构建；不要在快照里构建，也不要复用作者遗留的 target/。\n- 按 SPEC.md 的字节级定义**自己写一个独立 oracle**（任意语言，建议 Python），不要       0       0       0（SPEC 明确说 lines/words 语义与 wc 不同）。用你自己设计的夹具矩阵做差分：至少覆盖 --version、单文件、多文件（含 total 行）、空文件、无结尾换行、含 \\r 与制表符、非 UTF-8 字节、词跨越 64 KiB 边界、不存在的文件、不存在的文件+正常文件（继续处理）、未知选项、无参数。逐项报告实际 stdout/stderr/退出码与 oracle 的期望。\n- 跑 dev 与 release 两个配置（cargo test --offline / cargo build --release --offline / cargo test --release --offline），并且对**实际构建出来的 release 二进制**做行为检查——构建成功不算这一条。\n- 产出的报告必须把 product verdict（产品是否满足 SPEC）与 protocol status 分开写；用你自己的 attempt 目录和证据路径。\n- 显式列出你**没有覆盖**的项及原因，以及任何无法判定的项。不要用『测试总数』代替逐配置结论。\ninputs:\n- /home/user/Projects/mini-git/.orch/waves/W5/orch-run-2lpx81iy/rounds/agent-orchestrator-ggyoe35m/deliveries/snapshot-nvn21yva/source/SPEC.md\n- /home/user/Projects/mini-git/.orch/waves/W5/orch-run-2lpx81iy/rounds/agent-orchestrator-ggyoe35m/deliveries/snapshot-nvn21yva/snapshot.json\n- /tmp/w5-linestat\nknown_facts:\n- 作者是另一个 agent（kind=omp），你与它 kind 不同，且你只看到快照，看不到它的对话。\n- 该 crate 无第三方依赖；cargo/rustc 已在本机可用，全程可用 --offline，不需要联网，也不允许联网。\n- 作者的实现可能正确也可能有缺陷；你的任务是独立判定，不要假设它通过就等于满足 SPEC。\nconstraints:\n- 不得修改 SNAPSHOT（快照文件是只读的，如果写入失败不要绕过它改快照）。\n- 可以运行作者自带的 tests/cli.rs，但它只能作为补充，不能作为你的 oracle 或主要证据。\n- 如果 SPEC.md 本身自相矛盾或与真实 git/wc 语义冲突，不要静默按自己的理解判分：以 blocked 报告，并给出双方期望与最小反例。\n- 发现缺陷时保留原始失败输出与复现命令，不要只给结论。\nReport concise conclusions, verification and evidence paths; read referenced inputs only as needed. Preserve the full reporting contract and declared scope."
+}

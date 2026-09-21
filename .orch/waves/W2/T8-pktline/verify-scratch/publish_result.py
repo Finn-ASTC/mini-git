@@ -1,0 +1,117 @@
+#!/usr/bin/env python3
+"""V8：原子发布 result.json（先写同目录临时文件，再 os.replace）。"""
+import json
+import os
+from datetime import datetime, timezone, timedelta
+
+CWD = "/home/user/Projects/mini-git"
+RESULT = os.path.join(
+    CWD, ".orch/rounds/W2/agent-orchestrator-xo5zp4pb/result.json"
+)
+
+OUTPUT = """V8 判定：**PASS**（独立复跑门禁 + 与真实 git 字节流对拍 + 变异检测）。
+被验证文件 src/transport/pktline.rs 全程 sha256=05b0193672673ef717060823e2bc059f102ee548a96fb67798aaf7cb191f6ce9（我验证前后各取一次，未变）。
+
+[0] 对象锁定与归属
+- pktline.rs：基线 sha256 4634b1a9... -> 现 05b01936...（作者已实现 read_pkt/write_pkt/write_flush，encode_pkt/Pkt 签名未动）；mtime 20:15:36，落在作者窗口内（其 result 写于 20:15:49）。
+- 基线清单 128 个文件里有 10 个当前与基线不同：pktline.rs（T8 自己的）+ 4 个 .orch/waves/W2/*/verify-task.md（controller 写的）+ src/{diff/myers.rs,diff/unified.rs,merge/merge_base.rs,odb/loose.rs,cli/cat_file.rs}。后 5 个 mtime 为 20:19:04~20:22:44（都在作者 20:15:49 结束之后），属并发的 T5/T6/T7 作者 —— 标注「不可归因于本任务」。T8 作者只动了白名单内的 pktline.rs。
+- src/transport/pktline.rs 不在 .orch/FREEZE-v0.md 清单里（grep 计数 0）=> 作者 claim 4（无接口 drift）成立。
+
+[A] 门禁复跑（2026-09-19T20:23:15+08:00，全绿）
+- `cargo test --offline transport::` -> lib 11 passed / 0 failed（全部 transport::pktline::tests::*，含作者 2 个真实 git 差分用例）；其余 target 均 0 matched。
+- `cargo test --offline` -> lib 128 + interop 7 + verify 3 + verify_index 11 + verify_pktline 8(本验证新增) + verify_refs 9 + verify_worktree 25，全部 0 failed（合计 191）。
+- `cargo clippy --offline --all-targets` -> exit 0，1 条 warning，位于 src/diff/myers.rs（T6 在编辑的文件，`this function has too many arguments (9/7)`）；T8 的 pktline.rs 与 tests/verify_pktline.rs **0 warning**（clippy 输出里含 "pktline" 的行数 = 0）。作者当时的「0 warning」在那一刻为真，现在的唯一告警不属 T8。
+- `scripts/check-freeze.sh` -> "checked 21 file(s), drift 0 / freeze-v0 intact"。
+- 期间遇到 2 次瞬时编译失败，文件分别为 src/cli/cat_file.rs 与 src/diff/myers.rs（均不在 T8 白名单），记录为「不可归因于本任务」，等 30s 重试后转绿，未改他人任何文件。
+
+[B1] 硬标准：真实 git 的 v0 ref advertisement（tests/verify_pktline.rs::real_git_v0_advertisement_roundtrips_byte_for_byte）
+- 命令（测试内实调）：`git -c protocol.version=0 upload-pack --stateless-rpc --advertise-refs <gitdir>`（git 2.55.0）。
+- 关键输出：338 字节 = 273-byte Data + 61-byte Data + 0000 Flush。read_pkt 每帧消费 = payload.len()+4；encode_pkt(payload) 逐字节等于原始切片；三帧重编码拼接 == git 原始 stdout（逐字节）；最后一帧 Flush；按 v0 ref advertisement 文本格式（NUL 切 capabilities）解析出 HEAD 与 refs/heads/main，二者 oid 都等于 `git rev-parse HEAD` —— 帧若切错不可能相等。我自己的独立 hex 切片 oracle 给出的分界与 read_pkt 完全一致。
+- 结论：成立（PASS）。
+- 更正任务书：`git ls-remote <path>` 的 stdout **不是** pkt-line（实测为纯文本 `oid\\tref` 行），不能当原始帧来源；正确来源是 `upload-pack --advertise-refs` / `--stateless-rpc`。
+
+[B1b] 第二真实数据源：`git http-backend` + GIT_PROTOCOL=version=2 的 info/refs 响应 -> 首帧 "version 2\\n"、能力行若干、末帧 Flush，read_pkt 与 oracle 逐帧一致（PASS）。
+
+[B3] 写方向 / side-band / pack 真值（::written_request_is_accepted_by_real_git_and_rebuilt_pack_is_valid）
+- mg 写出的 `want <oid> side-band-64k\\n` + flush + `done\\n` 喂给真实 `git upload-pack --stateless-rpc` -> exit 0，stderr 空（真实 git 接受「Data+flush+Data」形态）：成立。
+- 响应 9 帧：NAK + 4×通道2(进度) + 2×通道1(pack) + Flush；通道字节 0x01/0x02 原样保留在 Pkt::Data 首字节（未被剥离/拆分）；把通道1负载拼接得 207 字节 pack（magic "PACK"），交给真实 `git unpack-objects -q` -> exit 0，且 `git cat-file -t <HEAD>` = commit。=> 不是「切错帧但恰好不报错」的假绿。成立。
+- 写方向规格：write_pkt 字节 == 我按格式表独立实现的 spec_data；write_flush == "0000"；写后确实已 flush（自定义 CountingWriter 计 flush 调用 + 裸 Vec<u8> 立即可见断言）；payload 65517（> MAX_PAYLOAD_LEN）-> Err(Error::Protocol) 且 0 字节写出、0 次 flush；最大 payload 65516 头为 "fff0"。全部成立。
+
+[B2] 构造型边界（按规格自造，不用 encode_pkt 做 fixture）
+- 成立：0004 -> Data(vec![])；0000/0001/0002 只消费 4 字节并立即返回；最大 payload 65516（整帧 65520）；5 帧一次写入后逐帧读出，游标逐帧等于累计帧长。
+- 成立（非法一律 Err(Error::Protocol)，无 panic、无部分数据）：0003；fff1/ffff（**字节凑齐**，防止「因为流提前 EOF 才报错」的假通过）；zzzz；00g0；" 004"；空流；2 字节；3 字节；0008 无 payload；0008 只给 2 字节；fff0 只给 3 字节。
+- 成立：side-band 0x01/0x02/0x03 在 payload 首位及中间、以及 payload 中的 0x00/0xff 一律原样保留。
+
+[C] 防假绿
+- 我的真值只有三个来源：真实 git 进程字节流（上面 3 条 git 命令）、我自己独立实现的 oracle/spec 构造器、真实 git 的 unpack-objects/cat-file 判决。我的测试文件里没有任何「用 encode_pkt 造 fixture 再断言 read_pkt 能读」的用例。
+- 作者测试真值盘点：11 个用例中只有 2 个真值来自 git（differential_parses_and_reencodes_real_git_advertisement、differential_feeds_written_request_to_real_git_upload_pack，均实调 git upload-pack）；另 9 个是构造型（reads_maximum_payload、reads_consecutive_frames_and_tracks_cursor、preserves_side_band_channel_bytes 用 encode_pkt 造 fixture；encodes_known_frames、reads_special_frames_*、rejects_*、write_roundtrips_* 用规格字面量）。=> 硬标准已满足，其余为自洽性覆盖。
+- 变异测试（工作树复制到 /tmp/v8-mutant + 独立 CARGO_TARGET_DIR=/tmp/v8-mutant-target；共享 src/** 与共享 target/ 均未被触碰）：baseline 全绿；6 个变异全部被本验证的 verify_pktline 检出 —— M1 去帧长上限(2 用例失败)、M2 截断返 Error::Io(2)、M3 write_pkt/write_flush 不 flush(2)、M4 write_pkt 写错长度(3)、M5 read_pkt 用 read_to_end 吃掉整个流(8)、M6 0000 不再立即返回 Flush(5)。其中 **M3 只有我的测试检出，作者自带 lib 测试漏检**（对应用户级差异：作者未断言 flush() 被调用）。
+
+[未覆盖 / 已知限制 —— 均非 FAIL]
+1. 真实 git 的 Delim(0001)/ResponseEnd(0002) 未取得：v2 的 delim 是「客户端->服务端」方向，服务端响应里不出现；`--advertise-refs` 恒为 v0（实测 -c protocol.version=2 亦然）。这两类只用规格构造帧覆盖（任务 (B)2 亦只要求构造检查）。
+2. v2 ls-refs 的 ref 行文本格式未在 Rust 测试中解析（只在 http-backend 能力广告上验帧边界）；本轮 scope 为 v0。
+3. 实现接受大写十六进制（parse_len 同时收 A-F）：真实 git 的 hexval 也接受、且 git 永不产出大写；任务规格未规定，属规格外超集，我未把它写成断言（既不判 FAIL 也不锁定该行为）。
+4. 「空流（帧边界 EOF）-> Err(Protocol)」是实现选择（Pkt 无 Eof 变体）；任务只规定「payload 中途 EOF 要 Protocol」，帧边界 EOF 属规格空白。
+5. http-backend 用例依赖本机 git 2.55 支持 v2 over http（本机满足）。
+6. 门禁期间 2 次瞬时失败源自并发作者的 src/cli/cat_file.rs、src/diff/myers.rs，不可归因本任务。
+
+写作用域：只新增 tests/verify_pktline.rs 与 .orch/waves/W2/T8-pktline/verify-scratch/**；src/**、Cargo.toml、他人的 tests/verify_*.rs 一字未改（Cargo.toml 的 dev-dependencies 已有 tempfile，测试无需新依赖）。"""
+
+FILES_GENERATED = [
+    ".orch/waves/W2/T8-pktline/verify-scratch/evidence/frame_table.py",
+    ".orch/waves/W2/T8-pktline/verify-scratch/evidence/gen_evidence.sh",
+    ".orch/waves/W2/T8-pktline/verify-scratch/evidence/mutate.sh",
+    ".orch/waves/W2/T8-pktline/verify-scratch/evidence/mutation.txt",
+    ".orch/waves/W2/T8-pktline/verify-scratch/evidence/real-git-frames.txt",
+    ".orch/waves/W2/T8-pktline/verify-scratch/logs/clippy.log",
+    ".orch/waves/W2/T8-pktline/verify-scratch/logs/freeze.log",
+    ".orch/waves/W2/T8-pktline/verify-scratch/logs/full-test-2.log",
+    ".orch/waves/W2/T8-pktline/verify-scratch/logs/full-test.log",
+    ".orch/waves/W2/T8-pktline/verify-scratch/logs/gate-clippy.log",
+    ".orch/waves/W2/T8-pktline/verify-scratch/logs/gate-final-clippy.log",
+    ".orch/waves/W2/T8-pktline/verify-scratch/logs/gate-final-freeze.log",
+    ".orch/waves/W2/T8-pktline/verify-scratch/logs/gate-final-full.log",
+    ".orch/waves/W2/T8-pktline/verify-scratch/logs/gate-freeze.log",
+    ".orch/waves/W2/T8-pktline/verify-scratch/logs/gate-full.log",
+    ".orch/waves/W2/T8-pktline/verify-scratch/logs/gate-transport.log",
+    ".orch/waves/W2/T8-pktline/verify-scratch/logs/verify-pktline-run1.log",
+    ".orch/waves/W2/T8-pktline/verify-scratch/logs/verify-pktline-run2.log",
+    ".orch/waves/W2/T8-pktline/verify-scratch/logs/verify-pktline-run3.log",
+    ".orch/waves/W2/T8-pktline/verify-scratch/logs/verify-pktline-run4.log",
+    ".orch/waves/W2/T8-pktline/verify-scratch/logs/verify-pktline-seq.log",
+    ".orch/waves/W2/T8-pktline/verify-scratch/publish_result.py",
+]
+
+CST = timezone(timedelta(hours=8))
+payload = {
+    "schema_version": 1,
+    "job_id": "b5b9d53fb58f4780ae51c459ccf2b21c",
+    "round_id": "d7c9fd33e31a4591a750f14dafd78bee",
+    "status": "success",
+    "output": OUTPUT,
+    "files_created": ["tests/verify_pktline.rs"],
+    "files_modified": [],
+    "files_generated": FILES_GENERATED,
+    "files_deleted": [],
+    "error": None,
+    "blocked_reason": None,
+    "completed_at": datetime.now(CST).replace(microsecond=0).isoformat(),
+}
+
+# 校验：路径必须是 cwd 内的相对路径、无绝对路径、无 .. 遍历、无重复
+all_paths = payload["files_created"] + payload["files_modified"] + payload["files_generated"] + payload["files_deleted"]
+assert len(all_paths) == len(set(all_paths)), "存在重复路径"
+for p in all_paths:
+    assert not p.startswith("/") and ".." not in p.split("/"), p
+# 生成的证据文件必须真的存在；被删除的必须真的不存在
+for p in payload["files_created"] + payload["files_generated"]:
+    assert os.path.isfile(os.path.join(CWD, p)), f"应为已存在的文件: {p}"
+
+os.makedirs(os.path.dirname(RESULT), exist_ok=True)
+tmp = RESULT + ".tmp"
+with open(tmp, "w", encoding="utf-8") as fh:
+    json.dump(payload, fh, ensure_ascii=False, indent=2)
+    fh.write("\n")
+os.replace(tmp, RESULT)
+print("wrote", RESULT, os.path.getsize(RESULT), "bytes")
+print("completed_at", payload["completed_at"])

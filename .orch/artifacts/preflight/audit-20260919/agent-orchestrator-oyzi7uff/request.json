@@ -1,0 +1,11 @@
+{
+  "schema_version": 1,
+  "job_id": "340eb0c4e2364a2791becdb0fa595d0e",
+  "round_id": "98f87c3dab2a42dc94dd58ba7b58110e",
+  "cwd": "/tmp/orch-audit-20260919-e8x_l_s7/usage-rejection",
+  "result_path": "/tmp/orch-audit-20260919-e8x_l_s7/agent-orchestrator-oyzi7uff/result.json",
+  "depth": 1,
+  "max_depth": 3,
+  "prepared_at": "2026-09-19T09:25:14.594633+00:00",
+  "task": "Read-only inspection"
+}

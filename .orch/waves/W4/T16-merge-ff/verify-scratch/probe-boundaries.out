@@ -1,0 +1,31 @@
+mg = /home/user/Projects/mini-git/target/debug/mg
+mg 0.0.0
+
+=== 边界 1：快进 + 本地改动在「不会被覆盖」的文件上 ===
+--- 真实 git：merge side
+Updating bbb49b9..f5cae5b
+Fast-forward
+ dir/b.txt | 2 +-
+ s.txt     | 1 +
+ 2 files changed, 2 insertions(+), 1 deletion(-)
+ create mode 100644 s.txt
+git exit=0
+--- mg：merge side
+mg: fatal: refusing to overwrite local changes: you have local changes; commit or stash them before merging
+mg exit=1
+--- HEAD 对比
+git HEAD = git -C /tmp/v16-boundaries.QBnvv6/b1 ... f5cae5bac7c5cc49416bb384659b997d96723055
+mg  HEAD = bbb49b983872c3c7c106a4ce4fe35b43d69d426f
+side     = f5cae5bac7c5cc49416bb384659b997d96723055
+git worktree:  M only.txt| incoming=[s] only=[local only]
+mg  worktree:  M only.txt| incoming=[] only=[local only]
+
+=== 边界 2：分叉 pull 冲突时 theirs 标记标签 ===
+git pull    exit=1
+mg  pull    exit=1
+mg  merge   exit=1
+--- b2-gitpull: [a|<<<<<<< HEAD|LOCAL|=======|REMOTE|>>>>>>> a9dd1118a7e90168f683798e7ede25d08d758146|c|d|e|] porcelain=[UU f.txt|]
+--- b2-mgpull: [a|<<<<<<< HEAD|LOCAL|=======|REMOTE|>>>>>>> refs/remotes/origin/main|c|d|e|] porcelain=[UU f.txt|]
+--- b2-mgmerge: [a|<<<<<<< HEAD|LOCAL|=======|REMOTE|>>>>>>> refs/remotes/origin/main|c|d|e|] porcelain=[UU f.txt|]
+--- 真值：git merge <ref> 的标签（与 mg 相同）
+[a|<<<<<<< HEAD|LOCAL|=======|REMOTE|>>>>>>> refs/remotes/origin/main|c|d|e|]

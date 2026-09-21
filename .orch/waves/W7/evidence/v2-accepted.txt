@@ -1,0 +1,12 @@
+# V2（验证者 omp）提交已被接受的证据
+
+2026-09-21T01:53Z 前后，controller 对 pane w1W:p1 执行
+  herdr --session default agent prompt orch-w7-verifier "<V2 prompt.txt 全文，作为一个参数>"
+CLI 返回 {"type":"agent_prompted", ...}（CLI 成功本身不是接受证据）。
+
+15 秒后 herdr agent get orch-w7-verifier：
+  "agent_status": "working",
+  "terminal_title": "π ⠼ Verify mg bug fix",
+  "revision": 209
+
+判定：目标确实接下了这一轮 → receipt status=accepted / kind=target_active。

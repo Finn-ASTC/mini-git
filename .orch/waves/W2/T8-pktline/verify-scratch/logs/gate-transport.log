@@ -1,0 +1,61 @@
+   Compiling mini-git v0.0.0 (/home/user/Projects/mini-git)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.47s
+     Running unittests src/lib.rs (target/debug/deps/minigit-c104696a743ccc50)
+
+running 11 tests
+test transport::pktline::tests::reads_consecutive_frames_and_tracks_cursor ... ok
+test transport::pktline::tests::preserves_side_band_channel_bytes ... ok
+test transport::pktline::tests::encodes_known_frames ... ok
+test transport::pktline::tests::rejects_truncated_streams ... ok
+test transport::pktline::tests::write_pkt_rejects_oversized_payload ... ok
+test transport::pktline::tests::write_roundtrips_through_read ... ok
+test transport::pktline::tests::reads_maximum_payload ... ok
+test transport::pktline::tests::reads_special_frames_and_empty_data_without_extra_bytes ... ok
+test transport::pktline::tests::rejects_malformed_lengths ... ok
+test transport::pktline::tests::differential_parses_and_reencodes_real_git_advertisement ... ok
+test transport::pktline::tests::differential_feeds_written_request_to_real_git_upload_pack ... ok
+
+test result: ok. 11 passed; 0 failed; 0 ignored; 0 measured; 117 filtered out; finished in 0.01s
+
+     Running unittests src/main.rs (target/debug/deps/mg-d18f0e67fce7ef67)
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+     Running tests/interop/main.rs (target/debug/deps/interop-c5b13a0bb0e7ca9c)
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 7 filtered out; finished in 0.00s
+
+     Running tests/verify/main.rs (target/debug/deps/verify-2fe6099ca561aa6c)
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 3 filtered out; finished in 0.00s
+
+     Running tests/verify_index.rs (target/debug/deps/verify_index-7dd5920b43e5be81)
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 11 filtered out; finished in 0.00s
+
+     Running tests/verify_pktline.rs (target/debug/deps/verify_pktline-10124e1f25c2efd3)
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 8 filtered out; finished in 0.00s
+
+     Running tests/verify_refs.rs (target/debug/deps/verify_refs-1cd69fe5f28083ab)
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 9 filtered out; finished in 0.00s
+
+     Running tests/verify_worktree.rs (target/debug/deps/verify_worktree-5f29378ceb796820)
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 25 filtered out; finished in 0.00s
+

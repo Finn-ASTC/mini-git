@@ -1,0 +1,27 @@
+{
+  "orphan_evidence_restart": {
+    "resumed": false,
+    "first_error": "injected interruption between evidence and event",
+    "restart_error": "FileExistsError: [Errno 17] File exists: '/tmp/orch-audit-20260919-e8x_l_s7/orch-watch-zpwsvef8/evidence/.000000000001.json.jwl9m9ng' -> '/tmp/orch-audit-20260919-e8x_l_s7/orch-watch-zpwsvef8/evidence/000000000001.json'",
+    "state_cursor": 0,
+    "event_files": 0,
+    "evidence_files": 1
+  },
+  "historical_dialog_noise": {
+    "polls": 40,
+    "attention_events": 40,
+    "review_events": 0,
+    "all_events": 41
+  },
+  "rejected_usage_side_effect": {
+    "duplicate_rejected": "usage sample conflicts with existing record",
+    "subsequent_valid_call_accepted": false,
+    "subsequent_error": "attempt purpose changed within a round",
+    "attempt_metadata_files": 2,
+    "recorded_samples": 1
+  },
+  "cross_round_duplicate": {
+    "record_accepted": true,
+    "summary_error": "native usage sample appears in multiple rounds/files"
+  }
+}

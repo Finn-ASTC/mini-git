@@ -1,0 +1,63 @@
+{
+  "version": 1,
+  "revision": 3,
+  "index_path": "/home/user/Projects/mini-git/.orch/waves/W7/orch-run-oxrolhzc/jobs",
+  "job_id": "66840d4b642f481a848788974b0665ca",
+  "round_id": "5248318530cb4b26b88628ac6da18637",
+  "active_request": "/home/user/Projects/mini-git/.orch/waves/W7/orch-run-oxrolhzc/rounds/agent-orchestrator-urm5bgtv/request.json",
+  "rounds": [
+    {
+      "request_path": "/home/user/Projects/mini-git/.orch/waves/W7/orch-run-oxrolhzc/rounds/agent-orchestrator-urm5bgtv/request.json",
+      "round_id": "5248318530cb4b26b88628ac6da18637",
+      "request_sha256": "9d35f80c3298115fccc4141fa342c37a950bc5ffcbe268c3935405688406a409"
+    }
+  ],
+  "resources": {
+    "path": "/home/user/Projects/mini-git/.orch/waves/W7/orch-run-oxrolhzc/rounds/agent-orchestrator-urm5bgtv/resources.json",
+    "sha256": "0b11f80e84539e41bea7fe5382005addac4ab1ffcd626c6a8e1af96d7faf6fb0",
+    "record": {
+      "mode": "insider",
+      "session": "default",
+      "agent": "orch-w7-author",
+      "pane": "w1V:p1",
+      "workspace": "w1V",
+      "owns_agent": true,
+      "owns_pane": true,
+      "owns_workspace": true,
+      "owns_session": false,
+      "tab": "w1V:t1",
+      "parent_pane": "wJ:p1",
+      "parent_tab": "wJ:t1",
+      "owns_tab": false,
+      "recorded_at": "2026-09-20T17:38:36.488471+00:00",
+      "job_id": "66840d4b642f481a848788974b0665ca"
+    }
+  },
+  "submission": "prepared",
+  "attempts": [],
+  "lease": {
+    "owner": "controller-w7",
+    "token": "b2d7bc3b85894752bb737dd9eb72712c",
+    "expires_at": 1789927813.4423015
+  },
+  "launch": {
+    "argv": [
+      "opencode"
+    ],
+    "profile": "omo"
+  },
+  "native": {
+    "session_id": null,
+    "turn_id": null
+  },
+  "monitor": {
+    "owner": "controller-w7",
+    "watch_path": "/home/user/Projects/mini-git/.orch/waves/W7/orch-run-oxrolhzc/watches/orch-watch-7136nm52/watch.json",
+    "expires_at": 1789928381.0548725
+  },
+  "deadline": 1789930200,
+  "closed": null,
+  "completion": {},
+  "event": "update",
+  "recorded_at": 1789926018.288186
+}

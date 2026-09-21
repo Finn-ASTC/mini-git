@@ -1,0 +1,17 @@
+{
+  "version": 1,
+  "seq": 3,
+  "job_id": "66840d4b642f481a848788974b0665ca",
+  "round_id": "5248318530cb4b26b88628ac6da18637",
+  "event_fingerprint": "de9844ca09b98aa3bf9b2d8bf5c579d2fe13618d961bddbf30cbccd7876d1dc4",
+  "revision": 1,
+  "status": "handled",
+  "note": "review_due（changed UI）复核。读 evidence/000000000003.json 的 screen：\n目标是 OpenCode/OMO 的工作画面（\"Thinking\"、右侧是自己列的 G1/G2 门禁 todo），\n底部是 esc interrupt 提示行，没有任何对话框、审批/权限画面或提问。\n判定：这是「屏幕在变但无对话框」的正常工作状态，按「无需输入/决策」标记 handled。\n（记录：这条启发式事件本身符合文档描述：changed UI 不等于对话框，也不等于就绪。）\n",
+  "recorded_at": 1789926142.0073366,
+  "action_evidence": null,
+  "resolution_evidence": {
+    "path": "/home/user/Projects/mini-git/.orch/waves/W7/orch-run-oxrolhzc/watches/orch-watch-7136nm52/evidence/000000000003.json",
+    "sha256": "c0f56f519956626936aa893f353fbe8d9df277da5e2ee97bdce8aa1ab30297ff"
+  },
+  "resolved_at": 1789926141.0
+}

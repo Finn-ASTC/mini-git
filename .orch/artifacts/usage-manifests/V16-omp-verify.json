@@ -1,0 +1,5 @@
+{"version":1,"host":"omp",
+ "log_path":"/home/user/.omp/agent/sessions/-Projects-mini-git/2026-09-19T14-15-43-512Z_sess_0024-e498-7150-b15d-23c3569853a5.jsonl",
+ "session_id":"sess_0024-e498-7150-b15d-23c3569853a5",
+ "mappings":[{"native_id":"b837c0ef","request_path":"/home/user/Projects/mini-git/.orch/rounds/W4/agent-orchestrator-aedpxw6n/request.json","attempt_id":"initial","purpose":"task"},
+              {"native_id":"960c100c","request_path":"/home/user/Projects/mini-git/.orch/rounds/W4/agent-orchestrator-aedpxw6n/request.json","attempt_id":"initial","purpose":"task"}]}

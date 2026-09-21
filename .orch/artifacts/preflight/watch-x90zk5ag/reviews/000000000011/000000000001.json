@@ -1,0 +1,11 @@
+{
+  "version": 1,
+  "seq": 11,
+  "job_id": "edb0e351b58e42e486a264690ece2dcd",
+  "round_id": "c1008bbd20e34640ab5a409ceed097fb",
+  "event_fingerprint": "f6cf89cc1f805189f199e1fd31b41722c1cafc4172444d26df747a1e8aebd944",
+  "revision": 1,
+  "status": "handled",
+  "note": "state=blocked + suspected native dialog：实为 omp 的「是否做 10-15 分钟学习练习」Ask 弹窗（含 Recommended 选项），\n不是权限/范围审批。已在既有授权内处理：读取完整弹窗 → 光标从 Yes 下移到 No, skip it → Enter 确认，\nomp 回复 \"Understood — no learning exercise this session.\" 并回到 idle。\n未扩大权限、未修改任何配置、未替用户做范围决定。记录为跨 kind 行为差异：omp 会在轮次结束后主动弹产品级对话框。\n",
+  "recorded_at": 1789816747.7999694
+}

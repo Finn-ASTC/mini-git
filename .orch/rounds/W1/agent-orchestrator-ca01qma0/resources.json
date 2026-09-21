@@ -1,0 +1,19 @@
+{
+  "mode": "insider",
+  "session": "default",
+  "agent": "orch-omp-v2",
+  "pane": "wR:p1",
+  "workspace": "wR",
+  "owns_agent": true,
+  "owns_pane": true,
+  "owns_workspace": true,
+  "owns_session": false,
+  "tab": "wR:t1",
+  "parent_pane": "wJ:p1",
+  "parent_tab": "wJ:t1",
+  "owns_tab": false,
+  "recorded_at": "2026-09-19T11:36:25.563511+00:00",
+  "job_id": "ef6191c8c4774b7ab230b97d56abb27d",
+  "recorded_by": "controller-manual",
+  "record_note": "protocol.py record 拒绝字母型 herdr ID，见 .orch/waves/W1/defects.md D1"
+}

@@ -1,0 +1,10 @@
+{
+  "seq": 1,
+  "job_id": "66840d4b642f481a848788974b0665ca",
+  "round_id": "5248318530cb4b26b88628ac6da18637",
+  "kind": "state_changed",
+  "message": "idle",
+  "evidence_path": "/home/user/Projects/mini-git/.orch/waves/W7/orch-run-oxrolhzc/watches/orch-watch-7136nm52/evidence/000000000001.json",
+  "screen_tail": "                                                   █▀▀█ █▀▀█ █▀▀█ █▀▀▄ █▀▀▀ █▀▀█ █▀▀█ █▀▀█\n                                                   █  █ █  █ █▀▀▀ █  █ █    █  █ █  █ █▀▀▀\n                                                   ▀▀▀▀ █▀▀▀ ▀▀▀▀ ▀▀▀▀ ▀▀▀▀ ▀▀▀▀ ▀▀▀▀ ▀▀▀▀\n\n\n                                 ┃\n                                 ┃  Ask anything… \"What is the tech stack of this project?\"\n                                 ┃\n                                 ┃  Sisyphus - Ultraworker · DeepSeek V4.1 Flash DeepSeek\n                                 ╹▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀\n                                                                                 tab agents  ctrl+p commands\n\n\n\n                                         ● Tip Run opencode auth list to see all configured providers\n\n\n\n\n\n\n\n\n\n\n\n\n  ~/Projects/mini-git  ⊙ 4 MCP /status                                                                                             1.18.29",
+  "observed_at": 1789925950.2073288
+}

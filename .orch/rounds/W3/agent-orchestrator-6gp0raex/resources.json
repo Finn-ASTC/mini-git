@@ -1,0 +1,19 @@
+{
+  "mode": "insider",
+  "session": "default",
+  "agent": "w3-v9-omp",
+  "pane": "w19:p1",
+  "workspace": "w19",
+  "owns_agent": true,
+  "owns_pane": true,
+  "owns_workspace": true,
+  "owns_session": false,
+  "tab": "w19:t1",
+  "parent_pane": "wJ:p1",
+  "parent_tab": "wJ:t1",
+  "owns_tab": false,
+  "recorded_at": "2026-09-19T13:02:54.570627+00:00",
+  "job_id": "b35a5da9c2bf4657b2adee34d3a6217e",
+  "recorded_by": "controller-manual",
+  "record_note": "protocol.py record 拒绝字母型 herdr ID（w[0-9]+:p[0-9]+），见 .orch/SKILL-FINDINGS.md P1；本文件按同 schema 手工落盘"
+}

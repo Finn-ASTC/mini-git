@@ -1,0 +1,568 @@
+{
+  "binary": "/tmp/w5-verify/work/linestat/target/debug/linestat",
+  "binary_sha256": "2d82807293f97d478712aa54a0a0981f9ca4c17515be0d6873d00042c0d6d275",
+  "fixtures_root": "/tmp/w5-verify/evidence/fixtures-debug",
+  "cases_total": 36,
+  "cases_passed": 36,
+  "cases_failed": 0,
+  "results": [
+    {
+      "case": "version_alone",
+      "note": "",
+      "argv": [
+        "--version"
+      ],
+      "expected_stdout": "linestat 1.0.0\n",
+      "actual_stdout": "linestat 1.0.0\n",
+      "expected_exit": 0,
+      "actual_exit": 0,
+      "expected_stderr": "",
+      "actual_stderr": "",
+      "pass": true,
+      "failures": []
+    },
+    {
+      "case": "version_with_missing_file",
+      "note": "SPEC: --version reads no file",
+      "argv": [
+        "--version",
+        "/tmp/w5-verify/evidence/fixtures-debug/version_with_missing_file/missing.txt"
+      ],
+      "expected_stdout": "linestat 1.0.0\n",
+      "actual_stdout": "linestat 1.0.0\n",
+      "expected_exit": 0,
+      "actual_exit": 0,
+      "expected_stderr": "",
+      "actual_stderr": "",
+      "pass": true,
+      "failures": []
+    },
+    {
+      "case": "single_file",
+      "note": "",
+      "argv": [
+        "/tmp/w5-verify/evidence/fixtures-debug/single_file/one.txt"
+      ],
+      "expected_stdout": "1 2 12 /tmp/w5-verify/evidence/fixtures-debug/single_file/one.txt\n",
+      "actual_stdout": "1 2 12 /tmp/w5-verify/evidence/fixtures-debug/single_file/one.txt\n",
+      "expected_exit": 0,
+      "actual_exit": 0,
+      "expected_stderr": [],
+      "actual_stderr": "",
+      "pass": true,
+      "failures": []
+    },
+    {
+      "case": "single_no_trailing_newline",
+      "note": "",
+      "argv": [
+        "/tmp/w5-verify/evidence/fixtures-debug/single_no_trailing_newline/nonl.txt"
+      ],
+      "expected_stdout": "3 3 5 /tmp/w5-verify/evidence/fixtures-debug/single_no_trailing_newline/nonl.txt\n",
+      "actual_stdout": "3 3 5 /tmp/w5-verify/evidence/fixtures-debug/single_no_trailing_newline/nonl.txt\n",
+      "expected_exit": 0,
+      "actual_exit": 0,
+      "expected_stderr": [],
+      "actual_stderr": "",
+      "pass": true,
+      "failures": []
+    },
+    {
+      "case": "empty_file",
+      "note": "",
+      "argv": [
+        "/tmp/w5-verify/evidence/fixtures-debug/empty_file/empty.txt"
+      ],
+      "expected_stdout": "0 0 0 /tmp/w5-verify/evidence/fixtures-debug/empty_file/empty.txt\n",
+      "actual_stdout": "0 0 0 /tmp/w5-verify/evidence/fixtures-debug/empty_file/empty.txt\n",
+      "expected_exit": 0,
+      "actual_exit": 0,
+      "expected_stderr": [],
+      "actual_stderr": "",
+      "pass": true,
+      "failures": []
+    },
+    {
+      "case": "multi_files_total",
+      "note": "argument order preserved; total sums",
+      "argv": [
+        "/tmp/w5-verify/evidence/fixtures-debug/multi_files_total/b.txt",
+        "/tmp/w5-verify/evidence/fixtures-debug/multi_files_total/a.txt"
+      ],
+      "expected_stdout": "1 1 6 /tmp/w5-verify/evidence/fixtures-debug/multi_files_total/b.txt\n1 2 8 /tmp/w5-verify/evidence/fixtures-debug/multi_files_total/a.txt\n2 3 14 total\n",
+      "actual_stdout": "1 1 6 /tmp/w5-verify/evidence/fixtures-debug/multi_files_total/b.txt\n1 2 8 /tmp/w5-verify/evidence/fixtures-debug/multi_files_total/a.txt\n2 3 14 total\n",
+      "expected_exit": 0,
+      "actual_exit": 0,
+      "expected_stderr": [],
+      "actual_stderr": "",
+      "pass": true,
+      "failures": []
+    },
+    {
+      "case": "multi_files_total_reverse",
+      "note": "",
+      "argv": [
+        "/tmp/w5-verify/evidence/fixtures-debug/multi_files_total_reverse/a.txt",
+        "/tmp/w5-verify/evidence/fixtures-debug/multi_files_total_reverse/b.txt"
+      ],
+      "expected_stdout": "1 2 8 /tmp/w5-verify/evidence/fixtures-debug/multi_files_total_reverse/a.txt\n1 1 6 /tmp/w5-verify/evidence/fixtures-debug/multi_files_total_reverse/b.txt\n2 3 14 total\n",
+      "actual_stdout": "1 2 8 /tmp/w5-verify/evidence/fixtures-debug/multi_files_total_reverse/a.txt\n1 1 6 /tmp/w5-verify/evidence/fixtures-debug/multi_files_total_reverse/b.txt\n2 3 14 total\n",
+      "expected_exit": 0,
+      "actual_exit": 0,
+      "expected_stderr": [],
+      "actual_stderr": "",
+      "pass": true,
+      "failures": []
+    },
+    {
+      "case": "cr_tab_vt_ff",
+      "note": "",
+      "argv": [
+        "/tmp/w5-verify/evidence/fixtures-debug/cr_tab_vt_ff/ws.txt"
+      ],
+      "expected_stdout": "1 4 9 /tmp/w5-verify/evidence/fixtures-debug/cr_tab_vt_ff/ws.txt\n",
+      "actual_stdout": "1 4 9 /tmp/w5-verify/evidence/fixtures-debug/cr_tab_vt_ff/ws.txt\n",
+      "expected_exit": 0,
+      "actual_exit": 0,
+      "expected_stderr": [],
+      "actual_stderr": "",
+      "pass": true,
+      "failures": []
+    },
+    {
+      "case": "non_utf8_content",
+      "note": "",
+      "argv": [
+        "/tmp/w5-verify/evidence/fixtures-debug/non_utf8_content/binary.bin"
+      ],
+      "expected_stdout": "1 2 4 /tmp/w5-verify/evidence/fixtures-debug/non_utf8_content/binary.bin\n",
+      "actual_stdout": "1 2 4 /tmp/w5-verify/evidence/fixtures-debug/non_utf8_content/binary.bin\n",
+      "expected_exit": 0,
+      "actual_exit": 0,
+      "expected_stderr": [],
+      "actual_stderr": "",
+      "pass": true,
+      "failures": []
+    },
+    {
+      "case": "missing_file",
+      "note": "",
+      "argv": [
+        "/tmp/w5-verify/evidence/fixtures-debug/missing_file/missing.txt"
+      ],
+      "expected_stdout": "",
+      "actual_stdout": "",
+      "expected_exit": 1,
+      "actual_exit": 1,
+      "expected_stderr": [
+        "<error line for /tmp/w5-verify/evidence/fixtures-debug/missing_file/missing.txt>"
+      ],
+      "actual_stderr": "linestat: /tmp/w5-verify/evidence/fixtures-debug/missing_file/missing.txt: No such file or directory (os error 2)\n",
+      "pass": true,
+      "failures": []
+    },
+    {
+      "case": "missing_then_good",
+      "note": "continue after error; total from readable",
+      "argv": [
+        "/tmp/w5-verify/evidence/fixtures-debug/missing_then_good/missing.txt",
+        "/tmp/w5-verify/evidence/fixtures-debug/missing_then_good/ok.txt"
+      ],
+      "expected_stdout": "1 1 4 /tmp/w5-verify/evidence/fixtures-debug/missing_then_good/ok.txt\n1 1 4 total\n",
+      "actual_stdout": "1 1 4 /tmp/w5-verify/evidence/fixtures-debug/missing_then_good/ok.txt\n1 1 4 total\n",
+      "expected_exit": 1,
+      "actual_exit": 1,
+      "expected_stderr": [
+        "<error line for /tmp/w5-verify/evidence/fixtures-debug/missing_then_good/missing.txt>"
+      ],
+      "actual_stderr": "linestat: /tmp/w5-verify/evidence/fixtures-debug/missing_then_good/missing.txt: No such file or directory (os error 2)\n",
+      "pass": true,
+      "failures": []
+    },
+    {
+      "case": "good_then_missing",
+      "note": "",
+      "argv": [
+        "/tmp/w5-verify/evidence/fixtures-debug/good_then_missing/ok.txt",
+        "/tmp/w5-verify/evidence/fixtures-debug/good_then_missing/missing.txt"
+      ],
+      "expected_stdout": "1 1 4 /tmp/w5-verify/evidence/fixtures-debug/good_then_missing/ok.txt\n1 1 4 total\n",
+      "actual_stdout": "1 1 4 /tmp/w5-verify/evidence/fixtures-debug/good_then_missing/ok.txt\n1 1 4 total\n",
+      "expected_exit": 1,
+      "actual_exit": 1,
+      "expected_stderr": [
+        "<error line for /tmp/w5-verify/evidence/fixtures-debug/good_then_missing/missing.txt>"
+      ],
+      "actual_stderr": "linestat: /tmp/w5-verify/evidence/fixtures-debug/good_then_missing/missing.txt: No such file or directory (os error 2)\n",
+      "pass": true,
+      "failures": []
+    },
+    {
+      "case": "unknown_long_option",
+      "note": "",
+      "argv": [
+        "--help"
+      ],
+      "expected_stdout": "",
+      "actual_stdout": "",
+      "expected_exit": 2,
+      "actual_exit": 2,
+      "expected_stderr": "linestat: usage: linestat [--version] [FILE...]\n",
+      "actual_stderr": "linestat: usage: linestat [--version] [FILE...]\n",
+      "pass": true,
+      "failures": []
+    },
+    {
+      "case": "unknown_short_option",
+      "note": "",
+      "argv": [
+        "-x"
+      ],
+      "expected_stdout": "",
+      "actual_stdout": "",
+      "expected_exit": 2,
+      "actual_exit": 2,
+      "expected_stderr": "linestat: usage: linestat [--version] [FILE...]\n",
+      "actual_stderr": "linestat: usage: linestat [--version] [FILE...]\n",
+      "pass": true,
+      "failures": []
+    },
+    {
+      "case": "unknown_option_with_file",
+      "note": "",
+      "argv": [
+        "--help",
+        "/tmp/w5-verify/evidence/fixtures-debug/unknown_option_with_file/one.txt"
+      ],
+      "expected_stdout": "",
+      "actual_stdout": "",
+      "expected_exit": 2,
+      "actual_exit": 2,
+      "expected_stderr": "linestat: usage: linestat [--version] [FILE...]\n",
+      "actual_stderr": "linestat: usage: linestat [--version] [FILE...]\n",
+      "pass": true,
+      "failures": []
+    },
+    {
+      "case": "no_args",
+      "note": "",
+      "argv": [],
+      "expected_stdout": "",
+      "actual_stdout": "",
+      "expected_exit": 2,
+      "actual_exit": 2,
+      "expected_stderr": "linestat: usage: linestat [--version] [FILE...]\n",
+      "actual_stderr": "linestat: usage: linestat [--version] [FILE...]\n",
+      "pass": true,
+      "failures": []
+    },
+    {
+      "case": "directory_operand",
+      "note": "",
+      "argv": [
+        "/tmp/w5-verify/evidence/fixtures-debug/directory_operand/thedir"
+      ],
+      "expected_stdout": "",
+      "actual_stdout": "",
+      "expected_exit": 1,
+      "actual_exit": 1,
+      "expected_stderr": [
+        "<error line for /tmp/w5-verify/evidence/fixtures-debug/directory_operand/thedir>"
+      ],
+      "actual_stderr": "linestat: /tmp/w5-verify/evidence/fixtures-debug/directory_operand/thedir: Is a directory (os error 21)\n",
+      "pass": true,
+      "failures": []
+    },
+    {
+      "case": "non_utf8_path",
+      "note": "",
+      "argv": [
+        "/tmp/w5-verify/evidence/fixtures-debug/non_utf8_path/weird-\\xff-name.txt"
+      ],
+      "expected_stdout": "1 1 3 /tmp/w5-verify/evidence/fixtures-debug/non_utf8_path/weird-\\xff-name.txt\n",
+      "actual_stdout": "1 1 3 /tmp/w5-verify/evidence/fixtures-debug/non_utf8_path/weird-\\xff-name.txt\n",
+      "expected_exit": 0,
+      "actual_exit": 0,
+      "expected_stderr": [],
+      "actual_stderr": "",
+      "pass": true,
+      "failures": []
+    },
+    {
+      "case": "only_newlines",
+      "note": "",
+      "argv": [
+        "/tmp/w5-verify/evidence/fixtures-debug/only_newlines/nl.txt"
+      ],
+      "expected_stdout": "3 0 3 /tmp/w5-verify/evidence/fixtures-debug/only_newlines/nl.txt\n",
+      "actual_stdout": "3 0 3 /tmp/w5-verify/evidence/fixtures-debug/only_newlines/nl.txt\n",
+      "expected_exit": 0,
+      "actual_exit": 0,
+      "expected_stderr": [],
+      "actual_stderr": "",
+      "pass": true,
+      "failures": []
+    },
+    {
+      "case": "only_cr_no_newline",
+      "note": "",
+      "argv": [
+        "/tmp/w5-verify/evidence/fixtures-debug/only_cr_no_newline/cr.txt"
+      ],
+      "expected_stdout": "1 0 1 /tmp/w5-verify/evidence/fixtures-debug/only_cr_no_newline/cr.txt\n",
+      "actual_stdout": "1 0 1 /tmp/w5-verify/evidence/fixtures-debug/only_cr_no_newline/cr.txt\n",
+      "expected_exit": 0,
+      "actual_exit": 0,
+      "expected_stderr": [],
+      "actual_stderr": "",
+      "pass": true,
+      "failures": []
+    },
+    {
+      "case": "whitespace_only",
+      "note": "",
+      "argv": [
+        "/tmp/w5-verify/evidence/fixtures-debug/whitespace_only/w.txt"
+      ],
+      "expected_stdout": "2 0 6 /tmp/w5-verify/evidence/fixtures-debug/whitespace_only/w.txt\n",
+      "actual_stdout": "2 0 6 /tmp/w5-verify/evidence/fixtures-debug/whitespace_only/w.txt\n",
+      "expected_exit": 0,
+      "actual_exit": 0,
+      "expected_stderr": [],
+      "actual_stderr": "",
+      "pass": true,
+      "failures": []
+    },
+    {
+      "case": "nul_bytes",
+      "note": "",
+      "argv": [
+        "/tmp/w5-verify/evidence/fixtures-debug/nul_bytes/nul.bin"
+      ],
+      "expected_stdout": "1 1 4 /tmp/w5-verify/evidence/fixtures-debug/nul_bytes/nul.bin\n",
+      "actual_stdout": "1 1 4 /tmp/w5-verify/evidence/fixtures-debug/nul_bytes/nul.bin\n",
+      "expected_exit": 0,
+      "actual_exit": 0,
+      "expected_stderr": [],
+      "actual_stderr": "",
+      "pass": true,
+      "failures": []
+    },
+    {
+      "case": "permission_denied",
+      "note": "SPEC error path: unreadable file (EACCES)",
+      "argv": [
+        "/tmp/w5-verify/evidence/fixtures-debug/permission_denied/noperm.txt"
+      ],
+      "expected_stdout": "",
+      "actual_stdout": "",
+      "expected_exit": 1,
+      "actual_exit": 1,
+      "expected_stderr": [
+        "<error line for /tmp/w5-verify/evidence/fixtures-debug/permission_denied/noperm.txt>"
+      ],
+      "actual_stderr": "linestat: /tmp/w5-verify/evidence/fixtures-debug/permission_denied/noperm.txt: Permission denied (os error 13)\n",
+      "pass": true,
+      "failures": []
+    },
+    {
+      "case": "permission_denied_then_good",
+      "note": "EACCES then continue; total from readable",
+      "argv": [
+        "/tmp/w5-verify/evidence/fixtures-debug/permission_denied_then_good/noperm.txt",
+        "/tmp/w5-verify/evidence/fixtures-debug/permission_denied_then_good/ok.txt"
+      ],
+      "expected_stdout": "1 1 4 /tmp/w5-verify/evidence/fixtures-debug/permission_denied_then_good/ok.txt\n1 1 4 total\n",
+      "actual_stdout": "1 1 4 /tmp/w5-verify/evidence/fixtures-debug/permission_denied_then_good/ok.txt\n1 1 4 total\n",
+      "expected_exit": 1,
+      "actual_exit": 1,
+      "expected_stderr": [
+        "<error line for /tmp/w5-verify/evidence/fixtures-debug/permission_denied_then_good/noperm.txt>"
+      ],
+      "actual_stderr": "linestat: /tmp/w5-verify/evidence/fixtures-debug/permission_denied_then_good/noperm.txt: Permission denied (os error 13)\n",
+      "pass": true,
+      "failures": []
+    },
+    {
+      "case": "unicode_ideographic_space",
+      "note": "U+3000 bytes are NOT SPEC whitespace -> one word",
+      "argv": [
+        "/tmp/w5-verify/evidence/fixtures-debug/unicode_ideographic_space/u3000.txt"
+      ],
+      "expected_stdout": "1 1 3 /tmp/w5-verify/evidence/fixtures-debug/unicode_ideographic_space/u3000.txt\n",
+      "actual_stdout": "1 1 3 /tmp/w5-verify/evidence/fixtures-debug/unicode_ideographic_space/u3000.txt\n",
+      "expected_exit": 0,
+      "actual_exit": 0,
+      "expected_stderr": [],
+      "actual_stderr": "",
+      "pass": true,
+      "failures": []
+    },
+    {
+      "case": "unicode_nbsp",
+      "note": "U+00A0 bytes are NOT SPEC whitespace -> one word",
+      "argv": [
+        "/tmp/w5-verify/evidence/fixtures-debug/unicode_nbsp/nbsp.txt"
+      ],
+      "expected_stdout": "1 1 2 /tmp/w5-verify/evidence/fixtures-debug/unicode_nbsp/nbsp.txt\n",
+      "actual_stdout": "1 1 2 /tmp/w5-verify/evidence/fixtures-debug/unicode_nbsp/nbsp.txt\n",
+      "expected_exit": 0,
+      "actual_exit": 0,
+      "expected_stderr": [],
+      "actual_stderr": "",
+      "pass": true,
+      "failures": []
+    },
+    {
+      "case": "mixed_unicode_and_ascii_ws",
+      "note": "",
+      "argv": [
+        "/tmp/w5-verify/evidence/fixtures-debug/mixed_unicode_and_ascii_ws/mix.txt"
+      ],
+      "expected_stdout": "1 2 8 /tmp/w5-verify/evidence/fixtures-debug/mixed_unicode_and_ascii_ws/mix.txt\n",
+      "actual_stdout": "1 2 8 /tmp/w5-verify/evidence/fixtures-debug/mixed_unicode_and_ascii_ws/mix.txt\n",
+      "expected_exit": 0,
+      "actual_exit": 0,
+      "expected_stderr": [],
+      "actual_stderr": "",
+      "pass": true,
+      "failures": []
+    },
+    {
+      "case": "multi_non_utf8_total",
+      "note": "",
+      "argv": [
+        "/tmp/w5-verify/evidence/fixtures-debug/multi_non_utf8_total/b1.bin",
+        "/tmp/w5-verify/evidence/fixtures-debug/multi_non_utf8_total/b2.bin"
+      ],
+      "expected_stdout": "1 1 2 /tmp/w5-verify/evidence/fixtures-debug/multi_non_utf8_total/b1.bin\n1 1 3 /tmp/w5-verify/evidence/fixtures-debug/multi_non_utf8_total/b2.bin\n2 2 5 total\n",
+      "actual_stdout": "1 1 2 /tmp/w5-verify/evidence/fixtures-debug/multi_non_utf8_total/b1.bin\n1 1 3 /tmp/w5-verify/evidence/fixtures-debug/multi_non_utf8_total/b2.bin\n2 2 5 total\n",
+      "expected_exit": 0,
+      "actual_exit": 0,
+      "expected_stderr": [],
+      "actual_stderr": "",
+      "pass": true,
+      "failures": []
+    },
+    {
+      "case": "path_echo_no_normalisation",
+      "note": "argument echoed verbatim incl ./",
+      "argv": [
+        "/tmp/w5-verify/evidence/fixtures-debug/path_echo_no_normalisation/./one.txt"
+      ],
+      "expected_stdout": "1 1 3 /tmp/w5-verify/evidence/fixtures-debug/path_echo_no_normalisation/./one.txt\n",
+      "actual_stdout": "1 1 3 /tmp/w5-verify/evidence/fixtures-debug/path_echo_no_normalisation/./one.txt\n",
+      "expected_exit": 0,
+      "actual_exit": 0,
+      "expected_stderr": [],
+      "actual_stderr": "",
+      "pass": true,
+      "failures": []
+    },
+    {
+      "case": "many_bytes_lines",
+      "note": "",
+      "argv": [
+        "/tmp/w5-verify/evidence/fixtures-debug/many_bytes_lines/big.txt"
+      ],
+      "expected_stdout": "100000 200000 400000 /tmp/w5-verify/evidence/fixtures-debug/many_bytes_lines/big.txt\n",
+      "actual_stdout": "100000 200000 400000 /tmp/w5-verify/evidence/fixtures-debug/many_bytes_lines/big.txt\n",
+      "expected_exit": 0,
+      "actual_exit": 0,
+      "expected_stderr": [],
+      "actual_stderr": "",
+      "pass": true,
+      "failures": []
+    },
+    {
+      "case": "boundary_word_split",
+      "note": "word count must persist across the 64 KiB read boundary",
+      "argv": [
+        "/tmp/w5-verify/evidence/fixtures-debug/boundary_word_split/boundary_word_split.bin"
+      ],
+      "expected_stdout": "1 1 65537 /tmp/w5-verify/evidence/fixtures-debug/boundary_word_split/boundary_word_split.bin\n",
+      "actual_stdout": "1 1 65537 /tmp/w5-verify/evidence/fixtures-debug/boundary_word_split/boundary_word_split.bin\n",
+      "expected_exit": 0,
+      "actual_exit": 0,
+      "expected_stderr": [],
+      "actual_stderr": "",
+      "pass": true,
+      "failures": []
+    },
+    {
+      "case": "boundary_sep_then_word",
+      "note": "word count must persist across the 64 KiB read boundary",
+      "argv": [
+        "/tmp/w5-verify/evidence/fixtures-debug/boundary_sep_then_word/boundary_sep_then_word.bin"
+      ],
+      "expected_stdout": "1 2 65541 /tmp/w5-verify/evidence/fixtures-debug/boundary_sep_then_word/boundary_sep_then_word.bin\n",
+      "actual_stdout": "1 2 65541 /tmp/w5-verify/evidence/fixtures-debug/boundary_sep_then_word/boundary_sep_then_word.bin\n",
+      "expected_exit": 0,
+      "actual_exit": 0,
+      "expected_stderr": [],
+      "actual_stderr": "",
+      "pass": true,
+      "failures": []
+    },
+    {
+      "case": "boundary_newline_then_word",
+      "note": "word count must persist across the 64 KiB read boundary",
+      "argv": [
+        "/tmp/w5-verify/evidence/fixtures-debug/boundary_newline_then_word/boundary_newline_then_word.bin"
+      ],
+      "expected_stdout": "2 2 65546 /tmp/w5-verify/evidence/fixtures-debug/boundary_newline_then_word/boundary_newline_then_word.bin\n",
+      "actual_stdout": "2 2 65546 /tmp/w5-verify/evidence/fixtures-debug/boundary_newline_then_word/boundary_newline_then_word.bin\n",
+      "expected_exit": 0,
+      "actual_exit": 0,
+      "expected_stderr": [],
+      "actual_stderr": "",
+      "pass": true,
+      "failures": []
+    },
+    {
+      "case": "boundary_word_then_sep",
+      "note": "word count must persist across the 64 KiB read boundary",
+      "argv": [
+        "/tmp/w5-verify/evidence/fixtures-debug/boundary_word_then_sep/boundary_word_then_sep.bin"
+      ],
+      "expected_stdout": "1 2 65538 /tmp/w5-verify/evidence/fixtures-debug/boundary_word_then_sep/boundary_word_then_sep.bin\n",
+      "actual_stdout": "1 2 65538 /tmp/w5-verify/evidence/fixtures-debug/boundary_word_then_sep/boundary_word_then_sep.bin\n",
+      "expected_exit": 0,
+      "actual_exit": 0,
+      "expected_stderr": [],
+      "actual_stderr": "",
+      "pass": true,
+      "failures": []
+    },
+    {
+      "case": "boundary_two_chunks",
+      "note": "word count must persist across the 64 KiB read boundary",
+      "argv": [
+        "/tmp/w5-verify/evidence/fixtures-debug/boundary_two_chunks/boundary_two_chunks.bin"
+      ],
+      "expected_stdout": "1 2 131074 /tmp/w5-verify/evidence/fixtures-debug/boundary_two_chunks/boundary_two_chunks.bin\n",
+      "actual_stdout": "1 2 131074 /tmp/w5-verify/evidence/fixtures-debug/boundary_two_chunks/boundary_two_chunks.bin\n",
+      "expected_exit": 0,
+      "actual_exit": 0,
+      "expected_stderr": [],
+      "actual_stderr": "",
+      "pass": true,
+      "failures": []
+    },
+    {
+      "case": "boundary_all_ws_then_word",
+      "note": "word count must persist across the 64 KiB read boundary",
+      "argv": [
+        "/tmp/w5-verify/evidence/fixtures-debug/boundary_all_ws_then_word/boundary_all_ws_then_word.bin"
+      ],
+      "expected_stdout": "1 1 65540 /tmp/w5-verify/evidence/fixtures-debug/boundary_all_ws_then_word/boundary_all_ws_then_word.bin\n",
+      "actual_stdout": "1 1 65540 /tmp/w5-verify/evidence/fixtures-debug/boundary_all_ws_then_word/boundary_all_ws_then_word.bin\n",
+      "expected_exit": 0,
+      "actual_exit": 0,
+      "expected_stderr": [],
+      "actual_stderr": "",
+      "pass": true,
+      "failures": []
+    }
+  ]
+}

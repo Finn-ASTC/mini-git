@@ -1,0 +1,36 @@
+{
+  "argv": [
+    "cargo",
+    "build",
+    "--release",
+    "--offline"
+  ],
+  "cwd": "/home/user/Projects/mini-git/.orch/waves/W5/orch-run-2lpx81iy/rounds/agent-orchestrator-ggyoe35m/deliveries/snapshot-nvn21yva/verifications/verify-l9da_n_s/source",
+  "started_at": "2026-09-20T09:47:43.848908+00:00",
+  "timeout_seconds": 300,
+  "exit_code": 0,
+  "executable": {
+    "path": "/home/user/.cargo/bin/rustup",
+    "kind": "file",
+    "size": 20838840,
+    "sha256": "4acc9acc76d5079515b46346a485974457b5a79893cfb01112423c89aeb5aa10",
+    "executable": true
+  },
+  "outcome": "exited",
+  "finished_at": "2026-09-20T09:47:44.073977+00:00",
+  "duration_seconds": 0.22508554699015804,
+  "stdout": {
+    "path": "/home/user/Projects/mini-git/.orch/waves/W5/orch-run-2lpx81iy/rounds/agent-orchestrator-ggyoe35m/deliveries/snapshot-nvn21yva/verifications/verify-l9da_n_s/evidence/0005/stdout.log",
+    "kind": "file",
+    "size": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "executable": false
+  },
+  "stderr": {
+    "path": "/home/user/Projects/mini-git/.orch/waves/W5/orch-run-2lpx81iy/rounds/agent-orchestrator-ggyoe35m/deliveries/snapshot-nvn21yva/verifications/verify-l9da_n_s/evidence/0005/stderr.log",
+    "kind": "file",
+    "size": 256,
+    "sha256": "e3a7e2ce442c3eb07bf722a4d9a35776d1a4c0b8b3cdf2dbe87b0ef90062f3d8",
+    "executable": false
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "seq": 5,
+  "job_id": "66840d4b642f481a848788974b0665ca",
+  "round_id": "5248318530cb4b26b88628ac6da18637",
+  "kind": "review_due",
+  "message": "Changed UI needs review; hook/keyword detection may miss a dialog.",
+  "evidence_path": "/home/user/Projects/mini-git/.orch/waves/W7/orch-run-oxrolhzc/watches/orch-watch-7136nm52/evidence/000000000005.json",
+  "screen_tail": "                                   with timeout, capture per-target\n                                                                                                        exit + totals - expect all green\n     ▣  Sisyphus - Ultraworker · DeepSeek V4.1 Flash\n                                                                                                    [•] G2: cargo test --offline --\n  ┃                                                                                                     release with timeout, capture\n  ┃                                                                                                     per-target exit code + elapsed -\n  ┃\n  ┃  Sisyphus - Ultraworker · DeepSeek V4.1 Flash DeepSeek                                          ~/Projects/mini-git\n  ╹▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀\n   ⬝⬝⬝⬝⬝⬝⬝⬝  esc interrupt                                 125.1K (13%) · $0.05  ctrl+p commands    • OpenCode 1.18.29",
+  "observed_at": 1789926341.065912,
+  "issue_id": "9831005846534fdb903a571f43861b66",
+  "correlation_key": "e41b63a38a5a0ef819d9078540b148ada70dbe0b2b9b1b63d336c2de08a0fe9e",
+  "confidence": "unknown_ui"
+}

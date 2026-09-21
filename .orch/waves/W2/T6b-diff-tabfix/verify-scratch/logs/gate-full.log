@@ -1,0 +1,315 @@
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.02s
+     Running unittests src/lib.rs (target/debug/deps/minigit-c104696a743ccc50)
+
+running 146 tests
+test cli::diff::tests::binary_detection_uses_the_first_8000_bytes ... ok
+test cli::diff::tests::path_quoting_matches_git_rules ... ok
+test diff::tests::empty_input_has_no_lines ... ok
+test diff::myers::tests::identical_inputs_are_one_equal_span ... ok
+test diff::myers::tests::scripts_cover_both_sides_in_order ... ok
+test diff::tests::splits_keeping_newline ... ok
+test diff::tests::splits_missing_final_newline ... ok
+test diff::unified::tests::hunks_api_reports_empty_ranges_at_the_insertion_point ... ok
+test diff::unified::tests::identical_files_produce_no_output ... ok
+test diff::myers::tests::random_scripts_are_valid ... ok
+test cli::diff::tests::clean_repository_prints_nothing ... ok
+test cli::diff::tests::unborn_head_staged_matches_real_git ... ok
+test diff::unified::tests::non_utf8_content_is_rejected_by_the_string_api_only ... ok
+test diff::unified::tests::middle_modification ... ok
+test cli::diff::tests::worktree_versus_index_matches_real_git ... ok
+test diff::unified::tests::hunk_headers_where_git_prints_the_function_suffix ... ok
+test cli::diff::tests::staged_versus_head_matches_real_git ... ok
+test cli::cat_file::tests::cat_file_roundtrips_a_blob_mg_wrote ... ok
+test diff::unified::tests::adjacent_hunks_merge_at_2x_context ... ok
+test diff::unified::tests::multiple_hunks ... ok
+test cli::diff::tests::binary_and_non_utf8_content_match_real_git ... ok
+test cli::diff::tests::context_variants_match_real_git ... ok
+test index::dirc::tests::generated_tree_extension_roundtrips ... ok
+test cli::cat_file::tests::missing_selector_is_a_usage_error_like_git ... ok
+test index::dirc::tests::bad_signature_and_truncation_error_instead_of_panicking ... ok
+test index::dirc::tests::corrupt_trailer_is_rejected ... ok
+test cli::diff::tests::mode_only_change_matches_real_git ... ok
+test index::dirc::tests::assume_valid_flag_roundtrips ... ok
+test index::dirc::tests::long_path_name_length_boundaries_roundtrip ... ok
+test diff::unified::tests::cjk_and_carriage_returns ... ok
+test diff::unified::tests::empty_versus_non_empty ... ok
+test diff::unified::tests::controller_owned_diff_texts_matches_real_git ... ok
+test diff::unified::tests::duplicate_lines_slide_like_git ... ok
+test cli::diff::tests::path_filter_matches_real_git ... ok
+test cli::cat_file::tests::exists_flag_reports_through_the_exit_code ... ok
+test cli::diff::tests::rev_versus_worktree_matches_real_git ... ok
+test diff::unified::tests::pure_insert_and_delete ... ok
+test diff::unified::tests::null_side_is_never_padded_in_a_real_repo ... ok
+test object::commit::tests::decodes_a_commit_real_git_wrote ... ok
+test index::dirc::tests::unknown_extension_is_preserved_verbatim ... ok
+test object::commit::tests::keeps_parents_in_order ... ok
+test object::commit::tests::message_trailing_newline_is_not_invented ... ok
+test object::commit::tests::signature_roundtrips_and_defaults_to_empty_name ... ok
+test object::commit::tests::malformed_commits_are_rejected ... ok
+test object::tag::tests::a_missing_tagger_stays_missing ... ok
+test object::tag::tests::decodes_a_tag_real_git_wrote ... ok
+test object::tag::tests::malformed_tags_are_rejected ... ok
+test object::commit::tests::preserves_multiline_extra_headers ... ok
+test object::tag::tests::extra_headers_roundtrip ... ok
+test object::tests::file_mode_strings ... ok
+test diff::unified::tests::missing_final_newline ... ok
+test object::tests::size_mismatch_is_corrupt ... ok
+test object::tests::header_roundtrip ... ok
+test object::tree::tests::malformed_payloads_are_rejected ... ok
+test object::tree::tests::decoding_git_bytes_roundtrips_byte_for_byte ... ok
+test object::tree::tests::encodes_a_tree_real_git_wrote ... ok
+test object::tree::tests::sorting_puts_foo_txt_before_the_foo_subtree ... ok
+test index::dirc::tests::unsupported_version_is_reported ... ok
+test odb::loose::tests::odb_read_reports_corruption_not_not_found ... ok
+test index::dirc::tests::missing_index_reads_empty_and_writes_git_readable_index ... ok
+test oid::tests::hex_roundtrip ... ok
+test odb::loose::tests::corrupt_objects_are_rejected_and_missing_ones_are_none ... ok
+test oid::tests::known_blob_hash ... ok
+test oid::tests::rejects_bad_hex ... ok
+test cli::cat_file::tests::tree_pretty_output_is_byte_identical_to_ls_tree ... ok
+test refs::store::tests::head_missing_and_garbage_are_typed_errors ... ok
+test merge::merge_base::tests::missing_object_is_object_not_found ... ok
+test merge::merge_base::tests::corrupt_commit_is_corrupt_not_a_panic ... ok
+test index::dirc::tests::tree_and_unknown_extensions_keep_order ... ok
+test index::dirc::tests::diverse_index_roundtrips_byte_for_byte ... ok
+test index::dirc::tests::conflicted_index_with_stages_roundtrips ... ok
+test odb::loose::tests::writing_the_same_object_twice_changes_nothing ... ok
+test repo::tests::discover_walks_up ... ok
+test repo::tests::parses_config ... ok
+test index::dirc::tests::committed_index_roundtrips_and_exposes_tree_oid ... ok
+test refs::store::tests::update_cas_failures_do_not_touch_disk ... ok
+test transport::pktline::tests::encodes_known_frames ... ok
+test transport::pktline::tests::preserves_side_band_channel_bytes ... ok
+test transport::pktline::tests::reads_consecutive_frames_and_tracks_cursor ... ok
+test refs::store::tests::resolve_supports_the_v1_forms ... ok
+test transport::pktline::tests::reads_maximum_payload ... ok
+test refs::store::tests::list_reads_packed_refs_after_pack_refs ... ok
+test transport::pktline::tests::reads_special_frames_and_empty_data_without_extra_bytes ... ok
+test transport::pktline::tests::rejects_malformed_lengths ... ok
+test transport::pktline::tests::rejects_truncated_streams ... ok
+test transport::pktline::tests::write_pkt_rejects_oversized_payload ... ok
+test transport::pktline::tests::write_roundtrips_through_read ... ok
+test worktree::ignore::tests::anchored_pattern_only_matches_at_base ... ok
+test worktree::ignore::tests::dir_only_rule_covers_subtree_for_non_dir_and_dir ... ok
+test refs::store::tests::head_attached_and_detached_match_git ... ok
+test worktree::ignore::tests::last_matching_rule_wins_so_negation_rescues ... ok
+test diff::unified::tests::filepair_lines_are_tab_padded_only_when_the_label_contains_a_space ... ok
+test worktree::ignore::tests::malformed_patterns_do_not_panic ... ok
+test worktree::ignore::tests::ignored_directory_is_not_descended_for_rule_loading ... ok
+test worktree::ignore::tests::non_utf8_gitignore_does_not_fail ... ok
+test refs::store::tests::list_and_branches_match_real_git ... ok
+test worktree::ignore::tests::loads_nested_gitignore_with_bases ... ok
+test worktree::ignore::tests::parses_comments_blanks_and_trailing_escaped_space ... ok
+test worktree::ignore::tests::root_dir_only_slash_is_ignored_gracefully ... ok
+test worktree::ignore::tests::anchored_rule_with_base_is_scoped_to_that_directory ... ok
+test worktree::ignore::tests::wildcards_and_classes ... ok
+test worktree::scan::tests::empty_directory_yields_no_entry_and_git_is_skipped ... ok
+test refs::store::tests::loose_shadows_packed_and_list_is_sorted ... ok
+test worktree::scan::tests::ignored_file_is_flagged_and_ignored_dir_is_not_descended ... ok
+test worktree::scan::tests::nested_files_are_relative_slash_separated_and_sorted ... ok
+test worktree::scan::tests::symlinks_are_not_followed_or_descended ... ok
+test diff::myers::tests::large_unrelated_inputs_are_pruned_and_fast ... ok
+test transport::pktline::tests::differential_parses_and_reencodes_real_git_advertisement ... ok
+test transport::pktline::tests::differential_feeds_written_request_to_real_git_upload_pack ... ok
+test worktree::status::tests::empty_repo_matches_git ... ok
+test worktree::status::tests::ignored_files_and_rescue_match_git ... ok
+test refs::store::tests::delete_removes_packed_entry_too ... ok
+test odb::loose::tests::iter_loose_matches_git_batch_all_objects ... ok
+test odb::loose::tests::reads_every_object_kind_real_git_wrote ... ok
+test merge::merge_base::tests::unrelated_roots_have_no_merge_base ... ok
+test worktree::status::tests::directory_replaced_by_file_matches_git ... ok
+test odb::loose::tests::objects_mg_wrote_are_readable_by_real_git ... ok
+test worktree::status::tests::no_commit_repo_matches_git ... ok
+test worktree::status::tests::deletion_in_index_and_missing_worktree_matches_git ... ok
+test worktree::status::tests::exec_bit_change_matches_git ... ok
+test zlib::tests::garbage_is_an_error_not_a_panic ... ok
+test worktree::status::tests::file_replaced_by_directory_matches_git ... ok
+test zlib::tests::prefix_reports_consumed_bytes ... ok
+test zlib::tests::roundtrip ... ok
+test worktree::status::tests::quoted_paths_match_git ... ok
+test worktree::status::tests::partial_untracked_directory_folding_matches_git ... ok
+test worktree::status::tests::nested_gitignore_scopes_match_git ... ok
+test worktree::status::tests::staged_mode_change_matches_git ... ok
+test worktree::status::tests::symlink_target_change_matches_git ... ok
+test worktree::status::tests::merge_conflict_matches_git ... ok
+test worktree::status::tests::staged_deletion_with_file_still_present_matches_git ... ok
+test worktree::status::tests::tricky_name_ordering_matches_git ... ok
+test worktree::status::tests::modify_delete_conflict_matches_git ... ok
+test worktree::status::tests::untracked_dir_with_ignored_contents_matches_git ... ok
+test cli::cat_file::tests::cat_file_matches_real_git_for_every_kind ... ok
+test refs::store::tests::short_names_match_git_for_each_ref ... ok
+test worktree::status::tests::tracked_file_inside_ignored_directory_matches_git ... ok
+test worktree::status::tests::add_add_conflict_matches_git ... ok
+test worktree::status::tests::rich_worktree_states_match_git ... ok
+test merge::merge_base::tests::end_to_end_via_odb ... ok
+test merge::merge_base::tests::merged_history_matches_git ... ok
+test merge::merge_base::tests::linear_history_matches_git ... ok
+test merge::merge_base::tests::criss_cross_returns_one_of_the_two_bases ... ok
+test diff::unified::tests::random_small_inputs_match_real_git ... ok
+test merge::merge_base::tests::random_dag_all_pairs_are_maximal ... ok
+test merge::merge_base::tests::large_dag_is_fast_and_maximal ... ok
+
+test result: ok. 146 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 1.36s
+
+     Running unittests src/main.rs (target/debug/deps/mg-d18f0e67fce7ef67)
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+     Running tests/interop/main.rs (target/debug/deps/interop-c5b13a0bb0e7ca9c)
+
+running 7 tests
+test smoke::hash_object_stdin_matches_real_git ... ok
+test smoke::mg_can_discover_a_repository_created_by_real_git ... ok
+test smoke::mg_reports_version_and_help ... ok
+test smoke::unimplemented_commands_fail_loudly_instead_of_pretending ... ok
+test smoke::mg_init_produces_a_repository_real_git_accepts ... ok
+test smoke::real_git_can_commit_inside_an_mg_init_repository ... ok
+test smoke::hash_object_matches_real_git_byte_for_byte ... ok
+
+test result: ok. 7 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.01s
+
+     Running tests/verify/main.rs (target/debug/deps/verify-2fe6099ca561aa6c)
+
+running 3 tests
+test annotated_tag_roundtrips_against_real_git ... ok
+test tree_sort_trap_and_raw_bytes_match_real_git ... ok
+test merge_commit_roundtrips_against_real_git ... ok
+
+test result: ok. 3 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.02s
+
+     Running tests/verify_diff.rs (target/debug/deps/verify_diff-f430f95397664e53)
+
+running 17 tests
+test cli_space_in_path_tab_padding ... ignored, V6 FAIL: git appends a TAB to ---/+++ lines for paths containing a space; mg does not
+test myers_script_covers_both_sides ... ok
+test cli_non_utf8_text_matches_git ... ok
+test engine_large_single_change_is_fast_and_correct ... ok
+test cli_binary_is_reported_as_binary_and_matches_git ... ok
+test cli_clean_repo_prints_nothing ... ok
+test cli_rename_limitation_is_only_renames ... ok
+test cli_mode_change_matches_git ... ok
+test engine_hunk_merge_boundary_matches_git ... ok
+test engine_long_single_line_matches_git ... ok
+test cli_staged_matches_git ... ok
+test cli_rev_matches_git ... ok
+test cli_worktree_vs_index_matches_git ... ok
+test engine_large_disjoint_input_returns_in_time ... ok
+test engine_matrix_matches_git ... ok
+test engine_randomized_soak_matches_git ... ok
+test cli_randomized_repo_soak_matches_git ... ok
+
+test result: ok. 16 passed; 0 failed; 1 ignored; 0 measured; 0 filtered out; finished in 0.36s
+
+     Running tests/verify_index.rs (target/debug/deps/verify_index-7dd5920b43e5be81)
+
+running 11 tests
+test corrupt_indexes_are_rejected_without_panicking ... ok
+test real_git_index_version_3_is_reported_unsupported ... ok
+test missing_index_reads_empty_and_written_empty_index_is_git_readable ... ok
+test index_with_git_written_eoie_extension_roundtrips_byte_for_byte ... ok
+test git_empty_index_with_tree_extension_roundtrips ... ok
+test unknown_extension_next_to_tree_is_preserved_verbatim ... ok
+test index_with_git_written_untr_extension_roundtrips_byte_for_byte ... ok
+test name_length_boundaries_4095_and_4096_roundtrip ... ok
+test committed_index_with_tree_extension_roundtrips_and_exposes_tree_oid ... ok
+test conflicted_index_stages_roundtrip ... ok
+test git_written_diverse_index_roundtrips_byte_for_byte ... ok
+
+test result: ok. 11 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.02s
+
+     Running tests/verify_mergebase.rs (target/debug/deps/verify_mergebase-4419c18190eed8a2)
+
+running 10 tests
+test objects_are_loose_so_the_odb_read_path_is_covered ... ok
+test nonexistent_oid_is_object_not_found ... ok
+test corrupt_commit_is_corrupt_not_a_panic ... ok
+test unrelated_roots_have_no_common_ancestor ... ok
+test ancestor_relation_and_identity ... ok
+test three_parent_merge_matches_git ... ok
+test single_merge_matches_git ... ok
+test linear_history_all_pairs_match_git ... ok
+test criss_cross_two_equals_timestamped_bases ... ok
+test large_dag_200_commits_is_fast_and_correct ... ok
+
+test result: ok. 10 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.49s
+
+     Running tests/verify_odb.rs (target/debug/deps/verify_odb-d46636cd29f27db3)
+
+running 6 tests
+test corrupt_and_missing_objects_are_typed_errors ... ok
+test iter_loose_matches_the_filesystem_loose_set ... ok
+test mg_written_objects_are_readable_by_real_git ... ok
+test git_written_objects_are_read_by_minigit ... ok
+test writing_is_idempotent_atomic_and_leaves_no_temp_files ... ok
+test mg_cat_file_matches_real_git_byte_for_byte ... ok
+
+test result: ok. 6 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.05s
+
+     Running tests/verify_pktline.rs (target/debug/deps/verify_pktline-10124e1f25c2efd3)
+
+running 8 tests
+test illegal_frames_are_protocol_errors_never_panics_or_partial_data ... ok
+test side_band_channel_bytes_survive_verbatim ... ok
+test write_direction_matches_spec_roundtrips_and_flushes ... ok
+test accepts_spec_boundary_frames_and_consumes_exactly_one_frame ... ok
+test oracle_and_spec_builder_are_consistent_with_real_git ... ok
+test real_git_v0_advertisement_roundtrips_byte_for_byte ... ok
+test real_git_v2_capability_advertisement_parses ... ok
+test written_request_is_accepted_by_real_git_and_rebuilt_pack_is_valid ... ok
+
+test result: ok. 8 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.01s
+
+     Running tests/verify_refs.rs (target/debug/deps/verify_refs-1cd69fe5f28083ab)
+
+running 9 tests
+test corrupt_and_missing_head_are_typed_errors ... ok
+test note_slash_named_branch_resolution ... ok
+test update_refuses_while_lock_file_exists ... ok
+test read_direction_matches_real_git_after_pack_refs ... ok
+test loose_ref_overrides_packed_entry_like_real_git ... ok
+test resolve_matches_git_for_documented_forms ... ok
+test delete_removes_packed_entry_and_git_agrees ... ok
+test write_direction_is_readable_by_real_git ... ok
+test cas_conflicts_leave_disk_untouched ... ok
+
+test result: ok. 9 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.02s
+
+     Running tests/verify_worktree.rs (target/debug/deps/verify_worktree-5f29378ceb796820)
+
+running 25 tests
+test deviation_malformed_class_is_treated_as_literal ... ok
+test s5_gitignore_ignored_rescued_and_dir_rule_match_git ... ok
+test deviation_negation_inside_excluded_dir ... ok
+test b2_malformed_gitignore_patterns_never_panic ... ok
+test s8_repo_without_commits_matches_git ... ok
+test deviation_tracked_non_utf8_path_is_unsupported ... ok
+test b1_empty_repo_porcelain_is_empty ... ok
+test s4_untracked_file_and_directory_folding_match_git ... ok
+test deviation_type_change_regular_to_symlink ... ok
+test deviation_intent_to_add ... ok
+test head_tree_tree_mode_entries_are_ignored ... ok
+test s10_rm_cached_matches_git ... ok
+test non_utf8_untracked_path_matches_git ... ok
+test s3_staged_new_file_matches_git ... ok
+test s6_worktree_exec_bit_change_matches_git ... ok
+test s2_staged_modification_matches_git ... ok
+test b4_porcelain_groups_changed_before_untracked ... ok
+test s1_tracked_modification_and_deletion_match_git ... ok
+test s7_symlink_target_change_matches_git ... ok
+test harness_detects_deliberately_wrong_inputs ... ok
+test b3_deep_sparse_tree_ordering_matches_git ... ok
+test scan_worktree_matches_git_ls_files_oracles ... ok
+test mixed_states_stress_matches_git ... ok
+test ignore_engine_matches_git_check_ignore ... ok
+test s9_merge_conflict_uu_matches_git ... ok
+
+test result: ok. 25 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.06s
+
+   Doc-tests minigit
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+

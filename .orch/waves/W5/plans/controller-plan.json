@@ -1,0 +1,20 @@
+{
+  "commands": [
+    {"argv": ["rustc", "-vV"], "timeout_seconds": 10},
+    {"argv": ["cargo", "--version"], "timeout_seconds": 10},
+    {"argv": ["python3", "--version"], "timeout_seconds": 10},
+    {"argv": ["cargo", "test", "--offline"], "timeout_seconds": 300},
+    {"argv": ["cargo", "build", "--release", "--offline"], "timeout_seconds": 300},
+    {"argv": ["cargo", "test", "--release", "--offline"], "timeout_seconds": 300},
+    {"argv": ["python3", "-c", "import subprocess,sys\nB=sys.argv[1]\ndef run(args):\n    return subprocess.run([B,*args],capture_output=True,text=True,timeout=10)\nr=run(['--version'])\nassert (r.returncode,r.stdout,r.stderr)==(0,'linestat 1.0.0\\n',''), repr((r.returncode,r.stdout,r.stderr))\nr=run([])\nassert (r.returncode,r.stdout)==(2,''), repr((r.returncode,r.stdout))\nprint('controller smoke passed')", "{build}/cargo/release/linestat"], "timeout_seconds": 30}
+  ],
+  "artifacts": ["build/cargo/release/linestat"],
+  "dependencies": {"rustc": null, "cargo": null, "python3": null},
+  "environment": {
+    "CARGO_HOME": "{cache}/cargo-home",
+    "CARGO_TARGET_DIR": "{build}/cargo",
+    "CARGO_PROFILE_DEV_DEBUG_ASSERTIONS": "true",
+    "CARGO_PROFILE_TEST_DEBUG_ASSERTIONS": "true",
+    "CARGO_PROFILE_RELEASE_DEBUG_ASSERTIONS": "false"
+  }
+}

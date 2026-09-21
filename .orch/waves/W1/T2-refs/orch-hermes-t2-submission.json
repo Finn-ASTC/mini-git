@@ -1,0 +1,22 @@
+{
+  "active_request": "/home/user/Projects/mini-git/.orch/rounds/W1/agent-orchestrator-dbup2s32/request.json",
+  "job_id": "a89c1d1104694669ace925c701670f78",
+  "round_id": "903794876fe345d0aaa36963da096493",
+  "transport": "insider (default session)",
+  "session": "default",
+  "agent": "orch-hermes-t2",
+  "pane": "wN:p1",
+  "workspace": "wN",
+  "cwd": "/home/user/Projects/mini-git",
+  "task": "T2 refs (hermes author)",
+  "submitted_at": "2026-09-19T11:31:35.372570+00:00",
+  "acceptance": "accepted",
+  "submission_evidence": "herdr agent prompt -> {\"type\":\"agent_prompted\"}; pane read 显示该 agent 已在读源码/跑命令",
+  "deadline": "2026-09-19T12:31:00+00:00",
+  "monitor_owner": "controller (codex-cli, session default, pane wJ:p1)",
+  "last_checked_at": "2026-09-19T11:31:35.372570+00:00",
+  "next_check_at": null,
+  "pending_question": null,
+  "resources_file": "/home/user/Projects/mini-git/.orch/rounds/W1/agent-orchestrator-dbup2s32/resources.json",
+  "result_path": "/home/user/Projects/mini-git/.orch/rounds/W1/agent-orchestrator-dbup2s32/result.json"
+}

@@ -1,0 +1,198 @@
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.02s
+     Running tests/verify_pack.rs (target/debug/deps/verify_pack-60c728c9cf6ed72a)
+
+running 10 tests
+[delta-api] OK: base-size 不符 / opcode 0x00 / copy 越界 / target-size 两个方向不符 / insert 越界 / 头截断 -> 全部 Corrupt（无 panic）
+test delta_module_rejects_malformed_instruction_streams ... ok
+[corrupt] .idx: truncated / magic / version=3 / trailing checksum -> 全部 Corrupt
+[corrupt] .idx fanout 非单调 -> Corrupt
+[corrupt] .pack: truncated / magic / version=9 / trailing checksum -> 全部 Corrupt
+[corrupt] 对象类型 5 -> Corrupt (/tmp/.tmp2sACeI/reserved-type.pack: object at offset 12 has type 5 (reserved))
+[corrupt] 改写真实 delta：copy 超出 base -> Corrupt (pack delta: copy range 2147483647..2147549183 is outside the base (108 bytes))
+[corrupt] 真实 idx + 大 offset 表指向 < 2^31 的值 -> Corrupt (/tmp/.tmp2sACeI/small-big-offset.idx: pack index: 64-bit offset #0 is 307101, but such offsets must be >= 2^31)
+[corrupt] 好 pack 旁边的垃圾 .idx -> PackSet::open Corrupt（未静默跳过）
+test corrupt_index_and_pack_files_are_rejected ... ok
+[delta-chains] pack=pack-2b40984d01c47466e6ae1d85313f21668cf6a8f1.pack objects=80
+[delta-chains] git verify-pack -v 汇总: non delta: 20 objects | chain length = 1: 22 objects | chain length = 2: 22 objects | chain length = 3: 16 objects
+[delta-chains] depth=2 oid=dc6c1fe336115ea69600cca2a552ad1e2877bfa0 type=blob offset=306275 base=7ec7020577216258fbcae4138d1eb411e46697b9 payload=6425B -> 与 `git cat-file` 逐字节相同
+[delta-chains] depth=3 oid=8ccc6466e550d67e9de9784abc62a1e6e0514975 type=blob offset=306374 base=dc6c1fe336115ea69600cca2a552ad1e2877bfa0 payload=6392B -> 与 `git cat-file` 逐字节相同
+[delta-chains] depth=2 oid=39436f7e95b97778ef3708ffb5410d22357bc7a6 type=blob offset=306470 base=24d3d88434b740c74e8e0a9b0c4bbfdd3e11f8e3 payload=6381B -> 与 `git cat-file` 逐字节相同
+[delta-chains] depth=2 oid=e7ebccfcae96fce16991e82b34b2cb653a4861a7 type=blob offset=306564 base=24d3d88434b740c74e8e0a9b0c4bbfdd3e11f8e3 payload=6414B -> 与 `git cat-file` 逐字节相同
+[delta-chains] depth=2 oid=a8ea366dae674c18a9be868b8a101fd1b0487faf type=blob offset=306634 base=c9ef760fffc5067d1efd513d9d91bc376ced0309 payload=6403B -> 与 `git cat-file` 逐字节相同
+[delta-chains] depth=3 oid=9ae2a3764d9724ec17d1b5a9efdb50096d01d7fe type=blob offset=306744 base=a8ea366dae674c18a9be868b8a101fd1b0487faf payload=6370B -> 与 `git cat-file` 逐字节相同
+[delta-chains] depth=2 oid=34d1d7c449c21160c76f6a2f3ffdbaff8d901c4f type=blob offset=306826 base=a20c0051853e54da2700912c4a37a59f255eff3e payload=6392B -> 与 `git cat-file` 逐字节相同
+[delta-chains] depth=3 oid=b1476c489482406e1715f248fdd73305876a0d72 type=blob offset=306910 base=34d1d7c449c21160c76f6a2f3ffdbaff8d901c4f payload=6359B -> 与 `git cat-file` 逐字节相同
+[delta-chains] depth=2 oid=c9056665a51661dd18beaef86468531b818f1452 type=blob offset=307001 base=32623a501a70093cc58d55823bf07101a77944ed payload=6430B -> 与 `git cat-file` 逐字节相同
+[delta-chains] depth=3 oid=05c407ad36d6a9a26312d630f4a730172ed95105 type=blob offset=307101 base=c9056665a51661dd18beaef86468531b818f1452 payload=6400B -> 与 `git cat-file` 逐字节相同
+[delta-chains] depth=2 oid=9aab21f03256ba4cf30d3011c8e9962085ac8348 type=blob offset=307171 base=971e585af1516a0bed8fe8bfb93881cb7315baa1 payload=6420B -> 与 `git cat-file` 逐字节相同
+[delta-chains] depth=3 oid=e5f001aa3b1fe1b77a94d9317fc74f6a535cd918 type=blob offset=307275 base=9aab21f03256ba4cf30d3011c8e9962085ac8348 payload=6390B -> 与 `git cat-file` 逐字节相同
+[delta-chains] depth=2 oid=9193fda4eca33367b37ef079d04af0866e47a1af type=blob offset=307392 base=f8bd47180ca3ef28f843c85d92844f81c6478c86 payload=6410B -> 与 `git cat-file` 逐字节相同
+[delta-chains] depth=3 oid=9ad536e1857ac2524f468dfc9842a184f01f029b type=blob offset=307508 base=9193fda4eca33367b37ef079d04af0866e47a1af payload=6380B -> 与 `git cat-file` 逐字节相同
+[delta-chains] depth=2 oid=a94e7205440d8ab5dd9ee037afb0dde34effe2a7 type=blob offset=307616 base=c76943d3ba4236b23d88786d09445c2ac974f22e payload=6370B -> 与 `git cat-file` 逐字节相同
+[delta-chains] depth=2 oid=c123c86acf14b13e4ec282970677baabd754f975 type=blob offset=307728 base=c76943d3ba4236b23d88786d09445c2ac974f22e payload=6400B -> 与 `git cat-file` 逐字节相同
+[delta-chains] depth=2 oid=2cab90a5c05e9db650f1c7035e4c3288b805ed98 type=blob offset=308396 base=551f7a72a20aa2c7964d950e6b707d7976319131 payload=6400B -> 与 `git cat-file` 逐字节相同
+[delta-chains] depth=2 oid=a335f02e15ce49cba244ab48da3ea77d074696fd type=blob offset=308516 base=551f7a72a20aa2c7964d950e6b707d7976319131 payload=6436B -> 与 `git cat-file` 逐字节相同
+[delta-chains] depth=2 oid=6cc3d503b53a88c3a9d10c9a4b45a3d46347fa6c type=blob offset=308617 base=551f7a72a20aa2c7964d950e6b707d7976319131 payload=6425B -> 与 `git cat-file` 逐字节相同
+[delta-chains] depth=2 oid=890858049bc5aafe08855d55f0cc8ec499f8f7fc type=blob offset=308729 base=551f7a72a20aa2c7964d950e6b707d7976319131 payload=6440B -> 与 `git cat-file` 逐字节相同
+[delta-chains] depth=3 oid=99837dabba2809dc142ea21d96c94f6e1721b7e2 type=blob offset=308849 base=a335f02e15ce49cba244ab48da3ea77d074696fd payload=6403B -> 与 `git cat-file` 逐字节相同
+[delta-chains] depth=3 oid=7caed0af4f488a553872340567ad467ae4e87e70 type=blob offset=308952 base=6cc3d503b53a88c3a9d10c9a4b45a3d46347fa6c payload=6392B -> 与 `git cat-file` 逐字节相同
+[delta-chains] depth=3 oid=0b0c222e4f72e29fecec60c307a480d7a440f226 type=blob offset=309052 base=890858049bc5aafe08855d55f0cc8ec499f8f7fc payload=6410B -> 与 `git cat-file` 逐字节相同
+[delta-chains] depth=2 oid=9d29190c66493d002a87db78a43e3fd555756ad1 type=blob offset=310111 base=7b5200a18f2848be65edf98441cc2785ad56a558 payload=6414B -> 与 `git cat-file` 逐字节相同
+[delta-chains] depth=3 oid=f7e1bafcc7cf0abe6795138b77854214013d8689 type=blob offset=310196 base=9d29190c66493d002a87db78a43e3fd555756ad1 payload=6381B -> 与 `git cat-file` 逐字节相同
+[delta-chains] depth=2 oid=b6ce04a8d65bf2820c3e61a2a54dc7b4e6ebf0c8 type=blob offset=310290 base=7d46bbfc4f2c1f91f1d00c85135aa448dd676eda payload=6403B -> 与 `git cat-file` 逐字节相同
+[delta-chains] depth=3 oid=f4b080f90f64ac1d179a326b2e05efca07ddd4ab type=blob offset=310394 base=b6ce04a8d65bf2820c3e61a2a54dc7b4e6ebf0c8 payload=6370B -> 与 `git cat-file` 逐字节相同
+[delta-chains] depth=2 oid=8f11a44a2b6b6fddb54712e5a5a72ffe931185c1 type=blob offset=310507 base=41d115082148e1669e953071c47fa9e59c0ecbf2 payload=6392B -> 与 `git cat-file` 逐字节相同
+[delta-chains] depth=3 oid=dd42d596cb8ef94e17240587aae7352b52f54633 type=blob offset=310580 base=8f11a44a2b6b6fddb54712e5a5a72ffe931185c1 payload=6359B -> 与 `git cat-file` 逐字节相同
+[delta-chains] depth=2 oid=6fe00a3fd30d8e8bde9a400693496579431694ca type=blob offset=310684 base=ea651acdcaeaa4a516a5925fd2d8a3a54a29858f payload=6420B -> 与 `git cat-file` 逐字节相同
+[delta-chains] depth=3 oid=58792b60dcd14a2fde8baa7a5cfd3be3c27682a9 type=blob offset=310755 base=6fe00a3fd30d8e8bde9a400693496579431694ca payload=6390B -> 与 `git cat-file` 逐字节相同
+[delta-chains] depth=2 oid=1d34d7751736e02fe366a6f0c2b18fc4a6f03c2f type=blob offset=310862 base=c6254a12d7dbb1d0126d202f3cc3140507708ccc payload=6410B -> 与 `git cat-file` 逐字节相同
+[delta-chains] depth=3 oid=9bb32dba8eb81af44d6911714e2ee51194bc18da type=blob offset=310981 base=1d34d7751736e02fe366a6f0c2b18fc4a6f03c2f payload=6380B -> 与 `git cat-file` 逐字节相同
+[delta-chains] depth=2 oid=342018bf9831b7e6a13096d0616d92c0aac326a4 type=blob offset=311069 base=452e61fd2c4cf24826ea909b55143e473ae78235 payload=6400B -> 与 `git cat-file` 逐字节相同
+[delta-chains] depth=3 oid=7f70d515b81cd3949f984864a9fdf93514d014e9 type=blob offset=311162 base=342018bf9831b7e6a13096d0616d92c0aac326a4 payload=6370B -> 与 `git cat-file` 逐字节相同
+[delta-chains] depth=2 oid=1d8b76db1ad97d8c182fdbadd2161051ff4f9172 type=blob offset=311271 base=31680e58c59d918df85c01cbcf7fa7d090c00770 payload=6410B -> 与 `git cat-file` 逐字节相同
+[delta-chains] depth=2 oid=0cabdd5637af2ea0a5c175b0949dc4837ec6fbf7 type=blob offset=311381 base=31680e58c59d918df85c01cbcf7fa7d090c00770 payload=6436B -> 与 `git cat-file` 逐字节相同
+[delta-chains] depth=3 oid=4b113a1d16f6807a9b5b1d26f0314ff8e9ce361a type=blob offset=311483 base=0cabdd5637af2ea0a5c175b0949dc4837ec6fbf7 payload=6403B -> 与 `git cat-file` 逐字节相同
+[delta-chains] OK: delta objects=60 max chain depth=3; 每条链与 `git cat-file` 逐字节相同
+test multi_level_ofs_delta_chains_decode_byte_for_byte ... ok
+[ref-delta] depth=2 oid=dc6c1fe336115ea69600cca2a552ad1e2877bfa0 base=7ec7020577216258fbcae4138d1eb411e46697b9 -> OK
+[ref-delta] depth=3 oid=8ccc6466e550d67e9de9784abc62a1e6e0514975 base=dc6c1fe336115ea69600cca2a552ad1e2877bfa0 -> OK
+[ref-delta] depth=2 oid=39436f7e95b97778ef3708ffb5410d22357bc7a6 base=24d3d88434b740c74e8e0a9b0c4bbfdd3e11f8e3 -> OK
+[ref-delta] depth=2 oid=e7ebccfcae96fce16991e82b34b2cb653a4861a7 base=24d3d88434b740c74e8e0a9b0c4bbfdd3e11f8e3 -> OK
+[ref-delta] depth=2 oid=a8ea366dae674c18a9be868b8a101fd1b0487faf base=c9ef760fffc5067d1efd513d9d91bc376ced0309 -> OK
+[ref-delta] depth=3 oid=9ae2a3764d9724ec17d1b5a9efdb50096d01d7fe base=a8ea366dae674c18a9be868b8a101fd1b0487faf -> OK
+[ref-delta] depth=2 oid=34d1d7c449c21160c76f6a2f3ffdbaff8d901c4f base=a20c0051853e54da2700912c4a37a59f255eff3e -> OK
+[ref-delta] depth=3 oid=b1476c489482406e1715f248fdd73305876a0d72 base=34d1d7c449c21160c76f6a2f3ffdbaff8d901c4f -> OK
+[ref-delta] depth=2 oid=c9056665a51661dd18beaef86468531b818f1452 base=32623a501a70093cc58d55823bf07101a77944ed -> OK
+[ref-delta] depth=3 oid=05c407ad36d6a9a26312d630f4a730172ed95105 base=c9056665a51661dd18beaef86468531b818f1452 -> OK
+[ref-delta] depth=2 oid=9aab21f03256ba4cf30d3011c8e9962085ac8348 base=971e585af1516a0bed8fe8bfb93881cb7315baa1 -> OK
+[ref-delta] depth=3 oid=e5f001aa3b1fe1b77a94d9317fc74f6a535cd918 base=9aab21f03256ba4cf30d3011c8e9962085ac8348 -> OK
+[ref-delta] depth=2 oid=9193fda4eca33367b37ef079d04af0866e47a1af base=f8bd47180ca3ef28f843c85d92844f81c6478c86 -> OK
+[ref-delta] depth=3 oid=9ad536e1857ac2524f468dfc9842a184f01f029b base=9193fda4eca33367b37ef079d04af0866e47a1af -> OK
+[ref-delta] depth=2 oid=a94e7205440d8ab5dd9ee037afb0dde34effe2a7 base=c76943d3ba4236b23d88786d09445c2ac974f22e -> OK
+[ref-delta] depth=2 oid=c123c86acf14b13e4ec282970677baabd754f975 base=c76943d3ba4236b23d88786d09445c2ac974f22e -> OK
+[ref-delta] depth=2 oid=2cab90a5c05e9db650f1c7035e4c3288b805ed98 base=551f7a72a20aa2c7964d950e6b707d7976319131 -> OK
+[ref-delta] depth=2 oid=a335f02e15ce49cba244ab48da3ea77d074696fd base=551f7a72a20aa2c7964d950e6b707d7976319131 -> OK
+[ref-delta] depth=2 oid=6cc3d503b53a88c3a9d10c9a4b45a3d46347fa6c base=551f7a72a20aa2c7964d950e6b707d7976319131 -> OK
+[ref-delta] depth=2 oid=890858049bc5aafe08855d55f0cc8ec499f8f7fc base=551f7a72a20aa2c7964d950e6b707d7976319131 -> OK
+[ref-delta] depth=3 oid=99837dabba2809dc142ea21d96c94f6e1721b7e2 base=a335f02e15ce49cba244ab48da3ea77d074696fd -> OK
+[ref-delta] depth=3 oid=7caed0af4f488a553872340567ad467ae4e87e70 base=6cc3d503b53a88c3a9d10c9a4b45a3d46347fa6c -> OK
+[ref-delta] depth=3 oid=0b0c222e4f72e29fecec60c307a480d7a440f226 base=890858049bc5aafe08855d55f0cc8ec499f8f7fc -> OK
+[ref-delta] depth=2 oid=1d8b76db1ad97d8c182fdbadd2161051ff4f9172 base=31680e58c59d918df85c01cbcf7fa7d090c00770 -> OK
+[ref-delta] depth=2 oid=0cabdd5637af2ea0a5c175b0949dc4837ec6fbf7 base=31680e58c59d918df85c01cbcf7fa7d090c00770 -> OK
+[ref-delta] depth=3 oid=4b113a1d16f6807a9b5b1d26f0314ff8e9ce361a base=0cabdd5637af2ea0a5c175b0949dc4837ec6fbf7 -> OK
+[ref-delta] depth=2 oid=9d29190c66493d002a87db78a43e3fd555756ad1 base=7b5200a18f2848be65edf98441cc2785ad56a558 -> OK
+[ref-delta] depth=3 oid=f7e1bafcc7cf0abe6795138b77854214013d8689 base=9d29190c66493d002a87db78a43e3fd555756ad1 -> OK
+[ref-delta] depth=2 oid=b6ce04a8d65bf2820c3e61a2a54dc7b4e6ebf0c8 base=7d46bbfc4f2c1f91f1d00c85135aa448dd676eda -> OK
+[ref-delta] depth=3 oid=f4b080f90f64ac1d179a326b2e05efca07ddd4ab base=b6ce04a8d65bf2820c3e61a2a54dc7b4e6ebf0c8 -> OK
+[ref-delta] depth=2 oid=8f11a44a2b6b6fddb54712e5a5a72ffe931185c1 base=41d115082148e1669e953071c47fa9e59c0ecbf2 -> OK
+[ref-delta] depth=3 oid=dd42d596cb8ef94e17240587aae7352b52f54633 base=8f11a44a2b6b6fddb54712e5a5a72ffe931185c1 -> OK
+[ref-delta] depth=2 oid=6fe00a3fd30d8e8bde9a400693496579431694ca base=ea651acdcaeaa4a516a5925fd2d8a3a54a29858f -> OK
+[ref-delta] depth=3 oid=58792b60dcd14a2fde8baa7a5cfd3be3c27682a9 base=6fe00a3fd30d8e8bde9a400693496579431694ca -> OK
+[ref-delta] depth=2 oid=1d34d7751736e02fe366a6f0c2b18fc4a6f03c2f base=c6254a12d7dbb1d0126d202f3cc3140507708ccc -> OK
+[ref-delta] depth=3 oid=9bb32dba8eb81af44d6911714e2ee51194bc18da base=1d34d7751736e02fe366a6f0c2b18fc4a6f03c2f -> OK
+[ref-delta] depth=2 oid=342018bf9831b7e6a13096d0616d92c0aac326a4 base=452e61fd2c4cf24826ea909b55143e473ae78235 -> OK
+[ref-delta] depth=3 oid=7f70d515b81cd3949f984864a9fdf93514d014e9 base=342018bf9831b7e6a13096d0616d92c0aac326a4 -> OK
+[ref-delta] pack pack-3c3eb124ba81adc30d8588d9d05c465ed0c4bd3d.pack: 80 objects (60 delta), all byte-identical to `git cat-file`
+[ref-delta] without .idx: REF_DELTA -> Unsupported; stored object at 12 -> Commit 202B OK
+test ref_delta_pack_reads_with_index_and_is_unsupported_without_one ... ok
+[multi-pack] OK: 2 indices, 80 oids present in both packs, all identical to each other and to `git cat-file`; PackSet::iter_oids 与 git 集合相同
+test multiple_packs_with_overlapping_objects_agree ... ok
+[gc-aggressive] dir=/tmp/.tmpvyr4nR
+[gc-aggressive] verify-pack depth=3 oid=8ccc6466e550d67e9de9784abc62a1e6e0514975 type=blob size=149 size_in_pack=96 offset=306424 base=dc6c1fe336115ea69600cca2a552ad1e2877bfa0
+[gc-aggressive] verify-pack depth=3 oid=9ae2a3764d9724ec17d1b5a9efdb50096d01d7fe type=blob size=121 size_in_pack=82 offset=306794 base=a8ea366dae674c18a9be868b8a101fd1b0487faf
+[gc-aggressive] verify-pack depth=3 oid=b1476c489482406e1715f248fdd73305876a0d72 type=blob size=131 size_in_pack=91 offset=306960 base=34d1d7c449c21160c76f6a2f3ffdbaff8d901c4f
+[gc-aggressive] verify-pack depth=3 oid=1d8b76db1ad97d8c182fdbadd2161051ff4f9172 type=blob size=158 size_in_pack=110 offset=307570 base=31680e58c59d918df85c01cbcf7fa7d090c00770
+[gc-aggressive] verify-pack depth=3 oid=6cc3d503b53a88c3a9d10c9a4b45a3d46347fa6c type=blob size=77 size_in_pack=74 offset=307680 base=31680e58c59d918df85c01cbcf7fa7d090c00770
+[gc-aggressive] verify-pack depth=3 oid=0cabdd5637af2ea0a5c175b0949dc4837ec6fbf7 type=blob size=115 size_in_pack=102 offset=307754 base=31680e58c59d918df85c01cbcf7fa7d090c00770
+[gc-aggressive] verify-pack depth=3 oid=890858049bc5aafe08855d55f0cc8ec499f8f7fc type=blob size=122 size_in_pack=108 offset=307856 base=31680e58c59d918df85c01cbcf7fa7d090c00770
+[gc-aggressive] verify-pack depth=4 oid=7caed0af4f488a553872340567ad467ae4e87e70 type=blob size=96 size_in_pack=80 offset=307964 base=1d8b76db1ad97d8c182fdbadd2161051ff4f9172
+[gc-aggressive] verify-pack depth=4 oid=0b0c222e4f72e29fecec60c307a480d7a440f226 type=blob size=139 size_in_pack=92 offset=308044 base=890858049bc5aafe08855d55f0cc8ec499f8f7fc
+[gc-aggressive] verify-pack depth=4 oid=a335f02e15ce49cba244ab48da3ea77d074696fd type=blob size=119 size_in_pack=107 offset=308136 base=890858049bc5aafe08855d55f0cc8ec499f8f7fc
+[gc-aggressive] verify-pack depth=5 oid=99837dabba2809dc142ea21d96c94f6e1721b7e2 type=blob size=159 size_in_pack=102 offset=308243 base=a335f02e15ce49cba244ab48da3ea77d074696fd
+[gc-aggressive] verify-pack depth=3 oid=551f7a72a20aa2c7964d950e6b707d7976319131 type=blob size=119 size_in_pack=81 offset=308345 base=5cb49a58917da7226e067b0dbf28a78fef230ca4
+[gc-aggressive] verify-pack depth=3 oid=b9c4efdc71558a339a2279ad6f63e18c79c4e19b type=blob size=51 size_in_pack=55 offset=308426 base=5cb49a58917da7226e067b0dbf28a78fef230ca4
+[gc-aggressive] verify-pack depth=4 oid=2cab90a5c05e9db650f1c7035e4c3288b805ed98 type=blob size=187 size_in_pack=121 offset=308481 base=551f7a72a20aa2c7964d950e6b707d7976319131
+[gc-aggressive] verify-pack depth=3 oid=6fe00a3fd30d8e8bde9a400693496579431694ca type=blob size=100 size_in_pack=71 offset=308602 base=ea651acdcaeaa4a516a5925fd2d8a3a54a29858f
+[gc-aggressive] verify-pack depth=4 oid=58792b60dcd14a2fde8baa7a5cfd3be3c27682a9 type=blob size=139 size_in_pack=107 offset=308673 base=6fe00a3fd30d8e8bde9a400693496579431694ca
+[gc-aggressive] verify-pack depth=3 oid=1d34d7751736e02fe366a6f0c2b18fc4a6f03c2f type=blob size=164 size_in_pack=119 offset=308780 base=c6254a12d7dbb1d0126d202f3cc3140507708ccc
+[gc-aggressive] verify-pack depth=4 oid=9bb32dba8eb81af44d6911714e2ee51194bc18da type=blob size=125 size_in_pack=88 offset=308899 base=1d34d7751736e02fe366a6f0c2b18fc4a6f03c2f
+[gc-aggressive] verify-pack depth=3 oid=342018bf9831b7e6a13096d0616d92c0aac326a4 type=blob size=121 size_in_pack=93 offset=308987 base=452e61fd2c4cf24826ea909b55143e473ae78235
+[gc-aggressive] verify-pack depth=4 oid=7f70d515b81cd3949f984864a9fdf93514d014e9 type=blob size=149 size_in_pack=109 offset=309080 base=342018bf9831b7e6a13096d0616d92c0aac326a4
+[gc-aggressive] verify-pack depth=3 oid=05c407ad36d6a9a26312d630f4a730172ed95105 type=blob size=96 size_in_pack=70 offset=309289 base=c9056665a51661dd18beaef86468531b818f1452
+[gc-aggressive] verify-pack depth=3 oid=9d29190c66493d002a87db78a43e3fd555756ad1 type=blob size=100 size_in_pack=86 offset=309359 base=c9056665a51661dd18beaef86468531b818f1452
+[gc-aggressive] verify-pack depth=4 oid=f7e1bafcc7cf0abe6795138b77854214013d8689 type=blob size=123 size_in_pack=96 offset=309445 base=05c407ad36d6a9a26312d630f4a730172ed95105
+[gc-aggressive] verify-pack depth=3 oid=e5f001aa3b1fe1b77a94d9317fc74f6a535cd918 type=blob size=179 size_in_pack=118 offset=309715 base=9aab21f03256ba4cf30d3011c8e9962085ac8348
+[gc-aggressive] verify-pack depth=3 oid=b6ce04a8d65bf2820c3e61a2a54dc7b4e6ebf0c8 type=blob size=103 size_in_pack=92 offset=309833 base=9aab21f03256ba4cf30d3011c8e9962085ac8348
+[gc-aggressive] verify-pack depth=4 oid=f4b080f90f64ac1d179a326b2e05efca07ddd4ab type=blob size=148 size_in_pack=109 offset=309925 base=e5f001aa3b1fe1b77a94d9317fc74f6a535cd918
+[gc-aggressive] verify-pack depth=3 oid=9ad536e1857ac2524f468dfc9842a184f01f029b type=blob size=136 size_in_pack=109 offset=310231 base=9193fda4eca33367b37ef079d04af0866e47a1af
+[gc-aggressive] verify-pack depth=3 oid=8f11a44a2b6b6fddb54712e5a5a72ffe931185c1 type=blob size=106 size_in_pack=73 offset=310340 base=41d115082148e1669e953071c47fa9e59c0ecbf2
+[gc-aggressive] verify-pack depth=4 oid=dd42d596cb8ef94e17240587aae7352b52f54633 type=blob size=122 size_in_pack=104 offset=310413 base=8f11a44a2b6b6fddb54712e5a5a72ffe931185c1
+[gc-aggressive] verify-pack depth=3 oid=4b113a1d16f6807a9b5b1d26f0314ff8e9ce361a type=blob size=166 size_in_pack=133 offset=310698 base=a94e7205440d8ab5dd9ee037afb0dde34effe2a7
+[gc-aggressive] pack-1a2f089c21efdd541391b57ddb5870c39f7a6f8f.idx: 80 objects, chain histogram [depth0=18, depth1=12, depth2=20, depth3=19, depth4=10, depth5=1]
+[gc-aggressive] OK: objects=80 packs=1 oid-set identical, every object byte-identical to `git cat-file`, idx offsets identical to `git verify-pack`; chain histogram [depth0=18, depth1=12, depth2=20, depth3=19, depth4=10, depth5=1]
+[gc-aggressive] deepest chain (depth 5): [gc-aggressive] verify-pack depth=5 oid=99837dabba2809dc142ea21d96c94f6e1721b7e2 type=blob size=159 size_in_pack=102 offset=308243 base=a335f02e15ce49cba244ab48da3ea77d074696fd
+test gc_aggressive_matches_git_byte_for_byte ... ok
+[repack-adf] dir=/tmp/.tmpuVM6LA
+[repack-adf] verify-pack depth=3 oid=8ccc6466e550d67e9de9784abc62a1e6e0514975 type=blob size=149 size_in_pack=96 offset=306374 base=dc6c1fe336115ea69600cca2a552ad1e2877bfa0
+[repack-adf] verify-pack depth=3 oid=9ae2a3764d9724ec17d1b5a9efdb50096d01d7fe type=blob size=121 size_in_pack=82 offset=306744 base=a8ea366dae674c18a9be868b8a101fd1b0487faf
+[repack-adf] verify-pack depth=3 oid=b1476c489482406e1715f248fdd73305876a0d72 type=blob size=131 size_in_pack=91 offset=306910 base=34d1d7c449c21160c76f6a2f3ffdbaff8d901c4f
+[repack-adf] verify-pack depth=3 oid=05c407ad36d6a9a26312d630f4a730172ed95105 type=blob size=96 size_in_pack=70 offset=307101 base=c9056665a51661dd18beaef86468531b818f1452
+[repack-adf] verify-pack depth=3 oid=e5f001aa3b1fe1b77a94d9317fc74f6a535cd918 type=blob size=179 size_in_pack=117 offset=307275 base=9aab21f03256ba4cf30d3011c8e9962085ac8348
+[repack-adf] verify-pack depth=3 oid=9ad536e1857ac2524f468dfc9842a184f01f029b type=blob size=136 size_in_pack=108 offset=307508 base=9193fda4eca33367b37ef079d04af0866e47a1af
+[repack-adf] verify-pack depth=3 oid=99837dabba2809dc142ea21d96c94f6e1721b7e2 type=blob size=159 size_in_pack=103 offset=308849 base=a335f02e15ce49cba244ab48da3ea77d074696fd
+[repack-adf] verify-pack depth=3 oid=7caed0af4f488a553872340567ad467ae4e87e70 type=blob size=124 size_in_pack=100 offset=308952 base=6cc3d503b53a88c3a9d10c9a4b45a3d46347fa6c
+[repack-adf] verify-pack depth=3 oid=0b0c222e4f72e29fecec60c307a480d7a440f226 type=blob size=139 size_in_pack=92 offset=309052 base=890858049bc5aafe08855d55f0cc8ec499f8f7fc
+[repack-adf] verify-pack depth=3 oid=f7e1bafcc7cf0abe6795138b77854214013d8689 type=blob size=170 size_in_pack=94 offset=310196 base=9d29190c66493d002a87db78a43e3fd555756ad1
+[repack-adf] verify-pack depth=3 oid=f4b080f90f64ac1d179a326b2e05efca07ddd4ab type=blob size=189 size_in_pack=113 offset=310394 base=b6ce04a8d65bf2820c3e61a2a54dc7b4e6ebf0c8
+[repack-adf] verify-pack depth=3 oid=dd42d596cb8ef94e17240587aae7352b52f54633 type=blob size=122 size_in_pack=104 offset=310580 base=8f11a44a2b6b6fddb54712e5a5a72ffe931185c1
+[repack-adf] verify-pack depth=3 oid=58792b60dcd14a2fde8baa7a5cfd3be3c27682a9 type=blob size=139 size_in_pack=107 offset=310755 base=6fe00a3fd30d8e8bde9a400693496579431694ca
+[repack-adf] verify-pack depth=3 oid=9bb32dba8eb81af44d6911714e2ee51194bc18da type=blob size=125 size_in_pack=88 offset=310981 base=1d34d7751736e02fe366a6f0c2b18fc4a6f03c2f
+[repack-adf] verify-pack depth=3 oid=7f70d515b81cd3949f984864a9fdf93514d014e9 type=blob size=149 size_in_pack=109 offset=311162 base=342018bf9831b7e6a13096d0616d92c0aac326a4
+[repack-adf] verify-pack depth=3 oid=4b113a1d16f6807a9b5b1d26f0314ff8e9ce361a type=blob size=173 size_in_pack=110 offset=311483 base=0cabdd5637af2ea0a5c175b0949dc4837ec6fbf7
+[repack-adf] pack-2b40984d01c47466e6ae1d85313f21668cf6a8f1.idx: 80 objects, chain histogram [depth0=20, depth1=22, depth2=22, depth3=16]
+[repack-adf] OK: objects=80 packs=1 oid-set identical, every object byte-identical to `git cat-file`, idx offsets identical to `git verify-pack`; chain histogram [depth0=20, depth1=22, depth2=22, depth3=16]
+[repack-adf] deepest chain (depth 3): [repack-adf] verify-pack depth=3 oid=8ccc6466e550d67e9de9784abc62a1e6e0514975 type=blob size=149 size_in_pack=96 offset=306374 base=dc6c1fe336115ea69600cca2a552ad1e2877bfa0
+test plain_repack_matches_git_byte_for_byte ... ok
+[repack-window50-depth50] dir=/tmp/.tmpdlnTIA
+[repack-window50-depth50] verify-pack depth=3 oid=8ccc6466e550d67e9de9784abc62a1e6e0514975 type=blob size=149 size_in_pack=96 offset=306424 base=dc6c1fe336115ea69600cca2a552ad1e2877bfa0
+[repack-window50-depth50] verify-pack depth=3 oid=9ae2a3764d9724ec17d1b5a9efdb50096d01d7fe type=blob size=121 size_in_pack=82 offset=306794 base=a8ea366dae674c18a9be868b8a101fd1b0487faf
+[repack-window50-depth50] verify-pack depth=3 oid=b1476c489482406e1715f248fdd73305876a0d72 type=blob size=131 size_in_pack=91 offset=306960 base=34d1d7c449c21160c76f6a2f3ffdbaff8d901c4f
+[repack-window50-depth50] verify-pack depth=3 oid=b9c4efdc71558a339a2279ad6f63e18c79c4e19b type=blob size=51 size_in_pack=55 offset=307570 base=5cb49a58917da7226e067b0dbf28a78fef230ca4
+[repack-window50-depth50] verify-pack depth=3 oid=551f7a72a20aa2c7964d950e6b707d7976319131 type=blob size=119 size_in_pack=81 offset=307625 base=5cb49a58917da7226e067b0dbf28a78fef230ca4
+[repack-window50-depth50] verify-pack depth=4 oid=2cab90a5c05e9db650f1c7035e4c3288b805ed98 type=blob size=187 size_in_pack=120 offset=307706 base=551f7a72a20aa2c7964d950e6b707d7976319131
+[repack-window50-depth50] verify-pack depth=3 oid=6fe00a3fd30d8e8bde9a400693496579431694ca type=blob size=100 size_in_pack=71 offset=307826 base=ea651acdcaeaa4a516a5925fd2d8a3a54a29858f
+[repack-window50-depth50] verify-pack depth=4 oid=58792b60dcd14a2fde8baa7a5cfd3be3c27682a9 type=blob size=139 size_in_pack=107 offset=307897 base=6fe00a3fd30d8e8bde9a400693496579431694ca
+[repack-window50-depth50] verify-pack depth=3 oid=1d34d7751736e02fe366a6f0c2b18fc4a6f03c2f type=blob size=164 size_in_pack=119 offset=308004 base=c6254a12d7dbb1d0126d202f3cc3140507708ccc
+[repack-window50-depth50] verify-pack depth=4 oid=9bb32dba8eb81af44d6911714e2ee51194bc18da type=blob size=125 size_in_pack=88 offset=308123 base=1d34d7751736e02fe366a6f0c2b18fc4a6f03c2f
+[repack-window50-depth50] verify-pack depth=3 oid=342018bf9831b7e6a13096d0616d92c0aac326a4 type=blob size=121 size_in_pack=93 offset=308211 base=452e61fd2c4cf24826ea909b55143e473ae78235
+[repack-window50-depth50] verify-pack depth=4 oid=7f70d515b81cd3949f984864a9fdf93514d014e9 type=blob size=149 size_in_pack=109 offset=308304 base=342018bf9831b7e6a13096d0616d92c0aac326a4
+[repack-window50-depth50] verify-pack depth=3 oid=1d8b76db1ad97d8c182fdbadd2161051ff4f9172 type=blob size=158 size_in_pack=110 offset=308413 base=31680e58c59d918df85c01cbcf7fa7d090c00770
+[repack-window50-depth50] verify-pack depth=3 oid=6cc3d503b53a88c3a9d10c9a4b45a3d46347fa6c type=blob size=77 size_in_pack=74 offset=308523 base=31680e58c59d918df85c01cbcf7fa7d090c00770
+[repack-window50-depth50] verify-pack depth=3 oid=0cabdd5637af2ea0a5c175b0949dc4837ec6fbf7 type=blob size=115 size_in_pack=102 offset=308597 base=31680e58c59d918df85c01cbcf7fa7d090c00770
+[repack-window50-depth50] verify-pack depth=3 oid=890858049bc5aafe08855d55f0cc8ec499f8f7fc type=blob size=122 size_in_pack=108 offset=308699 base=31680e58c59d918df85c01cbcf7fa7d090c00770
+[repack-window50-depth50] verify-pack depth=4 oid=7caed0af4f488a553872340567ad467ae4e87e70 type=blob size=96 size_in_pack=80 offset=308807 base=1d8b76db1ad97d8c182fdbadd2161051ff4f9172
+[repack-window50-depth50] verify-pack depth=4 oid=0b0c222e4f72e29fecec60c307a480d7a440f226 type=blob size=139 size_in_pack=92 offset=308887 base=890858049bc5aafe08855d55f0cc8ec499f8f7fc
+[repack-window50-depth50] verify-pack depth=4 oid=a335f02e15ce49cba244ab48da3ea77d074696fd type=blob size=119 size_in_pack=107 offset=308979 base=890858049bc5aafe08855d55f0cc8ec499f8f7fc
+[repack-window50-depth50] verify-pack depth=5 oid=99837dabba2809dc142ea21d96c94f6e1721b7e2 type=blob size=159 size_in_pack=102 offset=309086 base=a335f02e15ce49cba244ab48da3ea77d074696fd
+[repack-window50-depth50] verify-pack depth=3 oid=05c407ad36d6a9a26312d630f4a730172ed95105 type=blob size=96 size_in_pack=70 offset=309288 base=c9056665a51661dd18beaef86468531b818f1452
+[repack-window50-depth50] verify-pack depth=3 oid=9d29190c66493d002a87db78a43e3fd555756ad1 type=blob size=100 size_in_pack=86 offset=309358 base=c9056665a51661dd18beaef86468531b818f1452
+[repack-window50-depth50] verify-pack depth=4 oid=f7e1bafcc7cf0abe6795138b77854214013d8689 type=blob size=123 size_in_pack=96 offset=309444 base=05c407ad36d6a9a26312d630f4a730172ed95105
+[repack-window50-depth50] verify-pack depth=3 oid=e5f001aa3b1fe1b77a94d9317fc74f6a535cd918 type=blob size=179 size_in_pack=117 offset=309714 base=9aab21f03256ba4cf30d3011c8e9962085ac8348
+[repack-window50-depth50] verify-pack depth=3 oid=b6ce04a8d65bf2820c3e61a2a54dc7b4e6ebf0c8 type=blob size=103 size_in_pack=92 offset=309831 base=9aab21f03256ba4cf30d3011c8e9962085ac8348
+[repack-window50-depth50] verify-pack depth=4 oid=f4b080f90f64ac1d179a326b2e05efca07ddd4ab type=blob size=148 size_in_pack=109 offset=309923 base=e5f001aa3b1fe1b77a94d9317fc74f6a535cd918
+[repack-window50-depth50] verify-pack depth=3 oid=8f11a44a2b6b6fddb54712e5a5a72ffe931185c1 type=blob size=106 size_in_pack=73 offset=310229 base=41d115082148e1669e953071c47fa9e59c0ecbf2
+[repack-window50-depth50] verify-pack depth=4 oid=dd42d596cb8ef94e17240587aae7352b52f54633 type=blob size=122 size_in_pack=104 offset=310302 base=8f11a44a2b6b6fddb54712e5a5a72ffe931185c1
+[repack-window50-depth50] verify-pack depth=3 oid=9ad536e1857ac2524f468dfc9842a184f01f029b type=blob size=136 size_in_pack=109 offset=310406 base=9193fda4eca33367b37ef079d04af0866e47a1af
+[repack-window50-depth50] verify-pack depth=3 oid=4b113a1d16f6807a9b5b1d26f0314ff8e9ce361a type=blob size=166 size_in_pack=133 offset=310696 base=a94e7205440d8ab5dd9ee037afb0dde34effe2a7
+[repack-window50-depth50] pack-c76463047c6c8ad54eb768f1ada63cfcb717fbcc.idx: 80 objects, chain histogram [depth0=18, depth1=12, depth2=20, depth3=19, depth4=10, depth5=1]
+[repack-window50-depth50] OK: objects=80 packs=1 oid-set identical, every object byte-identical to `git cat-file`, idx offsets identical to `git verify-pack`; chain histogram [depth0=18, depth1=12, depth2=20, depth3=19, depth4=10, depth5=1]
+[repack-window50-depth50] deepest chain (depth 5): [repack-window50-depth50] verify-pack depth=5 oid=99837dabba2809dc142ea21d96c94f6e1721b7e2 type=blob size=159 size_in_pack=102 offset=309086 base=a335f02e15ce49cba244ab48da3ea77d074696fd
+test window_depth_repack_matches_git_byte_for_byte ... ok
+[idx-mismatch] 把 87f39f7e3b07f657680cd4f0ceed0ab3d341f851 的偏移改成 284（属于 7fae5832159e4ff10af5649f3c1b176d4deaadd2）后 read -> Corrupt: /tmp/.tmpM3Okob/.git/objects/pack/pack-0000000000000000000000000000000000000000.pack: /tmp/.tmpM3Okob/.git/objects/pack/pack-0000000000000000000000000000000000000000.idx maps 87f39f7e3b07f657680cd4f0ceed0ab3d341f851 to offset 284, whose contents hash to 7fae5832159e4ff10af5649f3c1b176d4deaadd2
+[idx-mismatch] OK: 重算 oid 校验拦住了错数据；按真实偏移仍能读出正确内容
+test index_offset_mismatch_is_corrupt_not_wrong_data ... ok
+[byte-flips] 检查 12 个对象：zlib 首字节破坏 -> Corrupt x12；中段破坏 -> 未出现任何「非 git 字节」（其中 0 次仍与 git 逐字节相同）；PackSet::read -> Corrupt（不是 ObjectNotFound）
+test pack_byte_flips_never_yield_wrong_object_data ... ok
+
+test result: ok. 10 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.98s
+

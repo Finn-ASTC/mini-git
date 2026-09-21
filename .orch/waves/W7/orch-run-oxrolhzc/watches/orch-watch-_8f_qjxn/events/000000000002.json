@@ -1,0 +1,10 @@
+{
+  "seq": 2,
+  "job_id": "9317e01768834379b288ea08ed9fe156",
+  "round_id": "3ccd1e4633ae4de7a5ce2b4817f3f2c5",
+  "kind": "state_changed",
+  "message": "working",
+  "evidence_path": "/home/user/Projects/mini-git/.orch/waves/W7/orch-run-oxrolhzc/watches/orch-watch-_8f_qjxn/evidence/000000000002.json",
+  "screen_tail": "ixed + pre-fix diff) to understand the bug, and look at the P24\n artifact repro/scripts.\n\n Let me set up a todo list too.\n\n Plan:\n 1. Copy snapshot to /tmp/w7-verify/snap/, verify manifest against files.\n 2. Independent CARGO_TARGET_DIR build --release --offline. Report sha256 of mg.\n 3. Write my own oracle: corpus generator + differential harness comparing release vs debug vs real git.\n 4. Negative control: swap pre-fix myers.rs into a copy, build release, run same harness.\n 5. Re-run gates: cargo test dev and release with timeout.\n 6. Minimal repro CLI.\n 7. Merge path three-way.\n 8. Boundary tests.\n\n Let me first inspect relevant sources and the P24 artifacts.\n\n Todo init\n\n  󱊷 Initializing verification plan\n\n╭── ⠧ 6s  3 DeepSeek V4.1 Flash   w7-verify  $0.00 ↓ ─4%─────────────────󰁨───1M─  4.8K   93.36%  Verify myers.rs fix offline ──╮\n╰─                                                                                                                                       ─╯",
+  "observed_at": 1789926597.4709265
+}

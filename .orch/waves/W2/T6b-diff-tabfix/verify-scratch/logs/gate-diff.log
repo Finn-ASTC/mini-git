@@ -1,0 +1,101 @@
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.02s
+     Running unittests src/lib.rs (target/debug/deps/minigit-c104696a743ccc50)
+
+running 34 tests
+test cli::diff::tests::binary_detection_uses_the_first_8000_bytes ... ok
+test cli::diff::tests::path_quoting_matches_git_rules ... ok
+test diff::tests::splits_keeping_newline ... ok
+test diff::myers::tests::scripts_cover_both_sides_in_order ... ok
+test diff::myers::tests::identical_inputs_are_one_equal_span ... ok
+test diff::tests::empty_input_has_no_lines ... ok
+test diff::tests::splits_missing_final_newline ... ok
+test diff::unified::tests::hunks_api_reports_empty_ranges_at_the_insertion_point ... ok
+test diff::unified::tests::identical_files_produce_no_output ... ok
+test diff::unified::tests::non_utf8_content_is_rejected_by_the_string_api_only ... ok
+test diff::myers::tests::random_scripts_are_valid ... ok
+test cli::diff::tests::clean_repository_prints_nothing ... ok
+test cli::diff::tests::unborn_head_staged_matches_real_git ... ok
+test cli::diff::tests::mode_only_change_matches_real_git ... ok
+test cli::diff::tests::worktree_versus_index_matches_real_git ... ok
+test diff::unified::tests::multiple_hunks ... ok
+test cli::diff::tests::path_filter_matches_real_git ... ok
+test cli::diff::tests::rev_versus_worktree_matches_real_git ... ok
+test diff::unified::tests::empty_versus_non_empty ... ok
+test diff::unified::tests::duplicate_lines_slide_like_git ... ok
+test cli::diff::tests::staged_versus_head_matches_real_git ... ok
+test diff::unified::tests::hunk_headers_where_git_prints_the_function_suffix ... ok
+test diff::unified::tests::adjacent_hunks_merge_at_2x_context ... ok
+test diff::unified::tests::controller_owned_diff_texts_matches_real_git ... ok
+test diff::unified::tests::middle_modification ... ok
+test cli::diff::tests::binary_and_non_utf8_content_match_real_git ... ok
+test cli::diff::tests::context_variants_match_real_git ... ok
+test diff::unified::tests::pure_insert_and_delete ... ok
+test diff::unified::tests::cjk_and_carriage_returns ... ok
+test diff::unified::tests::missing_final_newline ... ok
+test diff::unified::tests::null_side_is_never_padded_in_a_real_repo ... ok
+test diff::unified::tests::filepair_lines_are_tab_padded_only_when_the_label_contains_a_space ... ok
+test diff::myers::tests::large_unrelated_inputs_are_pruned_and_fast ... ok
+test diff::unified::tests::random_small_inputs_match_real_git ... ok
+
+test result: ok. 34 passed; 0 failed; 0 ignored; 0 measured; 112 filtered out; finished in 0.18s
+
+     Running unittests src/main.rs (target/debug/deps/mg-d18f0e67fce7ef67)
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+     Running tests/interop/main.rs (target/debug/deps/interop-c5b13a0bb0e7ca9c)
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 7 filtered out; finished in 0.00s
+
+     Running tests/verify/main.rs (target/debug/deps/verify-2fe6099ca561aa6c)
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 3 filtered out; finished in 0.00s
+
+     Running tests/verify_diff.rs (target/debug/deps/verify_diff-f430f95397664e53)
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 17 filtered out; finished in 0.00s
+
+     Running tests/verify_index.rs (target/debug/deps/verify_index-7dd5920b43e5be81)
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 11 filtered out; finished in 0.00s
+
+     Running tests/verify_mergebase.rs (target/debug/deps/verify_mergebase-4419c18190eed8a2)
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 10 filtered out; finished in 0.00s
+
+     Running tests/verify_odb.rs (target/debug/deps/verify_odb-d46636cd29f27db3)
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 6 filtered out; finished in 0.00s
+
+     Running tests/verify_pktline.rs (target/debug/deps/verify_pktline-10124e1f25c2efd3)
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 8 filtered out; finished in 0.00s
+
+     Running tests/verify_refs.rs (target/debug/deps/verify_refs-1cd69fe5f28083ab)
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 9 filtered out; finished in 0.00s
+
+     Running tests/verify_worktree.rs (target/debug/deps/verify_worktree-5f29378ceb796820)
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 25 filtered out; finished in 0.00s
+

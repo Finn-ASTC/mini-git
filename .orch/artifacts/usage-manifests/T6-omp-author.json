@@ -1,0 +1,14 @@
+{
+  "version": 1,
+  "host": "omp",
+  "log_path": "/home/user/.omp/agent/sessions/-Projects-mini-git/2026-09-19T12-13-15-961Z_sess_0010-c739-7735-8628-1a95183de73b.jsonl",
+  "session_id": "sess_0010-c739-7735-8628-1a95183de73b",
+  "mappings": [
+    {
+      "native_id": "55c495dc",
+      "request_path": "/home/user/Projects/mini-git/.orch/rounds/W2/agent-orchestrator-tezp4suy/request.json",
+      "attempt_id": "initial",
+      "purpose": "task"
+    }
+  ]
+}

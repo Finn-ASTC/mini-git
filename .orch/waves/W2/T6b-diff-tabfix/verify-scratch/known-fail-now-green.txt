@@ -1,0 +1,23 @@
+$ printf 'line1\nline2\n' > 'a b.txt'; git add -A; git commit -m base
+$ printf 'line1\nCHANGED\n' > 'a b.txt'
+$ git diff --no-renames > git.out ; /home/user/Projects/mini-git/target/debug/mg diff > mg.out ; cmp git.out mg.out
+--- cmp (empty == identical) ---
+cmp: files identical (exit 0)
+--- git.out (cat -A) ---
+diff --git a/a b.txt b/a b.txt$
+index c0d0fb4..0104ff3 100644$
+--- a/a b.txt^I$
++++ b/a b.txt^I$
+@@ -1,2 +1,2 @@$
+ line1$
+-line2$
++CHANGED$
+--- mg.out (cat -A) ---
+diff --git a/a b.txt b/a b.txt$
+index c0d0fb4..0104ff3 100644$
+--- a/a b.txt^I$
++++ b/a b.txt^I$
+@@ -1,2 +1,2 @@$
+ line1$
+-line2$
++CHANGED$

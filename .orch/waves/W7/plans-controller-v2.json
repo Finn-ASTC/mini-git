@@ -1,0 +1,56 @@
+{
+ "commands": [
+  {
+   "argv": [
+    "/usr/bin/python3",
+    "-c",
+    "import json,os,subprocess,sys\nsrc,build=sys.argv[1],sys.argv[2]\nout=os.path.join(build,'plan-fixed.json')\nr=subprocess.run([sys.executable,os.path.join(src,'oracle','run.py'),'--out',out,\n '--release',os.path.join(src,'artifacts','verifier-release-mg'),\n '--debug',os.path.join(src,'artifacts','verifier-debug-mg'),\n '--cases',os.path.join(src,'oracle','cases200.json'),\n '--root',os.path.join(build,'work-fixed'),'--tag','plan-fixed'],\n capture_output=True,timeout=1400)\nprint(r.stdout.decode()[-4000:]); print(r.stderr.decode()[-2000:])\nd=json.load(open(out))\nkeys=('n_cases','same_release_debug','same_debug_git','same_release_git','release_hangs','release_vs_debug_differ','release_vs_git_differ')\nprint(json.dumps({k:d[k] for k in keys},indent=1))\nok=(r.returncode==0 and d['n_cases']==200 and d['same_release_debug']==200\n    and d['same_debug_git']==200 and d['same_release_git']==200\n    and d['release_hangs']==[] and d['release_vs_git_differ']==[] and d['release_vs_debug_differ']==[])\nprint('VERDICT','PASS' if ok else 'FAIL')\nsys.exit(0 if ok else 1)\n",
+    "{source}",
+    "{build}"
+   ],
+   "timeout_seconds": 1500
+  },
+  {
+   "argv": [
+    "/usr/bin/python3",
+    "-c",
+    "import json,os,subprocess,sys\nsrc,build=sys.argv[1],sys.argv[2]\nEXPECT=[4,28,54,80,91,98,128,154,166]\nout=os.path.join(build,'plan-prefix.json')\nr=subprocess.run([sys.executable,os.path.join(src,'oracle','run.py'),'--out',out,\n '--release',os.path.join(src,'artifacts','prefix-release-mg'),\n '--debug',os.path.join(src,'artifacts','prefix-debug-mg'),\n '--cases',os.path.join(src,'oracle','cases200.json'),\n '--root',os.path.join(build,'work-pre'),'--tag','plan-prefix'],\n capture_output=True,timeout=1400)\nprint(r.stdout.decode()[-4000:]); print(r.stderr.decode()[-2000:])\nd=json.load(open(out))\nkeys=('n_cases','same_release_debug','same_debug_git','same_release_git','release_hangs','release_vs_debug_differ','release_vs_git_differ')\nprint(json.dumps({k:d[k] for k in keys},indent=1))\nok=(r.returncode==0 and d['n_cases']==200 and d['same_debug_git']==200\n    and d['release_hangs']==EXPECT and len(d['release_vs_git_differ'])>0\n    and len(d['release_vs_debug_differ'])>0)\nprint('expected hangs',EXPECT)\nprint('VERDICT','PASS' if ok else 'FAIL')\nsys.exit(0 if ok else 1)\n",
+    "{source}",
+    "{build}"
+   ],
+   "timeout_seconds": 1500
+  },
+  {
+   "argv": [
+    "/usr/bin/python3",
+    "-c",
+    "import json,os,subprocess,sys\nsrc,build=sys.argv[1],sys.argv[2]\nenv=dict(os.environ)\nenv.update({'MG_BIN':os.path.join(src,'artifacts','verifier-release-mg'),\n            'MG_DBG':os.path.join(src,'artifacts','verifier-debug-mg'),\n            'SCENARIO_SECTIONS':'diff,merge','SCENARIO_TAG':'plan'})\nr=subprocess.run([sys.executable,os.path.join(src,'scenario','run_scenarios.py')],\n env=env,capture_output=True,timeout=1400)\nprint(r.stdout.decode()[-6000:]); print(r.stderr.decode()[-2000:])\nj=json.load(open('/tmp/w7-verify/evidence/scenario-plan.json'))\nok=(r.returncode==0 and j['failures']==[]\n    and len(j['diff_cases'])==13 and len(j['merge_cases'])==5\n    and all(c['rel_eq_git'] and c['rel_eq_dbg'] and not c['rel_hang'] for c in j['diff_cases'])\n    and all(c['rc_match'] and c['content_match'] and not c['mg_hang'] for c in j['merge_cases']))\nprint(json.dumps({'failures':j['failures'],\n 'diff_cases':len(j['diff_cases']),'merge_cases':len(j['merge_cases']),\n 'diff_hangs':[c['case'] for c in j['diff_cases'] if c['rel_hang']],\n 'merge_hangs':[c['case'] for c in j['merge_cases'] if c['mg_hang']],\n 'merge_content_neq':[c['case'] for c in j['merge_cases'] if not c['content_match']]},indent=1))\nprint('VERDICT','PASS' if ok else 'FAIL')\nsys.exit(0 if ok else 1)\n",
+    "{source}",
+    "{build}"
+   ],
+   "timeout_seconds": 1500
+  },
+  {
+   "argv": [
+    "/usr/bin/python3",
+    "-c",
+    "import hashlib,json,os,subprocess,sys\nsrc,build=sys.argv[1],sys.argv[2]\ndef sha(p):\n return hashlib.sha256(open(p,'rb').read()).hexdigest()\na=os.path.join(src,'artifacts','author-release-mg'); v=os.path.join(src,'artifacts','verifier-release-mg')\nDECLARED='21b5679f024849a844c7ea4994dfd2b295295647e4a836d7e543f7901eb56990'\noa=os.path.join(build,'author.text'); ov=os.path.join(build,'verifier.text')\nfor b,dst in ((a,oa),(v,ov)):\n r=subprocess.run(['objcopy','-O','binary','--only-section=.text',b,dst],capture_output=True,timeout=300)\n print(b,'objcopy rc',r.returncode,r.stderr.decode()[:300])\nsa,sv=sha(a),sha(v); ta,tv=sha(oa),sha(ov)\nsza,szv=os.path.getsize(a),os.path.getsize(v)\nrec={'author_sha256':sa,'author_sha_matches_author_declaration':sa==DECLARED,\n 'verifier_sha256':sv,'full_file_sha_differ':sa!=sv,\n 'text_sha256_author':ta,'text_sha256_verifier':tv,'text_equal':ta==tv,\n 'size_author':sza,'size_verifier':szv,'size_delta':sza-szv}\nprint(json.dumps(rec,indent=1))\nok=(sa==DECLARED and ta==tv)\nprint('VERDICT','PASS' if ok else 'FAIL')\nsys.exit(0 if ok else 1)\n",
+    "{source}",
+    "{build}"
+   ],
+   "timeout_seconds": 300
+  }
+ ],
+ "artifacts": [
+  "build/plan-fixed.json",
+  "build/plan-prefix.json",
+  "build/author.text",
+  "build/verifier.text"
+ ],
+ "dependencies": {
+  "python3": "3.14.7",
+  "git": "2.55.0",
+  "objcopy": "GNU Binutils 2.47"
+ },
+ "environment": {}
+}

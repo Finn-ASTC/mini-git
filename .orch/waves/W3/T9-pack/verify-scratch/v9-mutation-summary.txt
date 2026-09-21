@@ -1,0 +1,42 @@
+V9 变异测试记录（本轮验证者独立执行，作者：w3-t9-codex）
+===========================================================
+
+环境：仓库副本 /tmp/v9-mut/m{1..4}（`tar --exclude=./target` 拷贝，本仓库 src/** 未被触碰），
+独立 CARGO_TARGET_DIR=/tmp/v9-target[-mN]（未污染共享 target/）。
+命令：`CARGO_TARGET_DIR=… cargo test --offline --test verify_pack`（本轮的独立验证套件）。
+
+变异体与检出情况
+----------------
+M1  语义改错：src/odb/pack/set.rs  `if actual != oid {` → `if false && actual != oid {`
+    （去掉「按偏移读出后重算 oid」的一致性检查）
+    结果：FAILED 9 passed / 1 failed
+      失败用例 index_offset_mismatch_is_corrupt_not_wrong_data
+      报错：the oid -> offset mapping is wrong: read must not succeed:
+            Some((Commit, [116, 114, 101, 101, 32, 53, 51, ...]))   ← 直接把错数据当成功返回
+    对照组：同一个 M1 下**作者的 34 个 pack 用例全部通过**（未检出）→ 作者用例对该语义无覆盖。
+
+M2  平凡值：src/odb/pack/idx.rs  `lookup` → `self.oids.binary_search(&oid).ok().map(|_| 0u64)`
+    （偏移恒为 0）
+    结果：FAILED 2 passed / 8 failed（我的套件）
+      失败用例 plain_repack / window_depth_repack / gc_aggressive / multi_level_ofs_delta_chains /
+                ref_delta / multiple_packs / index_offset_mismatch / pack_byte_flips
+      报错：assertion `left == right` failed: [repack-adf] 2d90bb23…: idx offset != git verify-pack offset
+            left: Some(0)  right: Some(12)
+    对照组：同一变异下作者用例 26 passed / 8 failed（含 pack_set_matches_git_after_gc_aggressive、
+            reads_every_object_of_a_git_repack_byte_for_byte 等真 git 用例）→ 作者用例不是自洽式假绿。
+
+M3  语义改错：src/odb/pack/delta.rs  `copy_offset |= usize::from(byte) << (8 * i);`
+    → `<< (8 * (3 - i))`（copy 指令 offset 字节序颠倒）
+    结果：FAILED 1 passed / 9 failed
+      报错：plain_repack_matches_git_byte_for_byte:
+            [repack-adf] 05c407ad…: PackSet::read: corrupt pack delta:
+            copy range 1090584576..1090584629 is outside the base (6469 bytes)
+
+M4  语义改错：src/odb/pack/read.rs  ofs_delta 负偏移 varint 去掉每级的 `+1`
+    （`distance.checked_add(1)` → `checked_add(0)`，任务书 §3.3 标注的经典错点）
+    结果：FAILED 2 passed / 8 failed
+      报错：gc_aggressive_matches_git_byte_for_byte:
+            [gc-aggressive] 05c407ad…: PackSet::read: corrupt …pack-1a2f089c….pack:
+            object at offset 306158 has type 0 (reserved)
+
+结论：4/4 全部被检出；其中 M1 是本轮套件相对作者用例新增的覆盖（作者 34 用例下全部通过）。

@@ -1,0 +1,23 @@
+{
+  "active_request": "/home/user/Projects/mini-git/.orch/rounds/W2/agent-orchestrator-yt9iu4s5/request.json",
+  "job_id": "14a649beb634427f9259d76330b3de3b",
+  "round_id": "fb63445f3c184a7ea4880c2eec2f713c",
+  "transport": "insider (default session)",
+  "session": "default",
+  "agent": "w2-t6b-omp",
+  "pane": "w13:p1",
+  "workspace": "w13",
+  "cwd": "/home/user/Projects/mini-git",
+  "kind": "omp",
+  "task": "T6b 返工：mg diff 含空格路径 TAB",
+  "submitted_at": "2026-09-19T20:40:10+08:00",
+  "acceptance": "accepted",
+  "submission_evidence": "herdr agent prompt -> agent_prompted",
+  "deadline": null,
+  "monitor_owner": "controller (default session, pane wJ:p1)",
+  "last_checked_at": "2026-09-19T20:40:10+08:00",
+  "next_check_at": null,
+  "pending_question": null,
+  "resources_file": "/home/user/Projects/mini-git/.orch/rounds/W2/agent-orchestrator-yt9iu4s5/resources.json",
+  "result_path": "/home/user/Projects/mini-git/.orch/rounds/W2/agent-orchestrator-yt9iu4s5/result.json"
+}

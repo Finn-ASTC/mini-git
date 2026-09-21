@@ -1,0 +1,11 @@
+{
+  "version": 1,
+  "seq": 12,
+  "job_id": "edb0e351b58e42e486a264690ece2dcd",
+  "round_id": "c1008bbd20e34640ab5a409ceed097fb",
+  "event_fingerprint": "bc9cdaa4e58ed7f7f6c0a82fc62e23092b0e4d06f433271abce1bd0489fae23a",
+  "revision": 1,
+  "status": "handled",
+  "note": "state_changed idle（post-result）：omp 已回到输入提示符，轮次真正 settle（terminal_title 由 \"π !\" 变为 \"π >\"）。\n无迟到写入：此后未再出现 result 相关事件。\n",
+  "recorded_at": 1789816747.848077
+}

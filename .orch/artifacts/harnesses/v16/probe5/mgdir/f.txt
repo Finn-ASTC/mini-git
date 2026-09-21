@@ -1,0 +1,9 @@
+a
+<<<<<<< HEAD
+LOCAL
+=======
+REMOTE
+>>>>>>> refs/remotes/origin/main
+c
+d
+e

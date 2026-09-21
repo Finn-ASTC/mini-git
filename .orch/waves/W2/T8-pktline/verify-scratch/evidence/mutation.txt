@@ -1,0 +1,13 @@
+V8 变异测试（独立副本 /tmp/v8-mutant，独立 CARGO_TARGET_DIR=/tmp/v8-mutant-target）
+基线 pktline.rs sha256: 05b0193672673ef717060823e2bc059f102ee548a96fb67798aaf7cb191f6ce9
+共享 checkout pktline.rs sha256: 05b0193672673ef717060823e2bc059f102ee548a96fb67798aaf7cb191f6ce9
+git: git version 2.55.0
+
+== 基线（未变异）==
+baseline（未变异）                        | V8 verify_pktline: PASS(未检出)        | 作者自带 lib 测试: PASS(未检出)
+M1 去掉帧长上限（MAX_FRAME_LEN=usize::MAX） | V8 verify_pktline: FAIL(检出: 2 个用例失败) | 作者自带 lib 测试: FAIL(检出: 2 个用例失败)
+M2 截断时返回 Error::Io 而非 Protocol   | V8 verify_pktline: FAIL(检出: 2 个用例失败) | 作者自带 lib 测试: FAIL(检出: 2 个用例失败)
+M3 write_pkt / write_flush 不调用 flush()   | V8 verify_pktline: FAIL(检出: 2 个用例失败) | 作者自带 lib 测试: PASS(未检出)
+M4 write_pkt 写错长度（len 而不是 len+4） | V8 verify_pktline: FAIL(检出: 3 个用例失败) | 作者自带 lib 测试: FAIL(检出: 3 个用例失败)
+M5 read_pkt 读 payload 时吃掉整个流（read_to_end） | V8 verify_pktline: FAIL(检出: 8 个用例失败) | 作者自带 lib 测试: FAIL(检出: 8 个用例失败)
+M6 0000 不再立即返回 Flush（当作 Data 处理） | V8 verify_pktline: FAIL(检出: 5 个用例失败) | 作者自带 lib 测试: FAIL(检出: 6 个用例失败)

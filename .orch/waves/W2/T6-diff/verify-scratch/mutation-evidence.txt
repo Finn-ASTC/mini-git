@@ -1,0 +1,43 @@
+V6 mutation test (anti-false-green) evidence
+===========================================
+Environment: isolated copy /tmp/t6-mutation/repo (tar copy of the checkout,
+excluding target/ and .git/) + isolated CARGO_TARGET_DIR=/tmp/t6-mutation/target.
+The repository under test (cwd) and the shared target/ were NOT touched.
+
+Step 0 - pristine copy baseline
+  cmd: cargo test --offline --test verify_diff
+  out: test result: ok. 13 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out
+  (proves the isolated copy + suite is sound)
+
+Step 1 - mutation A: remove the ",1" omission in the hunk header
+  edit: sed -i 's/if hunk.old_len != 1 {/if true {/; s/if hunk.new_len != 1 {/if true {/' src/diff/unified.rs
+  cmd:  cargo test --offline --test verify_diff
+  out:  test result: FAILED. 6 passed; 7 failed
+        engine_matrix_matches_git:
+          empty_vs_blank_line (U0): byte mismatch (git 32 bytes, mg 34 bytes)
+            git: @@ -0,0 +1 @@
+            mg : @@ -0,0 +1,1 @@
+        cli_worktree_vs_index_matches_git:
+          mg diff: byte mismatch (git 834 bytes, mg 838 bytes)
+            git: @@ -1 +1 @@
+            mg : @@ -1,1 +1,1 @@
+        also failing: cli_staged, cli_rev, cli_binary, engine_long_single_line,
+                      engine_randomized_soak
+
+Step 2 - mutation B: never emit "\ No newline at end of file"
+  edit: sed -i 's/if bytes.last() != Some(&b.\\n.) {/if false {/' src/diff/unified.rs
+  cmd:  cargo test --offline --test verify_diff
+  out:  test result: FAILED. 8 passed; 5 failed
+        engine_matrix_matches_git:
+          no_trailing_newline_both (U0): byte mismatch (git 93 bytes, mg 35 bytes)
+            git: -c
+            mg : -c+CC
+        cli_worktree_vs_index_matches_git:
+          mg diff: byte mismatch (git 834 bytes, mg 776 bytes)
+            git: -keep no newline
+            mg : -keep no newline+keep no newline CHANGED...
+        also failing: cli_rev, cli_binary, engine_randomized_soak
+
+Conclusion: mutating the hunk-header ",1" rule or the missing-newline marker makes
+the byte-for-byte assertions FAIL (7 and 5 failures respectively), so the oracle
+comparisons are real checks, not tautologies.

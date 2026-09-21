@@ -1,0 +1,10 @@
+{
+  "seq": 1,
+  "job_id": "edb0e351b58e42e486a264690ece2dcd",
+  "round_id": "c1008bbd20e34640ab5a409ceed097fb",
+  "kind": "state_changed",
+  "message": "working",
+  "evidence_path": "/tmp/orch-watch-x90zk5ag/evidence/000000000001.json",
+  "screen_tail": "turn Ok(()). I'll not add duplicate validation — but then why Result? It's a frozen\n signature from W0; maybe for decode validation. Keep Ok(()). Hmm, but clippy... no issue.\n\n Actually careful about sort stability/duplicate names ordering: git sorts with a specific comparison. Git's tree\n entry comparison (base_name_compare / df_name_compare): for tree-vs-non-tree names, if one is a prefix of the\n other... Actually git's canonical sort for tree entries in tree_entry_cmp? For writing trees, git uses\n base_name_compare on names with trailing '/' appended for directories. Precisely: git's base_name_compare(name1,\n len1, mode1, name2, len2, mode2):...\n\n This is the \"base_name_compare\" that treats dirs as having impli\n\n  󱊷 Finding usages of object APIs\n\n╭── ⠧ 13s  3 DeepSeek V4.1 Flash   mini-git  $0.00 ↓ ─4%─󰁨1M─  13K   94.26%  Implement git object codec… ──╮\n╰─                                                                                                                   ─╯\n",
+  "observed_at": 1789816438.1713345
+}

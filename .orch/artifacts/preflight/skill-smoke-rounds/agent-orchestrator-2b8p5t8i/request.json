@@ -1,0 +1,11 @@
+{
+  "schema_version": 1,
+  "job_id": "474aa64d063c4322987f1982ffa9ada0",
+  "round_id": "7df8f8206ccf4500aaa3a9ab28977982",
+  "cwd": "/tmp/hd",
+  "result_path": "/tmp/agent-orchestrator-2b8p5t8i/result.json",
+  "depth": 1,
+  "max_depth": 3,
+  "prepared_at": "2026-09-19T10:41:14.533647+00:00",
+  "task": "统计 src 下的 TODO 数量，只读，不要改文件"
+}

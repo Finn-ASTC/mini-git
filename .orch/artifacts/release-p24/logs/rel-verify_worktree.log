@@ -1,0 +1,30 @@
+
+running 25 tests
+test b1_empty_repo_porcelain_is_empty ... ok
+test scan_worktree_matches_git_ls_files_oracles ... ok
+test b3_deep_sparse_tree_ordering_matches_git ... ok
+test harness_detects_deliberately_wrong_inputs ... ok
+test deviation_malformed_class_is_treated_as_literal ... ok
+test s5_gitignore_ignored_rescued_and_dir_rule_match_git ... ok
+test b2_malformed_gitignore_patterns_never_panic ... ok
+test s10_rm_cached_matches_git ... ok
+test s2_staged_modification_matches_git ... ok
+test deviation_negation_inside_excluded_dir ... ok
+test s6_worktree_exec_bit_change_matches_git ... ok
+test s8_repo_without_commits_matches_git ... ok
+test non_utf8_untracked_path_matches_git ... ok
+test s1_tracked_modification_and_deletion_match_git ... ok
+test s4_untracked_file_and_directory_folding_match_git ... ok
+test s7_symlink_target_change_matches_git ... ok
+test head_tree_tree_mode_entries_are_ignored ... ok
+test s3_staged_new_file_matches_git ... ok
+test b4_porcelain_groups_changed_before_untracked ... ok
+test type_change_regular_to_symlink_matches_git ... ok
+test deviation_intent_to_add ... ok
+test deviation_tracked_non_utf8_path_is_unsupported ... ok
+test mixed_states_stress_matches_git ... ok
+test s9_merge_conflict_uu_matches_git ... ok
+test ignore_engine_matches_git_check_ignore ... ok
+
+test result: ok. 25 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.07s
+

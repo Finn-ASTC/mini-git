@@ -1,0 +1,15 @@
+{
+  "sample_id": "ecb53b78",
+  "source": "omp:sess_0046-ea5f-7645-8d26-19470fd9732e",
+  "measurement": "delta",
+  "provider": "deepseek",
+  "model": "deepseek-flash",
+  "input_tokens": 58469,
+  "cached_input_tokens": 57728,
+  "output_tokens": 2438,
+  "attempt_id": "initial",
+  "purpose": "task",
+  "schema_version": 1,
+  "job_id": "9317e01768834379b288ea08ed9fe156",
+  "round_id": "3ccd1e4633ae4de7a5ce2b4817f3f2c5"
+}

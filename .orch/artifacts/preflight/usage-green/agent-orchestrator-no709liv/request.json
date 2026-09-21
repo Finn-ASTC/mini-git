@@ -1,0 +1,12 @@
+{
+  "schema_version": 1,
+  "job_id": "8bd3ec7b2784402886e70beaf5ed2a1b",
+  "round_id": "60af4bc4da9148ce8f5c412628a60ed6",
+  "cwd": "/tmp",
+  "result_path": "/tmp/orch-usage-green.QOUGeb/agent-orchestrator-no709liv/result.json",
+  "depth": 1,
+  "max_depth": 3,
+  "prepared_at": "2026-09-19T09:52:53.239219+00:00",
+  "task": "followup task\n",
+  "previous_request": "/tmp/orch-usage-green.QOUGeb/agent-orchestrator-43b9fo4o/request.json"
+}

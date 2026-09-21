@@ -1,0 +1,41 @@
+{
+  "version": 1,
+  "sequence": 1,
+  "previous": null,
+  "created_at": "2026-09-20T14:54:38.010776+00:00",
+  "manifest": {
+    "version": 1,
+    "request_path": "/home/user/Projects/mini-git/.orch/waves/W5/orch-run-2lpx81iy/rounds/agent-orchestrator-hgvhj030/request.json",
+    "correction_id": "w5-v1-opencode-normalization",
+    "reason": "W5 期间该轮尚无 OpenCode 适配器，样本由控制方手工换算；当时把原生 tokens_output 直接当成 output，漏加了 reasoning 细分。现用 kumi 新增的 native_stores.read_opencode 读取同一个原生 session，按文档 normalization（input = input + cache.read + cache.write；output = output + reasoning）得到 output 34572（16776 output + 17796 reasoning）。同时补上新增的 role/phase 维度。input/cached 未变，说明只错在 output 一侧。",
+    "evidence": [
+      {
+        "path": "/home/user/Projects/mini-git/.orch/waves/W5/evidence/v1-opencode-native-usage.json",
+        "sha256": "2ca301153859d2a685ebb88d12a0170590042db1a0a02a22a302cba22a930723"
+      }
+    ],
+    "updates": [
+      {
+        "request_path": "/home/user/Projects/mini-git/.orch/waves/W5/orch-run-2lpx81iy/rounds/agent-orchestrator-hgvhj030/request.json",
+        "expected_revision": "78515df5e8f2a8887795031d57444c0498d08f2536a99d2b1564e6428e041e09",
+        "sample": {
+          "source": "opencode-sqlite-session",
+          "sample_id": "opencode-session-ses_0004",
+          "measurement": "delta",
+          "attempt_id": "8d7c8903",
+          "purpose": "task",
+          "role": "verifier",
+          "phase": "verification",
+          "provider": "deepseek",
+          "model": "deepseek-v4.1-flash",
+          "input_tokens": 1510971,
+          "cached_input_tokens": 1440896,
+          "output_tokens": 34572
+        }
+      }
+    ]
+  },
+  "original_paths": [
+    "/home/user/Projects/mini-git/.orch/waves/W5/orch-run-2lpx81iy/rounds/agent-orchestrator-hgvhj030/usage/calls/b3413cca1f3fc6613df72a03ca93cf0ddb29db02dd998243d09ea2229263b5dd.json"
+  ]
+}

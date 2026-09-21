@@ -1,0 +1,19 @@
+{
+  "mode": "insider",
+  "session": "default",
+  "agent": "orch-codex-v3",
+  "pane": "wS:p1",
+  "workspace": "wS",
+  "owns_agent": true,
+  "owns_pane": true,
+  "owns_workspace": true,
+  "owns_session": false,
+  "tab": "wS:t1",
+  "parent_pane": "wJ:p1",
+  "parent_tab": "wJ:t1",
+  "owns_tab": false,
+  "recorded_at": "2026-09-19T11:38:02.231952+00:00",
+  "job_id": "cc9fea58ff9b4d28b9c310548d705e8d",
+  "recorded_by": "controller-manual",
+  "record_note": "protocol.py record 拒绝字母型 herdr ID，见 .orch/waves/W1/defects.md D1；agent start 超时后按 transports.md 配方补发一次回车并 rename 绑定"
+}

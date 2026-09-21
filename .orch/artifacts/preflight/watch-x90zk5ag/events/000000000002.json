@@ -1,0 +1,10 @@
+{
+  "seq": 2,
+  "job_id": "edb0e351b58e42e486a264690ece2dcd",
+  "round_id": "c1008bbd20e34640ab5a409ceed097fb",
+  "kind": "review_due",
+  "message": "Changed UI needs review; hook/keyword detection may miss a dialog.",
+  "evidence_path": "/tmp/orch-watch-x90zk5ag/evidence/000000000002.json",
+  "screen_tail": "────╮\n│ $ set -e                                                                                                            │\n│ export GIT_CONFIG_GLOBAL=/dev/null GIT_CONFIG_SYSTEM=/dev/null GIT_CONFIG_NOSYSTEM=1 LC_ALL=C                       │\n│ export GIT_AUTHOR_NAME='A U Thor' GIT_AUTHOR_EMAIL='a@example.com' GIT_COMMITTER_NAME='A U Thor'                    │\n│ GIT_COMMITTER_EMAIL='a@example.com'                                                                                 │\n│ export G                                                                                                            │\n╰─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯\n\n  󱊷 Reading tests/common/mod.rs\n\n╭── ⠙ 42s  3 DeepSeek V4.1 Flash   mini-git  $0.01 ↓ ─5%─󰁨1M─  26K   94.21%  Implement git object codec… ──╮\n╰─                                                                                                                   ─╯\n",
+  "observed_at": 1789816468.1715698
+}

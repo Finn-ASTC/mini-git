@@ -1,0 +1,132 @@
+# T10 —— 三方合并（`merge_blobs` + `mg merge`）
+
+你是本轮的**实现者**（kind: opencode）。仓库 `/home/user/Projects/mini-git` 是「与真实 git
+互操作」的实现（CLI 名 `mg`）。本轮做两件事：**文件级三方合并**与**`mg merge` 命令**。
+
+## 1. 目标（签名不许改）
+
+| 文件 | 需要实现的符号 |
+|---|---|
+| `src/merge/three_way.rs` | `merge_blobs(base: Option<&[u8]>, ours, theirs, labels: &MergeLabels) -> Result<Merged>` |
+| `src/cli/merge.rs` | `run(rev: &str, message: Option<&str>, no_ff: bool) -> Result<()>` |
+
+`Merged`（`Clean(Vec<u8>)` / `Conflict(Vec<u8>)`）与 `MergeLabels` 的定义已冻结，不要改。
+`src/merge/mod.rs`、`src/cli/mod.rs` 是 **CONTROLLER-OWNED**：`merge::merge_base`（T7 已实现）
+与 CLI dispatch 都已就绪，不要改。
+
+## 2. 写作用域（白名单，只有这两个文件）
+
+- `src/merge/three_way.rs`
+- `src/cli/merge.rs`
+
+**不许改**任何其它文件：`src/merge/mod.rs`、`src/merge/merge_base.rs`（T7）、`src/diff/**`（T6）、
+`src/odb/**`、`src/index/**`、`src/refs/**`、`src/worktree/**`（T11 本轮在改）、
+`src/cli/mod.rs`、`Cargo.toml`、`Cargo.lock`、别人的 `tests/**`、`.orch/**`。
+需要改白名单外文件 → 报 `blocked`。
+
+## 3. 关键语义（按真实 git 对齐，别自由发挥）
+
+### 3.1 `merge_blobs`
+1. `ours == theirs` → `Clean(ours)`；`base == ours` → `Clean(theirs)`；`base == theirs` → `Clean(ours)`。
+2. `base == None`（两侧都是新增文件）：内容相同 → `Clean`，不同 → `Conflict`。
+3. **冲突输出必须与 `git merge-file` 逐字节一致**，默认（`diff3_style=false`）marker 形如：
+   `<<<<<<< <ours label>\n` … `=======\n` … `>>>>>>> <theirs label>\n`；
+   `diff3_style=true` 时多一段 `||||||| <base label>\n`。
+4. **末尾换行**：冲突结果必须**以换行结尾**（git 的行为）；某一侧内容没有末尾换行时，
+   必须复现 git 的 `\ No newline at end of file` 处理方式（自己用真实 git 对拍确认，
+   不要凭直觉）。
+5. **二进制**（前 8000 字节含 `\0`）→ 直接 `Conflict`，内容为 **ours 原样**（不插 marker）。
+6. 必须用 T6 的 diff 引擎（`crate::diff`）来做行级对齐，**不要**再写一个 Myers。
+   提示：可以先调 `crate::diff::diff_texts` 或 `unified` 得到行级操作，再据此合并；
+   若 diff 引擎的公开接口不够用，允许你在 `three_way.rs` 内做**行级**处理，
+   但**不许**改 `src/diff/**`。
+
+### 3.2 `mg merge <rev>` 流程
+1. `RefStore::resolve(rev)` → target；`Worktree::status()` 必须干净，否则
+   `Error::WouldLoseChanges`（除非 fast-forward 且无本地改动）。
+2. `merge_base(HEAD, target)`：
+   - 无共同祖先 → 允许（`Error::Unsupported` 也可，但要有清晰信息，不要静默）；
+   - `base == target` → 打印 `Already up to date.`（**与真实 git 的输出形态保持一致**，
+     至少 stdout 里有 `Already up to date`）并退出 0；
+   - `base == HEAD` 且 `no_ff == false` → **fast-forward**：更新分支引用（CAS，
+     `RefStore::update`）+ 物化 target 的 tree（用 `Worktree::materialize_tree`，`force=false`）
+     + 更新 index；
+   - `no_ff == true` 或无法 ff → 真正合并。
+3. 真正合并：对 index（或 tree）里的每个路径做三方合并：
+   - 干净 → 写工作区文件（用 `Odb::write` 落 blob + `Worktree::write_blob_to`）、更新 index stage 0；
+   - 冲突 → 写带 marker 的文件、index 写 **stage 1(base)/2(ours)/3(theirs)**
+     （用 `IndexEntry::new` + 手改 `stage` 字段，或 `Index::upsert`），
+     并删除该路径的 stage 0 条目。
+4. 冲突时必须写 `.git/MERGE_HEAD`（target oid，**十六进制 + 换行**）、`.git/ORIG_HEAD`
+   （合并前的 HEAD oid）、`.git/MERGE_MSG`（合并提交信息），然后以**非零**码退出。
+   验收硬标准：**真实 `git commit` 能直接在这份状态上完成合并**（说明文件兼容）。
+5. 干净时：写 tree（递归，子目录先建）→ 写 commit（parent = HEAD 与 target）→
+   `RefStore::update` 分支引用 → 清理 `.git/MERGE_*` 残留 → 更新 index。
+   commit message 用 `-m` 给的，没有就用 git 默认的 `Merge branch '<name>'`（形态对齐即可）。
+6. `merge.conflictstyle = diff3` 时用 diff3 风格（`Config::get` 可读）。
+
+## 4. 验收（必须能独立复跑）
+
+```bash
+cd /home/user/Projects/mini-git
+cargo test --offline merge::
+cargo test --offline
+cargo clippy --offline --all-targets   # 0 warning
+scripts/check-freeze.sh                # drift 0
+```
+
+1. **引擎级真值对拍**：`git merge-file`（`git merge-file -p ours base theirs` 与
+   `--diff3` 两种）的输出，与 `merge_blobs` 的结果**逐字节比较**。至少覆盖：
+   两侧不同位置改动（干净）、同一行两侧都改（冲突）、一侧删一侧改、
+   两侧都新增同一文件（内容不同）、空文件、无末尾换行（两侧/单侧）、
+   `\r\n`、CJK、二进制、一侧为空、base 与 ours/theirs 三态相同。
+   真值只来自运行时 `git` 进程，**不许硬编码**期望字节。
+2. **CLI 端到端（硬标准，至少 12 个仓库场景）**：
+   - 干净合并：`mg merge <branch>` 后 `git rev-parse HEAD^{tree}` 与
+     「真实 git 在同样拓扑上合并」的 tree **相同**（用两个平行仓库对拍：
+     同一个初始仓库 `git clone`/`cp -r` 两份，一份用 mg、一份用 git）；
+   - `git fsck --no-progress` 无 error；
+   - 冲突合并：冲突文件与真实 `git merge` 的结果**逐字节相同**；
+     `git status --porcelain` 的冲突码（`UU`/`AA`/`DU`/`UD`/`AU`/`UA`）与 git 一致；
+   - 冲突后 `git commit -m x`（**真实 git**）能成功完成合并，且
+     `git log --format=%P -1` 有两个 parent；
+   - fast-forward 与 `--no-ff` 各一例；`Already up to date` 一例。
+3. **反例**：工作区脏时拒绝合并（`WouldLoseChanges`，不得破坏现有文件）；
+   不存在的 rev → `ReferenceNotFound`；不存在的 oid → `ObjectNotFound`；都不许 panic。
+4. **不许假绿**：测试必须真的调 `minigit::merge::three_way::merge_blobs` 与 `mg` 二进制
+   （`env!("CARGO_BIN_EXE_mg")`），不许把 git 的输出直接当作被测函数的返回值回灌。
+
+## 5. 非目标
+
+- 不做 rename 检测（`git merge` 的重命名合并）、不做 `ort`/`recursive` 的策略选项、
+   不做 `-X ours/theirs`、不做 octopus（多 parent）合并。
+- 不做 `merge --abort`（写进 `output` 的已知限制即可）。
+- 不改 `Cargo.toml`；需要新依赖请报 `blocked`。
+
+## 上报
+
+- result 路径：**由 controller 的 prompt.txt 给出（绝对路径）**，不要自己猜、不要写到别处。
+- 契约：`status` / `output` / `files_created|modified|deleted` / `files_generated` /
+  `error` / `blocked_reason` / `completed_at`（见 agent-controlled 协议）。
+- `output` 必须包含：跑了哪些命令 + **真实结论**（逐字节是否一致、冲突码、tree 是否相同、
+   反例是否真的失败）；不要贴完整逐字稿，也不要贴大段源码。已知限制/未覆盖项必须单列。
+
+## 深度与上限
+
+- 本轮的 depth：1；`max_depth`：3。
+- 要再往下委派，必须显式写 `--parent-depth 1`，不得使用 shell 变量默认值。
+
+## 交互纪律（W1/W2 实测总结，必须遵守）
+
+- **不要触发任何额外交互**：不启动「学习练习 / tutorial / 引导流程」，不弹 Question/Ask
+  等人类输入。轮次结束的唯一标志是 result 文件写完。
+- **原生审批只按「单条」处理**：出现「1 Yes / 2 don't ask again / 3 No」时选 1，**不要选 2**；
+  也不要为了少弹窗把命令合并成一条巨大脚本。
+- **不要 export 会被 git 读取的环境变量**（`GIT_AUTHOR_*` / `GIT_COMMITTER_*` / `GIT_CONFIG_*`）。
+  用 `git -c user.name=... -c user.email=...` 或 `env VAR=... git ...` 限定作用域。
+- **共享 checkout 的编译噪声**：本 wave 另有 3 个 agent 同时改别的子目录。
+  若 `cargo` 报错的文件**不在你的白名单里**，那不是你的问题：等 30 秒重试；
+  连续 3 次仍失败就记录进 `output` 并有界等待（必要时报 `blocked`），**不要改别人的文件**。
+- **共享 `target/`**：并发 `cargo test` 会等文件锁（正常）。但**变异测试/临时构建必须用
+  独立 `CARGO_TARGET_DIR` 或独立副本**，否则会污染共享缓存（W1 的 V2 踩过）。
+- 对拍用的临时仓库全部放 `tempfile::tempdir()` 或 `/tmp/<你的名字>/`，**不要**污染本仓库。

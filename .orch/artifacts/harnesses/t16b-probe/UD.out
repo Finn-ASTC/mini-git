@@ -1,0 +1,2 @@
+CONFLICT (modify/delete): conflict.txt deleted in side and modified in HEAD.  Version HEAD of conflict.txt left in tree.
+Automatic merge failed; fix conflicts and then commit the result.

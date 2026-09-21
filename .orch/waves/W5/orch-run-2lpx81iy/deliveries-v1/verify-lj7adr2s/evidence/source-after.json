@@ -1,0 +1,115 @@
+{
+  "files": {
+    "REPORT.md": {
+      "kind": "file",
+      "size": 10352,
+      "sha256": "ee267169ed64b0e072ce49a49cc55770d985defbc750e597aef531a9a341411a",
+      "executable": false
+    },
+    "evidence": {
+      "kind": "directory"
+    },
+    "evidence/cargo-build-release.log": {
+      "kind": "file",
+      "size": 170,
+      "sha256": "0e6a5074de0e1f65b20075a77bdee862caab5cebe9a278233a957bc680e0a0bc",
+      "executable": false
+    },
+    "evidence/cargo-clippy.log": {
+      "kind": "file",
+      "size": 200,
+      "sha256": "f1c81f80e8bae6385119b670423820fbf2e2a8ab94eef3520d8100d33a4f917c",
+      "executable": false
+    },
+    "evidence/cargo-fmt.log": {
+      "kind": "file",
+      "size": 43,
+      "sha256": "271a729107406f2d12f7fee80a0646da396a90c32f9c8ef40963118db2687647",
+      "executable": false
+    },
+    "evidence/cargo-test-dev.log": {
+      "kind": "file",
+      "size": 1182,
+      "sha256": "f7f331ef9dcbdfa5176ab572ddfc03465cce6c716d8c7618a39a5abd62f3eae4",
+      "executable": false
+    },
+    "evidence/cargo-test-release.log": {
+      "kind": "file",
+      "size": 1179,
+      "sha256": "0beac9bedc708e8e41aa42d8500530ae5cdf8c80e81e00b6190159711931a797",
+      "executable": false
+    },
+    "evidence/differential-report-debug.json": {
+      "kind": "file",
+      "size": 21413,
+      "sha256": "4247409f9b7a0cb6a310e13995d06b0ee1b911a15e4e73d991cd272661342138",
+      "executable": false
+    },
+    "evidence/differential-report-debug.txt": {
+      "kind": "file",
+      "size": 8533,
+      "sha256": "7e7eba65258f77036a01114641bbda8be7d8ad9f49a272b6512c01a58f58e170",
+      "executable": false
+    },
+    "evidence/differential-report.json": {
+      "kind": "file",
+      "size": 21637,
+      "sha256": "8627869d807c9e7badba5f406dc0df13b45b3345e620def3a1e634acbb74b113",
+      "executable": false
+    },
+    "evidence/differential-report.txt": {
+      "kind": "file",
+      "size": 8671,
+      "sha256": "7975582efcc3b2b013a531dbf58ee3d108975e9921da1c552ae40ef3102b302b",
+      "executable": false
+    },
+    "evidence/probes": {
+      "kind": "directory"
+    },
+    "evidence/probes/probes.txt": {
+      "kind": "file",
+      "size": 1175,
+      "sha256": "36d2c06d178390a9db74b96a892ce5d771c0e5c6bf8a9fa875bf8acf3df5b417",
+      "executable": false
+    },
+    "evidence/release-binary.sha256": {
+      "kind": "file",
+      "size": 119,
+      "sha256": "5e66315b5bf4e181d7cb1bcf85238bd4e36edda77d5480ec2c9dd78dcde15918",
+      "executable": false
+    },
+    "evidence/snapshot-rehash.txt": {
+      "kind": "file",
+      "size": 385,
+      "sha256": "d546321c243bc019355f8ada102e64fdb584d6fa1f7a42405ce091d445691b29",
+      "executable": false
+    },
+    "harness": {
+      "kind": "directory"
+    },
+    "harness/differential.py": {
+      "kind": "file",
+      "size": 10455,
+      "sha256": "cae5eada126891cf5514a0fb98a394f50e63bb17cd5f28b58c017c0d86381d8d",
+      "executable": false
+    },
+    "oracle": {
+      "kind": "directory"
+    },
+    "oracle/__pycache__": {
+      "kind": "directory"
+    },
+    "oracle/__pycache__/linestat_oracle.cpython-314.pyc": {
+      "kind": "file",
+      "size": 8356,
+      "sha256": "4a1252e569f0973fa2a93397ee0171f292d627f120a89111d2c029d001e2444a",
+      "executable": false
+    },
+    "oracle/linestat_oracle.py": {
+      "kind": "file",
+      "size": 5275,
+      "sha256": "90d2a7449c4011e5421c8cbf2e8ca530d60e76c56107073d9f4aaec129389ae9",
+      "executable": false
+    }
+  }
+}

@@ -1,0 +1,112 @@
+### V4 evidence — 2026-09-19T19:49:52+08:00 — git git version 2.55.0 — verifier: hermes (round r_tell2f)
+
+$ cargo test --offline worktree::
+test worktree::ignore::tests::anchored_rule_with_base_is_scoped_to_that_directory ... ok
+test worktree::ignore::tests::anchored_pattern_only_matches_at_base ... ok
+test worktree::ignore::tests::dir_only_rule_covers_subtree_for_non_dir_and_dir ... ok
+test worktree::ignore::tests::malformed_patterns_do_not_panic ... ok
+test worktree::ignore::tests::parses_comments_blanks_and_trailing_escaped_space ... ok
+test worktree::ignore::tests::last_matching_rule_wins_so_negation_rescues ... ok
+test worktree::ignore::tests::root_dir_only_slash_is_ignored_gracefully ... ok
+test worktree::ignore::tests::wildcards_and_classes ... ok
+test worktree::ignore::tests::non_utf8_gitignore_does_not_fail ... ok
+test worktree::ignore::tests::loads_nested_gitignore_with_bases ... ok
+test worktree::scan::tests::symlinks_are_not_followed_or_descended ... ok
+test worktree::scan::tests::empty_directory_yields_no_entry_and_git_is_skipped ... ok
+test worktree::ignore::tests::ignored_directory_is_not_descended_for_rule_loading ... ok
+test worktree::scan::tests::ignored_file_is_flagged_and_ignored_dir_is_not_descended ... ok
+test worktree::status::tests::no_commit_repo_matches_git ... ok
+test worktree::scan::tests::nested_files_are_relative_slash_separated_and_sorted ... ok
+test worktree::status::tests::directory_replaced_by_file_matches_git ... ok
+test worktree::status::tests::quoted_paths_match_git ... ok
+test worktree::status::tests::empty_repo_matches_git ... ok
+test worktree::status::tests::ignored_files_and_rescue_match_git ... ok
+test worktree::status::tests::deletion_in_index_and_missing_worktree_matches_git ... ok
+test worktree::status::tests::exec_bit_change_matches_git ... ok
+test worktree::status::tests::tricky_name_ordering_matches_git ... ok
+test worktree::status::tests::file_replaced_by_directory_matches_git ... ok
+test worktree::status::tests::untracked_dir_with_ignored_contents_matches_git ... ok
+test worktree::status::tests::rich_worktree_states_match_git ... ok
+test worktree::status::tests::staged_mode_change_matches_git ... ok
+test worktree::status::tests::tracked_file_inside_ignored_directory_matches_git ... ok
+test worktree::status::tests::symlink_target_change_matches_git ... ok
+test worktree::status::tests::partial_untracked_directory_folding_matches_git ... ok
+test worktree::status::tests::nested_gitignore_scopes_match_git ... ok
+test worktree::status::tests::staged_deletion_with_file_still_present_matches_git ... ok
+test worktree::status::tests::merge_conflict_matches_git ... ok
+test worktree::status::tests::add_add_conflict_matches_git ... ok
+test worktree::status::tests::modify_delete_conflict_matches_git ... ok
+test result: ok. 35 passed; 0 failed; 0 ignored; 0 measured; 50 filtered out; finished in 0.05s
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 7 filtered out; finished in 0.00s
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 3 filtered out; finished in 0.00s
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 8 filtered out; finished in 0.00s
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 9 filtered out; finished in 0.00s
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 25 filtered out; finished in 0.00s
+
+$ cargo test --offline  (all targets)
+     Running unittests src/lib.rs (target/debug/deps/minigit-c104696a743ccc50)
+test result: ok. 85 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.08s
+     Running unittests src/main.rs (target/debug/deps/mg-d18f0e67fce7ef67)
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+     Running tests/interop/main.rs (target/debug/deps/interop-c5b13a0bb0e7ca9c)
+test result: ok. 7 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.01s
+     Running tests/verify/main.rs (target/debug/deps/verify-2fe6099ca561aa6c)
+test result: ok. 3 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.02s
+     Running tests/verify_index.rs (target/debug/deps/verify_index-7dd5920b43e5be81)
+test result: ok. 8 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.02s
+     Running tests/verify_refs.rs (target/debug/deps/verify_refs-1cd69fe5f28083ab)
+test result: ok. 9 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.02s
+     Running tests/verify_worktree.rs (target/debug/deps/verify_worktree-5f29378ceb796820)
+test result: ok. 25 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.07s
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+$ cargo clippy --offline --all-targets
+    Finished `dev` profile [unoptimized + debuginfo] target(s) in 0.05s
+clippy warning lines: 0
+
+$ scripts/check-freeze.sh
+---
+checked 21 file(s), drift 0
+freeze-v0 intact
+
+$ scripts/drift.sh .orch/waves/W1/T4-worktree/baseline.txt
+CHANGED  src/refs/store.rs
+CHANGED  src/worktree/status.rs
+CHANGED  src/worktree/ignore.rs
+CHANGED  src/index/dirc.rs
+CHANGED  .orch/waves/W1/T2-refs/verify-task.md
+CHANGED  .orch/waves/W1/T4-worktree/verify-task.md
+CHANGED  .orch/waves/W1/T3-index/verify-task.md
+CHANGED  src/worktree/scan.rs
+ADDED    .orch/waves/W1/defects.md
+ADDED    .orch/waves/W1/T2-refs/agent-orchestrator-ca01qma0-result.json
+ADDED    .orch/waves/W1/T2-refs/agent-orchestrator-dbup2s32-result.json
+ADDED    .orch/waves/W1/T2-refs/baseline.txt
+ADDED    .orch/waves/W1/T2-refs/omp-v2-submission.json
+ADDED    .orch/waves/W1/T2-refs/orch-hermes-t2-submission.json
+ADDED    .orch/waves/W1/T2-refs/request.json
+ADDED    .orch/waves/W1/T3-index/agent-orchestrator-mq3n3zpl-result.json
+ADDED    .orch/waves/W1/T3-index/baseline.txt
+ADDED    .orch/waves/W1/T3-index/codex-v3-submission.json
+ADDED    .orch/waves/W1/T3-index/orch-opencode-t3-submission.json
+ADDED    .orch/waves/W1/T3-index/request.json
+ADDED    .orch/waves/W1/T4-worktree/agent-orchestrator-dcbrrli0-result.json
+ADDED    .orch/waves/W1/T4-worktree/baseline.txt
+ADDED    .orch/waves/W1/T4-worktree/hermes-v4-submission.json
+ADDED    .orch/waves/W1/T4-worktree/orch-codex-t4-submission.json
+ADDED    .orch/waves/W1/T4-worktree/request.json
+ADDED    tests/verify_index.rs
+ADDED    tests/verify_refs.rs
+ADDED    tests/verify_worktree.rs
+---
+changed/deleted pre-existing files: 8
+
+$ cargo test --offline --test verify_worktree -- --nocapture  (probe lines)
+[probe negation-in-excluded-dir] git=true mg=false
+[probe malformed-class] git="?? .gitignore\n?? [\n?? keep.txt\n" mg="?? .gitignore\n?? keep.txt\n"
+[probe malformed-class] git="?? .gitignore\n?? keep.txt\n" mg="?? .gitignore\n?? keep.txt\n"
+[probe tracked-non-utf8] git=" M \"bad\\377.txt\"\n" mg=Err(Other("non-UTF8 paths are not supported in v1"))
+[probe intent-to-add] git=" A new.txt\n" mg="AM new.txt\n"
+[probe type-change] git=" T f.txt\n?? target.txt\n" mg=" M f.txt\n?? target.txt\n"
+test result: ok. 25 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.06s

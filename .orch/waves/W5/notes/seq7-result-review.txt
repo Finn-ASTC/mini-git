@@ -1,0 +1,7 @@
+seq 7 result(success)：已复核并消费该响应。
+- `protocol.py validate --request … --check-files` 退出 0（身份字段、文件声明、路径包含性都通过）。
+- 独立核对：作者声明的 release 制品 SHA-256（75953480…）与实际 `sha256sum` 一致；
+  SPEC.md 哈希与基线一致（未被改动）；Cargo.toml [dependencies] 为空。
+- 发现一处声明不完整：磁盘上存在 Cargo.lock，但 result 的 files_created 未列出它。
+  不影响验收（无第三方依赖），作为流程观察记录。
+结论：handled；转入交付快照捕获与独立验证轮。

@@ -1,0 +1,183 @@
+### cargo test --offline transport::
+warning: function `todo` is never used
+  --> src/error.rs:62:15
+   |
+62 | pub(crate) fn todo<T>(what: &'static str) -> Result<T> {
+   |               ^^^^
+   |
+   = note: `#[warn(dead_code)]` (part of `#[warn(unused)]`) on by default
+
+warning: `mini-git` (lib) generated 1 warning
+warning: `mini-git` (lib test) generated 1 warning (1 duplicate)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.03s
+     Running unittests src/lib.rs (target/debug/deps/minigit-c104696a743ccc50)
+
+running 44 tests
+test transport::http::tests::parses_status_lines ... ok
+test transport::http::tests::parses_plain_http_urls ... ok
+test transport::http::tests::rejects_chunk_without_crlf ... ok
+test transport::http::tests::decodes_chunked_bodies ... ok
+test transport::http::tests::strip_service_line_is_noop_without_marker ... ok
+test transport::http::tests::strips_service_line_and_flush ... ok
+test transport::http::tests::validates_only_git_services ... ok
+test transport::http::tests::rejects_https_and_bad_urls ... ok
+test transport::local::tests::side_band_progress_is_not_mixed_into_the_pack ... ok
+test transport::local::tests::upload_pack_response_side_band_channel_3_is_a_fatal_error ... ok
+test transport::local::tests::url_parsing_covers_the_v1_surface ... ok
+test transport::negotiate::tests::advertisement_error_paths ... ok
+test transport::negotiate::tests::fetch_request_bytes_are_exact ... ok
+test transport::negotiate::tests::push_update_bytes_are_exact_and_validated ... ok
+test transport::pktline::tests::preserves_side_band_channel_bytes ... ok
+test transport::pktline::tests::encodes_known_frames ... ok
+test transport::negotiate::tests::report_status_shapes_and_errors ... ok
+test transport::local::tests::ref_delta_packs_are_reported_as_unsupported ... ok
+test transport::pktline::tests::reads_consecutive_frames_and_tracks_cursor ... ok
+test transport::pktline::tests::reads_special_frames_and_empty_data_without_extra_bytes ... ok
+test transport::pktline::tests::rejects_malformed_lengths ... ok
+test transport::pktline::tests::rejects_truncated_streams ... ok
+test transport::pktline::tests::write_pkt_rejects_oversized_payload ... ok
+test transport::pktline::tests::write_roundtrips_through_read ... ok
+test transport::local::tests::mg_binary_reports_clear_errors ... ok
+test transport::pktline::tests::reads_maximum_payload ... ok
+test transport::negotiate::tests::empty_repository_uses_the_capabilities_hack ... ok
+test transport::pktline::tests::differential_parses_and_reencodes_real_git_advertisement ... ok
+test transport::pktline::tests::differential_feeds_written_request_to_real_git_upload_pack ... ok
+test transport::local::tests::fetch_tolerates_a_wildcard_refspec_that_matches_nothing ... ok
+test transport::negotiate::tests::parses_real_advertisement_and_reencodes_it_byte_for_byte ... ok
+test transport::local::tests::clone_failures_leave_no_half_made_directory ... ok
+test transport::local::tests::advertisement_bytes_have_the_v0_pkt_line_shape ... ok
+test transport::negotiate::tests::real_upload_pack_accepts_our_request_and_the_pack_verifies ... ok
+test transport::local::tests::upload_pack_respects_no_progress_and_installs_objects ... ok
+test transport::local::tests::set_branch_upstream_writes_config_visible_to_real_git ... ok
+test transport::negotiate::tests::real_receive_pack_accepts_our_push_and_report_status_parses ... ok
+test transport::local::tests::pack_layout_is_self_contained_and_installable ... ok
+test transport::local::tests::fetch_updates_remote_tracking_refs_and_fetch_head ... ok
+test transport::local::tests::push_refuses_the_checked_out_branch_of_a_non_bare_remote ... ok
+test transport::local::tests::clone_matches_real_git ... ok
+test transport::local::tests::push_is_readable_by_real_git_and_rejects_non_fast_forwards ... ok
+test transport::local::tests::mg_binary_clone_fetch_push_pull_end_to_end ... ok
+test transport::local::tests::clone_matches_real_git_across_fixtures ... ok
+
+test result: ok. 44 passed; 0 failed; 0 ignored; 0 measured; 227 filtered out; finished in 0.31s
+
+     Running unittests src/main.rs (target/debug/deps/mg-d18f0e67fce7ef67)
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+     Running tests/fsck_gc.rs (target/debug/deps/fsck_gc-07e0af4fbe383de3)
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 25 filtered out; finished in 0.00s
+
+     Running tests/interop/main.rs (target/debug/deps/interop-c5b13a0bb0e7ca9c)
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 7 filtered out; finished in 0.00s
+
+     Running tests/verify/main.rs (target/debug/deps/verify-2fe6099ca561aa6c)
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 3 filtered out; finished in 0.00s
+
+     Running tests/verify_diff.rs (target/debug/deps/verify_diff-f430f95397664e53)
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 17 filtered out; finished in 0.00s
+
+     Running tests/verify_diff_paths.rs (target/debug/deps/verify_diff_paths-70cafb16d5b3cc0b)
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 6 filtered out; finished in 0.00s
+
+     Running tests/verify_fsck_gc.rs (target/debug/deps/verify_fsck_gc-519430c1468304ee)
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 17 filtered out; finished in 0.00s
+
+     Running tests/verify_http.rs (target/debug/deps/verify_http-2a553f9b10327a78)
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 9 filtered out; finished in 0.00s
+
+     Running tests/verify_index.rs (target/debug/deps/verify_index-7dd5920b43e5be81)
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 11 filtered out; finished in 0.00s
+
+     Running tests/verify_materialize.rs (target/debug/deps/verify_materialize-419cd0f7607b809b)
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 22 filtered out; finished in 0.00s
+
+     Running tests/verify_merge_ff.rs (target/debug/deps/verify_merge_ff-bb498c5fa36fcad8)
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 5 filtered out; finished in 0.00s
+
+     Running tests/verify_merge_ff2.rs (target/debug/deps/verify_merge_ff2-46e4574d381d9e94)
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 12 filtered out; finished in 0.00s
+
+     Running tests/verify_mergebase.rs (target/debug/deps/verify_mergebase-4419c18190eed8a2)
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 10 filtered out; finished in 0.00s
+
+     Running tests/verify_odb.rs (target/debug/deps/verify_odb-d46636cd29f27db3)
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 6 filtered out; finished in 0.00s
+
+     Running tests/verify_pack.rs (target/debug/deps/verify_pack-60c728c9cf6ed72a)
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 10 filtered out; finished in 0.00s
+
+     Running tests/verify_pktline.rs (target/debug/deps/verify_pktline-10124e1f25c2efd3)
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 8 filtered out; finished in 0.00s
+
+     Running tests/verify_plumbing.rs (target/debug/deps/verify_plumbing-aeb413932d9a143a)
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 19 filtered out; finished in 0.00s
+
+     Running tests/verify_refs.rs (target/debug/deps/verify_refs-1cd69fe5f28083ab)
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 9 filtered out; finished in 0.00s
+
+     Running tests/verify_threeway.rs (target/debug/deps/verify_threeway-a61023c085f543c6)
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 32 filtered out; finished in 0.00s
+
+     Running tests/verify_worktree.rs (target/debug/deps/verify_worktree-5f29378ceb796820)
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 25 filtered out; finished in 0.00s
+
+EXIT=0

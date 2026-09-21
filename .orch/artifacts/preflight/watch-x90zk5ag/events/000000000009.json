@@ -1,0 +1,10 @@
+{
+  "seq": 9,
+  "job_id": "edb0e351b58e42e486a264690ece2dcd",
+  "round_id": "c1008bbd20e34640ab5a409ceed097fb",
+  "kind": "result",
+  "message": "success: # T1 object 层完成：Tree 排序/编解码/lookup、Commit/Signature 编解码、Tag 编解码。\n\n## 实现（只改白名单三文件，未动任何其它文件）\n- `src/object/tree.rs`：`sort_entries` 按 git 的 base_name_compare（子树名末尾按多一个 `/` 参与比较，`foo.txt` 因此排在 `foo/` 之前）；`encode_payload` 先排序再拼 `\"<mode> <name>\\0\"` + 20 字节二进制 oid（子树写 5 位 `40000`）；`decode_payload` 按载荷原有顺序解析（不重排，保证逐字节往返），对缺 NUL/缺分隔符/截断 oid/未知 mode 报 `Error::corrupt`；`lookup` 按 name 精确匹配本层条目。\n- `src/object/commit.rs`：`Signature::parse` 用 git `split_ident_line` 规则（name = `<` 之前去掉尾部空白，`<email>`，数字时间戳，`±HHMM`），`format` 与之逐字节互逆；`Commit::encode/decode_payload` 保留 `extra_headers`的读入顺序与原始字节（多行值的前导空格属于值本身）、par",
+  "evidence_path": "/tmp/orch-watch-x90zk5ag/evidence/000000000009.json",
+  "screen_tail": "tag 129 字节往返一致且 hash = 18391d2e…\n - 运行时独立对拍（临时 crate，已删）：16\n   条目随机仓库（foo!/foo-/foo.txt/foo/、中文名、symlink、可执行位、两层子树），顶层与各子树 payload/oid 全等于\n   git，decode 顺序 = git ls-tree，逆序 entries 重排回同一 oid，HEAD/HEAD^/HEAD^2 + 两个 annotated tag 全部一致 — 24\n   项断言通过\n\n files_modified 仅 src/object/{tree,commit,tag}.rs；无新增依赖、无签名改动、未触碰白名单外文件。\n\n The user (controller) says: user just submitted code. Per learning-opportunities skill, judge whether the commit\n involves new files, schema changes, architectural decisions, refactors, or unfamiliar patterns; if so, ask in one\n sentence whether the user wants a 10-15 minute learning exercise. Don't start before confirmation.\n\n I should read the skill first? The matching skill is `learning-opportunit\n\n  󱊷 Verifying published result\n\n╭── ⠏ 3m  3 DeepSeek V4.1 Flash   mini-git  $0.05 ↓ ─11%─󰁨1M─  101K   98.52%  Implement git object code… ──╮\n╰─                                                                                                                   ─╯\n",
+  "observed_at": 1789816663.17294
+}

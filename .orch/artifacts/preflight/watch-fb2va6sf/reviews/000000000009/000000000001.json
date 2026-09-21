@@ -1,0 +1,11 @@
+{
+  "version": 1,
+  "seq": 9,
+  "job_id": "816ca880b03a437c8aa3da7cec8b3cf9",
+  "round_id": "c1431df7a41e4b2fa6e43dd022e2acb5",
+  "event_fingerprint": "f45a28232304be0e1a9d48322ee8b785384e5f4d7c8b8b4eadfe455743f81e3d",
+  "revision": 1,
+  "status": "handled",
+  "note": "result 事件已消费：V1 status=success，validate --check-files 退出码 0，files_created=[tests/verify/main.rs]，未改 src/**。\ncontroller 独立复跑：cargo test 29(lib)+7(interop)+3(verify) 全绿、clippy 0 warning、check-freeze drift 0；\n对照 baseline 变更集合仅白名单三文件（作者侧）+ 新增 tests/verify/main.rs（验证者侧）。\n作者真值与 controller 独立真值一致：tree oid 4aad58e0401292349b1a142aa10cbcc061c2eda2。\n结论：T1 交叉验证通过，假绿率 0。\n",
+  "recorded_at": 1789817019.1283987
+}

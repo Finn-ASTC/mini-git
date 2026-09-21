@@ -1,0 +1,17 @@
+{
+  "version": 1,
+  "seq": 4,
+  "job_id": "9317e01768834379b288ea08ed9fe156",
+  "round_id": "3ccd1e4633ae4de7a5ce2b4817f3f2c5",
+  "event_fingerprint": "ec1496a04c3e9923590225b7e26566a664e36cb3ee45e3656ab02cb5684e67e1",
+  "revision": 1,
+  "status": "handled",
+  "note": "review_due（changed UI）复核。读证据 screen：omp 正在跑自建脚手架（TODO 显示\nSetup / Independent build / Oracle / Negative control / Gates 各阶段，当前在跑\n\"Negative-control smoke on pre-fix binary\"，底部是 600s timeout 框）。\n没有任何对话框、提问或原生审批画面。判定：正常工作中，无需输入。\n",
+  "recorded_at": 1789926771.9001148,
+  "action_evidence": null,
+  "resolution_evidence": {
+    "path": "/home/user/Projects/mini-git/.orch/waves/W7/orch-run-oxrolhzc/watches/orch-watch-_8f_qjxn/evidence/000000000004.json",
+    "sha256": "7a9e7849ab3dccfd92980157053137e71d8dcb3ae7928626b876d5db94dd6627"
+  },
+  "resolved_at": 1789926771.0
+}

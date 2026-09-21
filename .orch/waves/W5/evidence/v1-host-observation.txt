@@ -1,0 +1,34 @@
+Scoped host observation: V1 verifier agent (opencode). Observer: controller-codex.
+
+Observed at 2026-09-20T09:52:04Z (unix 1789897924).
+
+Transport resources (from resources.json): mode=insider, session=default,
+agent=orch-linestat-v1-opencode, workspace=w1T, tab=w1T:t1, pane=w1T:p1, cwd=/tmp/w5-verify.
+Native host: OpenCode 1.18.29 (OMO profile "omo"), session_id
+ses_0004, directory /tmp/w5-verify, title
+"独立验证 linestat 1.0.0 SPEC 契约", cost $0.0356, tokens in/out 70075/16776 (+17796 reasoning, 1440896 cache reads).
+
+foreground: clear. herdr pane read w1T:p1 shows the idle TUI: the agent's final
+  narrative ("Result written atomically (temp + os.replace) to the literal
+  result_path; schema_version/job_id/round_id copied exactly, status=success,
+  error/blocked_reason=null"), elapsed "2m 31s", no spinner, no running tool.
+background: clear. Real process table shows opencode pid 1049377 alive but idle; no
+  cargo/rustc/test process anywhere. V1's own report states the build/test matrix
+  finished with recorded exit codes.
+native_children: clear. SQLite session table in ~/.local/share/opencode/opencode.db
+  has no row whose parent_id equals ses_0004, i.e. this round
+  spawned no child sessions. children=[].
+interaction: clear. No permission dialog, no question, no queued work; the target is
+  input-ready. Watch orch-watch-3szjad6m is at cursor 6 with 0 open events (seq 1-6
+  all handled).
+side_effects: clear (accounted). Observed writes within authorization:
+  - /tmp/w5-verify (REPORT.md, oracle/, harness/, evidence/, work/, .omo/)
+  - ~/.local/share/opencode/opencode.db (native session/message accounting)
+  V1 itself reported the only change it noticed at the delivery snapshot: the
+  controller's own verifications/ directory appearing inside the sealed snapshot
+  after the seal, which it correctly did not attribute to itself and which did not
+  alter the verified bytes. Nothing unexplained found within the observed scope.
+
+Scope limit: process/session/file observations above are limited to this job's
+resources and its cwd plus the named opencode storage. Filesystem areas not listed
+were not inspected; this is not an OS write audit.

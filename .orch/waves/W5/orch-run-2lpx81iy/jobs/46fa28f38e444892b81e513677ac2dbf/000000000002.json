@@ -1,0 +1,38 @@
+{
+  "version": 1,
+  "revision": 2,
+  "index_path": "/home/user/Projects/mini-git/.orch/waves/W5/orch-run-2lpx81iy/jobs",
+  "job_id": "46fa28f38e444892b81e513677ac2dbf",
+  "round_id": "4be87971a9bd4f8e95658665063352ed",
+  "active_request": "/home/user/Projects/mini-git/.orch/waves/W5/orch-run-2lpx81iy/rounds/agent-orchestrator-hgvhj030/request.json",
+  "rounds": [
+    {
+      "request_path": "/home/user/Projects/mini-git/.orch/waves/W5/orch-run-2lpx81iy/rounds/agent-orchestrator-hgvhj030/request.json",
+      "round_id": "4be87971a9bd4f8e95658665063352ed",
+      "request_sha256": "1dcabdbc3e0de832fdac15c7d6c6436b8f0178205a4cd5646ae49df7b2fea18d"
+    }
+  ],
+  "resources": null,
+  "submission": "prepared",
+  "attempts": [],
+  "lease": {
+    "owner": "controller-codex",
+    "token": "295589d25d104a0dbc2a570764a56036",
+    "expires_at": 1789898456.078459
+  },
+  "launch": null,
+  "native": {
+    "session_id": null,
+    "turn_id": null
+  },
+  "monitor": {
+    "owner": null,
+    "watch_path": null,
+    "expires_at": null
+  },
+  "deadline": null,
+  "closed": null,
+  "completion": {},
+  "event": "claim",
+  "recorded_at": 1789897556.078459
+}

@@ -1,0 +1,13 @@
+{
+  "seq": 4,
+  "job_id": "66840d4b642f481a848788974b0665ca",
+  "round_id": "ea8be0b903094bd7b0dc00f9de970778",
+  "kind": "review_due",
+  "message": "Changed UI needs review; hook/keyword detection may miss a dialog.",
+  "evidence_path": "/home/user/Projects/mini-git/.orch/waves/W7/orch-run-oxrolhzc/watches/orch-watch-oxft_00d/evidence/000000000004.json",
+  "screen_tail": "        │ oracle deepseek-flash             │\n  ┃    tail -3 /tmp/w7-author/t2-hermetic-dev.log                                                   │ prometheus deepseek-flash         │\n  ┃                                                                                                 │ quick deepseek-flash              │\n  ┃  === hermetic copy: cargo test --offline (fresh target) ===                                     │                                   │\n  ┃                                                                                                 └───────────────────────────────────┘\n\n     ▣  Sisyphus - Ultraworker · DeepSeek V4.1 Flash\n\n  ┃\n  ┃\n  ┃\n  ┃  Sisyphus - Ultraworker · DeepSeek V4.1 Flash DeepSeek                                          ~/Projects/mini-git\n  ╹▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀\n   ⬝⬝⬝⬝⬝⬝⬝⬝  esc interrupt                                 192.6K (19%) · $0.08  ctrl+p commands    • OpenCode 1.18.29",
+  "observed_at": 1789928230.9112263,
+  "issue_id": "2d3c43f3b0404923a34f9f20f44342c5",
+  "correlation_key": "4162df408ae1b6009f46eb24646f8871d27f2d636fb05bb56334db056d9cf808",
+  "confidence": "unknown_ui"
+}

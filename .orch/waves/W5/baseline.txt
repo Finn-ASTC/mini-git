@@ -1,0 +1,5 @@
+# W5 baseline @ 2026-09-20T17:41:13+08:00
+cwd=/tmp/w5-linestat
+SPEC.md 2804
+sha256:
+20903f0786a9fc2c756bb773cdc37d9ff74212450900a8cb6bfa20b157e98244  SPEC.md

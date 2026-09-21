@@ -1,0 +1,33 @@
+W7 最终监督账目结清（收口轮，controller）
+时间：2026-09-21T02:41+08:00
+
+两个 watch 的 8 条未复核事件已全部记为 handled（纯记账，不影响交付正确性）。
+所有对应 job 在此前均已 completed/cancelled 并 close，事件都发生在轮次结束之后，
+note 只说明「轮次已结束，无需控制方输入」，未对目标终端发送任何输入、未做任何 UI 批准。
+
+watches/orch-watch-_8f_qjxn（V2 = omp 验证者，job 9317e017，已 completed rev 9）
+  seq 6  review_due    -> handled  (证据 000000000006.json：收尾自检 grep，无对话框)
+  seq 7  result/success-> handled  (PASS：release==debug==真实 git，零挂起零差异)
+  seq 8  state_changed -> handled  (native state: done)
+  seq 10 review_due    -> handled  (证据 000000000010.json：批量关闭 15 项 TODO，无对话框)
+  seq 11 state_changed -> handled  (native state: idle)
+
+watches/orch-watch-oxft_00d（T2 = opencode 作者，job 66840d4b，已 completed rev 16）
+  seq 5  result/success-> handled  (W7-D1 FIXED：tests/verify_pack.rs 证据落点移出仓库)
+  seq 6  state_changed -> handled  (native state: done)
+  seq 7  state_changed -> handled  (native state: idle)
+
+复核结果：
+  watch.py pending orch-watch-_8f_qjxn -> {open: 0, waiting_user: 0, overdue: 0}
+  watch.py pending orch-watch-oxft_00d -> {open: 0, waiting_user: 0, overdue: 0}
+  watch.py pending orch-watch-7136nm52 -> 0（早前已结清）
+  watch.py pending orch-watch-ecj3lg73 -> 0（早前已结清）
+  supervision.py --run .../orch-run-oxrolhzc/run.json --work-seconds 15
+    -> can_work: true, counts: {open: 0, waiting_user: 0}, complete: true, errors: []
+
+清理状态：
+  herdr session default：仅剩控制方 workspace wJ（controller 自己）；w1V/w1W 已关闭。
+  agent list：仅 codex(wJ) 一个，无残留子 agent。
+  4 个 watch observer 进程均已自然退出（alive False）。
+
+不做的事：未删除任何证据；/tmp/w7-deliveries、/tmp/w7-verify 保留为验收证据。

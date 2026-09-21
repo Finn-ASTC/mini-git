@@ -1,0 +1,29 @@
+{
+  "observed_at": 1789816498.1718564,
+  "target": {
+    "request_path": "/home/user/Projects/mini-git/.orch/rounds/W1/agent-orchestrator-1vhlii69/request.json",
+    "job_id": "edb0e351b58e42e486a264690ece2dcd",
+    "round_id": "c1008bbd20e34640ab5a409ceed097fb",
+    "resources": {
+      "mode": "isolated",
+      "session": "orch-w1-t1",
+      "agent": "orch-omp-t1",
+      "pane": "w1:p1",
+      "workspace": "w1",
+      "owns_agent": true,
+      "owns_pane": true,
+      "owns_workspace": true,
+      "owns_session": true,
+      "tab": null,
+      "parent_pane": null,
+      "parent_tab": null,
+      "owns_tab": false,
+      "recorded_at": "2026-09-19T11:13:40.605075+00:00",
+      "job_id": "edb0e351b58e42e486a264690ece2dcd"
+    },
+    "tmux_selector": null
+  },
+  "result": null,
+  "state": "working",
+  "screen": " both files same name → Equal). Note: when both are trees with equal names, a_char == b_char == b'/' → Equal. And when\n both are files equal → 0 == 0. Good, matches base_name_compare returning 0.\n\n Wait, is that right for both trees same name? base_name_compare: len1==len2 && mode1==mode2 → return 0 early. Then\n equality. Fine, both Equal.\n\n But hold on: git's actual comparison of same-name file vs tree: returns -1 (file first: c1=0 < c2='/'). My code: a\n file, b tree, equal names → a_char=0, b_char='/' → Less. ✓.\n\n So comparator is 3-way on (virtual char) after equal prefix; simple.\n\n However there's an important subtlety I should double check for correctness vs git's actual tree-writing sort. Git\n writes trees sorted by base_name_compare (see sort_tree_entries? actually in write_tree/fsck git uses tree entry sort\n via cache_tree ... the canonical is strbuf sort with base_name_compare). Also git mktree sorts with base_name_compare\n (via mktree command which calls sort using base_name_compare), and fsck checks verify_ordered using\n base_name_compare. So yes.\n\n Hmm, but one more: for non-dir entries the \"virtual char\" is 0 → shorter name first. Standard lexicographic. ✓\n\n Simplify: I can implement as comparing (name, virtual) where I compute key(name, mode) -> (slice, extra); but the\n code above is clear.\n\n Implementation with Ordering:...\n\n Clean, no clippy issues.\n\n decode_payload:...\n\n RAW_LEN is crate::oid::RAW_LEN; is it public? Yes pub const RAW_LEN: usize = 20;. Use crate::oid::{Oid, RAW_LEN}...\n\n Oid::from_slice returns Result<Self> with InvalidOid error; fine.\n\n Name empty check: git requires nonempty names; error if header has space at position 0? FileMode::from_bytes of empty\n prefix errors anyway. And header[space+1..] could be empty → name empty; git forbids. Should I error? Decoding a\n name-less entry: git would consider it corrupt.\n\n  󱊷 Verifying extra-header payload and bare tag\n\n╭── ⠦ 1m  3 DeepSeek V4.1 Flash   mini-git  $0.01 ↓ ─6%─󰁨1M─  34K   95.75%  Implement git object codecs… ──╮\n╰─                                                                                                                   ─╯\n"
+}

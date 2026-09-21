@@ -1,0 +1,23 @@
+{
+  "active_request": ".orch/rounds/W4/agent-orchestrator-mk11hkd_/request.json",
+  "job_id": "904614301a2b4d0abf57c4b518232de0",
+  "round_id": "88cedcbfc295484aacac1a383e6aac63",
+  "transport": "insider (default session)",
+  "session": "default",
+  "agent": "w4-t14-opencode",
+  "pane": "w1F:p1",
+  "workspace": "w1F",
+  "cwd": "/home/user/Projects/mini-git",
+  "kind": "opencode",
+  "task": "T14 smart HTTP 传输",
+  "submitted_at": "2026-09-19T21:43:28+08:00",
+  "acceptance": "accepted",
+  "submission_evidence": "herdr agent prompt -> agent_prompted",
+  "deadline": null,
+  "monitor_owner": "controller (default session, pane wJ:p1)",
+  "last_checked_at": "2026-09-19T21:43:28+08:00",
+  "next_check_at": null,
+  "pending_question": null,
+  "resources_file": ".orch/rounds/W4/agent-orchestrator-mk11hkd_/resources.json",
+  "result_path": "/home/user/Projects/mini-git/.orch/rounds/W4/agent-orchestrator-mk11hkd_/result.json"
+}

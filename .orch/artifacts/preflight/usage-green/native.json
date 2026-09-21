@@ -1,0 +1,1 @@
+{"sample_id": "call-1", "source": "host-native-events", "measurement": "delta", "attempt_id": "initial-1", "purpose": "task", "provider": "provider", "model": "model", "input_tokens": 1000, "cached_input_tokens": 600, "output_tokens": 120}

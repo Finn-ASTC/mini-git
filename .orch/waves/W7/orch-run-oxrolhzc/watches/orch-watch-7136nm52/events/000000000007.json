@@ -1,0 +1,10 @@
+{
+  "seq": 7,
+  "job_id": "66840d4b642f481a848788974b0665ca",
+  "round_id": "5248318530cb4b26b88628ac6da18637",
+  "kind": "state_changed",
+  "message": "done",
+  "evidence_path": "/home/user/Projects/mini-git/.orch/waves/W7/orch-run-oxrolhzc/watches/orch-watch-7136nm52/evidence/000000000007.json",
+  "screen_tail": " oracle deepseek-flash             │\n                                                                                                    │ prometheus deepseek-flash         │\n     No delegation, no test/Cargo.toml edits, no writers left. Evidence under /tmp/w7-author/ (     │ quick deepseek-flash              │\n     scan-asserts.txt, dev-targets.txt, rel-targets.txt, corpus-report.json, g1-exact.log, g2-      │                                   │\n     exact.log, clippy-*.log, repro-*/).                                                            └───────────────────────────────────┘\n\n     ▣  Sisyphus - Ultraworker · DeepSeek V4.1 Flash · 4m 37s\n\n  ┃\n  ┃\n  ┃\n  ┃  Sisyphus - Ultraworker · DeepSeek V4.1 Flash DeepSeek                                          ~/Projects/mini-git\n  ╹▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀\n   /home/user/Projects/mini-git                            157.8K (16%) · $0.06  ctrl+p commands    • OpenCode 1.18.29",
+  "observed_at": 1789926386.0689373
+}

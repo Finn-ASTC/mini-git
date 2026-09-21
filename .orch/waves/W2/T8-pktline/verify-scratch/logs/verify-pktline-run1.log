@@ -1,0 +1,102 @@
+   Compiling mini-git v0.0.0 (/home/user/Projects/mini-git)
+error[E0308]: arguments to this function are incorrect
+   --> src/diff/myers.rs:294:42
+    |
+294 |         let keep = d == 1 || (d == 2 && !clean_mmatch(&dis, i, dstart, dend));
+    |                                          ^^^^^^^^^^^^       -  ------  ---- expected `i64`, found `isize`
+    |                                                             |  |
+    |                                                             |  expected `i64`, found `isize`
+    |                                                             expected `i64`, found `isize`
+    |
+note: function defined here
+   --> src/diff/myers.rs:224:4
+    |
+224 | fn clean_mmatch(dis: &[u8], i: i64, s: i64, e: i64) -> bool {
+    |    ^^^^^^^^^^^^             ------  ------  ------
+help: you can convert an `isize` to an `i64` and panic if the converted value doesn't fit
+    |
+294 |         let keep = d == 1 || (d == 2 && !clean_mmatch(&dis, i.try_into().unwrap(), dstart, dend));
+    |                                                              ++++++++++++++++++++
+help: you can convert an `isize` to an `i64` and panic if the converted value doesn't fit
+    |
+294 |         let keep = d == 1 || (d == 2 && !clean_mmatch(&dis, i, dstart.try_into().unwrap(), dend));
+    |                                                                      ++++++++++++++++++++
+help: you can convert an `isize` to an `i64` and panic if the converted value doesn't fit
+    |
+294 |         let keep = d == 1 || (d == 2 && !clean_mmatch(&dis, i, dstart, dend.try_into().unwrap()));
+    |                                                                            ++++++++++++++++++++
+
+error[E0308]: mismatched types
+   --> src/diff/myers.rs:299:24
+    |
+299 |             x.set_rchg(i, true);
+    |               -------- ^ expected `i64`, found `isize`
+    |               |
+    |               arguments to this method are incorrect
+    |
+note: method defined here
+   --> src/diff/myers.rs:157:8
+    |
+157 |     fn set_rchg(&mut self, i: i64, value: bool) {
+    |        ^^^^^^^^            ------
+help: you can convert an `isize` to an `i64` and panic if the converted value doesn't fit
+    |
+299 |             x.set_rchg(i.try_into().unwrap(), true);
+    |                         ++++++++++++++++++++
+
+error[E0502]: cannot borrow `*diags` as immutable because it is also borrowed as mutable
+   --> src/diff/myers.rs:367:15
+    |
+367 |     diags.fwd[diags.idx(fmid)] = off1;
+    |     ----------^^^^^-----------
+    |     |        ||
+    |     |        |immutable borrow occurs here
+    |     |        mutable borrow later used here
+    |     mutable borrow occurs here
+    |
+help: try adding a local storing this...
+   --> src/diff/myers.rs:367:15
+    |
+367 |     diags.fwd[diags.idx(fmid)] = off1;
+    |               ^^^^^^^^^^^^^^^
+help: ...and then using that local here
+   --> src/diff/myers.rs:367:14
+    |
+367 |     diags.fwd[diags.idx(fmid)] = off1;
+    |              ^^^^^^^^^^^^^^^^^
+
+error[E0502]: cannot borrow `*diags` as immutable because it is also borrowed as mutable
+   --> src/diff/myers.rs:368:15
+    |
+368 |     diags.bwd[diags.idx(bmid)] = lim1;
+    |     ----------^^^^^-----------
+    |     |        ||
+    |     |        |immutable borrow occurs here
+    |     |        mutable borrow later used here
+    |     mutable borrow occurs here
+    |
+help: try adding a local storing this...
+   --> src/diff/myers.rs:368:15
+    |
+368 |     diags.bwd[diags.idx(bmid)] = lim1;
+    |               ^^^^^^^^^^^^^^^
+help: ...and then using that local here
+   --> src/diff/myers.rs:368:14
+    |
+368 |     diags.bwd[diags.idx(bmid)] = lim1;
+    |              ^^^^^^^^^^^^^^^^^
+
+error[E0384]: cannot assign twice to immutable variable `earliest_end`
+   --> src/diff/myers.rs:916:17
+    |
+916 |                 earliest_end = g.end;
+    |                 ^^^^^^^^^^^^^^^^^^^^ cannot assign twice to immutable variable
+    |
+help: consider making this binding mutable
+    |
+906 |             let mut earliest_end;
+    |                 +++
+
+Some errors have detailed explanations: E0308, E0384, E0502.
+For more information about an error, try `rustc --explain E0308`.
+error: could not compile `mini-git` (lib) due to 5 previous errors

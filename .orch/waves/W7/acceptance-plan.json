@@ -1,0 +1,39 @@
+{
+  "delivery": {
+    "target": "mini-git 的 release 制品 target/release/mg（既有仓库，非新项目）",
+    "contract": "mini-git v1 的既有 CLI 契约（mg diff / mg merge 与真实 git 互操作）+ 本轮的修复不变量：release 行为必须等于 debug 行为",
+    "source_scope": "/home/user/Projects/mini-git 下的 src/**（作者只许改 src/diff/myers.rs）、tests/**（只读）、Cargo.toml（controller-owned，只读）",
+    "intended_use": "本地命令行 git 子集；release profile 是真实交付 profile"
+  },
+  "configurations": {
+    "applicable": ["dev", "release", "release-artifact"],
+    "delivered": "release（target/release/mg）",
+    "not_applicable": [
+      {"slot": "platform", "reason": "只声明本机 Linux；不做跨平台声明", "owner": "controller"},
+      {"slot": "feature-flags", "reason": "该 crate 未声明任何 feature", "owner": "controller"},
+      {"slot": "msrv", "reason": "Cargo.toml 声明 rust-version=1.75，但本机只有 1.97.1；不据此声称已在 1.75 上验证", "owner": "controller"}
+    ]
+  },
+  "gates": [
+    {"id": "G1-dev-tests", "configuration": "dev", "owner": "author+verifier",
+     "oracle": "cargo test --offline（基线 562 passed / 0 failed / 1 ignored）", "timeout_seconds": 600},
+    {"id": "G2-release-tests", "configuration": "release", "owner": "author+verifier",
+     "oracle": "cargo test --offline --release —— P24 修复前 lib 与 verify_diff 两个 target 直接卡死，修复后必须全绿且不挂死",
+     "timeout_seconds": 900},
+    {"id": "G3-release-artifact", "configuration": "release-artifact", "owner": "author+verifier",
+     "oracle": "cargo build --release --offline 后对 target/release/mg 报 sha256；验证者必须用独立 CARGO_TARGET_DIR 重建并比对",
+     "timeout_seconds": 900},
+    {"id": "G4-cross-profile-oracle", "configuration": "release", "owner": "author+verifier",
+     "oracle": "200 例语料上 release == debug == 真实 git（零挂起、零差异）；验证者必须做未修复版的负对照，证明脚手架有分辨力",
+     "timeout_seconds": 900},
+    {"id": "G5-merge-path", "configuration": "release", "owner": "verifier",
+     "oracle": "mg merge 的三方路径走同一处修复（merge/three_way.rs 调 myers）；release 下不挂且结果与 git 一致",
+     "timeout_seconds": 300},
+    {"id": "G6-fmt", "configuration": "dev", "owner": "author",
+     "oracle": "cargo fmt --all -- --check", "timeout_seconds": 60},
+    {"id": "G7-clippy", "configuration": "dev+release", "owner": "author",
+     "oracle": "cargo clippy --offline --all-targets -- -D warnings（dev 与 release 两个 profile）", "timeout_seconds": 900}
+  ],
+  "artifacts": {"intended": ["target/release/mg"], "bound_at_capture": true},
+  "coverage_note": "未执行 / 超时 / 不适用 必须分开报告；构建成功不等于 G3，测试总数不能替代逐配置结论。修复前 src/diff/myers.rs 的 sha256 与整份 src/ 已封存在 evidence/pre-fix-src/，用于验证者的负对照。"
+}

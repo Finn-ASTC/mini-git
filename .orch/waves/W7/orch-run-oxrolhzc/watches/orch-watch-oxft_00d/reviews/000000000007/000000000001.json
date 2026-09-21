@@ -1,0 +1,17 @@
+{
+  "version": 1,
+  "seq": 7,
+  "job_id": "66840d4b642f481a848788974b0665ca",
+  "round_id": "ea8be0b903094bd7b0dc00f9de970778",
+  "event_fingerprint": "b4ddc3303260d80a6410f715ec936484605a03a7434180c9b06d98f578372573",
+  "revision": 1,
+  "status": "handled",
+  "note": "state_changed（idle）结清，seq 7，watch orch-watch-oxft_00d。\nT2（opencode）native 状态转为 idle，终端回到空闲提示符。\njob 66840d4b 已 completed、已 close（rev 16），工作区 w1V 也已关闭，不会再有后续轮次。\n正常终态，仅结清账目。\n",
+  "recorded_at": 1789929716.8884838,
+  "action_evidence": null,
+  "resolution_evidence": {
+    "path": "/home/user/Projects/mini-git/.orch/waves/W7/orch-run-oxrolhzc/watches/orch-watch-oxft_00d/evidence/000000000007.json",
+    "sha256": "1f9a10be1cefebc648e17281cb6c50c9b0a43928e35e6d0f7d9ee7243273af7a"
+  },
+  "resolved_at": 1789929716.0
+}

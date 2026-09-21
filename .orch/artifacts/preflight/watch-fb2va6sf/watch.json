@@ -1,0 +1,31 @@
+{
+  "version": 1,
+  "targets": [
+    {
+      "request_path": "/home/user/Projects/mini-git/.orch/rounds/W1/agent-orchestrator-clc6i26t/request.json",
+      "job_id": "816ca880b03a437c8aa3da7cec8b3cf9",
+      "round_id": "c1431df7a41e4b2fa6e43dd022e2acb5",
+      "resources": {
+        "mode": "isolated",
+        "session": "orch-w1-t1",
+        "agent": "orch-codex-v1",
+        "pane": "w2:p1",
+        "workspace": "w2",
+        "owns_agent": true,
+        "owns_pane": true,
+        "owns_workspace": true,
+        "owns_session": false,
+        "tab": null,
+        "parent_pane": null,
+        "parent_tab": null,
+        "owns_tab": false,
+        "recorded_at": "2026-09-19T11:18:45.701599+00:00",
+        "job_id": "816ca880b03a437c8aa3da7cec8b3cf9"
+      },
+      "tmux_selector": null
+    }
+  ],
+  "deadline": null,
+  "review_interval": 30,
+  "stall_after": 120
+}

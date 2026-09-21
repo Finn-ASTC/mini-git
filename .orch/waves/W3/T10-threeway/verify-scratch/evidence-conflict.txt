@@ -1,0 +1,109 @@
+V10 证据：手工平行仓库对拍（UU + DU + UD + 干净路径）
+date: 2026-09-19T21:08:35+08:00
+git : git version 2.55.0
+mg  : /home/user/Projects/mini-git/target/debug/mg
+
+########## A: mg merge feature
+$ mg/git merge feature  (exit code below)
+stdout+stderr:
+    mg: fatal: automatic merge failed; fix conflicts and then commit the result
+exit code: 1
+$ git status --porcelain
+    DU du.txt
+    UD ud.txt
+    UU uu.txt
+$ git ls-files -u (unmerged stages)
+    100644 de980441c3ab03a8c07dda1ad27b8a11f39deb1e 1	du.txt
+    100644 8948000eed9762246d3afb8bdcbdb95984fe3f46 3	du.txt
+    100644 de980441c3ab03a8c07dda1ad27b8a11f39deb1e 1	ud.txt
+    100644 85cb8e339c490a5a91accdd9f5040d3198e0424c 2	ud.txt
+    100644 01e79c32a8c99c557f0757da7cb6d65b3414466d 1	uu.txt
+    100644 7fb3a5e637be4ea111502166b80506340befb981 2	uu.txt
+    100644 b17b5f299c4c8bed345a436b1da210253fd83c32 3	uu.txt
+---- worktree file: uu.txt
+    1$
+    <<<<<<< HEAD$
+    OURS$
+    =======$
+    THEIRS$
+    >>>>>>> feature$
+    3$
+    sha256: 70ac61694b5a8bbb630d55f249be94a84af2ce083f53ce8a9cce9eb80802dff6
+---- worktree file: du.txt
+    a$
+    THEIRS$
+    c$
+    sha256: 490cdceaa16f6fcd7f5c301d87c102a51c85988540f83fb40779a52cb637be2a
+---- worktree file: ud.txt
+    a$
+    OURS$
+    c$
+    sha256: 45052b0489ad9708c0d3dc64e7d9480f03539a6d343a2ad22fc1eb0fa97fae17
+---- clean.txt: clean|ours line|
+---- .git/MERGE_HEAD: 8b3b359fb8bea6e5f5af4978e5362e81863845bb
+---- .git/MERGE_MSG : Merge branch 'feature'
+$ git fsck --no-progress
+    悬空 blob 31a5904ddbf7cabfb6d0e75d7453554435461443
+
+########## B: 真实 git merge feature（真值）
+$ mg/git merge feature  (exit code below)
+stdout+stderr:
+    冲突（修改/删除）：du.txt 在 HEAD 中被删除，在 feature 中被修改。du.txt 的 feature 版本在树中被保留。
+    冲突（修改/删除）：ud.txt 在 feature 中被删除，在 HEAD 中被修改。ud.txt 的 HEAD 版本在树中被保留。
+    自动合并 uu.txt
+    冲突（内容）：合并冲突于 uu.txt
+    自动合并失败，修正冲突然后提交修正的结果。
+exit code: 1
+$ git status --porcelain
+    DU du.txt
+    UD ud.txt
+    UU uu.txt
+$ git ls-files -u (unmerged stages)
+    100644 de980441c3ab03a8c07dda1ad27b8a11f39deb1e 1	du.txt
+    100644 8948000eed9762246d3afb8bdcbdb95984fe3f46 3	du.txt
+    100644 de980441c3ab03a8c07dda1ad27b8a11f39deb1e 1	ud.txt
+    100644 85cb8e339c490a5a91accdd9f5040d3198e0424c 2	ud.txt
+    100644 01e79c32a8c99c557f0757da7cb6d65b3414466d 1	uu.txt
+    100644 7fb3a5e637be4ea111502166b80506340befb981 2	uu.txt
+    100644 b17b5f299c4c8bed345a436b1da210253fd83c32 3	uu.txt
+---- worktree file: uu.txt
+    1$
+    <<<<<<< HEAD$
+    OURS$
+    =======$
+    THEIRS$
+    >>>>>>> feature$
+    3$
+    sha256: 70ac61694b5a8bbb630d55f249be94a84af2ce083f53ce8a9cce9eb80802dff6
+---- worktree file: du.txt
+    a$
+    THEIRS$
+    c$
+    sha256: 490cdceaa16f6fcd7f5c301d87c102a51c85988540f83fb40779a52cb637be2a
+---- worktree file: ud.txt
+    a$
+    OURS$
+    c$
+    sha256: 45052b0489ad9708c0d3dc64e7d9480f03539a6d343a2ad22fc1eb0fa97fae17
+---- clean.txt: clean|ours line|
+---- .git/MERGE_HEAD: 8b3b359fb8bea6e5f5af4978e5362e81863845bb
+---- .git/MERGE_MSG : Merge branch 'feature'
+$ git fsck --no-progress
+    悬空 tree 9c3e67b53d1ed29e09f2086659fa00ec944d1a99
+
+########## 逐字节比较
+  uu.txt: IDENTICAL
+  du.txt: IDENTICAL
+  ud.txt: IDENTICAL
+  stage diff (git ls-files -u):
+    IDENTICAL
+  porcelain diff:
+    IDENTICAL
+
+########## 真实 git 在 mg 留下的状态上收尾
+    git commit OK
+    parents: 35bdc00f425ec579c516eca3865a3a84f1b32f45 8b3b359fb8bea6e5f5af4978e5362e81863845bb
+    subject: Merge branch 'feature'
+    status : ''
+    oracle tree: ec0bf8028207efca093628d671031aec0118a5b1
+    mg-repo tree: ec0bf8028207efca093628d671031aec0118a5b1

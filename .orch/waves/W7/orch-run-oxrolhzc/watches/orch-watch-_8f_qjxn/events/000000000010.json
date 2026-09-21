@@ -1,0 +1,13 @@
+{
+  "seq": 10,
+  "job_id": "9317e01768834379b288ea08ed9fe156",
+  "round_id": "3ccd1e4633ae4de7a5ce2b4817f3f2c5",
+  "kind": "review_due",
+  "message": "Changed UI needs review; hook/keyword detection may miss a dialog.",
+  "evidence_path": "/home/user/Projects/mini-git/.orch/waves/W7/orch-run-oxrolhzc/watches/orch-watch-_8f_qjxn/evidence/000000000010.json",
+  "screen_tail": "-remap-path-prefix\n   rebuild matching the author's hash.\n - Repo untouched: read-only access only; all builds/tests/fixtures in /tmp/w7-verify; scratch build dirs removed.\n - Published: result.json (sha256 536ddf3d…) + publication.json via the contract's protocol.py write-result, identity fields (job_id\n   9317e017…, round_id 3ccd1e46…) copied verbatim, status success, 3 created / 0 modified / 335 generated / 0 deleted.\n\n ※ recap: Verify the P24 release-profile fix independently: verdict PASS, release equals debug and real git, negative control reproduced\n hangs on the pre-fix build, and the round result was published once via protocol.py. Next action: none, the round is complete and\n awaiting the controlle…\n\n╭── ♡⃝ awful_bed~  3 DeepSeek V4.1 Flash   w7-verify  $0.07 ↓ ────15%───────────────󰁨───1M─  140K   98.59%  Verify mg bug fix ──╮\n╰─                                                                                                                                       ─╯",
+  "observed_at": 1789927467.4940798,
+  "issue_id": "52d27093500c45848f7f6399a587c2d4",
+  "correlation_key": "35daa9701d4237b2d12a79460a1f3620b72649ff426bfa11f56a1f019b3ba7a7",
+  "confidence": "unknown_ui"
+}

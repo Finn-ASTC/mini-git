@@ -1,0 +1,17 @@
+{
+  "version": 1,
+  "seq": 8,
+  "job_id": "66840d4b642f481a848788974b0665ca",
+  "round_id": "5248318530cb4b26b88628ac6da18637",
+  "event_fingerprint": "e619434b850d01bf1c84ddf8ff0745f5f7fbf8a45cf626300193553a4aa1244e",
+  "revision": 1,
+  "status": "handled",
+  "note": "state_changed（idle）复核，seq 8。读证据 evidence/000000000008.json 的 screen：\nopencode/OMO 作者（orch-w7-author, pane w1V:p1）已结束本轮，屏幕是它自己的验收表\n（12 asserts / side-effecting 8→0；dev cargo test exit 0 562 passed；release exit 0 562 passed\nwall 14.5s；200 例语料 vs debug vs git 全字节一致），会话已回到等待输入的 idle 状态。\n\n本 job 66840d4b 的 T1 轮已交付并由控制方验收通过，写作用域漂移只有 src/diff/myers.rs；\n该轮已交接，下一轮 T2（把 verify_pack.rs 证据写入改到仓库外）已 prepare，等 V2 验证者腾出仓库后发送。\nidle 是预期状态，不需要向 agent 送任何输入。判定：handled。\n",
+  "recorded_at": 1789926903.5740924,
+  "action_evidence": null,
+  "resolution_evidence": {
+    "path": "/home/user/Projects/mini-git/.orch/waves/W7/orch-run-oxrolhzc/watches/orch-watch-7136nm52/evidence/000000000008.json",
+    "sha256": "3e4990661ae1e548f4b73b5d48acea772275f4ee67105abfc57ae89b9724884b"
+  },
+  "resolved_at": 1789926900.0
+}

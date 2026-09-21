@@ -1,0 +1,19 @@
+{
+  "mode": "insider",
+  "session": "default",
+  "agent": "orch-opencode-t3",
+  "pane": "wP:p1",
+  "workspace": "wP",
+  "owns_agent": true,
+  "owns_pane": true,
+  "owns_workspace": true,
+  "owns_session": false,
+  "tab": "wP:t1",
+  "parent_pane": "wJ:p1",
+  "parent_tab": "wJ:t1",
+  "owns_tab": false,
+  "recorded_at": "2026-09-19T11:31:08.701574+00:00",
+  "job_id": "222f3e5e6f934b758ee34e29a9c174d7",
+  "recorded_by": "controller-manual",
+  "record_note": "protocol.py record 拒绝字母型 herdr ID（w[0-9]+:p[0-9]+ 正则），见 .orch/waves/W1/defects.md D1；本文件按同 schema 手工落盘"
+}

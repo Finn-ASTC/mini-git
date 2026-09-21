@@ -1,0 +1,17 @@
+{
+  "version": 1,
+  "seq": 5,
+  "job_id": "66840d4b642f481a848788974b0665ca",
+  "round_id": "ea8be0b903094bd7b0dc00f9de970778",
+  "event_fingerprint": "600b8ae8ee65786a497c087669456dc19abd8a9f9c4845c93002ab79ddc005f7",
+  "revision": 1,
+  "status": "handled",
+  "note": "result（success）结清，seq 5，watch orch-watch-oxft_00d（T2/opencode 作者）。\nresult.validation.valid=true，status=success：W7-D1 FIXED —— tests/verify_pack.rs 的证据落点移出仓库，\n套件恢复 hermetic（MG_EVIDENCE_DIR 优先，否则 std::env::temp_dir()/mini-git-v9-evidence-<pid>），\nnet 变更仅 tests/verify_pack.rs。该交付已由控制方独立验收（attempt verify-kqi9webq，passed=true、\nsource_unchanged=true）并收口（close outcome=completed rev 16）。无需进一步动作，仅结清账目。\n",
+  "recorded_at": 1789929716.7719226,
+  "action_evidence": null,
+  "resolution_evidence": {
+    "path": "/home/user/Projects/mini-git/.orch/waves/W7/orch-run-oxrolhzc/watches/orch-watch-oxft_00d/evidence/000000000005.json",
+    "sha256": "c6a487dc70b0bf23fb9fcbc346231f6629743f69903a3c1f028333e91c6771ce"
+  },
+  "resolved_at": 1789929716.0
+}

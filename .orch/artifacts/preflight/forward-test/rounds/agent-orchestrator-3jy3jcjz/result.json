@@ -1,0 +1,14 @@
+{
+  "schema_version": 1,
+  "job_id": "8e3b0ff303db4e0da64d3650fe4fe238",
+  "round_id": "0a1e789f67474373ac96af3a03af159b",
+  "status": "success",
+  "output": "Underlying analysis completed; final report requires formatting repair.",
+  "files_created": [],
+  "files_modified": [],
+  "files_generated": [],
+  "files_deleted": [],
+  "error": null,
+  "blocked_reason": null,
+  "completed_at": "2026-09-19T17:12:30+08:00"
+}

@@ -1,0 +1,203 @@
+   Compiling mini-git v0.0.0 (/tmp/v10-mutant-v3)
+warning: unreachable statement
+   --> src/merge/three_way.rs:136:5
+    |
+134 |       return Ok(Merged::Clean(ours.to_vec()));
+    |       --------------------------------------- any code following this expression is unreachable
+135 |       // 1) 同一内容 / 只有一侧改动：直接取另一边（git 的 `!xscr` 短路）。
+136 | /     if ours == theirs {
+137 | |         return Ok(Merged::Clean(ours.to_vec()));
+138 | |     }
+    | |_____^ unreachable statement
+    |
+    = note: `#[warn(unreachable_code)]` (part of `#[warn(unused)]`) on by default
+
+warning: `mini-git` (lib) generated 1 warning
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.74s
+     Running tests/verify_threeway.rs (/tmp/v10-target-mutant-v3/debug/deps/verify_threeway-a61023c085f543c6)
+
+running 32 tests
+test engine_binary_is_conflict_with_ours ... FAILED
+test engine_case_table_matches_git_merge_file ... FAILED
+test engine_identity_shortcuts_match_git ... FAILED
+test cli_unrelated_histories_are_refused_loudly ... ok
+test engine_none_base_two_added_files ... FAILED
+test engine_random_corpus_matches_git ... FAILED
+test truth_source_selfcheck_diff3_label_really_appears ... ok
+test truth_source_selfcheck_merge_file_exit_code_is_conflict_count ... ok
+test cli_already_up_to_date_when_target_is_ancestor ... ok
+test cli_no_ff_creates_two_parent_merge_commit_like_git ... FAILED
+test cli_conflict_mixed_clean_and_conflicting_paths ... FAILED
+test cli_conflict_binary_keeps_ours_like_git ... FAILED
+test cli_conflict_add_add_same_path ... FAILED
+test cli_conflict_diff3_style_matches_git ... FAILED
+test cli_unknown_rev_and_unknown_oid_fail_without_panic ... ok
+test cli_conflict_same_line ... FAILED
+test cli_conflict_cjk_bytes_match_git ... FAILED
+test cli_dirty_worktree_is_refused_with_zero_changes ... ok
+test truth_source_selfcheck_porcelain_is_not_globally_sorted ... ok
+test cli_conflict_crlf_bytes_match_git ... FAILED
+test cli_conflictstyle_zdiff3_characterization ... FAILED
+test cli_conflict_no_trailing_newline_bytes_match_git ... FAILED
+test cli_clean_merge_ours_delete_theirs_untouched ... FAILED
+test cli_clean_merge_same_file_different_regions ... FAILED
+test cli_fast_forward_matches_git ... ok
+test cli_conflict_modified_then_deleted_by_theirs ... FAILED
+test cli_clean_merge_nested_dirs_and_new_files ... FAILED
+test cli_clean_merge_disjoint_files_and_tree_matches_git ... FAILED
+test cli_untracked_file_that_theirs_adds_is_refused ... ok
+test cli_clean_both_sides_delete_same_file ... ok
+test cli_conflict_delete_modify_both_directions ... ok
+test engine_indented_corpus_characterization ... ok
+
+failures:
+
+---- engine_binary_is_conflict_with_ours stdout ----
+
+thread 'engine_binary_is_conflict_with_ours' (1775735) panicked at tests/verify_threeway.rs:782:41:
+base-binary: 二进制必须判冲突，却返回 Clean("plain ours\n")
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+
+---- engine_case_table_matches_git_merge_file stdout ----
+
+thread 'engine_case_table_matches_git_merge_file' (1775758) panicked at tests/verify_threeway.rs:524:5:
+assertion `left == right` failed: disjoint-changes (diff3=false): merge_blobs bytes differ from `git merge-file`
+mg  = "1\nOURS\n3\n4\n5\n"
+git = "1\nOURS\n3\n4\nTHEIRS\n"
+  left: [49, 10, 79, 85, 82, 83, 10, 51, 10, 52, 10, 53, 10]
+ right: [49, 10, 79, 85, 82, 83, 10, 51, 10, 52, 10, 84, 72, 69, 73, 82, 83, 10]
+
+---- engine_identity_shortcuts_match_git stdout ----
+
+thread 'engine_identity_shortcuts_match_git' (1775778) panicked at tests/verify_threeway.rs:703:9:
+assertion `left == right` failed
+  left: Clean([115, 97, 109, 101, 10, 99, 111, 110, 116, 101, 110, 116, 10])
+ right: Clean([111, 116, 104, 101, 114, 10, 99, 111, 110, 116, 101, 110, 116, 10])
+
+---- engine_none_base_two_added_files stdout ----
+
+thread 'engine_none_base_two_added_files' (1776054) panicked at tests/verify_threeway.rs:728:37:
+base=None 且两侧内容不同必须冲突，却返回 Clean("identical\n")
+
+---- engine_random_corpus_matches_git stdout ----
+
+thread 'engine_random_corpus_matches_git' (1776055) panicked at tests/verify_threeway.rs:524:5:
+assertion `left == right` failed: random#0 (diff3=false): merge_blobs bytes differ from `git merge-file`
+mg  = "line0\nline1\nline2\nline3\nline4\nline5\nline6\nline8\nline9\nline10\nM545\nI979\nline12\nline13\nline14\nline15\nline16\nline18\n"
+git = "I701\nline0\nline1\nI452\nI864\nline2\nline3\nI603\nline4\nline5\nline6\nline8\nM143\nline10\nM545\nI979\nline12\nline13\nline14\nline15\nline16\nline18\n"
+  left: [108, 105, 110, 101, 48, 10, 108, 105, 110, 101, 49, 10, 108, 105, 110, 101, 50, 10, 108, 105, 110, 101, 51, 10, 108, 105, 110, 101, 52, 10, 108, 105, 110, 101, 53, 10, 108, 105, 110, 101, 54, 10, 108, 105, 110, 101, 56, 10, 108, 105, 110, 101, 57, 10, 108, 105, 110, 101, 49, 48, 10, 77, 53, 52, 53, 10, 73, 57, 55, 57, 10, 108, 105, 110, 101, 49, 50, 10, 108, 105, 110, 101, 49, 51, 10, 108, 105, 110, 101, 49, 52, 10, 108, 105, 110, 101, 49, 53, 10, 108, 105, 110, 101, 49, 54, 10, 108, 105, 110, 101, 49, 56, 10]
+ right: [73, 55, 48, 49, 10, 108, 105, 110, 101, 48, 10, 108, 105, 110, 101, 49, 10, 73, 52, 53, 50, 10, 73, 56, 54, 52, 10, 108, 105, 110, 101, 50, 10, 108, 105, 110, 101, 51, 10, 73, 54, 48, 51, 10, 108, 105, 110, 101, 52, 10, 108, 105, 110, 101, 53, 10, 108, 105, 110, 101, 54, 10, 108, 105, 110, 101, 56, 10, 77, 49, 52, 51, 10, 108, 105, 110, 101, 49, 48, 10, 77, 53, 52, 53, 10, 73, 57, 55, 57, 10, 108, 105, 110, 101, 49, 50, 10, 108, 105, 110, 101, 49, 51, 10, 108, 105, 110, 101, 49, 52, 10, 108, 105, 110, 101, 49, 53, 10, 108, 105, 110, 101, 49, 54, 10, 108, 105, 110, 101, 49, 56, 10]
+
+---- cli_no_ff_creates_two_parent_merge_commit_like_git stdout ----
+
+thread 'cli_no_ff_creates_two_parent_merge_commit_like_git' (1775728) panicked at tests/verify_threeway.rs:307:9:
+assertion `left == right` failed: no-ff: HEAD^{tree} differs from real git's merge
+  left: "5f7b0b56ec1df27f8667b42acb65655ddbfe7c68"
+ right: "196228cfdfdd814964f14972b3cdac82c2628dc7"
+
+---- cli_conflict_mixed_clean_and_conflicting_paths stdout ----
+
+thread 'cli_conflict_mixed_clean_and_conflicting_paths' (1775714) panicked at tests/verify_threeway.rs:349:9:
+conflict-mixed: conflicting merge must exit non-zero, got 0
+
+---- cli_conflict_binary_keeps_ours_like_git stdout ----
+
+thread 'cli_conflict_binary_keeps_ours_like_git' (1775704) panicked at tests/verify_threeway.rs:349:9:
+conflict-binary: conflicting merge must exit non-zero, got 0
+
+---- cli_conflict_add_add_same_path stdout ----
+
+thread 'cli_conflict_add_add_same_path' (1775703) panicked at tests/verify_threeway.rs:349:9:
+conflict-add-add: conflicting merge must exit non-zero, got 0
+
+---- cli_conflict_diff3_style_matches_git stdout ----
+
+thread 'cli_conflict_diff3_style_matches_git' (1775711) panicked at tests/verify_threeway.rs:1302:5:
+conflict-diff3: diff3 风格必须输出 `||||||| <base>` 段，实际 "1\nOURS\n3\n"
+
+---- cli_conflict_same_line stdout ----
+
+thread 'cli_conflict_same_line' (1775724) panicked at tests/verify_threeway.rs:349:9:
+conflict-same-line: conflicting merge must exit non-zero, got 0
+
+---- cli_conflict_cjk_bytes_match_git stdout ----
+
+thread 'cli_conflict_cjk_bytes_match_git' (1775705) panicked at tests/verify_threeway.rs:349:9:
+conflict-cjk: conflicting merge must exit non-zero, got 0
+
+---- cli_conflict_crlf_bytes_match_git stdout ----
+
+thread 'cli_conflict_crlf_bytes_match_git' (1775706) panicked at tests/verify_threeway.rs:349:9:
+conflict-crlf: conflicting merge must exit non-zero, got 0
+
+---- cli_conflictstyle_zdiff3_characterization stdout ----
+
+thread 'cli_conflictstyle_zdiff3_characterization' (1775725) panicked at tests/verify_threeway.rs:1384:5:
+assertion failed: !p.mg_out.status.success() && !p.git_out.status.success()
+
+---- cli_conflict_no_trailing_newline_bytes_match_git stdout ----
+
+thread 'cli_conflict_no_trailing_newline_bytes_match_git' (1775718) panicked at tests/verify_threeway.rs:349:9:
+conflict-no-trailing-newline: conflicting merge must exit non-zero, got 0
+
+---- cli_clean_merge_ours_delete_theirs_untouched stdout ----
+
+thread 'cli_clean_merge_ours_delete_theirs_untouched' (1775701) panicked at tests/verify_threeway.rs:307:9:
+assertion `left == right` failed: clean-ours-delete: HEAD^{tree} differs from real git's merge
+  left: "f39b28a3a84f6699ed7c0bf47143ca06d7db9f69"
+ right: "e9c20bb240b587af05fb4b040ba0575cb42bfe40"
+
+---- cli_clean_merge_same_file_different_regions stdout ----
+
+thread 'cli_clean_merge_same_file_different_regions' (1775702) panicked at tests/verify_threeway.rs:307:9:
+assertion `left == right` failed: clean-same-file-regions: HEAD^{tree} differs from real git's merge
+  left: "a7ff5dc2f56ad9593137a64bd2c0497daaf39257"
+ right: "f62c898c537a2c03a6e783b578b3b3f766bf3b72"
+
+---- cli_conflict_modified_then_deleted_by_theirs stdout ----
+
+thread 'cli_conflict_modified_then_deleted_by_theirs' (1775717) panicked at tests/verify_threeway.rs:1128:5:
+assertion `left == right` failed: conflict-theirs-delete-ours-modify: UD/DM conflict codes differ
+  left: "UD f.txt"
+ right: "UD f.txt\nM  k.txt"
+
+---- cli_clean_merge_nested_dirs_and_new_files stdout ----
+
+thread 'cli_clean_merge_nested_dirs_and_new_files' (1775700) panicked at tests/verify_threeway.rs:307:9:
+assertion `left == right` failed: clean-nested-dirs: HEAD^{tree} differs from real git's merge
+  left: "cc1230517a901630b589ee3a53e7bef1ab21c051"
+ right: "610695b6bb0e696c0a1814e64eaa9521a3c00408"
+
+---- cli_clean_merge_disjoint_files_and_tree_matches_git stdout ----
+
+thread 'cli_clean_merge_disjoint_files_and_tree_matches_git' (1775699) panicked at tests/verify_threeway.rs:307:9:
+assertion `left == right` failed: clean-disjoint-files: HEAD^{tree} differs from real git's merge
+  left: "6371498eace39b40ab4047cac27344b01e675b33"
+ right: "31619caa3161399d08b4308d58858cc4d039f5ae"
+
+
+failures:
+    cli_clean_merge_disjoint_files_and_tree_matches_git
+    cli_clean_merge_nested_dirs_and_new_files
+    cli_clean_merge_ours_delete_theirs_untouched
+    cli_clean_merge_same_file_different_regions
+    cli_conflict_add_add_same_path
+    cli_conflict_binary_keeps_ours_like_git
+    cli_conflict_cjk_bytes_match_git
+    cli_conflict_crlf_bytes_match_git
+    cli_conflict_diff3_style_matches_git
+    cli_conflict_mixed_clean_and_conflicting_paths
+    cli_conflict_modified_then_deleted_by_theirs
+    cli_conflict_no_trailing_newline_bytes_match_git
+    cli_conflict_same_line
+    cli_conflictstyle_zdiff3_characterization
+    cli_no_ff_creates_two_parent_merge_commit_like_git
+    engine_binary_is_conflict_with_ours
+    engine_case_table_matches_git_merge_file
+    engine_identity_shortcuts_match_git
+    engine_none_base_two_added_files
+    engine_random_corpus_matches_git
+
+test result: FAILED. 12 passed; 20 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.22s
+
+error: test failed, to rerun pass `--test verify_threeway`

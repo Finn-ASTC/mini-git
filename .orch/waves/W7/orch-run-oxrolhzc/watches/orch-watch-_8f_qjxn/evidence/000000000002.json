@@ -1,0 +1,33 @@
+{
+  "target": {
+    "request_path": "/home/user/Projects/mini-git/.orch/waves/W7/orch-run-oxrolhzc/rounds/agent-orchestrator-a_u_8vn8/request.json",
+    "job_id": "9317e01768834379b288ea08ed9fe156",
+    "round_id": "3ccd1e4633ae4de7a5ce2b4817f3f2c5",
+    "resources": {
+      "mode": "insider",
+      "session": "default",
+      "agent": "orch-w7-verifier",
+      "pane": "w1W:p1",
+      "workspace": "w1W",
+      "owns_agent": true,
+      "owns_pane": true,
+      "owns_workspace": true,
+      "owns_session": false,
+      "tab": "w1W:t1",
+      "parent_pane": "wJ:p1",
+      "parent_tab": "wJ:t1",
+      "owns_tab": false,
+      "recorded_at": "2026-09-20T17:49:09.019337+00:00",
+      "job_id": "9317e01768834379b288ea08ed9fe156"
+    },
+    "request_sha256": "df353e6463827a36ca648d579cc9931b6da66582085cacdd83493401b99d8171",
+    "tmux_selector": null
+  },
+  "result": null,
+  "read_started_at": 1789926597.4669542,
+  "publication": null,
+  "state": "working",
+  "screen": "\n╭─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╮\n│ $ cat /home/user/Projects/mini-git/.orch/waves/W7/snapshots/author-delivery/SNAPSHOT.json; echo \"---MANIFEST head---\"; head -40         │\n│ /home/user/Projects/mini-git/.orch/waves/W7/snapshots/author-delivery/manifest.json; echo \"---src---\"; find                             │\n│ /home/user/Projects/mini-git/.orch/waves/W7/snapshots/author-delivery/src -type f | sort                                                │\n├─── Output ──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┤\n│ … (103 earlier lines, showing 10 of 113) ⟨Ctrl+O: Expand⟩                                                                               │\n│ /home/user/Projects/mini-git/.orch/waves/W7/snapshots/author-delivery/src/transport/local.rs                                            │\n│ /home/user/Projects/mini-git/.orch/waves/W7/snapshots/author-delivery/src/transport/mod.rs                                              │\n│ /home/user/Projects/mini-git/.orch/waves/W7/snapshots/author-delivery/src/transport/negotiate.rs                                        │\n│ /home/user/Projects/mini-git/.orch/waves/W7/snapshots/author-delivery/src/transport/pktline.rs                                          │\n│ /home/user/Projects/mini-git/.orch/waves/W7/snapshots/author-delivery/src/worktree/ignore.rs                                            │\n│ /home/user/Projects/mini-git/.orch/waves/W7/snapshots/author-delivery/src/worktree/materialize.rs                                       │\n│ /home/user/Projects/mini-git/.orch/waves/W7/snapshots/author-delivery/src/worktree/mod.rs                                               │\n│ /home/user/Projects/mini-git/.orch/waves/W7/snapshots/author-delivery/src/worktree/scan.rs                                              │\n│ /home/user/Projects/mini-git/.orch/waves/W7/snapshots/author-delivery/src/worktree/status.rs                                            │\n│ /home/user/Projects/mini-git/.orch/waves/W7/snapshots/author-delivery/src/zlib.rs                                                       │\n│ ⟨Wall: 0.01s | Timeout: 300s⟩                                                                                                           │\n╰─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯\n\n Note: pre-fix-myers.sha256 says hash 47c0f679... for src/diff/myers.rs. Let me verify the actual file hash. Also snapshot's myers_sha256\n = aafe8464...\n\n Let me verify manifest and build a plan. Also read the myers.rs (fixed + pre-fix diff) to understand the bug, and look at the P24\n artifact repro/scripts.\n\n Let me set up a todo list too.\n\n Plan:\n 1. Copy snapshot to /tmp/w7-verify/snap/, verify manifest against files.\n 2. Independent CARGO_TARGET_DIR build --release --offline. Report sha256 of mg.\n 3. Write my own oracle: corpus generator + differential harness comparing release vs debug vs real git.\n 4. Negative control: swap pre-fix myers.rs into a copy, build release, run same harness.\n 5. Re-run gates: cargo test dev and release with timeout.\n 6. Minimal repro CLI.\n 7. Merge path three-way.\n 8. Boundary tests.\n\n Let me first inspect relevant sources and the P24 artifacts.\n\n Todo init\n\n  󱊷 Initializing verification plan\n\n╭── ⠧ 6s  3 DeepSeek V4.1 Flash   w7-verify  $0.00 ↓ ─4%─────────────────󰁨───1M─  4.8K   93.36%  Verify myers.rs fix offline ──╮\n╰─                                                                                                                                       ─╯",
+  "observed_at": 1789926597.4709265,
+  "read_duration_seconds": 0.003974046994699165
+}

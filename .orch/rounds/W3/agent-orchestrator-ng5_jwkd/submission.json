@@ -1,0 +1,23 @@
+{
+  "active_request": "/home/user/Projects/mini-git/.orch/rounds/W3/agent-orchestrator-ng5_jwkd/request.json",
+  "job_id": "20530f7388e84c8994550c209a532add",
+  "round_id": "2c8716c9f54a4902a6c130bcda247adc",
+  "transport": "insider (default session)",
+  "session": "default",
+  "agent": "w3-v12-opencode",
+  "pane": "w1C:p1",
+  "workspace": "w1C",
+  "cwd": "/home/user/Projects/mini-git",
+  "kind": "opencode",
+  "task": "V12 独立验证 T12",
+  "submitted_at": "2026-09-19T21:12:10+08:00",
+  "acceptance": "accepted",
+  "submission_evidence": "herdr agent prompt -> agent_prompted",
+  "deadline": null,
+  "monitor_owner": "controller (default session, pane wJ:p1)",
+  "last_checked_at": "2026-09-19T21:12:10+08:00",
+  "next_check_at": null,
+  "pending_question": null,
+  "resources_file": "/home/user/Projects/mini-git/.orch/rounds/W3/agent-orchestrator-ng5_jwkd/resources.json",
+  "result_path": "/home/user/Projects/mini-git/.orch/rounds/W3/agent-orchestrator-ng5_jwkd/result.json"
+}

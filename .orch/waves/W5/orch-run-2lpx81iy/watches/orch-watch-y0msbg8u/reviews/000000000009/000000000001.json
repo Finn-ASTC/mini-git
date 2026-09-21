@@ -1,0 +1,14 @@
+{
+  "version": 1,
+  "seq": 9,
+  "job_id": "9746730210dc4491b685bbc446088546",
+  "round_id": "1f695772a77b44ab8bcfb878a34e5add",
+  "event_fingerprint": "d001b0ce41cfee8246f22f48b9c5c172ebc624a835aec134da23a71c221c3584",
+  "revision": 1,
+  "status": "handled",
+  "note": "seq 9 state_changed(idle)：作者已结束本轮，TUI 回到空闲。这是本轮收尾后的预期状态。\n该轮结果已复核、已快照，作者不再持有写入职责。\n结论：handled。\n",
+  "recorded_at": 1789897658.9161527,
+  "action_evidence": null,
+  "resolution_evidence": null,
+  "resolved_at": null
+}

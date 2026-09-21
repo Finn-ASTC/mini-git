@@ -1,0 +1,17 @@
+{
+  "version": 1,
+  "seq": 1,
+  "job_id": "bfbf5d1fe464464f880132772d1cbb9e",
+  "round_id": "557d300a0d964aaab5c177dbad27e461",
+  "event_fingerprint": "beba17ac8dd1d4a1acfbb1decd827a9eb679714ebbf3a5a351407b29f3b8657d",
+  "revision": 1,
+  "status": "handled",
+  "note": "观察建立时的初始状态事件（state_changed: idle）。已读该事件的证据文件里的 screen_tail：\n目标是空闲输入态，没有对话框、没有原生审批画面、没有提问，无需输入或决策。\n按「无待处理动作」标记 handled；这是复核事件，不代表任务成功。\n",
+  "recorded_at": 1789926066.2665224,
+  "action_evidence": null,
+  "resolution_evidence": {
+    "path": "/home/user/Projects/mini-git/.orch/waves/W7/orch-run-oxrolhzc/watches/orch-watch-ecj3lg73/evidence/000000000001.json",
+    "sha256": "bd1a1b0ee2b31b613e4b0cb7e2b73d432920859532bc558ae79fe7fc85466df1"
+  },
+  "resolved_at": 1789926066.0
+}

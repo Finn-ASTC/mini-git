@@ -1,0 +1,10 @@
+{
+  "seq": 11,
+  "job_id": "816ca880b03a437c8aa3da7cec8b3cf9",
+  "round_id": "c1431df7a41e4b2fa6e43dd022e2acb5",
+  "kind": "review_due",
+  "message": "Changed UI needs review; hook/keyword detection may miss a dialog.",
+  "evidence_path": "/tmp/orch-watch-fb2va6sf/evidence/000000000011.json",
+  "screen_tail": "\n    COMMIT_PAYLOAD, TAG_OID/TAG_PAYLOAD match byte-for-byte; MERGE/EXTRA/NO_TRAILING payloads re-hash to their constants\n    via git hash-object -t commit --stdin. No contains-style weakened assertions, no #[ignore].\n\n  - (C) All assertions genuinely feed git-produced bytes through encode_payload / decode_payload / sort_entries;\n    expectations are git output, not self-constructed.\n\n  - (D) New tests/verify/main.rs (target verify, 3 tests) diffs against live git at runtime: the foo.txt vs foo/ (plus\n    foo-bar, deep foo/a/b) sort trap, raw-byte tree roundtrip, a two-parent merge commit roundtrip with parent order vs\n    git rev-list --parents, and annotated-tag roundtrip. All pass.\n\n  Only net change is tests/verify/main.rs; scratch repos under .orch/waves/W1/T1-object/verify-scratch/ are transient\n  and excluded from the file lists per contract.\n\n  Worked for 3m 39s · done 7:22 PM\n\n\n› Ask Codex to do anything\n\n  deepseek-flash high · ~/Projects/mini-git · Execute JSON task request\n",
+  "observed_at": 1789816948.1626737
+}

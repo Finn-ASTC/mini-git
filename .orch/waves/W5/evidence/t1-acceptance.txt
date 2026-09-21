@@ -1,0 +1,38 @@
+Independent acceptance of T1 (omp author, linestat 1.0.0). Reviewer: controller-codex.
+
+Assignment kind: delivery (T1 declared created/generated files and a release artifact).
+
+1. Controller gate on the sealed snapshot (independent of the author's numbers):
+   delivery.py verify --snapshot .../snapshot-nvn21yva/snapshot.json
+                       --plan .../plans/controller-plan.json
+   -> passed: true, 7/7 commands exit 0 (rustc/cargo/python3 versions, cargo test
+      --offline, cargo build --release --offline, cargo test --release --offline,
+      release-artifact smoke).
+   The release artifact was REBUILT from the sealed source in an independent build
+   directory; log shows "Finished release profile in 0.17s" plus 11/11 tests in both
+   profiles. Rebuilt artifact sha256 759534809958403271ec37bba8962439ab51938999bdd214214b6bff3ea44f5e
+   is byte-identical to the author's target/release/linestat.
+
+2. Independent verifier round V1 (opencode) exercised the same fixed delivery:
+   own oracle transcribed from SPEC.md (oracle/linestat_oracle.py), own 36-case
+   byte-level differential harness, 36/36 PASS on the release artifact, plus a
+   dev-profile supplement and explicit not-covered list. V1's reported artifact
+   sha256 is the same value.
+
+3. Controller cross-check that does not rely on either party's report:
+   I re-ran V1's harness against MY independently rebuilt artifact -> 36/36 PASS
+   (/tmp/w5-ctrl-xcheck/report.json).
+
+4. Delivery declarations: declaration_comparison was null on this snapshot because
+   the final capture was taken without --baseline; declarations were nonetheless
+   checked against the sealed file set and the sealed result digest
+   (result_sha256 643efc204b22defe388d40e446314ff9dc5ec89520f96e6f8d48eab0b006e26f)
+   matches the published result. Scope, handoff and per-file hashes are recorded in
+   snapshot.json. SPEC.md sha256 20903f0786...98244 equals the W5 baseline, i.e. the
+   caller-owned spec was not modified.
+
+Known non-blocking observation (not a reason to reject): the author republished
+result.json after first publication (W5-S1); the artifact and the verdict were
+unchanged, and the accepted snapshot binds the final published result hash.
+
+Verdict: accepted.

@@ -1,0 +1,10 @@
+{
+  "seq": 8,
+  "job_id": "9317e01768834379b288ea08ed9fe156",
+  "round_id": "3ccd1e4633ae4de7a5ce2b4817f3f2c5",
+  "kind": "state_changed",
+  "message": "done",
+  "evidence_path": "/home/user/Projects/mini-git/.orch/waves/W7/orch-run-oxrolhzc/watches/orch-watch-_8f_qjxn/evidence/000000000008.json",
+  "screen_tail": "g merge\n   hangs on conflict-archived.\n - Artifact hash: my build c3e51adc… vs author's 21b5679f… — explained and closed by .text byte equality plus an exact --remap-path-prefix\n   rebuild matching the author's hash.\n - Repo untouched: read-only access only; all builds/tests/fixtures in /tmp/w7-verify; scratch build dirs removed.\n - Published: result.json (sha256 536ddf3d…) + publication.json via the contract's protocol.py write-result, identity fields (job_id\n   9317e017…, round_id 3ccd1e46…) copied verbatim, status success, 3 created / 0 modified / 335 generated / 0 deleted.\n\n TODO\n  ├─ VII. Report · 2/2\n  │  ├─  Per-gate pass/fail/not-covered verdicts\n  │  └─  Publish result.json via protocol.py\n  └─────\n\n╭── ♡⃝ awful_bed~  3 DeepSeek V4.1 Flash   w7-verify  $0.07 ↓ ────15%───────────────󰁨───1M─  140K   98.59%  Verify mg bug fix ──╮\n╰─                                                                                                                                       ─╯",
+  "observed_at": 1789927227.493952
+}

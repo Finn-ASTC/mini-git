@@ -1,0 +1,10 @@
+{
+  "seq": 8,
+  "job_id": "816ca880b03a437c8aa3da7cec8b3cf9",
+  "round_id": "c1431df7a41e4b2fa6e43dd022e2acb5",
+  "kind": "review_due",
+  "message": "Changed UI needs review; hook/keyword detection may miss a dialog.",
+  "evidence_path": "/tmp/orch-watch-fb2va6sf/evidence/000000000008.json",
+  "screen_tail": "user/Projects/mini-git && diff <(sed -n '/^```$/,/^```$/p' .orch/waves/W1/T1-object/baseline.txt | grep '\n  │ ' | sort) <(sed -n '/^```$/,/^```$/p' .orch/waves/W1/T1-object/baseline.txt | grep '  ' | awk '{print $2}' | sort\n  │ | xargs sha256sum 2>/dev/null | sort) ; echo \"exit=$?\"\n  └ 8d7\n    < 1a5027908366f5df277266271b2845af1af437a5466b266d51bf166d31b2dda4  src/object/tree.rs\n    … +13 lines (ctrl + t to view transcript)\n    > fbe38e622e87c962c4e7ab52364e760e6b74155c503370f7bb4358dd96525208  src/object/tree.rs\n    exit=1\n\n• Ran cd /home/user/Projects/mini-git && python3 - <<'PY'\n  │ import hashlib, re, pathlib\n  │ text = pathlib.Path(\".orch/waves/W1/T1-object/baseline.txt\").read_text()\n  │ … +28 lines\n  └ baseline entries: 67 | unchanged: 63\n    CHANGED:\n    … +29 lines (ctrl + t to view transcript)\n       README.md\n       tests/verify/main.rs\n\n◦ Working (2m 01s • esc to interrupt)\n\n\n› Ask Codex to do anything\n\n  deepseek-flash high · ~/Projects/mini-git · Execute JSON task request\n",
+  "observed_at": 1789816918.1624405
+}

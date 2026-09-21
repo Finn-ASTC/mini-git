@@ -1,0 +1,71 @@
+############ (4b) push -u：cwd 修正后重跑
+clone exit=0
+clone 后的 config: remote=origin merge=refs/heads/main
+unset 后: remote=[] merge=[]
+To file:///tmp/v13extra2/4/origin
+   c59c728..e4e9cad  main -> main
+branch 'main' set up to track 'origin' with refs/heads/main.
+mg push -u exit=0
+push -u 后: remote=origin merge=refs/heads/main
+真实 git 读 upstream: origin/main
+bare main == work HEAD? e4e9cad9303b187f78e39f1efd05c8c40de6af98 vs e4e9cad9303b187f78e39f1efd05c8c40de6af98
+--- mg push -u 之后真实 git 无参数 push（依赖 upstream）：
+Everything up-to-date
+git push exit=0
+
+############ (6b) pull 非快进：mg 与真实 git 的 merge 结果（tree 级对比）
+--- mg pull -v 输出与退出码：
+From file:///tmp/v13extra2/6/origin
+mg pull exit=0
+--- git pull 输出与退出码：
+From file:///tmp/v13extra2/6/origin
+ * branch            main       -> FETCH_HEAD
+   c59c728..2156739  main       -> origin/main
+Merge made by the 'ort' strategy.
+ remote.txt | 1 +
+ 1 file changed, 1 insertion(+)
+ create mode 100644 remote.txt
+git pull exit=0
+mg  log: e92bd4e Merge branch 'refs/remotes/origin/main'|d9af96e local|2156739 remote|c59c728 one|
+git log: d27e079 Merge branch 'main' of file:///tmp/v13extra2/6/origin|d9af96e local|2156739 remote|c59c728 one|
+mg  HEAD parents=e92bd4e6294dc93884092d076948316ff1a4c520 d9af96eebeadb8c8984e78b819668145a1a27a94 2156739bae42d42b45c5d3c7cc02e672e3cd42d6
+git HEAD parents=d27e07991c9201023b419e6a61c4fcdf3dcd3c7f d9af96eebeadb8c8984e78b819668145a1a27a94 2156739bae42d42b45c5d3c7cc02e672e3cd42d6
+mg  tree=ca2d21654f2c69759dbc0aa11cc95c09409fa40e
+git tree=ca2d21654f2c69759dbc0aa11cc95c09409fa40e
+mg  ls-tree: a.txt|local.txt|remote.txt|
+git ls-tree: a.txt|local.txt|remote.txt|
+mg  status=[]
+mg  fsck:
+fsck exit=0
+mg  remote-tracking: 2156739bae42d42b45c5d3c7cc02e672e3cd42d6 vs origin 2156739bae42d42b45c5d3c7cc02e672e3cd42d6
+
+############ (7b) 空远端：真实 git 的行为 vs mg 的行为（夹具完整状态）
+--- empty bare remote: files = HEAD config description hooks info objects refs 
+Cloning into '/tmp/v13extra2/7/git-clone-of-empty-bare'...
+warning: You appear to have cloned an empty repository.
+git clone exit=0
+git 产物: .git 
+Cloning into '/tmp/v13extra2/7/mg-clone-of-empty-bare'...
+mg: fatal: remote repository 'file:///tmp/v13extra2/7/empty-bare.git' is empty (no refs advertised)
+mg clone exit=1
+mg 产物存在? no  dir 内容: 
+--- 对照：mg init 后 git 认为它是空仓库？
+refs/heads/main
+--- 真实 git 把「有 HEAD 但无引用」的非 bare 仓库叫什么：git clone 的警告文本见上
+Cloning into '/tmp/v13extra2/7/git-clone-of-empty-work'...
+warning: You appear to have cloned an empty repository.
+git clone (non-bare empty) exit=0
+Cloning into '/tmp/v13extra2/7/mg-clone-of-empty-work'...
+mg: fatal: remote repository 'file:///tmp/v13extra2/7/empty-work' is empty (no refs advertised)
+mg clone (non-bare empty) exit=1
+mg 产物存在? no
+
+############ (9) 空远端上的 fetch / pull（mg）
+mg fetch 空远端: From file:///tmp/v13extra2/7/empty-bare.git
+mg: fatal: remote repository 'file:///tmp/v13extra2/7/empty-bare.git' is empty (no refs advertised)
+exit=1
+mg pull 空远端:  From file:///tmp/v13extra2/7/empty-bare.git
+mg: fatal: remote repository 'file:///tmp/v13extra2/7/empty-bare.git' is empty (no refs advertised)
+exit=1
+对照 git fetch 空远端: fatal: couldn't find remote ref HEAD
+exit=128

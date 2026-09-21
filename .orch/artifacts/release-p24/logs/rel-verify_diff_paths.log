@@ -1,0 +1,11 @@
+
+running 6 tests
+test cli_non_utf8_path_is_a_known_v1_limitation ... ok
+test engine_contentless_side_and_binary_line_follow_git ... ok
+test diff_git_header_stays_unpadded_for_quoted_spaced_names ... ok
+test cli_add_delete_binary_with_spaced_names_match_git ... ok
+test engine_filepair_lines_match_real_git_across_name_matrix ... ok
+test cli_name_matrix_matches_git_for_all_invocation_combos ... ok
+
+test result: ok. 6 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.16s
+

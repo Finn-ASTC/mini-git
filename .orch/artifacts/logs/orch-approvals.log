@@ -1,0 +1,38 @@
+20:33:51 w2-v6-codex APPROVED cd /home/user/Projects/mini-git && time (d=$(mktemp -d); cd $d; git init -q -b main; printf 'a\nb\n' > f.txt; git add -A; git -c user.name=t -c
+20:34:18 w2-v6-codex APPROVED set -e
+20:35:45 w2-v6-codex APPROVED set -e
+20:36:00 w2-v6-codex APPROVED set -e
+20:36:15 w2-v6-codex APPROVED set -e
+20:36:42 w2-v6-codex APPROVED set -e
+20:36:45 w2-v6-codex APPROVED set -e
+20:37:24 w2-v6-codex APPROVED rm -rf /tmp/t6-mutation /tmp/oracle-probe /tmp/t6-baseline-paths.txt /tmp/oracle-quote.txt /tmp/mg-quote.txt /tmp/mg-quote.err; ls /tmp | head
+20:46:24 w2-v6b-codex APPROVED cd /tmp && rm -rf probe1 && mkdir probe1 && cd probe1 && for n in "plain.txt" "sp ace.txt" "tab.txt" "sp acetab.txt" "quo\"te.txt" "quo\"te
+20:46:39 w2-v6b-codex APPROVED cd /tmp && rm -rf probe2 && mkdir probe2 && cd probe2 && export GIT_CONFIG_GLOBAL=/dev/null GIT_CONFIG_SYSTEM=/dev/null LC_ALL=C && git init -q
+20:48:06 w2-v6b-codex APPROVED set -e
+20:48:33 w2-v6b-codex APPROVED set -e
+20:49:02 w3-t9-codex APPROVED cd /tmp && rm -rf pkprob && mkdir pkprob && cd pkprob && git init -q -b main repo && cd repo && for i in $(seq 1 30); do printf 'line %d: the
+20:49:17 w3-t9-codex APPROVED cd /tmp && rm -rf pk2 && mkdir pk2 && cd pk2 && git init -q -b main repo && cd repo && python3 - <<'EOF'
+20:49:20 w3-t9-codex APPROVED cd /tmp && rm -rf pk2 && mkdir pk2 && cd pk2 && git init -q -b main repo && cd repo && python3 - <<'EOF'
+21:12:01 w3-v11-codex APPROVED set -e
+21:12:16 w3-v11-codex APPROVED set -e
+21:13:07 w3-v11-codex APPROVED cd /home/user/Projects/mini-git && rm -rf /tmp/v11-mutant /tmp/v11-target && mkdir -p /tmp/v11-mutant && cp -a Cargo.toml Cargo.lock src tests
+21:13:46 w3-v11-codex APPROVED set -e
+21:40:26 w3-v11-codex APPROVED rm -rf /tmp/v11b-mutant /tmp/v11b-target && mkdir -p /tmp/v11b-mutant && cd /home/user/Projects/mini-git && tar cf - --exclude=./target
+21:51:03 w4-t13-codex APPROVED cd /home/user/Projects/mini-git && cargo build --offline 2>&1 | tail -3 && export GIT_CONFIG_GLOBAL=/dev/null GIT_CONFIG_NOSYSTEM=1 && rm -rf
+22:30:54 w4-v14-codex APPROVED cat > /tmp/v14/probe_server.py <<'PY'
+22:31:09 w4-v14-codex APPROVED cat > /tmp/v14/probe_all.py <<'PY'
+22:32:36 w4-v14-codex APPROVED cat > /tmp/v14/mutate.py <<'PY'
+22:33:03 w4-v14-codex APPROVED cd /home/user/Projects/mini-git && python3 - <<'PYEOF'
+22:33:18 w4-v14-codex APPROVED cd /home/user/Projects/mini-git && cp tests/verify_http_http.rs /tmp/v14-mutant/tests/verify_http_http.rs && python3 /tmp/v14/mutate.py 2>&1 |
+22:33:45 w4-v14-codex APPROVED cd /tmp/v14-mutant && python3 - <<'PY'
+22:34:00 w4-v14-codex APPROVED cd /tmp/v14-mutant && python3 - <<'PY'
+22:34:15 w4-v14-codex APPROVED cd /home/user/Projects/mini-git && python3 - <<'PYEOF'
+22:34:30 w4-v14-codex APPROVED cd /home/user/Projects/mini-git
+22:39:05 w4-t13c-codex APPROVED set -x
+22:39:08 w4-t13c-codex APPROVED cd /tmp/t13c-codex 2>/dev/null || (mkdir -p /tmp/t13c-codex && cd /tmp/t13c-codex); cd /tmp/t13c-codex
+22:39:23 w4-t13c-codex APPROVED cd /tmp/t13c-codex
+22:39:38 w4-t13c-codex APPROVED cd /tmp/t13c-codex
+22:40:05 w4-t13c-codex APPROVED cd /tmp/t13c-codex && rm -rf fetchtest && git clone -q "file://$PWD/bare.git" fetchtest 2>/dev/null; cd fetchtest && echo "=== real git fetch
+22:43:08 w4-t13c-codex APPROVED cd /home/user/Projects/mini-git && cargo test --offline 2>&1 | grep -E "^(test result|running|error)|FAILED|^---- |panicked at|assertion" |
+22:43:59 w4-t13c-codex APPROVED cd /home/user/Projects/mini-git && cargo test --offline --no-fail-fast 2>&1 | grep -E "^(test result|error|running)|FAILED|^---- |panicked at"
+22:44:50 w4-t13c-codex APPROVED cd /home/user/Projects/mini-git && cargo test --offline --no-fail-fast 2>&1 | tee /tmp/t13c-codex/gate-full.log | grep -E "Running|test

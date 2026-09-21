@@ -1,0 +1,23 @@
+{
+  "active_request": "/home/user/Projects/mini-git/.orch/rounds/W3/agent-orchestrator-d8v5yjvq/request.json",
+  "job_id": "c13c9cc6c23d4131b768389f2b5c9f4f",
+  "round_id": "2066971ffc46402fa70f7d336a6d64b4",
+  "transport": "insider (default session)",
+  "session": "default",
+  "agent": "w3-t11b-omp",
+  "pane": "w1D:p1",
+  "workspace": "w1D",
+  "cwd": "/home/user/Projects/mini-git",
+  "kind": "omp",
+  "task": "T11b 返工：物化 symlink 祖先缺陷",
+  "submitted_at": "2026-09-19T21:23:00+08:00",
+  "acceptance": "accepted",
+  "submission_evidence": "herdr agent prompt -> agent_prompted（agent start 命中 P4 超时，按配方 send-keys enter 恢复）",
+  "deadline": null,
+  "monitor_owner": "controller (default session, pane wJ:p1)",
+  "last_checked_at": "2026-09-19T21:23:00+08:00",
+  "next_check_at": null,
+  "pending_question": null,
+  "resources_file": "/home/user/Projects/mini-git/.orch/rounds/W3/agent-orchestrator-d8v5yjvq/resources.json",
+  "result_path": "/home/user/Projects/mini-git/.orch/rounds/W3/agent-orchestrator-d8v5yjvq/result.json"
+}

@@ -1,0 +1,15 @@
+{
+  "sample_id": "opencode-session-ses_0004",
+  "source": "opencode-sqlite-session",
+  "measurement": "delta",
+  "attempt_id": "8d7c8903",
+  "purpose": "task",
+  "provider": "deepseek",
+  "model": "deepseek-v4.1-flash",
+  "input_tokens": 1510971,
+  "cached_input_tokens": 1440896,
+  "output_tokens": 16776,
+  "schema_version": 1,
+  "job_id": "46fa28f38e444892b81e513677ac2dbf",
+  "round_id": "4be87971a9bd4f8e95658665063352ed"
+}

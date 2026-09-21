@@ -1,0 +1,52 @@
+test file sha256: 37accabc411fea97b0ae59d5e920183571ce4fd4a80a0429c210b133c606dc5b
+src sha256      : 132e96bed1acd50739d59d69ee6d20ecace7dc076936101772633045ee26ead9
+=== baseline（未变异，必须全绿）
+--- baseline: exit=0 | test result: ok. 32 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.37s
+
+=== M1 去掉二进制检测里的 theirs 分支
+M1 applied
+--- M1_drop_theirs_binary_check: exit=101 | test result: FAILED. 30 passed; 2 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.44s
+      engine_binary_is_conflict_with_ours
+      cli_conflict_binary_keeps_ours_like_git
+test result: FAILED. 30 passed; 2 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.44s
+
+=== M2 让 merge_with_level 恒返回平凡值 Clean(ours)
+M2 applied
+--- M2_always_clean_ours: exit=101 | test result: FAILED. 12 passed; 20 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.22s
+      engine_binary_is_conflict_with_ours
+      engine_case_table_matches_git_merge_file
+      engine_identity_shortcuts_match_git
+      engine_none_base_two_added_files
+      engine_random_corpus_matches_git
+      cli_no_ff_creates_two_parent_merge_commit_like_git
+      cli_conflict_mixed_clean_and_conflicting_paths
+      cli_conflict_binary_keeps_ours_like_git
+
+=== M3 冲突 marker 宽度 7 → 6
+M3 applied
+--- M3_marker_size_6: exit=101 | test result: FAILED. 20 passed; 12 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.24s
+      engine_binary_is_conflict_with_ours
+      engine_case_table_matches_git_merge_file
+      engine_none_base_two_added_files
+      cli_conflict_cjk_bytes_match_git
+      cli_conflict_no_trailing_newline_bytes_match_git
+      engine_random_corpus_matches_git
+      cli_conflictstyle_zdiff3_characterization
+      cli_conflict_diff3_style_matches_git
+
+=== M4 冲突判定恒为「干净」
+M4 applied
+--- M4_conflicts_never_reported: exit=101 | test result: FAILED. 20 passed; 12 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.29s
+      engine_binary_is_conflict_with_ours
+      engine_case_table_matches_git_merge_file
+      engine_none_base_two_added_files
+      cli_conflict_add_add_same_path
+      cli_conflict_cjk_bytes_match_git
+      cli_conflict_mixed_clean_and_conflicting_paths
+      engine_random_corpus_matches_git
+      cli_conflict_crlf_bytes_match_git
+
+restored sha256: 132e96bed1acd50739d59d69ee6d20ecace7dc076936101772633045ee26ead9
+RESTORE_OK
+logs: /tmp/v10-mutant-logs4
+EXIT=0

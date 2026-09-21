@@ -1,0 +1,11 @@
+{
+  "version": 1,
+  "seq": 5,
+  "job_id": "816ca880b03a437c8aa3da7cec8b3cf9",
+  "round_id": "c1431df7a41e4b2fa6e43dd022e2acb5",
+  "event_fingerprint": "ae6fbdd6bc083b35b3ce7061f5b44af6b3f823a0638c7c0b0fb9e43f4fdfe92c",
+  "revision": 1,
+  "status": "handled",
+  "note": "review_due 误报：codex TUI 的 spinner/进度重绘触发 changed-screen 启发式。\n读屏确认无弹窗（弹窗事件另有 blocked/attention 记录）。与 omp 相同的噪声问题，见 summary §3.4。\n",
+  "recorded_at": 1789817018.880813
+}

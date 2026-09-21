@@ -1,0 +1,33 @@
+{
+  "target": {
+    "request_path": "/home/user/Projects/mini-git/.orch/waves/W7/orch-run-oxrolhzc/rounds/agent-orchestrator-a_u_8vn8/request.json",
+    "job_id": "9317e01768834379b288ea08ed9fe156",
+    "round_id": "3ccd1e4633ae4de7a5ce2b4817f3f2c5",
+    "resources": {
+      "mode": "insider",
+      "session": "default",
+      "agent": "orch-w7-verifier",
+      "pane": "w1W:p1",
+      "workspace": "w1W",
+      "owns_agent": true,
+      "owns_pane": true,
+      "owns_workspace": true,
+      "owns_session": false,
+      "tab": "w1W:t1",
+      "parent_pane": "wJ:p1",
+      "parent_tab": "wJ:t1",
+      "owns_tab": false,
+      "recorded_at": "2026-09-20T17:49:09.019337+00:00",
+      "job_id": "9317e01768834379b288ea08ed9fe156"
+    },
+    "request_sha256": "df353e6463827a36ca648d579cc9931b6da66582085cacdd83493401b99d8171",
+    "tmux_selector": null
+  },
+  "result": null,
+  "read_started_at": 1789926627.467197,
+  "publication": null,
+  "state": "working",
+  "screen": "│                                                                                                                                         │\n│ OTHER NOTES                                                                                                                             │\n│ - scripts/check-freeze.sh: \"checked 21 file(s), drift 0 / freeze-v0 intact\". Contrary to known_facts, src/diff/myers.rs is NOT one of   │\n│ the 21 frozen interface files, so no drift appears; the fix was NOT reverted.                                                           │\n│ - known limitation unchanged: mg merge commit oid still differs from git by design (not part of P24).                                   │\n│ - evidence/scripts live under /tmp/w7-author/ (permitted transient location); the delivered fix does not depend on them.                │\n│                                                                                                                                         │\n│ files_modified: ['src/diff/myers.rs']                                                                                                   │\n│ ⟨Wall: 0.03s | Timeout: 300s⟩                                                                                                           │\n╰─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯\n\n╭─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╮\n│ $ cd /tmp/w7-verify && for b in /home/user/Projects/mini-git/target/release/mg target-fixed/release/mg; do echo \"--- $b\"; sha256sum     │\n│ \"$b\"; objcopy --only-keep-debug /dev/null /dev/null 2>/dev/null; cp \"$b\" /tmp/w7-verify/strip-$(basename $(dirname $(dirname $b)))-mg   │\n│ 2>/dev/null; done                                                                                                                       │\n│ ls -la /tmp/w7-verify/*.bin 2>/dev/null                                                                                                 │\n│ # compare readelf build ids                                                                                                             │\n│ readelf -n /home/user/Projects/mini-git/target/release/mg 2>/dev/null | grep -i \"build id\" || true                                      │\n│ readelf -n /tmp/w7-verify/target-fixed/release/mg 2>/dev/null | grep -i \"build id\" || true                                              │\n├─── Output ──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┤\n│ --- /home/user/Projects/mini-git/target/release/mg                                                                                      │\n│ 21b5679f024849a844c7ea4994dfd2b295295647e4a836d7e543f7901eb56990  /home/user/Projects/mini-git/target/release/mg                        │\n│ --- target-fixed/release/mg                                                                                                             │\n│ c3e51adc425233e4c68bbe5d9009264d3de699e19b36c0942a5c9231ed6d82b2  target-fixed/release/mg                                               │\n│   GNU                  0x00000014   NT_GNU_BUILD_ID (unique build ID bitstring)                                                         │\n│     Build ID: fa3cf27b1c8f75285f4ee7a7321ffccea25e289f                                                                                  │\n│   GNU                  0x00000014   NT_GNU_BUILD_ID (unique build ID bitstring)                                                         │\n│     Build ID: b5c19466238f8a775a89849c0bb9400358a175a0                                                                                  │\n│ ⟨Wall: 0.12s | Timeout: 300s⟩                                                                                                           │\n╰─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯\n\n TODO\n  ├─ I. Setup · 0/2\n  │  ├─  Copy snapshot to /tmp/w7-verify and verify manifest integrity\n  │  └─  Inspect myers.rs fix and P24 artifacts\n  ├─ II. Independent build · 0/2\n  ├─ III. Oracle · 0/2\n  ├─ IV. Negative control · 0/2\n  ├─ V. Gates · 0/2\n  ├─ … 2 more stages\n  └─────\n\n  󱊷 Comparing artifact hashes and build ids\n\n╭── ⠸ 36s  3 DeepSeek V4.1 Flash   w7-verify  $0.01 ↓ ──5%─────────────────────────󰁨────1M─  29K   92.61%  Verify mg bug fix ──╮\n╰─                                                                                                                                       ─╯",
+  "observed_at": 1789926627.4711716,
+  "read_duration_seconds": 0.003975486004492268
+}

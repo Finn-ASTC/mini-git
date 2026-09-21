@@ -1,0 +1,36 @@
+{
+  "argv": [
+    "python3",
+    "-c",
+    "import subprocess,sys\nB=sys.argv[1]\ndef run(args):\n    return subprocess.run([B,*args],capture_output=True,text=True,timeout=10)\nr=run(['--version'])\nassert (r.returncode,r.stdout,r.stderr)==(0,'linestat 1.0.0\\n',''), repr((r.returncode,r.stdout,r.stderr))\nr=run([])\nassert (r.returncode,r.stdout)==(2,''), repr((r.returncode,r.stdout))\nprint('controller smoke passed')",
+    "/home/user/Projects/mini-git/.orch/waves/W5/orch-run-2lpx81iy/rounds/agent-orchestrator-ggyoe35m/deliveries/snapshot-nvn21yva/verifications/verify-l9da_n_s/build/cargo/release/linestat"
+  ],
+  "cwd": "/home/user/Projects/mini-git/.orch/waves/W5/orch-run-2lpx81iy/rounds/agent-orchestrator-ggyoe35m/deliveries/snapshot-nvn21yva/verifications/verify-l9da_n_s/source",
+  "started_at": "2026-09-20T09:47:44.414032+00:00",
+  "timeout_seconds": 30,
+  "exit_code": 0,
+  "executable": {
+    "path": "/usr/bin/python3.14",
+    "kind": "file",
+    "size": 14424,
+    "sha256": "d78f9cf7178ecff09963551399855543c297f37ac207e626228bfe43cb26a70c",
+    "executable": true
+  },
+  "outcome": "exited",
+  "finished_at": "2026-09-20T09:47:44.449000+00:00",
+  "duration_seconds": 0.03497999599494506,
+  "stdout": {
+    "path": "/home/user/Projects/mini-git/.orch/waves/W5/orch-run-2lpx81iy/rounds/agent-orchestrator-ggyoe35m/deliveries/snapshot-nvn21yva/verifications/verify-l9da_n_s/evidence/0007/stdout.log",
+    "kind": "file",
+    "size": 24,
+    "sha256": "b0eb5e080aeca0fc421c6023fbaee013e0592162129d6f551e8940128f727f4f",
+    "executable": false
+  },
+  "stderr": {
+    "path": "/home/user/Projects/mini-git/.orch/waves/W5/orch-run-2lpx81iy/rounds/agent-orchestrator-ggyoe35m/deliveries/snapshot-nvn21yva/verifications/verify-l9da_n_s/evidence/0007/stderr.log",
+    "kind": "file",
+    "size": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "executable": false
+  }
+}

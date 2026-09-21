@@ -1,0 +1,11 @@
+4e683c880eb606eb73994129429fe7597eef8a5c9e312e026c1d496066cbc290  .orch/waves/W3/T9-pack/verify-scratch/v9-byte-flips.txt
+df1a7f0ed9b11110408b99295fd8a84891dc541b496db8a65575c43c70e50eee  .orch/waves/W3/T9-pack/verify-scratch/v9-corrupt.txt
+6a03ad977a49d0b09eba0d80995cc5268cda76ce6f01dcbb7a8e3aa657fd2653  .orch/waves/W3/T9-pack/verify-scratch/v9-delta-api.txt
+e484cb9f6706259e04aeaf95df2f3b7b83450bbe415bfda50a3e9228949846da  .orch/waves/W3/T9-pack/verify-scratch/v9-delta-chains.txt
+21c37cf500d2b51a4ff27aa519b8215652479dd7a580b0020cd43d765d614bbf  .orch/waves/W3/T9-pack/verify-scratch/v9-gc-aggressive.txt
+dcf00bb05d94fc8c0ba16231090046e568bc8f269fde997d0d0bd3c05cac46a2  .orch/waves/W3/T9-pack/verify-scratch/v9-idx-mismatch.txt
+91c92675142b608f2b591d8f1555dc87a5135b41544351510103caa3b70f8c95  .orch/waves/W3/T9-pack/verify-scratch/v9-multi-pack.txt
+76b6d7eec4b96fed8a9d366d36c232ccc0ecd81c3b0a8394b2b401f18071691d  .orch/waves/W3/T9-pack/verify-scratch/v9-mutation-summary.txt
+03a5067c35fe246dbc9cd66419e5bc3b63312713c5cfed9275f38933aab00bbc  .orch/waves/W3/T9-pack/verify-scratch/v9-ref-delta.txt
+e4c26535c8f6bed17d088b2f4d5b09ce63fd8a3477813c0d1c7f04fd89d2f7ce  .orch/waves/W3/T9-pack/verify-scratch/v9-repack-adf.txt
+9817212e6da713ed10d07a8c2d31728bebf72ec51a45b0074b208b948cf69824  .orch/waves/W3/T9-pack/verify-scratch/v9-repack-window50-depth50.txt

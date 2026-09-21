@@ -1,0 +1,14 @@
+{
+  "version": 1,
+  "seq": 4,
+  "job_id": "46fa28f38e444892b81e513677ac2dbf",
+  "round_id": "4be87971a9bd4f8e95658665063352ed",
+  "event_fingerprint": "d79066c7bf179a7595e33e11366c389518fb6c4138008421bb9b97e6fa122664",
+  "revision": 1,
+  "status": "handled",
+  "note": "V1 watch seq 4, kind=review_due, confidence=unknown_ui, occurrences=1.\nSame low-confidence class as seq 3; the pane repainted while V1 was running the\nconfig matrix. Controller re-read pane w1T:p1: OpenCode 1.18.29 in working state\n(\"esc interrupt\"), no dialog, no pending input. Superseded by seq 5 (result\npublished) and seq 6 (state done) minutes later - if a dialog had been blocking,\nno result would have appeared.\nDisposition: handled. No input sent.\n",
+  "recorded_at": 1789897821.7693033,
+  "action_evidence": null,
+  "resolution_evidence": null,
+  "resolved_at": null
+}

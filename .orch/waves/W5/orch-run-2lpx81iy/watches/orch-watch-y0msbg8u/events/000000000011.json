@@ -1,0 +1,13 @@
+{
+  "seq": 11,
+  "job_id": "9746730210dc4491b685bbc446088546",
+  "round_id": "1f695772a77b44ab8bcfb878a34e5add",
+  "kind": "review_due",
+  "message": "Changed UI needs review; hook/keyword detection may miss a dialog.",
+  "evidence_path": "/home/user/Projects/mini-git/.orch/waves/W5/orch-run-2lpx81iy/watches/orch-watch-y0msbg8u/evidence/000000000011.json",
+  "screen_tail": "ed args are options (use ./-x for such a file); directory operands report EISDIR/exit\n 1. Uncovered items declared in output: cross-platform builds (Unix-only byte-level path echo), non-regular operands, performance gates, signal\n semantics.\n\n Files: created Cargo.toml, src/main.rs, tests/cli.rs; generated Cargo.lock; SPEC.md untouched (sha256\n 20903f0786a9fc2c756bb773cdc37d9ff74212450900a8cb6bfa20b157e98244, original mtime). No build/test processes left running.\n\n ※ recap: Built linestat 1.0.0 in /tmp/w5-linestat: all gates pass (dev and release tests 11/11, fmt, clippy), artifact SHA-256 75953480…44f5e, and\n result.json is published. Next: await verifier re-run, or fix anything it flags.\n\n╭── ♡⃝ awful_bed~  3 DeepSeek V4.1 Flash   w5-linestat  $0.03 ↓ ───9%────────────────────────󰁨────1M─  69K   97.55%  Build and test dev ──╮\n╰─                                                                                                                                                 ─╯",
+  "observed_at": 1789897766.0316145,
+  "issue_id": "1b4fab3b905340a29fa3723b0153b3d6",
+  "correlation_key": "45afcbc1833afc0723031004874ec40722cd63cd6b16dd0e0063a427d75899cd",
+  "confidence": "unknown_ui"
+}

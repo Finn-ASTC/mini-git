@@ -1,0 +1,7 @@
+[package]
+name = "linestat"
+version = "1.0.0"
+edition = "2021"
+description = "Byte-level line/word/byte counter implementing the SPEC.md 1.0.0 contract"
+
+[dependencies]

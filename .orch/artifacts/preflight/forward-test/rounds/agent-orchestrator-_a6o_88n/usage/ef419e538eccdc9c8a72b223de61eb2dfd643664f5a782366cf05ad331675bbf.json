@@ -1,0 +1,15 @@
+{
+  "sample_id": "native-b-1",
+  "source": "host-without-usage",
+  "measurement": "delta",
+  "attempt_id": "initial-1",
+  "purpose": "task",
+  "provider": null,
+  "model": null,
+  "input_tokens": null,
+  "cached_input_tokens": null,
+  "output_tokens": null,
+  "schema_version": 1,
+  "job_id": "779a332380d64ec2b75723d406b47101",
+  "round_id": "49834261ee084bfa82fbafa38177823f"
+}

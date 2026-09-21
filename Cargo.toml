@@ -1,0 +1,36 @@
+[package]
+name = "mini-git"
+version = "0.0.0"
+edition = "2021"
+rust-version = "1.75"
+description = "mini-git: a git subset that interoperates with real git"
+repository = "https://github.com/Finn-ASTC/mini-git"
+license = "MIT OR Apache-2.0"
+default-run = "mg"
+
+# ---------------------------------------------------------------------------
+# FILE OWNERSHIP: this file is CONTROLLER-OWNED. Child agents must not edit it.
+# A new dependency requires a controller round (see ORCHESTRATION.md, C2/S9).
+# ---------------------------------------------------------------------------
+
+[[bin]]
+name = "mg"
+path = "src/main.rs"
+
+[lib]
+name = "minigit"
+path = "src/lib.rs"
+
+[dependencies]
+clap = { version = "4", features = ["derive"] }
+flate2 = "1"
+sha1 = "0.10"
+thiserror = "2"
+anyhow = "1"
+
+[dev-dependencies]
+proptest = "1"
+tempfile = "3"
+
+[profile.release]
+debug = 1

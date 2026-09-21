@@ -1,0 +1,13 @@
+{
+  "seq": 6,
+  "job_id": "9317e01768834379b288ea08ed9fe156",
+  "round_id": "3ccd1e4633ae4de7a5ce2b4817f3f2c5",
+  "kind": "review_due",
+  "message": "Changed UI needs review; hook/keyword detection may miss a dialog.",
+  "evidence_path": "/home/user/Projects/mini-git/.orch/waves/W7/orch-run-oxrolhzc/watches/orch-watch-_8f_qjxn/evidence/000000000006.json",
+  "screen_tail": "       │\n│ ⟨Wall: 0.01s | Timeout: 300s⟩                                                                                                           │\n╰─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯\n\n waiting on 1 job\n└─ 󱑐 ⟨bash⟩ bg_1 unset CARGO_TARGET_DIR && export LC_ALL=C && cargo build --… · 2m37s\n\n TODO\n  ├─ I. Setup · 0/2\n  │  ├─  Copy snapshot to /tmp/w7-verify and verify manifest integrity\n  │  └─  Inspect myers.rs fix and P24 artifacts\n  ├─ II. Independent build · 0/2\n  ├─ III. Oracle · 0/2\n  ├─ IV. Negative control · 0/2\n  ├─ V. Gates · 0/2\n  ├─ … 2 more stages\n  └─────\n\n  󱊷 Waiting for pre-fix test hang job\n\n╭── ⠋ 7m  3 DeepSeek V4.1 Flash   w7-verify  $0.05 ↓ ───12%──────────────────󰁨───1M─  1   106K   98.14%  Verify mg bug fix ──╮\n╰─                                                                                                                                       ─╯",
+  "observed_at": 1789927062.4759061,
+  "issue_id": "bf1832379003454e8428cac372f0ffec",
+  "correlation_key": "2eb414fd5a98d00946cee99dc21f13a27755553a1fa4bef103fb164261978e86",
+  "confidence": "unknown_ui"
+}

@@ -1,0 +1,1 @@
+{"objective":"Analyze parser failure B","scope":"Read-only analysis of project/b.py","acceptance":["Report cause with evidence"],"inputs":["project/b.py"],"constraints":["No edits"]}

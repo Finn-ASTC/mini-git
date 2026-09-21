@@ -1,0 +1,186 @@
+{
+  "version": 1,
+  "revision": 9,
+  "index_path": "/home/user/Projects/mini-git/.orch/waves/W5/orch-run-2lpx81iy/jobs",
+  "job_id": "9746730210dc4491b685bbc446088546",
+  "round_id": "1f695772a77b44ab8bcfb878a34e5add",
+  "active_request": "/home/user/Projects/mini-git/.orch/waves/W5/orch-run-2lpx81iy/rounds/agent-orchestrator-ggyoe35m/request.json",
+  "rounds": [
+    {
+      "request_path": "/home/user/Projects/mini-git/.orch/waves/W5/orch-run-2lpx81iy/rounds/agent-orchestrator-ggyoe35m/request.json",
+      "round_id": "1f695772a77b44ab8bcfb878a34e5add",
+      "request_sha256": "9fb94d9a15e03e3d778e26551aad5e8aa1b7545b872581861346e1234f2b14b9"
+    }
+  ],
+  "resources": {
+    "path": "/home/user/Projects/mini-git/.orch/waves/W5/orch-run-2lpx81iy/rounds/agent-orchestrator-ggyoe35m/resources.json",
+    "sha256": "b6581dd64541bdf5badf1fa485fff1d425f32a446ccaeb3c9d0beac50d109551",
+    "record": {
+      "mode": "insider",
+      "session": "default",
+      "agent": "orch-linestat-t1-omp",
+      "pane": "w1S:p1",
+      "workspace": "w1S",
+      "owns_agent": true,
+      "owns_pane": true,
+      "owns_workspace": true,
+      "owns_session": false,
+      "tab": "w1S:t1",
+      "parent_pane": "wJ:p1",
+      "parent_tab": "wJ:t1",
+      "owns_tab": false,
+      "recorded_at": "2026-09-20T09:41:57.088844+00:00",
+      "job_id": "9746730210dc4491b685bbc446088546"
+    }
+  },
+  "submission": "accepted",
+  "attempts": [
+    {
+      "attempt_id": "8c1ad12ac5324d4f8f10dff0e93e75ae",
+      "round_id": "1f695772a77b44ab8bcfb878a34e5add",
+      "owner": "controller-codex",
+      "begun_at": 1789897362.5605402,
+      "status": "accepted",
+      "receipts": [
+        {
+          "status": "accepted",
+          "kind": "target_active",
+          "recorded_at": 1789897389.5014734,
+          "evidence": {
+            "path": "/home/user/Projects/mini-git/.orch/waves/W5/orch-run-2lpx81iy/evidence/e1-submission-accepted.json",
+            "sha256": "e2418f630acc2e7b58328b110eafefa767de415d562cfe71401697ed1e84495c",
+            "note": "传输命令返回 exit 0；紧随其后的 agent get 显示目标 working 且 interactive_ready=true，结果文件尚未出现。"
+          }
+        }
+      ]
+    }
+  ],
+  "lease": null,
+  "launch": {
+    "argv": [
+      "omp"
+    ],
+    "profile": "existing-config"
+  },
+  "native": {
+    "session_id": "sess_0038-64d2-7748-a3a8-d0d122725142",
+    "turn_id": null
+  },
+  "monitor": {
+    "owner": "controller-codex",
+    "watch_path": "/home/user/Projects/mini-git/.orch/waves/W5/orch-run-2lpx81iy/watches/orch-watch-y0msbg8u/watch.json",
+    "expires_at": 1789899131
+  },
+  "deadline": 1789898243,
+  "closed": {
+    "outcome": "completed",
+    "recorded_at": 1789897934.0387638,
+    "evidence": {
+      "path": "/home/user/Projects/mini-git/.orch/waves/W5/evidence/t1-acceptance.txt",
+      "sha256": "377a8dea999225b29427e11bc9c47aaf9bb4d4a89dcea810970f669ebb159beb",
+      "note": "linestat 1.0.0 delivered by the omp author and independently verified: sealed snapshot gate 7/7 exit 0 by the controller, V1's own oracle/harness 36/36 on the release artifact, and the controller re-ran that harness against an independently rebuilt artifact. Host settled. W5-S1 (post-publication result rewrite) recorded as a process finding; it did not change the artifact or the verdict."
+    },
+    "completion": {
+      "response_published": true,
+      "response_status": "success",
+      "accepted_by_verifier": true,
+      "host_settled": true,
+      "ready_to_complete": true,
+      "acceptance_kind": "delivery",
+      "host_status": "settled",
+      "host_valid_until": 1789898168,
+      "reasons": [],
+      "executes_commands": false,
+      "note": "Host checks are scoped controller observations, not an OS guarantee. Recheck live state before input; historical closure does not grant reuse."
+    }
+  },
+  "completion": {
+    "acceptance": {
+      "version": 1,
+      "job_id": "9746730210dc4491b685bbc446088546",
+      "round_id": "1f695772a77b44ab8bcfb878a34e5add",
+      "request_sha256": "9fb94d9a15e03e3d778e26551aad5e8aa1b7545b872581861346e1234f2b14b9",
+      "result_sha256": "643efc204b22defe388d40e446314ff9dc5ec89520f96e6f8d48eab0b006e26f",
+      "kind": "delivery",
+      "verdict": "accepted",
+      "recorded_at": 1789897900.8259585,
+      "evidence": {
+        "path": "/home/user/Projects/mini-git/.orch/waves/W5/evidence/t1-acceptance.txt",
+        "sha256": "377a8dea999225b29427e11bc9c47aaf9bb4d4a89dcea810970f669ebb159beb",
+        "note": "delivery.py verify on the sealed snapshot passed 7/7; release artifact independently rebuilt from the sealed source is byte-identical to the author's; V1's independent oracle/harness passed 36/36 on that artifact and the controller re-ran it."
+      },
+      "attempt": {
+        "path": "/home/user/Projects/mini-git/.orch/waves/W5/orch-run-2lpx81iy/rounds/agent-orchestrator-ggyoe35m/deliveries/snapshot-nvn21yva/verifications/verify-l9da_n_s/attempt.json",
+        "sha256": "f4de32ee05cab611a80b7dcb6a68027e43436812453209aab91a4ccbfdf71ddb"
+      }
+    },
+    "host": {
+      "status": "settled",
+      "observed_at": 1789897928,
+      "valid_until": 1789898168,
+      "checks": {
+        "foreground": "clear",
+        "background": "clear",
+        "native_children": "clear",
+        "interaction": "clear",
+        "side_effects": "clear"
+      },
+      "children": [],
+      "host": "omp",
+      "host_version": "omp/18.2.6",
+      "disposition": "reusable",
+      "side_effect_paths": [
+        "/tmp/w5-linestat",
+        "/home/user/.omp/agent/sessions/-tmp-w5-linestat",
+        "/home/user/.omp/logs",
+        "/home/user/Projects/mini-git/.orch/waves/W5/orch-run-2lpx81iy/rounds/agent-orchestrator-ggyoe35m/result.json"
+      ],
+      "version": 1,
+      "job_id": "9746730210dc4491b685bbc446088546",
+      "round_id": "1f695772a77b44ab8bcfb878a34e5add",
+      "request_sha256": "9fb94d9a15e03e3d778e26551aad5e8aa1b7545b872581861346e1234f2b14b9",
+      "result_sha256": "643efc204b22defe388d40e446314ff9dc5ec89520f96e6f8d48eab0b006e26f",
+      "target": {
+        "resources": {
+          "path": "/home/user/Projects/mini-git/.orch/waves/W5/orch-run-2lpx81iy/rounds/agent-orchestrator-ggyoe35m/resources.json",
+          "sha256": "b6581dd64541bdf5badf1fa485fff1d425f32a446ccaeb3c9d0beac50d109551",
+          "record": {
+            "mode": "insider",
+            "session": "default",
+            "agent": "orch-linestat-t1-omp",
+            "pane": "w1S:p1",
+            "workspace": "w1S",
+            "owns_agent": true,
+            "owns_pane": true,
+            "owns_workspace": true,
+            "owns_session": false,
+            "tab": "w1S:t1",
+            "parent_pane": "wJ:p1",
+            "parent_tab": "wJ:t1",
+            "owns_tab": false,
+            "recorded_at": "2026-09-20T09:41:57.088844+00:00",
+            "job_id": "9746730210dc4491b685bbc446088546"
+          }
+        },
+        "native": {
+          "session_id": "sess_0038-64d2-7748-a3a8-d0d122725142",
+          "turn_id": null
+        },
+        "launch": {
+          "argv": [
+            "omp"
+          ],
+          "profile": "existing-config"
+        }
+      },
+      "recorded_at": 1789897928.619156,
+      "evidence": {
+        "path": "/home/user/Projects/mini-git/.orch/waves/W5/evidence/t1-host-observation.txt",
+        "sha256": "934da298ac4ca8e0d41678d068d50aa731d6d0494319d6b27dd66fdc6adab8bb",
+        "note": "omp 18.2.6 idle at its prompt after publishing success; no cargo/rustc/test process; no subagent dispatch in the session log; caller-owned SPEC.md unchanged (sha256 matches the W5 baseline); watch cursor 10 with no open events."
+      }
+    }
+  },
+  "event": "close",
+  "recorded_at": 1789897934.0387638
+}

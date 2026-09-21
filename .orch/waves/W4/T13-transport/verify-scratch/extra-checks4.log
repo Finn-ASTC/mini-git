@@ -1,0 +1,29 @@
+############ (11b) 快进 push 到引用已打包的远端
+packed-refs 内容：# pack-refs with: peeled fully-peeled sorted |c59c72836b67db83b03c10b99bee1ab3c0325161 refs/heads/main|
+loose refs 目录：0 个文件
+clone exit=0
+To file:///tmp/v13extra4/11/bare.git
+   c59c728..e4e9cad  main -> main
+mg push (FF, packed remote) exit=0
+bare main=e4e9cad9303b187f78e39f1efd05c8c40de6af98 work HEAD=e4e9cad9303b187f78e39f1efd05c8c40de6af98
+packed-refs 现在：# pack-refs with: peeled fully-peeled sorted |c59c72836b67db83b03c10b99bee1ab3c0325161 refs/heads/main|
+loose refs 目录现在：1 个文件
+bare fsck exit=0
+
+############ (13b) pull 拒绝覆盖本地改动（正确夹具：克隆发生在远端前进之前）
+--- mg pull:
+From file:///tmp/v13extra4/13/origin
+mg: fatal: refusing to overwrite local changes: a.txt
+mg pull exit=1
+mg  a.txt=[local-dirty] HEAD=bef5e97 status=[ M a.txt|]
+--- git pull（同一夹具）:
+From file:///tmp/v13extra4/13/origin
+ * branch            main       -> FETCH_HEAD
+   bef5e97..7985235  main       -> origin/main
+error: Your local changes to the following files would be overwritten by merge:
+	a.txt
+Please commit your changes or stash them before you merge.
+Aborting
+Updating bef5e97..7985235
+git pull exit=1
+git a.txt=[local-dirty] HEAD=bef5e97 status=[ M a.txt|]

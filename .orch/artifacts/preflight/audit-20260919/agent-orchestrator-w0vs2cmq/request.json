@@ -1,0 +1,11 @@
+{
+  "schema_version": 1,
+  "job_id": "bac4791a4b114f94830a328d40987cba",
+  "round_id": "3efe3fe915d54cff8987c457858e080d",
+  "cwd": "/tmp/orch-audit-20260919-e8x_l_s7/usage-cross-round",
+  "result_path": "/tmp/orch-audit-20260919-e8x_l_s7/agent-orchestrator-w0vs2cmq/result.json",
+  "depth": 1,
+  "max_depth": 3,
+  "prepared_at": "2026-09-19T09:25:14.595452+00:00",
+  "task": "Read-only inspection"
+}

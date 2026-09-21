@@ -1,0 +1,33 @@
+{
+  "version": 1,
+  "watch_id": "92129b2eca424f1eaaa7acdd062abb50",
+  "targets": [
+    {
+      "request_path": "/home/user/Projects/mini-git/.orch/waves/W7/orch-run-oxrolhzc/rounds/agent-orchestrator-urm5bgtv/request.json",
+      "job_id": "66840d4b642f481a848788974b0665ca",
+      "round_id": "5248318530cb4b26b88628ac6da18637",
+      "resources": {
+        "mode": "insider",
+        "session": "default",
+        "agent": "orch-w7-author",
+        "pane": "w1V:p1",
+        "workspace": "w1V",
+        "owns_agent": true,
+        "owns_pane": true,
+        "owns_workspace": true,
+        "owns_session": false,
+        "tab": "w1V:t1",
+        "parent_pane": "wJ:p1",
+        "parent_tab": "wJ:t1",
+        "owns_tab": false,
+        "recorded_at": "2026-09-20T17:38:36.488471+00:00",
+        "job_id": "66840d4b642f481a848788974b0665ca"
+      },
+      "request_sha256": "9d35f80c3298115fccc4141fa342c37a950bc5ffcbe268c3935405688406a409",
+      "tmux_selector": null
+    }
+  ],
+  "deadline": null,
+  "review_interval": 30,
+  "stall_after": 120
+}

@@ -1,0 +1,17 @@
+{
+  "version": 1,
+  "seq": 11,
+  "job_id": "9317e01768834379b288ea08ed9fe156",
+  "round_id": "3ccd1e4633ae4de7a5ce2b4817f3f2c5",
+  "event_fingerprint": "91af8793e4a7ec82c621046dcaca81b2d93fc04274ff6d59928ef8b451fd001e",
+  "revision": 1,
+  "status": "handled",
+  "note": "state_changed（idle）结清，seq 11，watch orch-watch-_8f_qjxn。\nV2（omp）native 状态转为 idle，终端回到等待输入的空闲提示符。\njob 9317e017 已 completed、已 close（rev 9），工作区 w1W 也已关闭，不会再有后续轮次。\n正常终态，仅结清账目。\n",
+  "recorded_at": 1789929715.192874,
+  "action_evidence": null,
+  "resolution_evidence": {
+    "path": "/home/user/Projects/mini-git/.orch/waves/W7/orch-run-oxrolhzc/watches/orch-watch-_8f_qjxn/evidence/000000000011.json",
+    "sha256": "c375eac44fb88b14adfa6935fde8f1676e15bbb922e779f63a520887d7f4e164"
+  },
+  "resolved_at": 1789929715.0
+}

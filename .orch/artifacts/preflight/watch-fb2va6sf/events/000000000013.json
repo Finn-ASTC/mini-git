@@ -1,0 +1,10 @@
+{
+  "seq": 13,
+  "job_id": "816ca880b03a437c8aa3da7cec8b3cf9",
+  "round_id": "c1431df7a41e4b2fa6e43dd022e2acb5",
+  "kind": "observation_error",
+  "message": "herdr read failed: {\"id\":\"cli:agent:get\",\"error\":{\"code\":\"server_not_running\",\"message\":\"no herdr server is running at /home/user/.config/herdr/sessions/orch-w1-t1/herdr.sock; run `herdr session attach orch-w1-t1` to start or attach it\"}}",
+  "evidence_path": "/tmp/orch-watch-fb2va6sf/evidence/000000000013.json",
+  "screen_tail": "",
+  "observed_at": 1789817068.1637306
+}

@@ -1,0 +1,33 @@
+{
+  "target": {
+    "request_path": "/home/user/Projects/mini-git/.orch/waves/W7/orch-run-oxrolhzc/rounds/agent-orchestrator-a_u_8vn8/request.json",
+    "job_id": "9317e01768834379b288ea08ed9fe156",
+    "round_id": "3ccd1e4633ae4de7a5ce2b4817f3f2c5",
+    "resources": {
+      "mode": "insider",
+      "session": "default",
+      "agent": "orch-w7-verifier",
+      "pane": "w1W:p1",
+      "workspace": "w1W",
+      "owns_agent": true,
+      "owns_pane": true,
+      "owns_workspace": true,
+      "owns_session": false,
+      "tab": "w1W:t1",
+      "parent_pane": "wJ:p1",
+      "parent_tab": "wJ:t1",
+      "owns_tab": false,
+      "recorded_at": "2026-09-20T17:49:09.019337+00:00",
+      "job_id": "9317e01768834379b288ea08ed9fe156"
+    },
+    "request_sha256": "df353e6463827a36ca648d579cc9931b6da66582085cacdd83493401b99d8171",
+    "tmux_selector": null
+  },
+  "result": null,
+  "read_started_at": 1789926687.4674067,
+  "publication": null,
+  "state": "working",
+  "screen": " control evidence. Actually simplest and most honest:\n - Corpus A (mine, 200 cases, own PRNG): headline three numbers on fixed release.\n - Corpus B = Corpus A + archived P24 trigger as case 200 (201 cases) for negative control; report that the pre-fix binary hangs on N of\n   them and differs on M.\n\n But if pre-fix on corpus A alone shows hangs, even better. Let's just test.\n\n Let's write the archived case into a JSON file too.\n\n Do this now: run pre-fix release on 12-case sanity corpus to check for hangs quickly (fast check of discrimination), and build the mixed\n corpus.\n\n╭─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╮\n│ $ cd /tmp/w7-verify && python3 -c \"                                                                                                     │\n│ import json                                                                                                                             │\n│ c=json.load(open('oracle/cases200.json'))                                                                                               │\n│ old=open('/home/user/Projects/mini-git/.orch/artifacts/release-p24/repro/old.txt','rb').read().decode()                                 │\n│ new=open('/home/user/Projects/mini-git/.orch/artifacts/release-p24/repro/new.txt','rb').read().decode()                                 │\n│ c.append({'case':200,'old':old,'new':new,'note':'archived P24 trigger'})                                                                │\n│ json.dump(c,open('oracle/cases201.json','w'))                                                                                           │\n│ json.dump([c[-1]],open('oracle/case-archived.json','w'))                                                                                │\n│ print('ok')                                                                                                                             │\n│ \" && echo \"=== pre-fix release on 12 cases ===\" && python3 oracle/run.py --out /tmp/w7-verify/evidence/sanity-prefix.json --release     │\n│ /tmp/w7-verify/target-pre/release/mg --cases /tmp/w7-verify/oracle/cases12.json --root /tmp/w7-verify/oracle/work-prefix --tag          │\n│ sanity-prefix --timeout 10 2>&1 | tail -8                                                                                               │\n├─── Output ──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┤\n│ ok                                                                                                                                      │\n│ === pre-fix release on 12 cases ===                                                                                                     │\n│ ⟨Timeout: 600s⟩                                                                                                                         │\n╰─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯\n\n TODO\n  ├─ I. Setup · 0/2\n  │  ├─  Copy snapshot to /tmp/w7-verify and verify manifest integrity\n  │  └─  Inspect myers.rs fix and P24 artifacts\n  ├─ II. Independent build · 0/2\n  ├─ III. Oracle · 0/2\n  ├─ IV. Negative control · 0/2\n  ├─ V. Gates · 0/2\n  ├─ … 2 more stages\n  └─────\n\n  󱊷 Negative-control smoke on pre-fix binary\n\n╭── ⠸ 1m  3 DeepSeek V4.1 Flash   w7-verify  $0.01 ↓ ──6%─────────────────────󰁨───1M─  1   42K   95.82%  Verify mg bug fix ──╮\n╰─                                                                                                                                       ─╯",
+  "observed_at": 1789926687.4718904,
+  "read_duration_seconds": 0.004484535995288752
+}

@@ -1,0 +1,10 @@
+{
+  "seq": 4,
+  "job_id": "edb0e351b58e42e486a264690ece2dcd",
+  "round_id": "c1008bbd20e34640ab5a409ceed097fb",
+  "kind": "review_due",
+  "message": "Changed UI needs review; hook/keyword detection may miss a dialog.",
+  "evidence_path": "/tmp/orch-watch-x90zk5ag/evidence/000000000004.json",
+  "screen_tail": "                                                                                                            │\n│ tree_hex =                                                                                                          │\n│ \"31303036343420612e7478740078981922613b2afb6025042ff6bd878ac1994e8531303036343420666f6f2e74787400f2ad6c76f0115a6ba5 │\n│ b00456a849810e7ec0af20343030303020666f6f00f8f7aefc2900a3d737cea9eee45729fd55761e1a313230303030206c696e6b2e747874008 │\n│ d14cbf983b3fad683171c941899                                                                                         │\n╰─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯\n\n  󱊷 Verifying extra-header payload and bare tag\n\n╭── ⠹ 1m  3 DeepSeek V4.1 Flash   mini-git  $0.01 ↓ ─6%─󰁨1M─  34K   95.75%  Implement git object codecs… ──╮\n╰─                                                                                                                   ─╯\n",
+  "observed_at": 1789816528.1720712
+}

@@ -1,0 +1,13 @@
+{
+  "argv": [
+    "python3",
+    "-c",
+    "import hashlib,json,os,subprocess,sys\nsrc,ev=sys.argv[1],sys.argv[2]\ndef sha(p):\n    return hashlib.sha256(open(p,'rb').read()).hexdigest()\noracle=os.path.join(src,'oracle','linestat_oracle.py')\nharness=os.path.join(src,'harness','differential.py')\nassert sha(oracle)=='90d2a7449c4011e5421c8cbf2e8ca530d60e76c56107073d9f4aaec129389ae9', sha(oracle)\nassert sha(harness)=='cae5eada126891cf5514a0fb98a394f50e63bb17cd5f28b58c017c0d86381d8d', sha(harness)\nBIN='/home/user/Projects/mini-git/.orch/waves/W5/orch-run-2lpx81iy/rounds/agent-orchestrator-ggyoe35m/deliveries/snapshot-nvn21yva/verifications/verify-l9da_n_s/build/cargo/release/linestat'\nassert sha(BIN)=='759534809958403271ec37bba8962439ab51938999bdd214214b6bff3ea44f5e', sha(BIN)\nr=subprocess.run(['python3',harness,BIN,os.path.join(ev,'xcheck-fixtures'),os.path.join(ev,'xcheck-report')],capture_output=True,text=True,timeout=600)\nassert r.returncode==0, (r.returncode, r.stdout[-2000:], r.stderr[-2000:])\nrep=json.load(open(os.path.join(ev,'xcheck-report.json')))\nassert rep['cases_total']==36 and rep['cases_passed']==36 and rep['cases_failed']==0, rep\nprint('controller gate on V1 evidence: oracle+harness hashes pinned, 36/36 on the independently built release artifact')",
+    "/home/user/Projects/mini-git/.orch/waves/W5/orch-run-2lpx81iy/deliveries-v1/verify-lj7adr2s/source",
+    "/home/user/Projects/mini-git/.orch/waves/W5/orch-run-2lpx81iy/deliveries-v1/verify-lj7adr2s/evidence"
+  ],
+  "cwd": "/home/user/Projects/mini-git/.orch/waves/W5/orch-run-2lpx81iy/deliveries-v1/verify-lj7adr2s/source",
+  "started_at": "2026-09-20T09:51:32.505443+00:00",
+  "timeout_seconds": 600,
+  "exit_code": null
+}

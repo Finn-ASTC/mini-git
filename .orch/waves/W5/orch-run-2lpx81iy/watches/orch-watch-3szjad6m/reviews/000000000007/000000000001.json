@@ -1,0 +1,14 @@
+{
+  "version": 1,
+  "seq": 7,
+  "job_id": "46fa28f38e444892b81e513677ac2dbf",
+  "round_id": "4be87971a9bd4f8e95658665063352ed",
+  "event_fingerprint": "3524c1e19406acaf3d28caa5b296218ee249f62ce8484fde581de049c13e756d",
+  "revision": 1,
+  "status": "handled",
+  "note": "V1 watch seq 7, kind=state_changed, message \"idle\". Informational: V1's pane stopped\nchanging, which matches the published success result and the \"done\" transition\nalready recorded as seq 6.\n\nReviewed during W5 close-out after the job was accepted and closed as completed:\nV1's output had already been sealed (snapshot-e2_cmplo, result_sha256 3b35b7fd...50e935)\nand its own oracle re-executed by the controller against an independently built\nrelease artifact (36/36). This event carries no dialog, no error and no pending\nquestion, and it requires no action from the target - the round was already over.\nThe subsequent and final interaction was the planned /exit during cleanup.\n\nDisposition: handled, informational only. No input was sent for this event.\n",
+  "recorded_at": 1789898059.1434395,
+  "action_evidence": null,
+  "resolution_evidence": null,
+  "resolved_at": null
+}

@@ -1,0 +1,1 @@
+{"sample_id":"native-a-repair-1","source":"host-native-events","measurement":"delta","attempt_id":"report-repair-1","purpose":"report_repair","provider":"provider-a","model":"model-a","input_tokens":240,"cached_input_tokens":200,"output_tokens":85}

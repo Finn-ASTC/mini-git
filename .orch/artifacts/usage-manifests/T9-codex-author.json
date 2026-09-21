@@ -1,0 +1,4 @@
+{"version":1,"host":"codex",
+ "log_path":"/home/user/.codex/sessions/2026/09/19/rollout-2026-09-19T20-47-05-sess_0016-c095-75d3-837d-bcc73f835537.jsonl",
+ "session_id":"sess_0016-c095-75d3-837d-bcc73f835537",
+ "mappings":[{"native_id":"sess_0016-dfd1-7163-b127-38393969a95a","request_path":"/home/user/Projects/mini-git/.orch/rounds/W3/agent-orchestrator-5o3ibye5/request.json","attempt_id":"initial","purpose":"task"}]}

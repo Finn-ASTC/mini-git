@@ -1,0 +1,10 @@
+{
+  "seq": 3,
+  "job_id": "edb0e351b58e42e486a264690ece2dcd",
+  "round_id": "c1008bbd20e34640ab5a409ceed097fb",
+  "kind": "review_due",
+  "message": "Changed UI needs review; hook/keyword detection may miss a dialog.",
+  "evidence_path": "/tmp/orch-watch-x90zk5ag/evidence/000000000003.json",
+  "screen_tail": "rd lexicographic. ✓\n\n Simplify: I can implement as comparing (name, virtual) where I compute key(name, mode) -> (slice, extra); but the\n code above is clear.\n\n Implementation with Ordering:...\n\n Clean, no clippy issues.\n\n decode_payload:...\n\n RAW_LEN is crate::oid::RAW_LEN; is it public? Yes pub const RAW_LEN: usize = 20;. Use crate::oid::{Oid, RAW_LEN}...\n\n Oid::from_slice returns Result<Self> with InvalidOid error; fine.\n\n Name empty check: git requires nonempty names; error if header has space at position 0? FileMode::from_bytes of empty\n prefix errors anyway. And header[space+1..] could be empty → name empty; git forbids. Should I error? Decoding a\n name-less entry: git would consider it corrupt.\n\n  󱊷 Verifying extra-header payload and bare tag\n\n╭── ⠦ 1m  3 DeepSeek V4.1 Flash   mini-git  $0.01 ↓ ─6%─󰁨1M─  34K   95.75%  Implement git object codecs… ──╮\n╰─                                                                                                                   ─╯\n",
+  "observed_at": 1789816498.1718564
+}

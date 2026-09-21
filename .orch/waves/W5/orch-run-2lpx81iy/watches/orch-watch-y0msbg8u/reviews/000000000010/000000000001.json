@@ -1,0 +1,14 @@
+{
+  "version": 1,
+  "seq": 10,
+  "job_id": "9746730210dc4491b685bbc446088546",
+  "round_id": "1f695772a77b44ab8bcfb878a34e5add",
+  "event_fingerprint": "612bb5f3d1db8460f67cab929b690282365e0101b373c89847be8e31f2e6ed25",
+  "revision": 1,
+  "status": "handled",
+  "note": "seq 10 review_due：changed-screen 低置信提醒。复核现场为作者的收尾汇报（TODO 全部 5/5 完成、\n正在打印交付摘要），没有对话框、没有待批权限。本轮的 result 已经发布并复核。\n结论：handled。\n",
+  "recorded_at": 1789897658.968907,
+  "action_evidence": null,
+  "resolution_evidence": null,
+  "resolved_at": null
+}

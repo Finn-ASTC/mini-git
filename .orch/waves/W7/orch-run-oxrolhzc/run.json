@@ -1,0 +1,10 @@
+{
+  "version": 1,
+  "run_id": "a12081228c8749e2ac36aaa18b777ef2",
+  "run_path": "/home/user/Projects/mini-git/.orch/waves/W7/orch-run-oxrolhzc/run.json",
+  "rounds_root": "/home/user/Projects/mini-git/.orch/waves/W7/orch-run-oxrolhzc/rounds",
+  "watches_root": "/home/user/Projects/mini-git/.orch/waves/W7/orch-run-oxrolhzc/watches",
+  "index_path": "/home/user/Projects/mini-git/.orch/waves/W7/orch-run-oxrolhzc/jobs",
+  "temporary": false,
+  "created_at": "2026-09-20T17:37:14.394234+00:00"
+}

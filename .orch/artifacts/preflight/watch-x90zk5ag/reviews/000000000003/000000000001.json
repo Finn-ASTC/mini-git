@@ -1,0 +1,11 @@
+{
+  "version": 1,
+  "seq": 3,
+  "job_id": "edb0e351b58e42e486a264690ece2dcd",
+  "round_id": "c1008bbd20e34640ab5a409ceed097fb",
+  "event_fingerprint": "e2e198303eb61fe586d8becf9b840db7a7848605cabbd2d38f22f71b7e36d56b",
+  "revision": 1,
+  "status": "handled",
+  "note": "review_due 误报（同一类）：omp 的 TUI 持续重绘（spinner/进度条），观察者的 changed-screen 启发式因此频繁触发。\n已读 visible 屏幕与状态行：无审批/信任/登录/提问弹窗，omp 正常推进（正在实现 tree.rs，上下文占用 9%）。\n无需用户决策、无需终端输入。这是效率观察点：对持续重绘的 TUI，review_due 噪声偏高。\n",
+  "recorded_at": 1789816593.8768356
+}

@@ -1,0 +1,23 @@
+{
+  "active_request": "/home/user/Projects/mini-git/.orch/rounds/W4/agent-orchestrator-t2z2r0_i/request.json",
+  "job_id": "5835b63182934eb4b934f2a4216c1475",
+  "round_id": "dea906fcdf6c400c83c9253ea250e5ab",
+  "transport": "insider (default session)",
+  "session": "default",
+  "agent": "w4-t13c-codex",
+  "pane": "w1R:p1",
+  "workspace": "w1R",
+  "cwd": "/home/user/Projects/mini-git",
+  "kind": "codex",
+  "task": "T13c 返工：空远端 clone 对齐 git",
+  "submitted_at": "2026-09-19T22:38:04+08:00",
+  "acceptance": "accepted",
+  "submission_evidence": "新建 space + agent start（P4 命中则 send-keys enter + rename 恢复）",
+  "deadline": null,
+  "monitor_owner": "controller (default session, pane wJ:p1)",
+  "last_checked_at": "2026-09-19T22:38:04+08:00",
+  "next_check_at": null,
+  "pending_question": null,
+  "resources_file": "/home/user/Projects/mini-git/.orch/rounds/W4/agent-orchestrator-t2z2r0_i/resources.json",
+  "result_path": "/home/user/Projects/mini-git/.orch/rounds/W4/agent-orchestrator-t2z2r0_i/result.json"
+}

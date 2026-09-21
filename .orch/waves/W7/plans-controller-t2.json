@@ -1,0 +1,53 @@
+{
+ "commands": [
+  {
+   "argv": [
+    "/usr/bin/python3",
+    "-c",
+    "import json,os,re,subprocess,sys\nsrc,build=sys.argv[1],sys.argv[2]\nenv=dict(os.environ); env['LC_ALL']='C'\nenv['CARGO_TARGET_DIR']=os.path.join(build,'target')\n\nvpf=open(os.path.join(src,'tests','verify_pack.rs'),encoding='utf-8').read()\nspec_ok = ('MG_EVIDENCE_DIR' in vpf) and ('CARGO_MANIFEST_DIR' not in vpf)\nprint('spec: MG_EVIDENCE_DIR present =', 'MG_EVIDENCE_DIR' in vpf, '| CARGO_MANIFEST_DIR absent =', 'CARGO_MANIFEST_DIR' not in vpf)\nenv.setdefault('TMPDIR', os.path.join(build,'tmp'))\nlog=open(os.path.join(build,'dev.log'),'wb')\nr=subprocess.run(['cargo','test','--offline','--locked','--no-fail-fast'],cwd=src,env=env,\n                 stdout=log,stderr=subprocess.STDOUT,timeout=900)\nlog.close()\ntxt=open(os.path.join(build,'dev.log'),encoding='utf-8',errors='replace').read()\ntot=[0,0,0]\nfor m in re.finditer(r'^test result: \\w+\\. (\\d+) passed; (\\d+) failed; (\\d+) ignored', txt, re.M):\n    tot=[a+int(b) for a,b in zip(tot,m.groups())]\nprint('dev: rc',r.returncode,'totals',tot)\nprint('tail:', txt[-600:])\nok = spec_ok and r.returncode==0 and tot==[562,0,1]\nprint('VERDICT','PASS' if ok else 'FAIL')\nsys.exit(0 if ok else 1)\n",
+    "{source}",
+    "{build}"
+   ],
+   "timeout_seconds": 1200
+  },
+  {
+   "argv": [
+    "/usr/bin/python3",
+    "-c",
+    "import json,os,re,subprocess,sys\nsrc,build=sys.argv[1],sys.argv[2]\nenv=dict(os.environ); env['LC_ALL']='C'\nenv['CARGO_TARGET_DIR']=os.path.join(build,'target')\n\nenv.setdefault('TMPDIR', os.path.join(build,'tmp'))\nlog=open(os.path.join(build,'release.log'),'wb')\nr=subprocess.run(['cargo','test','--offline','--locked','--release','--no-fail-fast'],cwd=src,env=env,\n                 stdout=log,stderr=subprocess.STDOUT,timeout=1200)\nlog.close()\ntxt=open(os.path.join(build,'release.log'),encoding='utf-8',errors='replace').read()\ntot=[0,0,0]\nfor m in re.finditer(r'^test result: \\w+\\. (\\d+) passed; (\\d+) failed; (\\d+) ignored', txt, re.M):\n    tot=[a+int(b) for a,b in zip(tot,m.groups())]\nhas_http = 'Running tests/verify_http.rs' in txt or 'verify_http' in txt\nprint('release: rc',r.returncode,'totals',tot,'verify_http seen',has_http)\nok = r.returncode==0 and tot==[562,0,1]\nprint('VERDICT','PASS' if ok else 'FAIL')\nsys.exit(0 if ok else 1)\n",
+    "{source}",
+    "{build}"
+   ],
+   "timeout_seconds": 1500
+  },
+  {
+   "argv": [
+    "/usr/bin/python3",
+    "-c",
+    "import json,os,re,subprocess,sys\nsrc,build=sys.argv[1],sys.argv[2]\nenv=dict(os.environ); env['LC_ALL']='C'\nenv['CARGO_TARGET_DIR']=os.path.join(build,'target')\n\ntmp=os.path.join(build,'tmp'); os.makedirs(tmp,exist_ok=True)\nenv['TMPDIR']=tmp\nenv.pop('MG_EVIDENCE_DIR',None)\nr=subprocess.run(['cargo','test','--offline','--locked','--test','verify_pack','--','--nocapture'],\n                 cwd=src,env=env,capture_output=True,timeout=600)\nout=(r.stdout+r.stderr).decode('utf-8','replace')\nimport glob\npaths=[l.split(\"-> \",1)[1].strip() for l in out.splitlines() if \"[v9] evidence ->\" in l]\ndirs=sorted({os.path.dirname(x) for x in paths})\nd=dirs[0] if dirs else None\nfiles=sorted(glob.glob(os.path.join(d,'v9-*.txt'))) if d else []\nin_tmp = bool(d) and os.path.realpath(d).startswith(os.path.realpath(tmp)+os.sep)\nno_repo_write = not os.path.exists(os.path.join(src,'.orch'))\nprint('reported v9 lines:',len(paths),'| distinct dirs:',len(dirs))\nprint('default evidence dir:',d)\nprint('under TMPDIR:',in_tmp,'| files:',len(files))\nfor f in files[:12]: print('   ',os.path.basename(f),'->',os.path.getsize(f))\nprint('repo copy has NO .orch/:',no_repo_write)\nok = r.returncode==0 and in_tmp and len(paths)>=10 and len(files)>=10 and no_repo_write\nprint('VERDICT','PASS' if ok else 'FAIL')\nsys.exit(0 if ok else 1)\n",
+    "{source}",
+    "{build}"
+   ],
+   "timeout_seconds": 900
+  },
+  {
+   "argv": [
+    "/usr/bin/python3",
+    "-c",
+    "import json,os,re,subprocess,sys\nsrc,build=sys.argv[1],sys.argv[2]\nenv=dict(os.environ); env['LC_ALL']='C'\nenv['CARGO_TARGET_DIR']=os.path.join(build,'target')\n\ntmp=os.path.join(build,'tmp'); os.makedirs(tmp,exist_ok=True)\nenv['TMPDIR']=tmp\ncustom=os.path.join(build,'ev'); env['MG_EVIDENCE_DIR']=custom\nr=subprocess.run(['cargo','test','--offline','--locked','--test','verify_pack','--','--nocapture'],\n                 cwd=src,env=env,capture_output=True,timeout=600)\nout=(r.stdout+r.stderr).decode('utf-8','replace')\nimport glob\npaths=[l.split(\"-> \",1)[1].strip() for l in out.splitlines() if \"[v9] evidence ->\" in l]\ndirs=sorted({os.path.dirname(x) for x in paths})\nd=dirs[0] if dirs else None\nfiles=sorted(glob.glob(os.path.join(custom,'v9-*.txt')))\nhonored = bool(d) and os.path.realpath(d)==os.path.realpath(custom)\nprint('reported v9 lines:',len(paths),'| distinct dirs:',len(dirs))\nprint('override path:',d,'| MG_EVIDENCE_DIR honored:',honored,'| files:',len(files))\nprint('total bytes:',sum(os.path.getsize(f) for f in files) if files else 0)\nfor f in files[:12]: print('   ',os.path.basename(f),'->',os.path.getsize(f))\nprint('repo copy has NO .orch/:',not os.path.exists(os.path.join(src,'.orch')))\nok = r.returncode==0 and honored and len(paths)>=10 and len(files)>=10 and not os.path.exists(os.path.join(src,'.orch'))\nprint('VERDICT','PASS' if ok else 'FAIL')\nsys.exit(0 if ok else 1)\n",
+    "{source}",
+    "{build}"
+   ],
+   "timeout_seconds": 900
+  }
+ ],
+ "artifacts": [
+  "build/dev.log",
+  "build/release.log"
+ ],
+ "dependencies": {
+  "python3": "3.14.7",
+  "cargo": "1.97.1"
+ },
+ "environment": {}
+}

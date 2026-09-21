@@ -1,0 +1,16 @@
+{
+  "schema_version": 1,
+  "job_id": "a89c1d1104694669ace925c701670f78",
+  "round_id": "903794876fe345d0aaa36963da096493",
+  "status": "success",
+  "output": "T2（refs 层）实现完成，只改了白名单文件 src/refs/store.rs（新增 #[cfg(test)] mod tests，9 个用例；测试真值全部来自 git 二进制）。\n\n实现范围：read_head / resolve / exists / list / packed / branches / update / delete / set_head_attached / set_head_detached（new/repo 未动，签名零改动）。\n- HEAD：`ref: <refname>` ↔ Attached（含 refs/heads/ 前缀），40 hex ↔ Detached，缺失 RefNotFound(\"HEAD\")，其它内容 Ref::Corrupt。\n- list() = packed ∪ loose（loose 覆盖同名 packed），packed-refs 里的 `^peeled` 行按“上一条 ref 的 peeled 值”跳过，结果按 refname 字节序。\n- update()：先写 `<ref>.lock`（OpenOptions::create_new，已存在即 RefConflict），在锁内做 CAS/存在性检查，再 fsync + rename；失败路径删掉 lock。\n- delete()：loose 不存在但 packed-refs 有同名条目也算存在，且必须把该条目从 packed-refs 重写掉（否则被 packed 值复活），重写同样走 packed-refs.lock + rename。\n- set_head_attached() 短名/全名都接受，落盘一律全名。\n\n跑过的命令与真实结论：\n1) `cargo test --offline refs::` → 9 passed; 0 failed（连跑 3 次同样 9 passed）\n2) `cargo test --offline`（全量）→ lib 38 passed / interop 7 passed / verify 3 passed，0 failed\n3) `cargo clippy --offline --all-targets` → 0 warning、0 error\n4) `scripts/check-freeze.sh` → \"checked 21 file(s), drift 0 / freeze-v0 intact\"\n5) `rustfmt --edition 2021 --check src/refs/store.rs` → clean\n\n验收硬标准的对拍（都跑真实 git）：\n- list() 与 `git show-ref` 解析结果逐条相同；branches() 与 `git for-each-ref --format='%(refname:short)' refs/heads/` 相同。\n- 更强的一条：12 条 refs（refs/heads/{main,feature/x,a/b/c,origin/main,deep/x/y}、refs/tags/{main,feature/x,y,v1}、refs/remotes/{origin/main,origin/HEAD,up/feature/x}）上，list() 与 `git for-each-ref --format='%(refname) %(refname:short)'` 的条目集合双向相等（count 相等，排除 ^ 行泄漏），且 `git pack-refs --all` 后 loose 消失、结果逐条不变。\n- HEAD：read_head() 与 `git symbolic-ref HEAD` 一致；set_head_detached 后 `git symbolic-ref HEAD` 失败而 `git rev-parse HEAD` 等于该 oid；短名 set_head_attached 后 git 读回 refs/heads/main。\n- CAS 反例：错误 expected、ref 已存在 + expected=None、Some(None) 三种情况都返回 Error::RefConflict，且每次都断言磁盘上 ref 文件字节未变；已有 `<ref>.lock` 时也是 RefConflict 且不留残锁。\n- delete：`git pack-refs --all` 后 delete(\"refs/heads/x\") → git show-ref 不再列出、`git rev-parse --verify` 失败、`git fsck --no-progress` 对 packed-refs 无报错、其他 ref 与 oid 完好；再删同一条报 RefNotFound。\n\n过程中修掉的两个真实缺陷（都用 git 对拍发现）：\n- 递归收集 loose ref 时把名字切成了 \"heads/main\"（丢了 refs/ 前缀）→ list() 恒为空；改为相对 git_dir 取路径。\n- 短名规则最初按“路径后缀唯一”实现，与 git 不一致（如 refs/heads/feature/x + refs/tags/x 时 git 取 feature/x 而非 x）；先用 git 实验（8+8 组布局：同名 head/tag、嵌套名、remotes/HEAD）反推 `ref_rev_parse_rules` 反序+唯一可解析规则，改成与真实 git 逐条一致。\n\n未触发任何额外交互，未改 Cargo.toml/Cargo.lock 或任何白名单外文件（check-freeze 证明冻结文件哈希与基线一致）。",
+  "files_created": [],
+  "files_modified": [
+    "src/refs/store.rs"
+  ],
+  "files_generated": [],
+  "files_deleted": [],
+  "error": null,
+  "blocked_reason": null,
+  "completed_at": "2026-09-19T19:35:25+08:00"
+}

@@ -1,0 +1,23 @@
+{
+  "active_request": "/home/user/Projects/mini-git/.orch/rounds/W2/agent-orchestrator-tezp4suy/request.json",
+  "job_id": "8e5e4cff4b014daa8c071bcb357056b0",
+  "round_id": "a83d7f31aa3b47ada0acc55e82992144",
+  "transport": "insider (default session)",
+  "session": "default",
+  "agent": "w2-t6-omp",
+  "pane": "wW:p1",
+  "workspace": "wW",
+  "cwd": "/home/user/Projects/mini-git",
+  "kind": "omp",
+  "task": "T6 diff engine + mg diff",
+  "submitted_at": "2026-09-19T20:13:41+08:00",
+  "acceptance": "accepted",
+  "submission_evidence": "herdr agent prompt -> agent_prompted",
+  "deadline": "2026-09-19T21:13:00+08:00",
+  "monitor_owner": "controller (default session, pane wJ:p1)",
+  "last_checked_at": "2026-09-19T20:13:41+08:00",
+  "next_check_at": null,
+  "pending_question": null,
+  "resources_file": "/home/user/Projects/mini-git/.orch/rounds/W2/agent-orchestrator-tezp4suy/resources.json",
+  "result_path": "/home/user/Projects/mini-git/.orch/rounds/W2/agent-orchestrator-tezp4suy/result.json"
+}

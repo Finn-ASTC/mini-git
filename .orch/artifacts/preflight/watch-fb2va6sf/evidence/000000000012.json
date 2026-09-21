@@ -1,0 +1,47 @@
+{
+  "observed_at": 1789817053.1636684,
+  "target": {
+    "request_path": "/home/user/Projects/mini-git/.orch/rounds/W1/agent-orchestrator-clc6i26t/request.json",
+    "job_id": "816ca880b03a437c8aa3da7cec8b3cf9",
+    "round_id": "c1431df7a41e4b2fa6e43dd022e2acb5",
+    "resources": {
+      "mode": "isolated",
+      "session": "orch-w1-t1",
+      "agent": "orch-codex-v1",
+      "pane": "w2:p1",
+      "workspace": "w2",
+      "owns_agent": true,
+      "owns_pane": true,
+      "owns_workspace": true,
+      "owns_session": false,
+      "tab": null,
+      "parent_pane": null,
+      "parent_tab": null,
+      "owns_tab": false,
+      "recorded_at": "2026-09-19T11:18:45.701599+00:00",
+      "job_id": "816ca880b03a437c8aa3da7cec8b3cf9"
+    },
+    "tmux_selector": null
+  },
+  "result": {
+    "valid": true,
+    "value": {
+      "schema_version": 1,
+      "job_id": "816ca880b03a437c8aa3da7cec8b3cf9",
+      "round_id": "c1431df7a41e4b2fa6e43dd022e2acb5",
+      "status": "success",
+      "output": "# V1 判定：T1（object 层）verification PASS —— status=success\n\n独立验证者（codex），唯一真值 = 真实 git 2.55.0 现场输出。未修改任何 src/**，只新建了 `tests/verify/main.rs`。\n\n## (A) 复跑作者的验收命令（原始结果）\n- `cargo test --offline`：\n  - lib `29 passed; 0 failed`（含 object 层 12 个 unittest）\n  - `tests/interop` `7 passed; 0 failed`\n  - `tests/verify`（本轮新增）`3 passed; 0 failed`\n  - doc-test `0 passed`\n- `cargo clippy --offline --all-targets` → `Finished`, warning 计数 = 0（`grep -c warning` = 0）。\n- `scripts/check-freeze.sh` → `checked 21 file(s), drift 0` + `freeze-v0 intact`。\n- 越界检查：把当前工作区与 `.orch/waves/W1/T1-object/baseline.txt` 的 67 条哈希逐项对比 → 变动的只有白名单三文件 `src/object/{tree,commit,tag}.rs`（外加 baseline.txt 自身的自引用哈希）；source 文件无越界改动。\n\n## (B) 反假绿：独立重生 golden 常量并逐条比对（全部一致）\n重新生成命令：`git init` + `printf 'a\\n' > a.txt; mkdir foo; printf 'b\\n' > foo/b.txt; printf 'c\\n' > foo.txt; printf '#!/bin/sh\\n' > run.sh; chmod +x run.sh; ln -s a.txt link.txt; git add -A; git write-tree`，commit 用 `GIT_AUTHOR_DATE=GIT_COMMITTER_DATE='1700000000 +0800'`，tag 为 `git tag -a v1 -m 'tag message'`。\n\n| 常量（src/object/*.rs） | 真值与常量比对 | 结论 |\n|---|---|---|\n| `tree.rs::TREE_OID` = `4aad58e0…c2eda2` | `git write-tree` = 同值 | 一致 |\n| `tree.rs::TREE_PAYLOAD`（168B bytes literal） | `git cat-file tree <oid> | xxd -p` 逐字节相同 | 一致 |\n| `tree.rs::FOO_SUBTREE_PAYLOAD` | `git cat-file tree <oid>:foo | xxd -p` 相同 | 一致 |\n| `tree.rs::A_TXT/FOO_TXT/FOO_TREE/LINK_TXT/RUN_SH` | 由 `git rev-parse <oid>:<path>` 取值相同 | 一致 |\n| `commit.rs::COMMIT_OID` = `a8207dce…fb0d3` | `git rev-parse HEAD` = 同值 | 一致 |\n| `commit.rs::COMMIT_PAYLOAD`（167B） | `git cat-file commit HEAD | xxd -p` 逐字节相同（含末尾 `\\n`） | 一致 |\n| `commit.rs::MERGE_OID` / `MERGE_PAYLOAD` | 该 255B 载荷经 `git hash-object -t commit --stdin` = 同 oid；载荷唯一其它来源（controller 独立生成的 merge golden）除两个 parent oid 外逐字节相同；其 tree `e2fbe588…` 可复现（x.txt/y.txt/z.txt 的树） | 一致（见下方备注） |\n| `commit.rs::EXTRA_OID` / `EXTRA_PAYLOAD`（含多行 gpgsig + encoding, 266B） | `git hash-object -t commit --stdin` = 同 oid | 一致 |\n| `commit.rs::NO_TRAILING_PAYLOAD` | `git hash-object -t commit --stdin` = `47a6fd8f…`（hash 自洽） | 一致 |\n| `tag.rs::TAG_OID` = `18391d2e…98f12` | `git rev-parse v1` = 同值 | 一致 |\n| `tag.rs::TAG_PAYLOAD`（129B） | `git cat-file tag v1 | xxd -p` 逐字节相同 | 一致 |\n\n追加机器校验：把每个 bytes literal 解析出来，用 `sha1(\"<kind> <len>\\0\"+payload)` 与真 git 的 `git hash-object -t <kind> --stdin` 分别计算，7 条常量全部与常量/oid 吻合；`grep` 三个文件的测试体，没有 `contains`/`starts_with`/`ends_with` 这类放宽断言，也没有 `#[ignore]`、`todo!()`。\n\n备注（唯一无法 100% 字节复现的项）：`MERGE_PAYLOAD` 的父提交 oid 依赖作者那棵具体仓库历史，我无法凭常量反推出确实来自某次真实 `git merge`；但其 (a) hash 与自身 oid 自洽并由真 git 复算一致，(b) 形态与 controller 独立生成的 merge golden 完全同构（仅 parent oid 不同），(c) 对应代码路径已由下方 (D.3) 用运行时真 git 独立覆盖。因此不构成可疑项。\n\n## (C) 断言确实在跑被测代码（证据）\n- `tree.rs`：`golden_tree().encode_payload()` 与 git 原始字节常量 `assert_eq!`；`hash(Kind::Tree, &tree.encode_payload()).to_hex()` 与 git write-tree oid `assert_eq!`；`Tree::decode_payload(TREE_PAYLOAD)` 后比较解析出的 entries/names/lookup；`Tree::sort_entries(&mut entries)` 后再断言名字顺序并重编码等于 `TREE_PAYLOAD`。\n- `commit.rs`：`Commit::decode_payload(COMMIT_PAYLOAD/MERGE_PAYLOAD/EXTRA_PAYLOAD/NO_TRAILING_PAYLOAD)` 都先解析再 `assert_eq!(commit.encode_payload(), <git 原始字节>)`。期望值全部是 git 输出，无自证。\n- `tag.rs`：`Tag::decode_payload(TAG_PAYLOAD)` 后 `assert_eq!(tag.encode_payload(), TAG_PAYLOAD)`；`tagger` 缺失用例断言不得凭空生成。\n- 结论：没有「直接断言常量」或「自造期望值」的假绿。\n\n## (D) 本轮新增独立测试（运行时对拍真 git，零硬编码真值）\n文件：`tests/verify/main.rs`（新 test target `verify`，用 `std::process::Command` 调 git，仓库建在 `std::env::temp_dir()`，Drop 时清理；未放宽沙箱权限）。\n跑出的原始输出：\n```\nrunning 3 tests\ntest annotated_tag_roundtrips_against_real_git ... ok\ntest tree_sort_trap_and_raw_bytes_match_real_git ... ok\ntest merge_commit_roundtrips_against_real_git ... ok\ntest result: ok. 3 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out\n```\n覆盖点：\n1. 排序陷阱：同层 `foo.txt`(文件) + `foo/`(子树) + `foo-bar` + 深层 `foo/a/b`，从 git 取叶子 oid 自底向上 `Tree::encode_payload()`，`Oid::hash_object(\"tree\", …)` 必须等于 `git write-tree`（实测相等），且 decode 顺序 == `git ls-tree --name-only`（`a.txt, foo-bar, foo.txt, foo`，`foo.txt` 先于 `foo/`）。\n2. 字节往返：`git cat-file tree <oid>` 原始字节 → `Tree::decode_payload` → `encode_payload` 逐字节相等；乱序 entries 经 `sort_entries` 后与 decode 顺序一致。\n3. merge：`--no-ff` 两个 parent，`git cat-file commit HEAD` 字节往返逐字节相等，`parents.len()==2` 且首父在前（与 `git rev-list --parents -n 1 HEAD` 相同），oid == `git rev-parse HEAD`。\n4. annotated tag：原始字节往返相等，oid == `git rev-parse v1`，tagger/object/kind/message 解析正确。\n透明说明：该测试首版我这边写错了一处断言（把 decode 结果与「未排序的输入 entries」比较），修正的是我自己的测试文件，未改 src。\n\n## 结论\n(A)/(B)/(C)/(D) 全部通过 → `status: success`，T1 的 object 层实现与真实 git 的字节表示一致。\n本轮净改动：新建 `tests/verify/main.rs`；`.orch/waves/W1/T1-object/verify-scratch/`（tree-case/commit-case/merge-case 临时仓库）按契约属于 transient scratch，未列入 files_* 列表，也未写入任何永久证据。`src/**`、`Cargo.toml`、`Cargo.lock`、`tests/interop/**`、`.orch/rounds/**` 均未改动。\n",
+      "files_created": [
+        "tests/verify/main.rs"
+      ],
+      "files_modified": [],
+      "files_generated": [],
+      "files_deleted": [],
+      "error": null,
+      "blocked_reason": null,
+      "completed_at": "2026-09-19T19:22:21+08:00"
+    }
+  },
+  "state": "done",
+  "screen": "         p=pathlib.Path('.orch/rounds/W1/agent-orchestrator-clc6i26t/result.json')\n         d=json.loads(p.read_text(encoding='utf-8'))\n         print('keys:', list(d))\n         print('status:', d['status'], '| error:', d['error'], '| blocked:', d['blocked_reason'])\n         print('created:', d['files_created'], '| modified:', d['files_modified'], '| generated:', d['files_generated'],\n         '|\n         deleted:', d['files_deleted'])\n         print('completed_at:', d['completed_at'])\n         print('leftover tmp:', glob.glob('.orch/rounds/W1/agent-orchestrator-clc6i26t/*.tmp'))\n         \"\n\n• V1 verification complete — verdict: success. Result published atomically at .orch/rounds/W1/agent-orchestrator-\n  clc6i26t/result.json (no .tmp left behind, schema_version/job_id/round_id copied exactly).\n\n  What I found\n\n  - (A) cargo test --offline = 29 lib + 7 interop + 3 new verify, all green; cargo clippy --offline --all-targets = 0\n    warnings; scripts/check-freeze.sh = checked 21 file(s), drift 0 + freeze-v0 intact. Baseline diff: only the three\n    whitelisted src/object/{tree,commit,tag}.rs changed.\n\n  - (B) I regenerated every golden with real git 2.55.0. TREE_OID/TREE_PAYLOAD, FOO_SUBTREE_PAYLOAD, COMMIT_OID/\n    COMMIT_PAYLOAD, TAG_OID/TAG_PAYLOAD match byte-for-byte; MERGE/EXTRA/NO_TRAILING payloads re-hash to their constants\n    via git hash-object -t commit --stdin. No contains-style weakened assertions, no #[ignore].\n\n  - (C) All assertions genuinely feed git-produced bytes through encode_payload / decode_payload / sort_entries;\n    expectations are git output, not self-constructed.\n\n  - (D) New tests/verify/main.rs (target verify, 3 tests) diffs against live git at runtime: the foo.txt vs foo/ (plus\n    foo-bar, deep foo/a/b) sort trap, raw-byte tree roundtrip, a two-parent merge commit roundtrip with parent order vs\n    git rev-list --parents, and annotated-tag roundtrip. All pass.\n\n  Only net change is tests/verify/main.rs; scratch repos under .orch/waves/W1/T1-object/verify-scratch/ are transient\n  and excluded from the file lists per contract.\n\n  Worked for 3m 39s · done 7:22 PM\n\n\n› /quit\n\n  /quit  exit Codex\n"
+}

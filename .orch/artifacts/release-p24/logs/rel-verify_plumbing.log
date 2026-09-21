@@ -1,0 +1,24 @@
+
+running 19 tests
+test add_nonexistent_path_exits_nonzero_with_stderr_and_no_panic ... ok
+test log_in_unborn_repository_fails_loudly ... ok
+test add_refuses_an_explicitly_ignored_untracked_path ... ok
+test known_limitations_fail_loudly_instead_of_pretending ... ok
+test status_porcelain_in_unborn_repository_matches_git ... ok
+test commit_author_override_sets_author_only ... ok
+test rm_without_force_refuses_and_leaves_zero_changes ... ok
+test interop_mg_written_repo_is_usable_by_real_git ... ok
+test commit_refuses_during_conflict_and_finishes_merge_after_resolution ... ok
+test status_porcelain_matches_git_byte_for_byte ... ok
+test commit_all_stages_tracked_changes ... ok
+test type_change_status_matches_git_byte_for_byte ... ok
+test commit_amend_allow_empty_and_no_change_refusal_match_git_semantics ... ok
+test add_ls_files_stage_matches_git_across_three_repos ... ok
+test tag_objects_listing_and_types_match_git ... ok
+test log_oneline_matches_git_across_three_repos ... ok
+test interop_git_written_repo_is_read_correctly_by_mg ... ok
+test commit_encoding_tree_parents_and_identity_match_git ... ok
+test rm_and_rm_cached_match_git_status ... ok
+
+test result: ok. 19 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.23s
+

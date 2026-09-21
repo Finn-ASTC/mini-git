@@ -1,0 +1,23 @@
+{
+  "objective": "在 /tmp/w5-linestat 实现 SPEC.md 描述的 linestat 1.0.0 命令行程序（无第三方依赖的 Rust 二进制 crate），并按 SPEC.md 的「交付配置」矩阵逐项自测。",
+  "scope": "作者拥有 /tmp/w5-linestat 下的 Cargo.toml、Cargo.lock、src/**、tests/**。SPEC.md 只读：不得修改、不得覆盖。不得在其他目录创建或修改文件。",
+  "acceptance": [
+    "cargo test --offline 通过（dev 配置）。",
+    "cargo build --release --offline 成功，且 cargo test --release --offline 通过（release 配置）。",
+    "用构建出来的 target/release/linestat 实际运行行为检查：--version、单文件、多文件（含 total 行）、空文件、无结尾换行的文件、含 \\r 与制表符的文件、不存在的文件、未知选项；逐项给出实际 stdout/stderr 与退出码。",
+    "cargo fmt --all -- --check 与 cargo clippy --offline --all-targets -- -D warnings 干净。",
+    "result.json 的 output 必须按配置分别报告：每个配置的实际命令、实际退出码、release 制品的绝对路径与 SHA-256，以及任何未覆盖/跳过的项及其原因。不得只给一个测试总数。"
+  ],
+  "inputs": ["SPEC.md"],
+  "known_facts": [
+    "cargo/rustc 已在本机可用；本 crate 不依赖任何第三方 crate，因此全程可用 --offline，不需要也不允许联网。",
+    "SPEC.md 的 lines 与 words 定义故意不同于 wc(1)；按 SPEC 的字节级定义实现，不要用 wc 的语义。",
+    "target/debug 与 target/release 都可能已存在时以本次构建为准；不要复用陈旧产物而不重新构建。"
+  ],
+  "constraints": [
+    "禁止修改 SPEC.md；发现规格本身有歧义或错误时，不要静默按自己的理解改规格，直接在 result 里以 blocked 或明确偏差说明报告。",
+    "不要写任何依赖网络的操作（cargo add、cargo update、下载等）。",
+    "交付时停止所有自有写者（不再有正在运行的构建/测试进程），并在 output 里列出改动文件清单。",
+    "不要为了让检查通过而修改测试断言或跳过测试；未覆盖项必须显式声明为未覆盖。"
+  ]
+}

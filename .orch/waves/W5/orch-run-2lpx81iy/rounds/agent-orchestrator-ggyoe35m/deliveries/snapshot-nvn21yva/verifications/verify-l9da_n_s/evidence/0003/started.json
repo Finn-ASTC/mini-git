@@ -1,0 +1,10 @@
+{
+  "argv": [
+    "python3",
+    "--version"
+  ],
+  "cwd": "/home/user/Projects/mini-git/.orch/waves/W5/orch-run-2lpx81iy/rounds/agent-orchestrator-ggyoe35m/deliveries/snapshot-nvn21yva/verifications/verify-l9da_n_s/source",
+  "started_at": "2026-09-20T09:47:43.561796+00:00",
+  "timeout_seconds": 10,
+  "exit_code": null
+}

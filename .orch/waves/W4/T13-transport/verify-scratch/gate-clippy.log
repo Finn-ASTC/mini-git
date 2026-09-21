@@ -1,0 +1,13 @@
+### clippy
+warning: function `todo` is never used
+  --> src/error.rs:62:15
+   |
+62 | pub(crate) fn todo<T>(what: &'static str) -> Result<T> {
+   |               ^^^^
+   |
+   = note: `#[warn(dead_code)]` (part of `#[warn(unused)]`) on by default
+
+warning: `mini-git` (lib) generated 1 warning
+warning: `mini-git` (lib test) generated 1 warning (1 duplicate)
+    Finished `dev` profile [unoptimized + debuginfo] target(s) in 0.07s
+EXIT=0

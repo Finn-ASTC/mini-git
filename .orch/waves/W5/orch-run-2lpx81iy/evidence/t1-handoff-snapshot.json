@@ -1,0 +1,77 @@
+{
+  "version": 1,
+  "snapshot_id": "6a4d6702ab6b4ff283460f698ebc82fc",
+  "snapshot_path": "/home/user/Projects/mini-git/.orch/waves/W5/orch-run-2lpx81iy/rounds/agent-orchestrator-ggyoe35m/deliveries/snapshot-nvn21yva/snapshot.json",
+  "source_path": "/home/user/Projects/mini-git/.orch/waves/W5/orch-run-2lpx81iy/rounds/agent-orchestrator-ggyoe35m/deliveries/snapshot-nvn21yva/source",
+  "source_root": "/tmp/w5-linestat",
+  "job_id": "9746730210dc4491b685bbc446088546",
+  "round_id": "1f695772a77b44ab8bcfb878a34e5add",
+  "request_path": "/home/user/Projects/mini-git/.orch/waves/W5/orch-run-2lpx81iy/rounds/agent-orchestrator-ggyoe35m/request.json",
+  "request_sha256": "9fb94d9a15e03e3d778e26551aad5e8aa1b7545b872581861346e1234f2b14b9",
+  "captured_at": "2026-09-20T09:45:37.730805+00:00",
+  "handoff": "作者 omp 已发布 result(success) 并停止写者；capture 时无构建/测试进程运行；SPEC.md 只读未改（sha256 与基线一致）",
+  "scope": {
+    "include": [
+      "."
+    ],
+    "exclude": [
+      "target"
+    ]
+  },
+  "always_excluded": ".git entries",
+  "files": {
+    "Cargo.lock": {
+      "kind": "file",
+      "size": 152,
+      "sha256": "951f38425f8baf42b24a812f4e1ff742e6496c046efd6c0ccc294e004b3bb336",
+      "executable": false
+    },
+    "Cargo.toml": {
+      "kind": "file",
+      "size": 169,
+      "sha256": "caebb733888dfce80274cde8ce38a5f4cf8c3fa147a416255db143e14eec33b9",
+      "executable": false
+    },
+    "SPEC.md": {
+      "kind": "file",
+      "size": 2804,
+      "sha256": "20903f0786a9fc2c756bb773cdc37d9ff74212450900a8cb6bfa20b157e98244",
+      "executable": false
+    },
+    "src": {
+      "kind": "directory"
+    },
+    "src/main.rs": {
+      "kind": "file",
+      "size": 5246,
+      "sha256": "1ee6e1259bf01741a9711c111605ec1d3b63dc337510a3cf69d821767b270279",
+      "executable": false
+    },
+    "tests": {
+      "kind": "directory"
+    },
+    "tests/cli.rs": {
+      "kind": "file",
+      "size": 6172,
+      "sha256": "2e50b7df11b4bfa36b35e6b7f1d4a87f6ad54ea5ee181fdf9a7c9c1ad7f34140",
+      "executable": false
+    }
+  },
+  "baseline": null,
+  "actual_diff": null,
+  "declarations": {
+    "files_created": [
+      "Cargo.toml",
+      "src/main.rs",
+      "tests/cli.rs"
+    ],
+    "files_modified": [],
+    "files_generated": [
+      "Cargo.lock"
+    ],
+    "files_deleted": []
+  },
+  "declaration_comparison": null,
+  "result_sha256": "643efc204b22defe388d40e446314ff9dc5ec89520f96e6f8d48eab0b006e26f",
+  "stability": "source inventory/stat before and after copy matched captured content; not a filesystem transaction"
+}

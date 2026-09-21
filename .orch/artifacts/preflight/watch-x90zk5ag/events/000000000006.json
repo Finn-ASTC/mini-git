@@ -1,0 +1,10 @@
+{
+  "seq": 6,
+  "job_id": "edb0e351b58e42e486a264690ece2dcd",
+  "round_id": "c1008bbd20e34640ab5a409ceed097fb",
+  "kind": "review_due",
+  "message": "Changed UI needs review; hook/keyword detection may miss a dialog.",
+  "evidence_path": "/tmp/orch-watch-x90zk5ag/evidence/000000000006.json",
+  "screen_tail": "─────────────────────────────────────────────────╯\n\n That probe main.rs has leftover junk (the ls-tree loop is nonsense). Let me rewrite it more cleanly. Also\n dirent.file_name().into_vec() needs OsStringExt. Also git rev-parse :path — for a symlink path, :link.txt works. For\n directories, :foo gives the subtree oid ✓.\n\n Also build_tree uses git rev-parse :path for blobs — but for the top-level build_tree(&dir), path.display() for a\n file gives \"/tmp/.../a.txt\" — I wrote format!(\":{}\", path.display()) which is absolute. git rev-parse :/tmp/... would\n fail. Fix: use relative path. In build_tree I pass dir (the root) always for rev-parse base. Let me pass root_dir and\n compute rel.\n\n Let me rewrite the probe file\n\n  󱊷 Writing differential probe crate\n\n╭── ⠙ 2m  3 DeepSeek V4.1 Flash   mini-git  $0.03 ↓ ─9%─󰁨1M─  72K   97.49%  Implement git object codecs… ──╮\n╰─                                                                                                                   ─╯\n",
+  "observed_at": 1789816588.1724913
+}

@@ -1,0 +1,17 @@
+{
+  "version": 1,
+  "seq": 5,
+  "job_id": "9317e01768834379b288ea08ed9fe156",
+  "round_id": "3ccd1e4633ae4de7a5ce2b4817f3f2c5",
+  "event_fingerprint": "fc38fff04a52d21d0d790efa36d1d1b2588361172a3f45ea6fec59ce9cf30bc9",
+  "revision": 1,
+  "status": "handled",
+  "note": "review_due（changed UI）复核，seq 5。读证据 evidence/000000000005.json 的 screen：\nomp 验证者在跑自建脚手架，屏幕是两个并行 Bash 框 —— 一个是 /tmp/w7-verify/fixed 下\n`cargo build --offline --locked` + G1 dev test + G2 release test（timeout -k 5 900，超时框 1200s），\n另一个是 /tmp/w7-verify/pre 下 pre-fix 的 180s guard 负对照。上面还有它自己写的根因说明：\nlocal.rs::mg_bin() 回落到 $CARGO_TARGET_DIR/debug/mg，隔离 target 目录没有该产物，\n是脚手架问题不是产品缺陷，正在重跑。\n\n没有任何对话框、确认提示、提问或原生审批画面；唯一 UI 变化是长时间构建/测试的输出滚动。\n判定：正常工作中，无需控制方输入。不改动 review 状态之外做任何动作。\n",
+  "recorded_at": 1789926902.2100117,
+  "action_evidence": null,
+  "resolution_evidence": {
+    "path": "/home/user/Projects/mini-git/.orch/waves/W7/orch-run-oxrolhzc/watches/orch-watch-_8f_qjxn/evidence/000000000005.json",
+    "sha256": "d16d4ac9b5c43ab3f2b5305c9e45f43f5f55db7d00e1b72db4e54e080b694d1e"
+  },
+  "resolved_at": 1789926900.0
+}

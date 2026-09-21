@@ -1,0 +1,10 @@
+{
+  "seq": 7,
+  "job_id": "9317e01768834379b288ea08ed9fe156",
+  "round_id": "3ccd1e4633ae4de7a5ce2b4817f3f2c5",
+  "kind": "result",
+  "message": "success: 【结论】PASS —— P24（release 下 mg diff / mg merge 挂起或结果错误）的修复独立成立：\n在我自己构建的 release 制品上，release == debug == 真实 git（git 2.55.0），零挂起、零差异；\nrelease 门禁确实跑过且全绿（24 个 target / 562 passed）；修复前的制品用同一套脚手架能稳定复现挂死与错误结果，\n证明脚手架有分辨力。作者 result.json 只当作 claim 核对，不作为证据。\n\n0) 只读、范围与快照完整性\n- 仓库全程只读：对 /home/user/Projects/mini-git 只做 sha256sum/cat/ls/find/grep/diff 等读取操作，未写入任何文件，\n  未使用仓库自带 target/（我所有 CARGO_TARGET_DIR 都在 /tmp/w7-verify 下，或在我自己的源码副本目录内）。\n  src/diff/myers.rs 内容 sha256 仍为 aafe8464f526c7c7f05b961b28f58522d04f33ba52ed042e35a138873902dff0\n  （= 交付快照声明值）；其 mtime 01:50:42 不是我所为（本轮另有作者 agent 在跑）。\n- 快照完整性：snapshots/au",
+  "evidence_path": "/home/user/Projects/mini-git/.orch/waves/W7/orch-run-oxrolhzc/watches/orch-watch-_8f_qjxn/evidence/000000000007.json",
+  "screen_tail": ":                                                                                                                                 │\n│ … 1 more lines (ctrl+o to expand)                                                                                                       │\n╰─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯\n\n TODO\n  ├─ I. Setup · 0/2\n  │  ├─  Copy snapshot to /tmp/w7-verify and verify manifest integrity\n  │  └─  Inspect myers.rs fix and P24 artifacts\n  ├─ II. Independent build · 0/2\n  ├─ III. Oracle · 0/2\n  ├─ IV. Negative control · 0/2\n  ├─ V. Gates · 0/2\n  ├─ … 2 more stages\n  └─────\n\n  󱊷 publish response\n\n╭── ⠴ 10m  3 DeepSeek V4.1 Flash   w7-verify  $0.06 ↓ ─────14%────────────────────󰁨────1M─  132K   98.52%  Verify mg bug fix ──╮\n╰─                                                                                                                                       ─╯",
+  "observed_at": 1789927212.5054545
+}

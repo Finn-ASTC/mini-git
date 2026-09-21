@@ -1,0 +1,10 @@
+{
+  "seq": 6,
+  "job_id": "66840d4b642f481a848788974b0665ca",
+  "round_id": "5248318530cb4b26b88628ac6da18637",
+  "kind": "result",
+  "message": "success: P24 FIXED — release profile now equals debug and real git; release profile is in the gate.\n\nCHANGED FILES (net this round)\n- modified: src/diff/myers.rs  (ONLY file changed; sha256 47c0f6798ea2265f74cff4af91708d079c57e90d73b0f079dab76a6e25d3ce31 -> aafe8464f526c7c7f05b961b28f58522d04f33ba52ed042e35a138873902dff0)\n- created / generated / deleted: none (target/ build outputs are excluded as a build directory)\n- Cargo.toml, tests/**, other src/** untouched: `diff -rq pre-fix-src/src src` reports ONLY src/diff/myers.rs\n- no sub-agents / task / team / background jobs used; no writer processes left ",
+  "evidence_path": "/home/user/Projects/mini-git/.orch/waves/W7/orch-run-oxrolhzc/watches/orch-watch-7136nm52/evidence/000000000006.json",
+  "screen_tail": "ct      │ oracle deepseek-flash             │\n  ┃      stdout+exit code equal debug and git                                                       │ prometheus deepseek-flash         │\n  ┃  [✓] Write and publish exactly one result JSON via protocol.py write-result - expect atomic     │ quick deepseek-flash              │\n  ┃      accept                                                                                     │                                   │\n  ┃                                                                                                 └───────────────────────────────────┘\n\n     ▣  Sisyphus - Ultraworker · DeepSeek V4.1 Flash\n\n  ┃\n  ┃\n  ┃\n  ┃  Sisyphus - Ultraworker · DeepSeek V4.1 Flash DeepSeek                                          ~/Projects/mini-git\n  ╹▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀\n   ⬝⬝⬝⬝⬝⬝⬝⬝  esc interrupt                                 156.6K (16%) · $0.06  ctrl+p commands    • OpenCode 1.18.29",
+  "observed_at": 1789926371.0792675
+}

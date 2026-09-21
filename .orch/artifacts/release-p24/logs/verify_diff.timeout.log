@@ -1,0 +1,21 @@
+    Finished `release` profile [optimized + debuginfo] target(s) in 0.03s
+     Running tests/verify_diff.rs (target/release/deps/verify_diff-6abe60e3fd450813)
+
+running 17 tests
+test engine_large_single_change_is_fast_and_correct ... ok
+test engine_long_single_line_matches_git ... ok
+test cli_non_utf8_text_matches_git ... ok
+test cli_space_in_path_tab_padding ... ok
+test cli_clean_repo_prints_nothing ... ok
+test cli_binary_is_reported_as_binary_and_matches_git ... ok
+test cli_rename_limitation_is_only_renames ... ok
+test cli_mode_change_matches_git ... ok
+test engine_hunk_merge_boundary_matches_git ... ok
+test cli_staged_matches_git ... ok
+test cli_rev_matches_git ... ok
+test engine_large_disjoint_input_returns_in_time ... ok
+test cli_worktree_vs_index_matches_git ... ok
+test cli_randomized_repo_soak_matches_git ... FAILED
+test engine_matrix_matches_git ... ok
+test engine_randomized_soak_matches_git has been running for over 60 seconds
+test myers_script_covers_both_sides has been running for over 60 seconds

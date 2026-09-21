@@ -1,0 +1,56 @@
+### final gates at 2026-09-19T22:29:24+08:00
+--- cargo test --offline transport::
+test result: ok. 44 passed; 0 failed; 0 ignored; 0 measured; 227 filtered out; finished in 0.31s
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 25 filtered out; finished in 0.00s
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 7 filtered out; finished in 0.00s
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 3 filtered out; finished in 0.00s
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 17 filtered out; finished in 0.00s
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 6 filtered out; finished in 0.00s
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 17 filtered out; finished in 0.00s
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 9 filtered out; finished in 0.00s
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 16 filtered out; finished in 0.00s
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 11 filtered out; finished in 0.00s
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 22 filtered out; finished in 0.00s
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 5 filtered out; finished in 0.00s
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 12 filtered out; finished in 0.00s
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 10 filtered out; finished in 0.00s
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 6 filtered out; finished in 0.00s
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 10 filtered out; finished in 0.00s
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 8 filtered out; finished in 0.00s
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 19 filtered out; finished in 0.00s
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 9 filtered out; finished in 0.00s
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 32 filtered out; finished in 0.00s
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 10 filtered out; finished in 0.00s
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 25 filtered out; finished in 0.00s
+--- cargo test --offline --test verify_transport
+     Running tests/verify_transport.rs (target/debug/deps/verify_transport-2bf33fd824b76cf7)
+
+running 10 tests
+test url_routing_keeps_non_file_schemes_out_of_the_file_path_branch ... ok
+test advertisement_from_real_git_matches_show_ref_and_reframes_byte_exactly ... ok
+test library_push_creates_a_new_remote_branch_visible_to_real_git ... ok
+test our_fetch_request_round_trips_through_real_git_upload_pack ... ok
+test clone_and_fetch_failures_are_clean_and_leave_nothing_behind ... ok
+test our_push_update_round_trips_through_real_git_receive_pack ... ok
+test mg_fetch_updates_remote_tracking_refs_and_negotiates_haves ... ok
+test mg_clone_is_read_by_real_git_and_equals_a_real_git_clone ... ok
+test mg_push_reaches_real_git_and_non_fast_forward_leaves_the_remote_untouched ... ok
+test mg_pull_fast_forwards_like_real_git ... ok
+
+test result: ok. 10 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.09s
+
+--- T15-pinned ignored tests that name T13
+test clone_of_an_origin_without_tags_succeeds ... ok
+
+test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 24 filtered out; finished in 0.01s
+
+test push_to_a_bare_remote_updates_and_creates_branches ... ok
+
+test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 24 filtered out; finished in 0.05s
+
+--- check-freeze
+---
+checked 21 file(s), drift 0
+freeze-v0 intact
+FREEZE-EXIT=0

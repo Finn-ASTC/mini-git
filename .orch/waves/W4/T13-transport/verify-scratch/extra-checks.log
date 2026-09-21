@@ -1,0 +1,106 @@
+############ mg binary: /home/user/Projects/mini-git/target/debug/mg
+-rwxr-xr-x 2 user user 31840704 Sep 19 22:16 /home/user/Projects/mini-git/target/debug/mg
+
+############ (1) 远端无 tag：mg clone vs git clone
+mg clone exit=0  stdout=Cloning into '/tmp/v13extra/1/mg-copy'...  stderr=
+git clone exit=0  stderr=
+--- show-ref diff (mg vs git):
+show-ref IDENTICAL
+--- refs/tags in both (for-each-ref):
+mg  refs/heads/main
+mg  refs/remotes/origin/HEAD
+mg  refs/remotes/origin/main
+git refs/heads/main
+git refs/remotes/origin/HEAD
+git refs/remotes/origin/main
+--- fsck mg clone:
+fsck exit=0
+--- status mg clone: []
+
+############ (2) 远端 detached HEAD（广告里没有 symref）：mg clone vs git clone
+origin HEAD: e4e9cad9303b187f78e39f1efd05c8c40de6af98
+advertise has symref? 00f5e4e9cad9303b187f78e39f1efd05c8c40de6af98 HEADmulti_ack thin-pack side-band side-band-64k ofs-delta shallow deepen-si
+mg clone exit=0 out=Cloning into '/tmp/v13extra/2/mg-copy'...
+git clone exit=0 err=
+show-ref IDENTICAL
+mg  HEAD=refs/heads/main  origin/HEAD=refs/remotes/origin/main
+git HEAD=refs/heads/main  origin/HEAD=refs/remotes/origin/main
+mg  branch -a: * main|  remotes/origin/HEAD -> origin/main|  remotes/origin/main|
+git branch -a: * main|  remotes/origin/HEAD -> origin/main|  remotes/origin/main|
+mg status: [] fsck:
+fsck exit=0
+
+############ (3) 远端 HEAD -> unborn 分支（只广告 refs/heads/main）：mg clone vs git clone
+mg clone exit=0 err=[warning: remote HEAD refers to nonexistent ref, unable to checkout]
+git clone exit=0 err=[Cloning into '/tmp/v13extra/3/git-copy'...
+warning: remote HEAD refers to nonexistent ref, unable to checkout]
+show-ref IDENTICAL
+
+############ (4) push -u：config 是否被真实 git 读得到
+mg clone exit=0
+after clone: branch.main.remote=origin merge=refs/heads/main
+mg push -u exit=1 out=[mg: fatal: not a git repository (or any parent up to filesystem boundary): /home/user/Projects/mini-git]
+after push -u: remote= merge=
+fatal: no upstream configured for branch 'main'
+real git reads it: 
+bare main == work HEAD? c59c72836b67db83b03c10b99bee1ab3c0325161 vs e4e9cad9303b187f78e39f1efd05c8c40de6af98
+
+############ (5) 非 bare 远端：当前检出分支必须被拒（denyCurrentBranch=refuse）
+--- mg push to a non-bare remote whose main is checked out:
+mg: fatal: failed to push some refs to 'file:///tmp/v13extra/5/nonbare'
+refs/heads/main: branch is currently checked out
+mg exit=1
+--- real git push on the same fixture:
+To file:///tmp/v13extra/5/nonbare
+ ! [remote rejected] main -> main (branch is currently checked out)
+error: failed to push some refs to 'file:///tmp/v13extra/5/nonbare'
+git exit=1
+non-bare main unchanged? c59c72836b67db83b03c10b99bee1ab3c0325161 vs clone HEAD e4e9cad9303b187f78e39f1efd05c8c40de6af98
+
+############ (6) pull 的非快进路径（远端与本地分叉）
+--- mg pull (非快进):
+From file:///tmp/v13extra/6/origin
+mg pull exit=0
+--- git pull (同一夹具):
+ remote.txt | 1 +
+ 1 file changed, 1 insertion(+)
+ create mode 100644 remote.txt
+git pull exit=0
+mg  HEAD=3d57a5bd658f4db7f9443c866e9e06bf653f15d6 status=[]
+git HEAD=b7f690728d8dd0264f7eb27781ba6ec2b93d6bea status=[]
+
+############ (7) clone 默认目录名（URL 最后一段，去掉 .git）
+Cloning into 'repo'...
+mg: fatal: remote repository 'file:///tmp/v13extra/7/repo.git' is empty (no refs advertised)
+mg exit=1  ls: .
+..
+repo.git
+warning: You appear to have cloned an empty repository.
+git exit=0  ls: .
+..
+repo
+repo.git
+
+############ (8) mg fetch <explicit refspec> / FETCH_HEAD 形态
+From file:///tmp/v13extra/8/origin
+   c59c728..e4e9cad  main       -> origin/main
+From file:///tmp/v13extra/8/origin
+ * [updated] refs/remotes/origin/feature -> c59c728
+ * [updated] refs/remotes/origin/main -> e4e9cad
+--- mg FETCH_HEAD:
+c59c72836b67db83b03c10b99bee1ab3c0325161		not-for-merge	branch 'feature' of file:///tmp/v13extra/8/origin
+e4e9cad9303b187f78e39f1efd05c8c40de6af98		branch 'main' of file:///tmp/v13extra/8/origin
+--- git FETCH_HEAD:
+c59c72836b67db83b03c10b99bee1ab3c0325161		branch 'feature' of file:///tmp/v13extra/8/origin
+e4e9cad9303b187f78e39f1efd05c8c40de6af98		branch 'main' of file:///tmp/v13extra/8/origin
+--- diff of FETCH_HEAD (url identical):
+1c1
+< c59c72836b67db83b03c10b99bee1ab3c0325161		not-for-merge	branch 'feature' of file:///tmp/v13extra/8/origin
+---
+> c59c72836b67db83b03c10b99bee1ab3c0325161		branch 'feature' of file:///tmp/v13extra/8/origin
+--- mg fetch 后再 fetch 一次 objects 目标：
+From file:///tmp/v13extra/8/origin
+ * [updated] refs/remotes/origin/feature -> c59c728
+ * [updated] refs/remotes/origin/main -> e4e9cad
+second fetch exit=0
+--- refs/remotes/origin/main mg vs origin: e4e9cad9303b187f78e39f1efd05c8c40de6af98 vs e4e9cad9303b187f78e39f1efd05c8c40de6af98

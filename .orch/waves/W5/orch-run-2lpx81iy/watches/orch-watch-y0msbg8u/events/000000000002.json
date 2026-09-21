@@ -1,0 +1,10 @@
+{
+  "seq": 2,
+  "job_id": "9746730210dc4491b685bbc446088546",
+  "round_id": "1f695772a77b44ab8bcfb878a34e5add",
+  "kind": "observation_recovered",
+  "message": "reads recovered",
+  "evidence_path": "/home/user/Projects/mini-git/.orch/waves/W5/orch-run-2lpx81iy/watches/orch-watch-y0msbg8u/evidence/000000000002.json",
+  "screen_tail": "                                                                 │\n│                          │                                                                       │\n│                          │                                                                       │\n│                          │                                                                       │\n╰──────────────────────────┴───────────────────────────────────────────────────────────────────────╯\n Tip: Say `workflowz` in your message to drive the task with parallel subagents in eval — watch it\n      glow as you type\n\n Connected to MCP servers: arch-linux, cratesio-mcp, hackage-docs, debvulns, ssh-server, blender, godot.\n\n╭── ♡⃝ awful_bed~  3 DeepSeek V4.1 Flash   w5-linestat  $0.00 ↓ ──2%───────────────────────────────────────────────────────────󰁨──────────1M───╮\n╰─                                                                                                                                                 ─╯",
+  "observed_at": 1789897331.027333
+}

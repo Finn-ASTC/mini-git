@@ -1,0 +1,23 @@
+{
+  "active_request": ".orch/rounds/W3/agent-orchestrator-mldbvlhk/request.json",
+  "job_id": "f02e128d6fa5452fa89e33d3111f1ffc",
+  "round_id": "ac68efd12ddd43449caa5a2557de6efe",
+  "transport": "insider (default session)",
+  "session": "default",
+  "agent": "w3-v11-codex",
+  "pane": "w1B:p1",
+  "workspace": "w1B",
+  "cwd": "/home/user/Projects/mini-git",
+  "kind": "codex",
+  "task": "V11b 复验 T11b（symlink 祖先矩阵）",
+  "submitted_at": "2026-09-19T21:35:16+08:00",
+  "acceptance": "accepted",
+  "submission_evidence": "herdr agent prompt -> 续轮（复用 V11 的同一 native 会话 w1B）",
+  "deadline": null,
+  "monitor_owner": "controller (default session, pane wJ:p1)",
+  "last_checked_at": "2026-09-19T21:35:16+08:00",
+  "next_check_at": null,
+  "pending_question": null,
+  "resources_file": ".orch/rounds/W3/agent-orchestrator-mldbvlhk/resources.json",
+  "result_path": "/home/user/Projects/mini-git/.orch/rounds/W3/agent-orchestrator-mldbvlhk/result.json"
+}

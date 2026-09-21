@@ -1,0 +1,69 @@
+   Compiling mini-git v0.0.0 (/home/user/Projects/mini-git/.orch/waves/W2/T7-mergebase/verify-scratch/m2)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.21s
+     Running tests/verify_mergebase.rs (/home/user/Projects/mini-git/.orch/waves/W2/T7-mergebase/verify-scratch/target-m2/debug/deps/verify_mergebase-4419c18190eed8a2)
+
+running 10 tests
+test objects_are_loose_so_the_odb_read_path_is_covered ... ok
+test nonexistent_oid_is_object_not_found ... ok
+test corrupt_commit_is_corrupt_not_a_panic ... ok
+test linear_history_all_pairs_match_git ... FAILED
+test single_merge_matches_git ... FAILED
+test three_parent_merge_matches_git ... FAILED
+test criss_cross_two_equals_timestamped_bases ... FAILED
+test unrelated_roots_have_no_common_ancestor ... ok
+test ancestor_relation_and_identity ... FAILED
+test large_dag_200_commits_is_fast_and_correct ... FAILED
+
+failures:
+
+---- linear_history_all_pairs_match_git stdout ----
+
+thread 'linear_history_all_pairs_match_git' (1193667) panicked at tests/verify_mergebase.rs:377:5:
+assertion `left == right` failed
+  left: Some(Oid(e2e3b83d82b8f92707fc896b9c5c43d8dced309d))
+ right: Some(Oid(a8b63611ec8267663722d2875806d1692a1ac80a))
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+
+---- single_merge_matches_git stdout ----
+
+thread 'single_merge_matches_git' (1193670) panicked at tests/verify_mergebase.rs:447:5:
+assertion `left == right` failed: merge 与 left：left 是祖先，也是最佳共同祖先
+  left: Some(Oid(7c9c815417eda85a64a323091efb8f1c6bcabfc2))
+ right: Some(Oid(de7e21d3d6e41146ec8781b869ac31bae1214fa3))
+
+---- three_parent_merge_matches_git stdout ----
+
+thread 'three_parent_merge_matches_git' (1193671) panicked at tests/verify_mergebase.rs:534:5:
+assertion `left == right` failed
+  left: Some(Oid(7c9c815417eda85a64a323091efb8f1c6bcabfc2))
+ right: Some(Oid(149835a11397acde21205ece8c7cea6a7e186967))
+
+---- criss_cross_two_equals_timestamped_bases stdout ----
+
+thread 'criss_cross_two_equals_timestamped_bases' (1193665) panicked at tests/verify_mergebase.rs:501:5:
+mg 结果 7c9c815417eda85a64a323091efb8f1c6bcabfc2 必须 ∈ git 的两个 base ["171bfd5fe17296238e889673336195f962fea739", "74b93d99de46d4c371b765a4853317328fedc228"]
+
+---- ancestor_relation_and_identity stdout ----
+
+thread 'ancestor_relation_and_identity' (1193663) panicked at tests/verify_mergebase.rs:411:13:
+assertion `left == right` failed: af2d33cbbf8b0b754716b810826e14e45f147e69 vs af2d33cbbf8b0b754716b810826e14e45f147e69
+  left: Some(Oid(e2e3b83d82b8f92707fc896b9c5c43d8dced309d))
+ right: Some(Oid(af2d33cbbf8b0b754716b810826e14e45f147e69))
+
+---- large_dag_200_commits_is_fast_and_correct stdout ----
+
+thread 'large_dag_200_commits_is_fast_and_correct' (1193666) panicked at tests/verify_mergebase.rs:294:13:
+最优性: mg 结果 52a69c85996fcbd720dafc7c4212b63c779a9f1a 不是极大共同祖先，git --all = ["a3b2021e486595ad4d6f68444028d7f3e2438eb7"]（36000d17ea9fafbbfdeeb495d84295584ce6990d vs 02fa6363d754d9afaf461c09a31c17470b590dfa）
+
+
+failures:
+    ancestor_relation_and_identity
+    criss_cross_two_equals_timestamped_bases
+    large_dag_200_commits_is_fast_and_correct
+    linear_history_all_pairs_match_git
+    single_merge_matches_git
+    three_parent_merge_matches_git
+
+test result: FAILED. 4 passed; 6 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.21s
+
+error: test failed, to rerun pass `--test verify_mergebase`

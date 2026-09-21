@@ -1,0 +1,59 @@
+控制方对 T2（修订轮 ea8be0b9 / job 66840d4b，opencode/OMO 作者）的独立验收复核
+时间：2026-09-21 02:20–02:28 (+08:00)
+角色：controller-w7
+
+## 1. 协议与交付快照
+- protocol.py validate --request rounds/agent-orchestrator-2np3fp12/request.json --check-files → exit 0。
+- delivery.py capture（scope = Cargo.lock/Cargo.toml/src/tests，排除 target），baseline = T1 交付后的仓库快照
+  snapshot-bz6n2e1n：
+    snapshot = /tmp/w7-deliveries/snapshot-if97pkb6/snapshot.json（100 个文件）
+    actual_diff   = {added: [], modified: ["tests/verify_pack.rs"], deleted: []}
+    declarations  = {files_created: [], files_modified: ["tests/verify_pack.rs"], files_generated: [], files_deleted: []}
+    declaration_comparison = 四个列表全空；warnings = []
+    tests/verify_pack.rs sha256 = 133bd049d457bd4a3c1ba52cc93acc70b21c40e7c2c4318971982e35266ea061
+      （与作者 result 里自报的 133bd049… 逐字节一致）
+  → 「本轮只改了 tests/verify_pack.rs」是**快照层面**成立的，不是采信自述。
+
+## 2. 控制方验收计划（delivery.py verify，argv 计划、无 shell）4 条命令全部 PASS
+attempt = /tmp/w7-deliveries/snapshot-if97pkb6/verifications/verify-kqi9webq/attempt.json
+passed = true、source_unchanged = true、snapshot_valid = true、artifact_errors = []
+
+- cmd1（spec + dev 门禁）：断言 tests/verify_pack.rs 里有 MG_EVIDENCE_DIR、**没有** CARGO_MANIFEST_DIR；
+  在只读快照副本上跑 `cargo test --offline --locked`（CARGO_TARGET_DIR 指向副本之外）
+  → rc 0、562 passed / 0 failed / 1 ignored。VERDICT PASS
+- cmd2（release 门禁）：`cargo test --offline --locked --release` → rc 0、562/0/1，verify_http 两条 target
+  真的跑到了（本地绑定可用）。VERDICT PASS
+- cmd3（默认落盘位置）：`cargo test --offline --locked --test verify_pack -- --nocapture`
+  → stderr 打出 10 行 `[v9] evidence -> <dir>/v9-*.txt`，**distinct dirs = 1**，
+  目录在 TMPDIR 之下（build/tmp/mini-git-v9-evidence-<pid>），10 个文件实际生成，
+  单个文件大小是**单次运行**的量级（v9-byte-flips.txt 223 B，对照被污染历史的 9,589 B）。
+  **副本里没有出现 .orch/**。VERDICT PASS
+- cmd4（MG_EVIDENCE_DIR 覆盖）：同一命令加 MG_EVIDENCE_DIR=<build>/ev → 10 行证据全部落在该目录、
+  10 个文件、合计 30,121 字节；副本里同样没有 .orch/。VERDICT PASS
+
+**最关键的一条**：cmd1/cmd2 之后 `source_unchanged` 仍为 true ——
+在**干净的仓库副本**上跑完整的 dev + release 测试套件，副本逐字节没有变化。
+修复前这条必然为 false（正是它抓到 W7-D1 的方式）。
+
+## 3. 历史证据未被清理或改写（要求 4）
+`.orch/waves/W3/T9-pack/verify-scratch/` 下 11 个 `v9-*.txt` 在本轮前后 sha256 逐一相同
+（控制方自己的 before 清单 `.orch/waves/W7/evidence/t2-w3-v9-hashes-before.txt` vs
+ after `...-hashes-after.txt`，diff 为空），其中 10 个被污染的仍是 09-21 01:45 的 mtime。
+作者报告里的 10 个哈希与控制方 before 清单**逐条相同**（两条独立路径得出同一组值）。
+
+## 4. 需要记录的边界与发现
+1. **作者本轮之外还有一处仓库内写入**：opencode/OMO 自己往 `./.omo/run-continuation/<session>.json`
+   写运行状态（本轮实测该文件在 02:1x 被更新）。它不在 T2 的写作用域声明里，也不是产品代码 ——
+   属于 **宿主工具的自动副作用**，但它是「跑在仓库 cwd 里的 agent 会往仓库里写东西」的又一例。
+   控制方的处置：记录，不改；并把它排除在「提交内容」之外（不在 src/tests/Cargo.* 范围内）。
+2. **沙箱内跑交付验收会把 http 测试判红**：第一次 verify 在沙箱内执行时，
+   verify_http / verify_http_http 因禁止本地绑定而失败（540/22/1），
+   `passed=false`。这条**不是产品缺陷**，但对编排有实际影响：
+   交付验收（尤其含网络/绑定类测试）必须在**不受限的宿主环境**里跑，否则会得到系统性假红。
+   失败的 attempt（verify-3_oq4pj8）保留作证据。
+3. 作者自建的 manifest 工具（整仓 sha256 前后对照 + 干净副本括号）解决了 P30 里最棘手的一点：
+   **「跑测试到底改了仓库什么」可以被一次性证明**，而不必靠推断。这套做法值得写进模板。
+
+## 5. 判定
+accepted（kind=delivery）。W7-D1 已修，且修复的三条要求（hermetic、证据仍可产出且默认在仓库外、
+历史证据不动）都由控制方自己重跑验证。

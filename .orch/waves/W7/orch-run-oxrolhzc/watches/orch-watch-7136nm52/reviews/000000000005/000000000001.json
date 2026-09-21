@@ -1,0 +1,17 @@
+{
+  "version": 1,
+  "seq": 5,
+  "job_id": "66840d4b642f481a848788974b0665ca",
+  "round_id": "5248318530cb4b26b88628ac6da18637",
+  "event_fingerprint": "730c55de6a6844e46e90cfea11f5b44685f94f200542d88b86753e73085ae8ab",
+  "revision": 1,
+  "status": "handled",
+  "note": "review_due（changed UI）复核。读证据 screen：OpenCode/OMO 仍在工作画面（Thinking + 门禁 todo），\n底部只有 esc interrupt 提示，没有对话框、原生审批或提问。判定：正常工作中，无需输入。\n",
+  "recorded_at": 1789926585.3390357,
+  "action_evidence": null,
+  "resolution_evidence": {
+    "path": "/home/user/Projects/mini-git/.orch/waves/W7/orch-run-oxrolhzc/watches/orch-watch-7136nm52/evidence/000000000005.json",
+    "sha256": "7fd96a832f11604b77473d63ab28a362ef32802843995c01624fc8dd8fd91464"
+  },
+  "resolved_at": 1789926585.0
+}

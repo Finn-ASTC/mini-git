@@ -1,0 +1,22 @@
+{
+  "active_request": "/home/user/Projects/mini-git/.orch/rounds/W1/agent-orchestrator-1vhlii69/request.json",
+  "job_id": "edb0e351b58e42e486a264690ece2dcd",
+  "round_id": "c1008bbd20e34640ab5a409ceed097fb",
+  "transport": "isolated",
+  "session": "orch-w1-t1",
+  "agent": "orch-omp-t1",
+  "pane": "w1:p1",
+  "workspace": "w1",
+  "cwd": "/home/user/Projects/mini-git",
+  "task": "T1 object layer (tree/commit/tag/signature) - omp as author",
+  "submitted_at": "2026-09-19T11:13:53.391403+00:00",
+  "acceptance": "accepted",
+  "submission_evidence": "herdr agent prompt -> {\"type\":\"agent_prompted\"}; pane read shows omp spinner 'Implement git object codec...'",
+  "deadline": "2026-09-19T11:43:00+00:00",
+  "monitor_owner": "codex-cli controller session",
+  "last_checked_at": "2026-09-19T11:13:53.391403+00:00",
+  "next_check_at": "2026-09-19T11:16:00+00:00",
+  "pending_question": null,
+  "resources_file": "/home/user/Projects/mini-git/.orch/rounds/W1/agent-orchestrator-1vhlii69/resources.json",
+  "result_path": "/home/user/Projects/mini-git/.orch/rounds/W1/agent-orchestrator-1vhlii69/result.json"
+}

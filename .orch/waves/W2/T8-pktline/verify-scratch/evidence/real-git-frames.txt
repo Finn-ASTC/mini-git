@@ -1,0 +1,30 @@
+git --version: git version 2.55.0
+
+$ git -c protocol.version=0 upload-pack --stateless-rpc --advertise-refs .   -> rc=0
+### 真实 git：v0 ref advertisement (upload-pack --stateless-rpc --advertise-refs)
+raw bytes: 338  sha256: d149b78c57f885d750cd7f05b2b6a1d0e171e148437142ce02f9668d05907367
+  [00] off=    0 len=  273 data         payload=  269 'b1bbd0c8dde17d36ee2b5ac2c6df530d658ea12a HEAD\\0multi_ack '
+  [01] off=  273 len=   61 data         payload=   57 'b1bbd0c8dde17d36ee2b5ac2c6df530d658ea12a refs/heads/main'
+  [02] off=  334 len=    4 flush        payload=    0 ''
+
+### 客户端 request 的帧表（本脚本按格式表自造，非 Rust 代码）
+### request
+raw bytes: 77  sha256: fd42d0bed80b356d1e1d519d8a13bbbacfbcfb4163281539196567a21acb0baf
+  [00] off=    0 len=   64 data         payload=   60 'want b1bbd0c8dde17d36ee2b5ac2c6df530d658ea12a side-band-'
+  [01] off=   64 len=    4 flush        payload=    0 ''
+  [02] off=   68 len=    9 data         payload=    5 'done\\n'
+
+$ git -c protocol.version=0 upload-pack --stateless-rpc .   -> rc=0
+### 真实 git：对上述 request 的响应（含 side-band 通道 1/2）
+raw bytes: 486  sha256: 451b4c29be210a7c5a674b7eae1f186e3f5b488dfe175da4fbf40c0748b4ac2f
+  [00] off=    0 len=    8 data         payload=    4 'NAK\\n'
+  [01] off=    8 len=   33 data         payload=   29 '\x02æ\x9e\x9aä¸¾å¯¹è±¡ä¸\xad: 3, å®\x8cæ\x88\x90.\\n'
+  [02] off=   41 len=   33 data         payload=   29 '\x02å¯¹è±¡è®¡æ\x95°ä¸\xad:  33% (1/3)\r'
+  [03] off=   74 len=   33 data         payload=   29 '\x02å¯¹è±¡è®¡æ\x95°ä¸\xad:  66% (2/3)\r'
+  [04] off=  107 len=   70 data         payload=   66 '\x02å¯¹è±¡è®¡æ\x95°ä¸\xad: 100% (3/3)\rå¯¹è±¡è®¡æ\x95°ä¸\xad: 100% (3/3)'
+  [05] off=  177 len=  211 data         payload=  207 '\x01PACK\\0\\0\\0\x02\\0\\0\\0\x03\x9f\tx\x9c\x95ËA\\nÂ0\x10\x05Ð}N\x91½(\x93i§\x99@\x11¯ÒL¾X0FJ\x0c\x1eß3øö¯\x1f\x80gÉ'
+  [06] off=  388 len=   88 data         payload=   84 '\x02æ\x80»å\x85± 3ï¼\x88å·®å¼\x82 0ï¼\x89ï¼\x8cå¤\x8dç\x94¨ 0ï¼\x88å·®å¼\x82 0ï¼\x89ï¼\x8cå\x8c\x85å¤'
+  [07] off=  476 len=    6 data         payload=    2 '\x01\x9c'
+  [08] off=  482 len=    4 flush        payload=    0 ''
+
+# 通道 1 重组出的 pack: 207 字节, magic=b'PACK'

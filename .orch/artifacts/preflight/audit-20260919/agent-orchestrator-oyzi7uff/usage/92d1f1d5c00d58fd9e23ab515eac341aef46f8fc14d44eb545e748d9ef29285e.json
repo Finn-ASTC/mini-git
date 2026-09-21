@@ -1,0 +1,15 @@
+{
+  "sample_id": "call-1",
+  "source": "native",
+  "measurement": "delta",
+  "attempt_id": "attempt-1",
+  "purpose": "task",
+  "provider": null,
+  "model": null,
+  "input_tokens": 100,
+  "cached_input_tokens": 50,
+  "output_tokens": 10,
+  "schema_version": 1,
+  "job_id": "340eb0c4e2364a2791becdb0fa595d0e",
+  "round_id": "98f87c3dab2a42dc94dd58ba7b58110e"
+}

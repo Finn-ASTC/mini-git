@@ -1,0 +1,23 @@
+{
+  "active_request": ".orch/rounds/W4/agent-orchestrator-q0sxkvru/request.json",
+  "job_id": "68fb2d3e664b4202ac5cdc30134d7235",
+  "round_id": "0a9e0aa28ddc438ea2f83f8f040bf612",
+  "transport": "insider (default session)",
+  "session": "default",
+  "agent": "w4-t16-opencode",
+  "pane": "w1J:p1",
+  "workspace": "w1J",
+  "cwd": "/home/user/Projects/mini-git",
+  "kind": "opencode",
+  "task": "T16 修复 mg merge 嵌套路径快进",
+  "submitted_at": "2026-09-19T22:06:04+08:00",
+  "acceptance": "accepted",
+  "submission_evidence": "herdr agent start 命中 P4 超时 -> send-keys enter + 重命名恢复 -> agent prompt",
+  "deadline": null,
+  "monitor_owner": "controller (default session, pane wJ:p1)",
+  "last_checked_at": "2026-09-19T22:06:04+08:00",
+  "next_check_at": null,
+  "pending_question": null,
+  "resources_file": ".orch/rounds/W4/agent-orchestrator-q0sxkvru/resources.json",
+  "result_path": "/home/user/Projects/mini-git/.orch/rounds/W4/agent-orchestrator-q0sxkvru/result.json"
+}

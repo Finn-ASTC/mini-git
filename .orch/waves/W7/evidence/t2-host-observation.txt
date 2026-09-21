@@ -1,0 +1,47 @@
+host 观察证据 —— T2 作者（opencode/OMO，pane w1V:p1，workspace w1V）
+观察者：controller-w7（本机 Codex 会话，pane wJ:p1）
+观察时刻：2026-09-21 02:30 (+08:00) = epoch 1789929100
+
+## 工具链
+- OpenCode 1.18.29（pane 状态行「• OpenCode 1.18.29」），OMO 默认档
+- 原生会话（kind=id）：ses_0002
+  （`usage.py inspect-native --host opencode` 报 parent_session_id=null、child_session_ids=[]）
+
+## 目标状态
+1) `herdr --session default agent list` → orch-w7-author | opencode | **agent_status: idle**
+   | pane w1V:p1 | cwd /home/user/Projects/mini-git | interactive_ready: true
+2) `herdr --session default pane read w1V:p1 --source visible --format text`
+   → 屏幕为收尾报告（诚实性说明、LC_ALL=C 说明、verify_http 真跑到、证据在 /tmp/w7-author/），
+     **没有对话框、没有提问、没有待输入块**，底部是正常输入行与状态行（208.5K (21%) · $0.09）。
+3) `herdr --session default pane process-info --pane w1V:p1` → 4 个前台进程组成员：
+   - opencode（pid 2496256，cwd=仓库）
+   - node …/oh-my-openagent@4.19.4/…/lsp-daemon/dist/cli.js mcp（pid 2496478）
+   - rust-analyzer（pid 2505683）与其 proc-macro-srv（pid 2505898）
+   **没有 cargo / rustc 进程**（`grep -c cargo` = 0）→ 没有编译在执行。
+   这三个 node/rust-analyzer 是 opencode 自带的长期驻留工具进程（语言服务/MCP），
+   处于空闲等待输入状态，不是本轮 scoped 工作；它们在轮次结束后仍会存在（下轮会复用）。
+
+## 原生子会话
+- opencode 原生 inspect 报 child_session_ids = []，parent_session_id = null → 未发现嵌套委派。
+- 作者 result 自述「no sub-agents; no writer processes left running」，与观察一致。
+
+## 副作用台账（scope 内逐项对账）
+| 路径 | 观察 | 归属 |
+|---|---|---|
+| /home/user/Projects/mini-git/tests/verify_pack.rs | mtime 02:15:46、sha256 133bd049…（= 交付快照值） | **授权改动（T2 的唯一交付物）** |
+| /home/user/Projects/mini-git/src/**、Cargo.toml、Cargo.lock、其它 tests/** | 与 T2 基线快照逐字节相同（capture 的 actual_diff 只有一行） | 未改 |
+| /home/user/Projects/mini-git/.omo/run-continuation/ses_0002…json | 214 B、mtime 02:18 | **宿主工具自动副作用**：opencode 往 cwd 写自己的运行状态；不在作者声明里，也不在产品范围内（该目录已积累 11 个历轮 session 文件）。记录，不改。 |
+| /home/user/Projects/mini-git/target/** | 未被本轮的测试改动（作者的门禁用独立 CARGO_TARGET_DIR；干净副本那格在 /tmp/w7-author/hermetic 里） | 未改（构建产物，不在快照 scope 内） |
+| /home/user/Projects/mini-git/.orch/waves/W3/T9-pack/verify-scratch/** | 11 个 v9-*.txt 前后 sha256 逐一相同，mtime 仍 09-21 01:45 | **未改（本轮要求 4 的核心）** |
+| /tmp/w7-author/**（作者的 scratch，1.9 GB） | 它的 manifest/日志/hermetic 副本与独立 target | 作者 |
+| /tmp/w7-accept/**、/tmp/w7-deliveries/** | 控制方的重建与验收快照 | 控制方 |
+| ORCHESTRATION.md、.orch/SKILL-FINDINGS.md | 轮次中变更（02:18/02:17） | **控制方**（作者在自己的报告里主动指出了这一点） |
+
+## checks
+foreground=clear（唯一前台 agent 是 idle 的 opencode）
+background=clear（无 cargo/rustc；3 个 node/rust-analyzer 是空闲的语言服务/MCP 常驻进程）
+native_children=clear（opencode 原生层 0 个子会话）
+interaction=clear（无对话框/提问/待输入；idle + interactive_ready）
+side_effects=clear（上表逐项对账；授权改动 1 处 + 宿主工具 1 处，均已登记）
+
+status=settled，disposition=reusable（pane/workspace 保留到收尾统一拆除）

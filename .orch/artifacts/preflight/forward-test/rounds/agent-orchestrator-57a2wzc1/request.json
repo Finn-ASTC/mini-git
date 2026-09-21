@@ -1,0 +1,12 @@
+{
+  "schema_version": 1,
+  "job_id": "8e3b0ff303db4e0da64d3650fe4fe238",
+  "round_id": "a8de3a0932df417b93216aca0b2c825d",
+  "cwd": "/tmp/orch-forward-test-eff/project",
+  "result_path": "/tmp/orch-forward-test-eff/rounds/agent-orchestrator-57a2wzc1/result.json",
+  "depth": 1,
+  "max_depth": 3,
+  "prepared_at": "2026-09-19T09:12:29.497036+00:00",
+  "task": "Objective: Repair only the prior round's malformed final report\nScope: Reporting only; do not repeat analysis or change project files\nacceptance:\n- Publish one protocol-valid response reflecting the completed work\nknown_facts:\n- The underlying task already completed\nconstraints:\n- No task retry\nReport concise conclusions, verification and evidence paths; read referenced inputs only as needed. Preserve the full reporting contract and declared scope.",
+  "previous_request": "/tmp/orch-forward-test-eff/rounds/agent-orchestrator-3jy3jcjz/request.json"
+}

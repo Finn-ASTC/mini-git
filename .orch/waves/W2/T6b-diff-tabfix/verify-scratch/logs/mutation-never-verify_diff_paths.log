@@ -1,0 +1,127 @@
+   Compiling cfg-if v1.0.4
+   Compiling libc v0.2.189
+   Compiling proc-macro2 v1.0.107
+   Compiling version_check v0.9.5
+   Compiling quote v1.0.47
+   Compiling unicode-ident v1.0.24
+   Compiling typenum v1.20.1
+   Compiling getrandom v0.3.4
+   Compiling utf8parse v0.2.2
+   Compiling getrandom v0.4.3
+   Compiling colorchoice v1.0.5
+   Compiling rustix v1.1.4
+   Compiling crc32fast v1.5.1
+   Compiling is_terminal_polyfill v1.70.2
+   Compiling zerocopy v0.8.57
+   Compiling anstyle-query v1.1.5
+   Compiling anstyle v1.0.14
+   Compiling clap_lex v1.1.0
+   Compiling strsim v0.11.1
+   Compiling autocfg v1.5.1
+   Compiling bitflags v2.13.2
+   Compiling linux-raw-sys v0.12.1
+   Compiling simd-adler32 v0.3.10
+   Compiling heck v0.5.0
+   Compiling anyhow v1.0.104
+   Compiling anstyle-parse v1.0.0
+   Compiling adler2 v2.0.1
+   Compiling thiserror v2.0.20
+   Compiling cpufeatures v0.2.17
+   Compiling fastrand v2.5.0
+   Compiling once_cell v1.21.4
+   Compiling fnv v1.0.7
+   Compiling quick-error v1.2.3
+   Compiling miniz_oxide v0.9.1
+   Compiling bit-vec v0.8.0
+   Compiling regex-syntax v0.8.11
+   Compiling anstream v1.0.0
+   Compiling unarray v0.1.4
+   Compiling generic-array v0.14.7
+   Compiling num-traits v0.2.19
+   Compiling bit-set v0.8.0
+   Compiling clap_builder v4.6.6
+   Compiling flate2 v1.1.10
+   Compiling syn v3.0.5
+   Compiling crypto-common v0.1.7
+   Compiling block-buffer v0.10.4
+   Compiling wait-timeout v0.2.1
+   Compiling digest v0.10.7
+   Compiling rand_core v0.9.5
+   Compiling sha1 v0.10.7
+   Compiling rand v0.9.5
+   Compiling rand_xorshift v0.4.0
+   Compiling tempfile v3.27.0
+   Compiling rusty-fork v0.3.1
+   Compiling ppv-lite86 v0.2.21
+   Compiling clap_derive v4.6.4
+   Compiling thiserror-impl v2.0.20
+   Compiling rand_chacha v0.9.0
+   Compiling proptest v1.11.0
+   Compiling clap v4.6.6
+   Compiling mini-git v0.0.0 (/tmp/v6b-mut/repo)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 4.33s
+     Running tests/verify_diff_paths.rs (/tmp/v6b-mut/target/debug/deps/verify_diff_paths-70cafb16d5b3cc0b)
+
+running 6 tests
+test engine_contentless_side_and_binary_line_follow_git ... FAILED
+test engine_filepair_lines_match_real_git_across_name_matrix ... FAILED
+test cli_non_utf8_path_is_a_known_v1_limitation ... ok
+test cli_add_delete_binary_with_spaced_names_match_git ... FAILED
+test diff_git_header_stays_unpadded_for_quoted_spaced_names ... FAILED
+test cli_name_matrix_matches_git_for_all_invocation_combos ... FAILED
+
+failures:
+
+---- engine_contentless_side_and_binary_line_follow_git stdout ----
+
+thread 'engine_contentless_side_and_binary_line_follow_git' (1448) panicked at tests/verify_diff_paths.rs:176:5:
+engine empty vs spaced name: byte mismatch (git 69 bytes, mg 68 bytes)
+  first differing line #1:
+    git: +++ b/new file.txt\t\n
+    mg : +++ b/new file.txt\n
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+
+---- engine_filepair_lines_match_real_git_across_name_matrix stdout ----
+[coverage] engine class=no space U0 labels="a/plain_a.txt"/"b/plain_b.txt" OK
+[coverage] engine class=no space U3 labels="a/plain_a.txt"/"b/plain_b.txt" OK
+
+thread 'engine_filepair_lines_match_real_git_across_name_matrix' (1449) panicked at tests/verify_diff_paths.rs:176:5:
+space -U0: byte mismatch (git 64 bytes, mg 62 bytes)
+  first differing line #0:
+    git: --- a/a b.txt\t\n
+    mg : --- a/a b.txt\n
+
+---- cli_add_delete_binary_with_spaced_names_match_git stdout ----
+
+thread 'cli_add_delete_binary_with_spaced_names_match_git' (1444) panicked at tests/verify_diff_paths.rs:243:9:
+assertion `left == right` failed: staged new spaced file/mg: name "b/new file.txt" padded=false
+  left: false
+ right: true
+
+---- diff_git_header_stays_unpadded_for_quoted_spaced_names stdout ----
+
+thread 'diff_git_header_stays_unpadded_for_quoted_spaced_names' (1447) panicked at tests/verify_diff_paths.rs:176:5:
+quoted spaced header (worktree): byte mismatch (git 173 bytes, mg 171 bytes)
+  first differing line #2:
+    git: --- \"a/qu\\\"ote sp.txt\"\t\n
+    mg : --- \"a/qu\\\"ote sp.txt\"\n
+
+---- cli_name_matrix_matches_git_for_all_invocation_combos stdout ----
+[coverage] cli class=no space U3+U0+staged+HEAD OK
+
+thread 'cli_name_matrix_matches_git_for_all_invocation_combos' (1445) panicked at tests/verify_diff_paths.rs:243:9:
+assertion `left == right` failed: space: worktree vs index -U3/mg: name "a/a b.txt" padded=false
+  left: false
+ right: true
+
+
+failures:
+    cli_add_delete_binary_with_spaced_names_match_git
+    cli_name_matrix_matches_git_for_all_invocation_combos
+    diff_git_header_stays_unpadded_for_quoted_spaced_names
+    engine_contentless_side_and_binary_line_follow_git
+    engine_filepair_lines_match_real_git_across_name_matrix
+
+test result: FAILED. 1 passed; 5 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.02s
+
+error: test failed, to rerun pass `--test verify_diff_paths`

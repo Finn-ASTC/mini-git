@@ -1,0 +1,34 @@
+# T1（作者 opencode/OMO）交付的控制方独立验收（2026-09-21）
+
+只采信控制方自己的运行，不采信任何一方自述。
+
+## 1. 协议与身份
+- protocol.py validate --request <T1> --check-files -> exit 0，status=success，
+  job_id/round_id 与本轮 request 逐字一致，result.json sha256 已随 receipt 固定。
+- 声明改动：files_modified=["src/diff/myers.rs"]，created/generated/deleted 全空。
+
+## 2. 写作用域漂移（控制方基线，非作者自述）
+对 controller 在作者开工前拍的 src/ 清单（60 个文件）做对比：
+  added=[] removed=[] changed=['diff/myers.rs']
+即：作者确实只动了这一个文件。
+
+## 3. 制品哈希
+target/release/mg sha256 = 21b5679f024849a844c7ea4994dfd2b295295647e4a836d7e543f7901eb56990
+target/debug/mg   sha256 = ad6e6df315ca3bc8317616ed1a051902d8bea5dab3ce4c0fccc8e5bbd942db1f
+与作者在 result 里声明的 release 哈希一致。
+
+## 4. P24 最小复现（控制方实跑，/tmp/w7-smoke）
+release: exit 0, real 0.001s, stdout 151 字节
+debug  : 151 字节
+真实 git: 151 字节
+rel==dbg、dbg==git 均逐字节一致；且 release stdout 与
+.orch/artifacts/release-p24/repro/dbg.out（P24 归档的修复前 debug 输出）逐字节一致。
+修复前同一命令 release 为 6 秒超时（exit 124、0 字节）。
+
+## 5. 控制方自己的 200 例语料（用 P24 归档里的 controller 自写脚本）
+- .orch/artifacts/release-p24/scripts/diff2.py：debug==release 200；输出不同 0；release 死循环 0
+  （修复前基线：release 死循环 3/200、与 debug 不同 12/200）
+- 控制方另写 /tmp/w7-gitcmp.py（同款 PRNG）：release==真实 git 200/200；不同 0；超时 0
+
+结论：P24 的修复在控制方自己的构建与自己的 oracle 上成立。
+这仍不替代验证者的独立验证（更严的要求见 V2 轮任务包）。

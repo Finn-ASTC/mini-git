@@ -1,0 +1,18 @@
+{
+  "schema_version": 1,
+  "job_id": "b0c832a2fa9d49a0bde99b84960fe2ff",
+  "round_id": "7459fcd55f7f44d7919c6ccdad89279b",
+  "status": "success",
+  "output": "【范围】只改白名单三文件 src/worktree/{scan,ignore,status}.rs；materialize.rs / mod.rs 与其它任何文件未动（drift 与 freeze 均已核）。\n\n【跑过的命令 + 结论】\n1) cargo test --offline worktree::  → 35 passed / 0 failed（其中 20 个用例的真值全部由真实 git 现场生成）。\n2) cargo clippy --offline --all-targets → 0 warning。\n3) scripts/check-freeze.sh → checked 21 file(s), drift 0。\n4) scripts/drift.sh .orch/waves/W1/T4-worktree/baseline.txt → 我的改动只有 src/worktree/{scan,ignore,status}.rs（同轮其它 CHANGED/ADDED 属 T2/T3 agent 与 controller 产物）。\n5) cargo test --offline（全量）→ lib 85 / interop 7 / verify 3 / verify_index 6 / verify_refs 9，全绿。\n\n【实现要点】\n- scan：symlink_metadata 扫描；不跟随 symlink；不进入 .git；整目录被 ignore 时只产出该目录一条（is_dir+ignored）并停止下降（status 折叠 dir/ 依赖它）；空目录无条目；按 path 字节序排序。\n- ignore：逐目录递归读 .gitignore（base=规则所在目录，后读的规则优先级更高）；支持 * ? [...]（含 [!...]/[^...]、区间）、\\ 转义、! 取反（最后命中者胜出）、前导 / 及含 / 的锚定、尾随 / 仅匹配目录、注释/空行/行尾未转义空格；截断的 [...] 按字面量 [ 处理，永不 panic；被忽略目录内部的规则不生效（与 git 一致）。\n- status：X=HEAD(已展平 tree) vs index stage0（oid+mode，100644↔100755 算 M）；Y=index vs 工作区（直接 Oid::hash_object(\"blob\", bytes) 比对，不信 stat；不存在/是目录/祖先被换成普通文件 → D）；stage1/2/3 只输出冲突码（stagemask 表与 git wt-status.c 一致）；未跟踪按「最深可用折叠」成一条 ?? dir/；被 ignore 的路径不出现；porcelain 复刻 core.quotePath（含空格/引号/控制字节/非 ASCII 的路径加引号并转义）。\n\n【对拍结论】porcelain 在 20 个真实 git 真值场景下与 `git status --porcelain` **逐字节相同**：空仓库；无提交仓库（head_tree=None）；修改/删除/暂存改/暂存加/暂存后又被改；可执行位变化（工作区侧与暂存侧各一）；symlink 指向变化；ignore 命中与 ! 救回；忽略目录内已跟踪文件仍报 M；部分未跟踪目录折叠；rm --cached（D + ?? 同时出现）；普通冲突 UU、modify/delete 冲突 DU、add/add 冲突 AA；子目录 .gitignore 锚定作用域；未跟踪目录内含被忽略文件；3 层嵌套折叠；特殊文件名排序（foo.txt 与 foo/、a-b/a.b）；文件↔目录互换；含空格/引号/TAB/DEL/中日韩字节的路径引用。\n\n顺带实测并照做的一个 git 行为：porcelain v1 是「先 changed 行、再 ?? 行」两组，组内才按 path 排序（不是全局排序），已按此实现。\n\n【明确没有实现 / 已知限制】\n- materialize.rs（W3/T11）保持冻结桩，未实现。\n- 不做 rename 检测：改名在 mg 里是 D a + A b，git 可能输出 R a -> b。\n- 冻结的 ChangeKind 只有 A/M/D，没有 T：git 对「普通文件 ↔ symlink」这类类型变化输出 T，mg 按任务书 §4.5 的约定输出 M（同类型内的可执行位变化两者一致，都是 M）。实测 git 2.55 对 regular→symlink 输出 \" T\"。\n- 不支持 core.excludesFile、.git/info/exclude、** 的 git 特殊语义（按普通 * 处理，* 不跨 /）、submodule/gitlink、sparse checkout、skip-worktree/assume-valid 的语义差别。\n- intent-to-add（git add -N）条目按普通 stage 0 处理，mg 会输出 AM 而 git 输出 \" A\"（不在验收场景内）。\n- 非 UTF-8 路径按 git 风格 8 进制引用输出（不做 lossy 替换）。",
+  "files_created": [],
+  "files_modified": [
+    "src/worktree/scan.rs",
+    "src/worktree/ignore.rs",
+    "src/worktree/status.rs"
+  ],
+  "files_generated": [],
+  "files_deleted": [],
+  "error": null,
+  "blocked_reason": null,
+  "completed_at": "2026-09-19T19:45:18+08:00"
+}

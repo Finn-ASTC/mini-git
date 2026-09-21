@@ -1,0 +1,11 @@
+{
+  "schema_version": 1,
+  "job_id": "aa1b50f8e84341e88f8f39d496bc6949",
+  "round_id": "e9640cbb207f4c55967e8fad78e0bc75",
+  "cwd": "/tmp/orch-audit-20260919-e8x_l_s7/crash-window",
+  "result_path": "/tmp/orch-audit-20260919-e8x_l_s7/agent-orchestrator-ulyi_06m/result.json",
+  "depth": 1,
+  "max_depth": 3,
+  "prepared_at": "2026-09-19T09:25:14.591786+00:00",
+  "task": "Read-only inspection"
+}

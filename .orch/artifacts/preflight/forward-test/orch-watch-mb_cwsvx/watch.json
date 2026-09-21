@@ -1,0 +1,100 @@
+{
+  "version": 1,
+  "targets": [
+    {
+      "request_path": "/tmp/orch-forward-test-eff/rounds/agent-orchestrator-3jy3jcjz/request.json",
+      "job_id": "8e3b0ff303db4e0da64d3650fe4fe238",
+      "round_id": "0a1e789f67474373ac96af3a03af159b",
+      "resources": {
+        "mode": "isolated",
+        "session": "test-session",
+        "agent": "codex",
+        "pane": "w1:p1",
+        "workspace": "w1",
+        "owns_agent": true,
+        "owns_pane": true,
+        "owns_workspace": true,
+        "owns_session": true,
+        "tab": null,
+        "parent_pane": null,
+        "parent_tab": null,
+        "owns_tab": false,
+        "recorded_at": "2026-09-19T09:12:15.939862+00:00",
+        "job_id": "8e3b0ff303db4e0da64d3650fe4fe238"
+      },
+      "tmux_selector": null
+    },
+    {
+      "request_path": "/tmp/orch-forward-test-eff/rounds/agent-orchestrator-_a6o_88n/request.json",
+      "job_id": "779a332380d64ec2b75723d406b47101",
+      "round_id": "49834261ee084bfa82fbafa38177823f",
+      "resources": {
+        "mode": "isolated",
+        "session": "test-session",
+        "agent": "codex",
+        "pane": "w2:p1",
+        "workspace": "w2",
+        "owns_agent": true,
+        "owns_pane": true,
+        "owns_workspace": true,
+        "owns_session": false,
+        "tab": null,
+        "parent_pane": null,
+        "parent_tab": null,
+        "owns_tab": false,
+        "recorded_at": "2026-09-19T09:12:16.047555+00:00",
+        "job_id": "779a332380d64ec2b75723d406b47101"
+      },
+      "tmux_selector": null
+    },
+    {
+      "request_path": "/tmp/orch-forward-test-eff/rounds/agent-orchestrator-igeh1c9b/request.json",
+      "job_id": "10d41442f1ce48ea9690bc51c52c2659",
+      "round_id": "33c537c061e04e95b0897aa1020b2f13",
+      "resources": {
+        "mode": "isolated",
+        "session": "test-session",
+        "agent": "codex",
+        "pane": "w3:p1",
+        "workspace": "w3",
+        "owns_agent": true,
+        "owns_pane": true,
+        "owns_workspace": true,
+        "owns_session": false,
+        "tab": null,
+        "parent_pane": null,
+        "parent_tab": null,
+        "owns_tab": false,
+        "recorded_at": "2026-09-19T09:12:16.155822+00:00",
+        "job_id": "10d41442f1ce48ea9690bc51c52c2659"
+      },
+      "tmux_selector": null
+    },
+    {
+      "request_path": "/tmp/orch-forward-test-eff/rounds/agent-orchestrator-_bw1csa4/request.json",
+      "job_id": "b86a8e98e58f413b82c3ee0d9bafeb11",
+      "round_id": "1671a9f31b8a41d990ee17ca268d8c71",
+      "resources": {
+        "mode": "isolated",
+        "session": "test-session",
+        "agent": "codex",
+        "pane": "w4:p1",
+        "workspace": "w4",
+        "owns_agent": true,
+        "owns_pane": true,
+        "owns_workspace": true,
+        "owns_session": false,
+        "tab": null,
+        "parent_pane": null,
+        "parent_tab": null,
+        "owns_tab": false,
+        "recorded_at": "2026-09-19T09:12:16.262027+00:00",
+        "job_id": "b86a8e98e58f413b82c3ee0d9bafeb11"
+      },
+      "tmux_selector": null
+    }
+  ],
+  "deadline": null,
+  "review_interval": 30,
+  "stall_after": 120
+}

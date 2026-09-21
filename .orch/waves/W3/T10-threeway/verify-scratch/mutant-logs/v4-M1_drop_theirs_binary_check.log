@@ -1,0 +1,63 @@
+   Compiling mini-git v0.0.0 (/tmp/v10-mutant-v3)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.44s
+     Running tests/verify_threeway.rs (/tmp/v10-target-mutant-v3/debug/deps/verify_threeway-a61023c085f543c6)
+
+running 32 tests
+test engine_binary_is_conflict_with_ours ... FAILED
+test cli_unrelated_histories_are_refused_loudly ... ok
+test cli_already_up_to_date_when_target_is_ancestor ... ok
+test cli_conflictstyle_zdiff3_characterization ... ok
+test engine_identity_shortcuts_match_git ... ok
+test cli_conflict_binary_keeps_ours_like_git ... FAILED
+test engine_none_base_two_added_files ... ok
+test truth_source_selfcheck_diff3_label_really_appears ... ok
+test cli_unknown_rev_and_unknown_oid_fail_without_panic ... ok
+test truth_source_selfcheck_merge_file_exit_code_is_conflict_count ... ok
+test cli_conflict_modified_then_deleted_by_theirs ... ok
+test cli_fast_forward_matches_git ... ok
+test cli_dirty_worktree_is_refused_with_zero_changes ... ok
+test truth_source_selfcheck_porcelain_is_not_globally_sorted ... ok
+test engine_case_table_matches_git_merge_file ... ok
+test cli_clean_merge_disjoint_files_and_tree_matches_git ... ok
+test cli_clean_merge_ours_delete_theirs_untouched ... ok
+test cli_clean_both_sides_delete_same_file ... ok
+test cli_clean_merge_nested_dirs_and_new_files ... ok
+test cli_clean_merge_same_file_different_regions ... ok
+test cli_untracked_file_that_theirs_adds_is_refused ... ok
+test cli_no_ff_creates_two_parent_merge_commit_like_git ... ok
+test cli_conflict_diff3_style_matches_git ... ok
+test cli_conflict_mixed_clean_and_conflicting_paths ... ok
+test cli_conflict_add_add_same_path ... ok
+test cli_conflict_no_trailing_newline_bytes_match_git ... ok
+test cli_conflict_cjk_bytes_match_git ... ok
+test cli_conflict_delete_modify_both_directions ... ok
+test cli_conflict_crlf_bytes_match_git ... ok
+test cli_conflict_same_line ... ok
+test engine_indented_corpus_characterization ... ok
+test engine_random_corpus_matches_git ... ok
+
+failures:
+
+---- engine_binary_is_conflict_with_ours stdout ----
+
+thread 'engine_binary_is_conflict_with_ours' (1772799) panicked at tests/verify_threeway.rs:778:44:
+assertion `left == right` failed: theirs-binary: 二进制冲突必须原样保留 ours（不插 marker）
+  left: [60, 60, 60, 60, 60, 60, 60, 32, 111, 117, 114, 115, 10, 112, 108, 97, 105, 110, 32, 111, 117, 114, 115, 10, 61, 61, 61, 61, 61, 61, 61, 10, 84, 72, 69, 73, 82, 83, 0, 66, 89, 84, 69, 83, 10, 62, 62, 62, 62, 62, 62, 62, 32, 116, 104, 101, 105, 114, 115, 10]
+ right: [112, 108, 97, 105, 110, 32, 111, 117, 114, 115, 10]
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+
+---- cli_conflict_binary_keeps_ours_like_git stdout ----
+
+thread 'cli_conflict_binary_keeps_ours_like_git' (1772774) panicked at tests/verify_threeway.rs:1243:9:
+assertion `left == right` failed: blob_theirs.bin: 二进制冲突必须原样保留 ours（不插 marker）
+  left: [60, 60, 60, 60, 60, 60, 60, 32, 72, 69, 65, 68, 10, 116, 101, 120, 116, 117, 97, 108, 32, 111, 117, 114, 115, 10, 61, 61, 61, 61, 61, 61, 61, 10, 84, 72, 69, 73, 82, 83, 0, 111, 110, 108, 121, 45, 116, 104, 101, 105, 114, 115, 10, 62, 62, 62, 62, 62, 62, 62, 32, 102, 101, 97, 116, 117, 114, 101, 10]
+ right: [116, 101, 120, 116, 117, 97, 108, 32, 111, 117, 114, 115, 10]
+
+
+failures:
+    cli_conflict_binary_keeps_ours_like_git
+    engine_binary_is_conflict_with_ours
+
+test result: FAILED. 30 passed; 2 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.44s
+
+error: test failed, to rerun pass `--test verify_threeway`

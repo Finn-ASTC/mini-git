@@ -1,0 +1,23 @@
+# V1（验证者）attempt 未发出的证据
+
+时间：2026-09-21T01:41Z 左右（controller 本地）
+尝试：/tmp/w7-begin-v1.json 里 begin 预留的那次 attempt
+
+## 为什么没发
+验证者的输入是作者的交付物。若与作者并发发出，验证者会在修复落盘之前复制源码，
+验证对象就不存在。因此 controller 决定：**先发作者，作者交付后再发验证者**。
+这只影响调度顺序，不影响任何一轮的内容。
+
+## 未发出的证据
+- 该 attempt 之后 controller 从未对 pane w1W:p1 调用过 `agent prompt`；
+  本次记录之前，该 pane 的屏幕是 omp 的启动画面 + 空输入框（观察器 seq=1 的
+  screen tail 已存档于 watches/orch-watch-ecj3lg73/evidence/000000000001.json）。
+- 目标上不存在本轮任何产物：V1 的 round 目录下只有 request.json / prompt.txt /
+  run-ref.json，没有 result.json。
+- 因此这是一个**明确未发送**的 attempt，不是「可能已被接受」的 uncertain。
+
+## 处置
+1. 本条以 receipt status=rejected / kind=not_sent 记录。
+2. 旧 V1 job（bfbf5d1f…，round 557d300a…）随后以 cancelled 关闭，
+   保留轮次目录作为「调度顺序错误」的现场证据。
+3. controller 会用带真实封存快照路径的新任务包重新 prepare 一个新的验证轮。

@@ -1,0 +1,10 @@
+{
+  "seq": 13,
+  "job_id": "edb0e351b58e42e486a264690ece2dcd",
+  "round_id": "c1008bbd20e34640ab5a409ceed097fb",
+  "kind": "review_due",
+  "message": "Changed UI needs review; hook/keyword detection may miss a dialog.",
+  "evidence_path": "/tmp/orch-watch-x90zk5ag/evidence/000000000013.json",
+  "screen_tail": "ne sentence, naming the topic.\n\n╭───  Ask ───────────────────────────────────────────────────────────────────────────────────────────────────────────╮\n│  Would you like a quick 10-15 minute learning exercise on T1 的 git 字节格式决策（tree 的 base_name_compare         │\n│  排序陷阱、commit/tag 多行头部的逐字节往返，以及为什么共享解析辅助函数只能落在 commit.rs）？                        │\n│   Yes, do the exercise                                                                                             │\n│   No, skip it                                                                                                      │\n╰─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯\n\n Understood — no learning exercise this session.\n\n╭── ♡⃝ awful_bed~  3 DeepSeek V4.1 Flash   mini-git  $0.05 ↓ ─11%─󰁨1M─  104K   98.58%  Implement git obj… ──╮\n╰─                                                                                                                   ─╯\n",
+  "observed_at": 1789816708.1734104
+}
