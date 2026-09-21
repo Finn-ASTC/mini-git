@@ -19,11 +19,10 @@
 | 文件 | 内容 |
 |---|---|
 | `PLAN.md` | 技术规划：数据模型、CLI 表面、里程碑、测试策略、风险 |
-| `ORCHESTRATION.md` | 多 agent 架构：写作用域、依赖 DAG、Wave 计划、评测指标、决策记录（C-1 ~ C-28）|
-| `.orch/SKILL-FINDINGS.md` | **测试床的核心产出**：P1–P24 编排 skill 缺陷清单（含最小复现与修法）|
-| `.orch/waves/W{1..4}/summary.md` | 每个 wave 的复盘（含指标表、token 账本、验证者发现）|
-| `.orch/waves/W{1..4}/defects.md` | 每个 wave 的产品缺陷与流程缺陷 |
-| `.orch/FREEZE-v0.md` | W0 接口冻结清单（哈希基线，代替 git tag；现为 v0.6）|
+| `ORCHESTRATION.md` | 多 agent 架构：写作用域、依赖 DAG、Wave 计划、评测指标、决策记录（C-1 ~ C-47）|
+| `.orch/SKILL-FINDINGS.md` | **测试床的核心产出**：P1–P34 编排 skill 缺陷清单（含最小复现与修法）|
+| `.orch/waves/W{1..7}/{summary,defects}.md` | 每个 wave 的复盘（含指标表、token 账本、验证者发现）与产品/流程缺陷 |
+| `.orch/FREEZE-v0.md` | W0 接口冻结清单（哈希基线，代替 git tag；现为 v0.9，`scripts/check-freeze.sh` 校验）|
 | `.orch/README.md` | 编排产物布局与协议要点 |
 | `.orch/artifacts/` | **编排过程的原始归档**：controller 自建工具、codex 审批日志、token 清单、验证者对拍 harness 与变异体（原先散在 `/tmp`，重启即丢）|
 
